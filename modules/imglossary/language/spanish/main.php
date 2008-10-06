@@ -1,0 +1,135 @@
+<?php
+/**
+ * $Id: main.php v 1.0 8 May 2004 hsalazar Exp $
+ * Module: Wordbook - a multicategory glossary
+ * Version: v 1.00
+ * Release Date: 8 May 2004
+ * Author: hsalazar
+ * Licence: GNU
+ */
+define("_MD_WB_NOCOLEXISTS", "Lo siento, aún no se define ninguna categoría.<br />Por favor avisa al administrador del sitio sobre este asunto.");
+define("_MD_WB_ALL", "Todas");
+define("_MD_WB_ALLCATS", "Todas las categorías");
+define("_MD_WB_ALLOFTHEM", "0 : Todas");
+define("_MD_WB_ANDOR", "Alcance de la búsqueda");
+define("_MD_WB_ANDORALL", "Todas las palabras (AND)");
+define("_MD_WB_ANDORANY", "Cualquier palabra (OR)");
+define("_MD_WB_ANDOREXACT", "Correspondencia exacta");
+define("_MD_WB_ANONYMOUS", "Anónimo");
+define("_MD_WB_ASKEDBY", "Término pedido por:");
+define("_MD_WB_ASKFORDEF", "Pedir una definición");
+define("_MD_WB_BEGINWITHLETTER", "definiciones que empiezan con esta letra.");
+define("_MD_WB_BROWSECAT", "Explorar por categoría");
+define("_MD_WB_BROWSELETTER", "Explorar por letra inicial");
+define("_MD_WB_CATEGORY", "Buscar en la categoría");
+define("_MD_WB_CATS", "Categorías: ");
+define("_MD_WB_COUNT", "Esta definición ha sido vista individualmente %s veces.");
+define("_MD_WB_CREATE", "Enviar la definición");
+define("_MD_WB_DEFINITION", "[*] Definición");
+define("_MD_WB_DEFINITIONREQ", "Solicitud de definición");
+define("_MD_WB_DEFINITIONSUB", "Envío de definición");
+define("_MD_WB_DEFINS", "Definiciones");
+define("_MD_WB_DEFS", "Definiciones: ");
+define("_MD_WB_DELTERM", "Borrar este término");
+define("_MD_WB_EDITTERM", "Editar este término");
+define("_MD_WB_EMAILLEFT", "El usuario dejó esta dirección de correo: ");
+define("_MD_WB_ENTRIES", " definiciones.");
+define("_MD_WB_ENTRIESINCAT", "definiciones en este diccionario.");
+define("_MD_WB_ENTRY", "[*] Término");
+define("_MD_WB_ENTRYCATEGORY", "Categoría: ");
+define("_MD_WB_ENTRYCOUNT", "Esta categoría tiene ");
+define("_MD_WB_ENTRYDEFINITION", "Definición: ");
+define("_MD_WB_ENTRYREFERENCE", "Referencia: ");
+define("_MD_WB_ENTRYRELATEDURL", "Sitio relacionado: ");
+define("_MD_WB_ERRORSAVINGDB", "ERROR: ¡La base de datos NO se actualizó debido a un error!");
+define("_MD_WB_GOODDAY", "Hola, ");
+define("_MD_WB_GOODDAY2", "Buen día, %s.");
+define("_MD_WB_HOME", "Página inicial");
+define("_MD_WB_INALLGLOSSARIES", "definiciones en todos nuestros diccionarios.");
+define("_MD_WB_INTENTRY", "Mira esta definición en %s");
+define("_MD_WB_INTENTRYFOUND", "He aqu&iacute; una definici&oacute;n interesante que me encontr&eacute; en %s");
+define("_MD_WB_INTROREQUEST", "¿No encontraste en nuestros dicionarios la definición que buscabas? Envíanos la palabra llenando este formulario. Buscaremos su definición y la añadiremos a la base de datos.");
+define("_MD_WB_LOOKON", "Buscar en");
+define("_MD_WB_MAINHEAD", "Bienvenido a %s");
+define("_MD_WB_MAININTRO", "En esta parte de la web hallarás nuestros diccionarios de términos, así como las deifniciones más recientes de cada categoría. Puedes hacer clic en el nombre de una categoría para ver qué definiciones contiene, o en el nombre de un término para leer directamente la definición.");
+define("_MD_WB_MAINNOSELECTCAT", "No elegiste una categoría válida");
+define("_MD_WB_MAINNOTOPICS", "No hay definiciones en esta categoría");
+define("_MD_WB_MESSAGESENT", "Mensaje a %s enviado.");
+define("_MD_WB_NO", "No");
+define("_MD_WB_NOENTRIESINCAT", "Aún no hay definiciones en este diccionario.");
+define("_MD_WB_NORESULTS", "No hubo correspondencia con el término que buscas. Por favor usa otra palabra e inténtalo de nuevo.");
+define("_MD_WB_NOSEARCHTERM", "No has declarado un término a buscar. Por favor hazlo ahora en el formulario de búsqueda incluido en esta página.");
+define("_MD_WB_NOTERMSINLETTER", "No hay definiciones que empiecen con esta letra.");
+define("_MD_WB_NOTIFY", "¿Avisar cuando se publique?");
+define("_MD_WB_NOTIFYONPUB", "El usuario ha pedido que se le avise cuando hagamos algo con la definición.<br />");
+define("_MD_WB_OTHER", "Otra");
+define("_MD_WB_POPULARENT", "Definiciones populares");
+define("_MD_WB_POSTED", "Publicada");
+define("_MD_WB_PRINTERFRIENDLY", "Imprimir en formato fácil");
+define("_MD_WB_PRINTTERM", "Imprimir en formato fácil");
+define("_MD_WB_RANDOMTERM", "Término al azar");
+define("_MD_WB_RECEIVED", "La definición que enviaste ha sido recibida. La examinaremos lo antes posible.");
+define("_MD_WB_RECEIVEDANDAPPROVED", "La definición que enviaste ha sido recibida. Como la opción de autoaprobación está activada, la publicaremos de inmediato.");
+define("_MD_WB_RECENTENT", "Definiciones recientes");
+define("_MD_WB_REFERENCE", "Referencia<span style='font-size: xx-small; font-weight: normal; display: block;'>(Opcionalmente, puedes incluir aquí la fuente de tu definición.)</span>");
+define("_MD_WB_REQRCVD", "Tu petición ha sido recibida. La examinaremos lo antes posible.");
+define("_MD_WB_REQSEND", "Petición enviada");
+define("_MD_WB_REQTERM", "[*] Término a definir");
+define("_MD_WB_REQUESTDEF", "Solicitar definición");
+define("_MD_WB_REQUESTFORM", "Solicitar una definición");
+define("_MD_WB_REQUESTSENT", "Tu solicitud ha sido expedida al administrador de %s.");
+define("_MD_WB_RETURN", "Regresar");
+define("_MD_WB_RETURN2INDEX", "Regresar al índice del módulo");
+define("_MD_WB_SEARCH", "¡Buscar!");
+define("_MD_WB_SEARCHENTRY", "Buscar definición");
+define("_MD_WB_SEARCHHEAD", "Resultados de la búsqueda");
+define("_MD_WB_SECTIONNAME", "Wordbook");
+define("_MD_WB_SEEMORE", "Más definiciones...");
+define("_MD_WB_SENDSTORY", "Enviar esta definición a un amigo");
+define("_MD_WB_SENDTOFRIEND", "Enviar esta definición a un amigo");
+define("_MD_WB_SENT", "Enviada el: ");
+define("_MD_WB_SENTCONFIRMMAIL", "Tus comentarios han sido enviados a <b>%s</b> como correo de confirmación.");
+define("_MD_WB_STILLNOTHINGHERE", "<h4 style='margin: 0;'>diccionarios en blanco</h4>Una disculpa: aún no tenemos definiciones en nuestros diccionarios. Puedes ayudarnos mencionándonos algunos términos cuyo significado quieras conocer. Si eres un usuario registrado, también puedes ayudarnos enviándonos algunos términos cuya definición conozcas.");
+define("_MD_WB_SUB_SMNAME", "Rellena este formulario para enviar tu definición");
+define("_MD_WB_SUB_SNEWNAME", "Enviar una definición a %s");
+define("_MD_WB_SUB_SNEWNAMEDESC", "por favor rellena el formulario siguiente para enviar tu nueva definición a nuestra web. Como bien sabes, tendrá que ser revisada por un administrador antes de su publicación, a menos que esté autorizada la opción de autoaprobación, en cuyo caso tu definición aparecerá de inmediato.");
+define("_MD_WB_SUBMIT", "Enviar petición");
+define("_MD_WB_SUBMITART", "Enviar definición");
+define("_MD_WB_SUBMITENTRY", "Enviar definición");
+define("_MD_WB_SUBMITTED", "Enviada por %s, el %s.");
+define("_MD_WB_SUBMITTER", "Remitente: ");
+define("_MD_WB_TERM", "Término(s) a buscar");
+define("_MD_WB_TERMS", "Términos");
+define("_MD_WB_TERMSDEFS", "Términos y definiciones");
+define("_MD_WB_THANKS1", "¡Gracias por tu participación!<br />");
+define("_MD_WB_THANKS2", "¡Gracias por pedirnos una definición!");
+define("_MD_WB_THANKYOU", "Gracias por pedirnos una definición que enriquecerá los diccionarios de %s.");
+define("_MD_WB_THEREWERE", "Hubo %s definiciones que corresponden con el término buscado: <b>%s</b>.");
+define("_MD_WB_TIMESREAD", "Lecturas");
+define("_MD_WB_UNKNOWNERROR", "ERROR. ¡Volviendo adonde estabas!");
+define("_MD_WB_URL", "URL<span style='font-size: xx-small; font-weight: normal; display: block;'>(Por favor anota un URL válido con o sin el prefijo HTTP.)</span>");
+define("_MD_WB_USERMAIL", "E-mail");
+define("_MD_WB_USERNAME", "Nombre");
+define("_MD_WB_WEBMASTER", "Webmaster");
+define("_MD_WB_WEHAVE", "Actualmente tenemos");
+define("_MD_WB_WHOASKED", "%s nos pidió buscar la definición de: ");
+define("_MD_WB_WHOSUBMITTED", "%s ha enviado la definición de este término: ");
+define("_MD_WB_YES", "Sí");
+
+define("_MD_WB_OPTIONS", "Opciones");
+define("_MD_WB_DOHTML", "¿Permitir HTML?");
+define("_MD_WB_DOSMILEY", "¿Permitir caritas?");
+define("_MD_WB_DOXCODE", "¿Permitir códigos XOOPS?");
+define("_MD_WB_BREAKS", "¿Permitir retornos de línea?");
+define("_MD_WB_SUBANDREQ", "Términos enviados y solicitados");
+define("_MD_WB_SUB", "Términos enviados: ");
+define("_MD_WB_REQ", "Términos solicitados: ");
+define("_MD_WB_NOSUB", "Actualmente no hay términos enviados.");
+define("_MD_WB_NOREQ", "Actualmente no hay términos solicitados.");
+define("_MD_WB_WRITEHERE", "Por favor escribe aquí la definición.");
+define("_MD_WB_GUEST","Invitado");
+define("_MD_WB_NOCATSINSYSTEM","No existe ninguna catergor&iacute;a en el sistema");
+define("_MD_WB_REQUESTSUGGEST","(Pinche sobre una de las siguientes palabras para sugerir una definición al término)");
+
+define("_MD_WB_ALL", "All" );
+?>
