@@ -1,0 +1,79 @@
+<?php
+/**
+ * $Id: main.php v 1.0 8 May 2004 hsalazar Exp $
+ * Module: Wordbook - a multicategory glossary
+ * Version: v 1.00
+ * Release Date: 8 May 2004
+ * Author: hsalazar
+ * Licence: GNU
+ */
+
+// Module Info
+// The name of this module
+global $xoopsModule;
+define("_MI_WB_MD_NAME", "Wordbook");
+
+// A brief description of this module
+define("_MI_WB_MD_DESC", "Un glosario multicategoría");
+
+// Sub menus in main menu block
+define("_MI_WB_SUB_SMNAME1", "Enviar definición");
+define("_MI_WB_SUB_SMNAME2", "Pedir definición");
+define("_MI_WB_SUB_SMNAME3", "Buscar definición");
+
+define("_MI_WB_RANDOMTERM", "Término al azar");
+
+// A brief description of this module
+define("_MI_WB_ALLOWSUBMIT", "1. ¿Pueden los usuarios enviar definiciones?");
+define("_MI_WB_ALLOWSUBMITDSC", "Si se define como 'Sí', los usuarios tendrán acceso al formulario de envío");
+
+define("_MI_WB_ANONSUBMIT", "2. Pueden los invitados enviar definiciones?");
+define("_MI_WB_ANONSUBMITDSC", "Si se define como 'Sí', los invitados tendrán acceso al formulario de envío");
+
+define("_MI_WB_DATEFORMAT", "3. ¿En qué formato debe verse la fecha?");
+define("_MI_WB_DATEFORMATDSC", "Usa la parte final de language/english/global.php para elegir un estilo. Ejemplo: 'd-M-Y H:i' significa '23-Mar-2004 22:35'");
+
+define("_MI_WB_PERPAGE", "4. ¿Número de definiciones por página (Administrador)?");
+define("_MI_WB_PERPAGEDSC", "Número de definiciones que se verán a la vez en la tabla que muestra definiciones en el lado del administrador.");
+
+define("_MI_WB_PERPAGEINDEX", "5. ¿Número de definiciones por página (Usuario)?");
+define("_MI_WB_PERPAGEINDEXDSC", "Número de definiciones que se mostrarán en cada página del módulo, en el lado del usuario .");
+
+define("_MI_WB_AUTOAPPROVE", "6. ¿Aprobar definiciones en automático?");
+define("_MI_WB_AUTOAPPROVEDSC", "Si se define como 'Sí', XOOPS publicará las definiciones enviadas sin intervención del administrador.");
+
+define("_MI_WB_MULTICATS", "7. ¿Quieres tener categorías?");
+define("_MI_WB_MULTICATSDSC", "Si se define como 'Sí', podrás tener categorías en tu glosario, o bien varios glosarios distintos. Si se define como 'No', tendrás una sola categoría automática.");
+
+define("_MI_WB_CATSINMENU","8. ¿Deben mostrarse las categorías en el menú?"); 
+define("_MI_WB_CATSINMENUDSC","Si se define como 'Sí', habrá enlaces a las categorías en el menú principal."); 
+
+define("_MI_WB_CATSPERINDEX","9. ¿Categorías por página (Usuarios)?"); 
+define("_MI_WB_CATSPERINDEXDSC","Esto definirá cuántas categorías mostrar en la página índice de categorías."); 
+
+define("_MI_WB_ALLOWADMINHITS", "10. ¿Contarán también las visitas del administrador?");
+define("_MI_WB_ALLOWADMINHITSDSC", "Si se define como 'Sí', el contado se moverá para cada definición cuando la visite el administrador.");
+
+define("_MI_WB_MAILTOADMIN", "11. ¿Enviar correo al administrador en cada nuevo envío?");  
+define("_MI_WB_MAILTOADMINDSC", "Si se define como 'Sí', el administrador recibirá un e-mail para cada definición que se envíe al sitio.");  
+
+define("_MI_WB_RANDOMLENGTH", "12. ¿Cuántos caracteres mostrar en términos al azar?");  
+define("_MI_WB_RANDOMLENGTHDSC", "¿Cuántos caracteres quieres mostrar en los bloques de términos al azar, tanto en la página inicial del módulo como en el bloque? (Por defecto: 150)");
+
+define("_MI_WB_LINKTERMS", "13. ¿Mostrar enlaces a otras definiciones del glosario en cada definición?");  
+define("_MI_WB_LINKTERMSDSC", "Si se define como 'Sí', automáticamente creará enlaces en tus definiciones para aquellos términos que ya tengas definidos en tus glosarios.");
+
+// Names of admin menu items
+define("_MI_WB_ADMENU1", "Índice");
+define("_MI_WB_ADMENU2", "Categorías");
+define("_MI_WB_ADMENU3", "Definiciones");
+define("_MI_WB_ADMENU4", "Bloques");
+define("_MI_WB_ADMENU5", "Ir al módulo");
+//mondarse
+define("_MI_WB_ADMENU6", "Importar");
+
+//Names of Blocks and Block information
+define("_MI_WB_ENTRIESNEW", "Términos más nuevos");
+define("_MI_WB_ENTRIESTOP", "Términos más leídos");
+
+?>
