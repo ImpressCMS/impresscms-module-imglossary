@@ -184,21 +184,21 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	} else {
 		include_once '../language/english/modinfo.php';
 	}
-	echo "<div style=\"font-size: 10px; text-align: right; color: #2F5376; margin: 0 0 8px 0; padding: 2px 6px; line-height: 18px; border: 1px solid #e7e7e7; \"><b>" . $xoopsModule -> name() . _AM_WB_MODADMIN . "</b> " . $breadcrumb . "</div>";	
-	echo "<div id=\"navcontainer\"><ul style=\"padding: 3px 0; margin-left: 0; font: bold 12px Verdana, sans-serif; \">";
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"index.php\" style=\"padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background: " . $tblColors[0] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_INDEX . "</a></li>";
+	echo '<div style="font-size: 10px; text-align: right; color: #2F5376; margin: 0 0 8px 0; padding: 2px 6px; line-height: 18px; border: 1px solid #e7e7e7; "><b>' . $xoopsModule -> name() . _AM_WB_MODADMIN . '</b> ' . $breadcrumb . '</div>';	
+	echo '<div id="navcontainer"><ul style="padding: 3px 0; margin-left: 0;">';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="index.php" style="padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background:' . $tblColors[0] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_INDEX . '</a></li>';
 
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"category.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[1] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_CATS . "</a></li>";
+		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CATS . '</a></li>';
 	}
 	
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"entry.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[2] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_ENTRIES . "</a></li>";
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"submissions.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[3] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_SUBMITS . "</a></li>";
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"myblocksadmin.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[4] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_BLOCKS . "</a></li>";
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule -> getVar( 'mid' ) . "\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[5] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_OPTS . "</a></li>";
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../index.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[6] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_GOMOD . "</a></li>";
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_ENTRIES . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_BLOCKS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_OPTS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_GOMOD . '</a></li>';
 	//mondarse
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"importdictionary091.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[6] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_IMPORT . "</a></li>";
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_IMPORT . '</a></li>';
 	//mondarse
 //	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
 	}

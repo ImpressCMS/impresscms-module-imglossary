@@ -14,7 +14,8 @@ function b_entries_random_show() {
 
 	global $xoopsDB, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $xoopsUser;
 	$myts =& MyTextSanitizer::getInstance();
-	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+//	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/functions.php";
 
 	$adminlinks = '';
 	$block = array();
@@ -43,18 +44,19 @@ function b_entries_random_show() {
 		$term = ucfirst( $myts -> displayTarea( $myrow['term'] ) );
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
-			$deftemp = cleanTags( $myrow['definition'] );
-			$definition = $myts -> displayTarea( substr( $deftemp, 0, ( $wbConfig['rndlength'] -1 ) ) ) . "...";
+		//	$deftemp = cleanTags( $myrow['definition'] );
+		//	$definition = $myts -> displayTarea( substr( $myrow['definition'], 0, ( $wbConfig['rndlength'] -1 ) ) ) . "...";
+			$definition = imgloss_substr( $myrow['definition'], 0, $wbConfig['rndlength'] -1, '...' );
 		}
 
 		$categoryID = $myrow['categoryID'];
-		$result_cat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID");
+		$result_cat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID='$categoryID'");
 		list( $categoryID, $name ) = $xoopsDB -> fetchRow( $result_cat );
 		$categoryname = $myts -> displayTarea( $name );
 
 		// Functional links
 		if ( $xoopsUser ) {
-			if ( $xoopsUser->isAdmin() ) {
+			if ( $xoopsUser -> isAdmin() ) {
 				$adminlinks = "<a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "\" target=\"_blank\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/edit.gif\" border=\"0\" alt=\"" . _MB_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "\" target=\"_self\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/delete.gif\" border=\"0\" alt=\"" . _MB_WB_DELTERM . "\" ></a>&nbsp;";
 			}
 		}
@@ -64,7 +66,7 @@ function b_entries_random_show() {
 			$block['content'] = "<div style=\"font-size: 12px; font-weight: bold; background-color: #ccc; padding: 4px; margin: 0;\"><a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=$categoryID\">$categoryname</a></div>";
 			$block['content'] .= "<div style=\"padding: 4px 0 0 0; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5><div>$definition</div>";
 		} else {
-			$block['content'] = "<div style=\"padding: 4px; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a style=\"margin: 0;\" href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5>$definition";
+			$block['content'] = "<div style=\"padding: 4px; color: #456;\"><h5 style=\"margin: 0;\"> $adminlinks $userlinks<a style=\"margin: 0;\" href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5>$definition";
 		}
 	}
 

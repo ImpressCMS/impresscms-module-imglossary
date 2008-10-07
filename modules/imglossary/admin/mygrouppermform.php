@@ -29,11 +29,13 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-require_once XOOPS_ROOT_PATH.'/class/xoopsform/formelement.php';
-require_once XOOPS_ROOT_PATH.'/class/xoopsform/formhidden.php';
-require_once XOOPS_ROOT_PATH.'/class/xoopsform/formbutton.php';
-require_once XOOPS_ROOT_PATH.'/class/xoopsform/formelementtray.php';
-require_once XOOPS_ROOT_PATH.'/class/xoopsform/form.php';
+if( ! defined( 'ICMS_ROOT_PATH' ) ) exit ;
+
+require_once ICMS_ROOT_PATH.'/class/xoopsform/formelement.php';
+require_once ICMS_ROOT_PATH.'/class/xoopsform/formhidden.php';
+require_once ICMS_ROOT_PATH.'/class/xoopsform/formbutton.php';
+require_once ICMS_ROOT_PATH.'/class/xoopsform/formelementtray.php';
+require_once ICMS_ROOT_PATH.'/class/xoopsform/form.php';
 
 /**
  * Renders a form for setting module specific group permissions
@@ -56,7 +58,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 * Tree structure of items
 	 * @var array
 	 */
-	var $_itemTree;
+	var $_itemTree = array() ;
 	/**
 	 * Name of permission
 	 * @var string
@@ -78,7 +80,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 */
 	function MyXoopsGroupPermForm($title, $modid, $permname, $permdesc)
 	{
-//		$this->XoopsForm($title, 'groupperm_form', XOOPS_URL.'/modules/system/admin/groupperm.php', 'post'); GIJ
+//		$this->XoopsForm($title, 'groupperm_form', ICMS_ROOT_PATH.'/modules/system/admin/groupperm.php', 'post'); GIJ
 		$this->XoopsForm($title, 'groupperm_form', '' , 'post');
 		$this->_modid = intval($modid);
 		$this->_permName = $permname;
@@ -143,6 +145,8 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 */
 	function render()
 	{
+		global $xoopsGTicket ;
+	
 		// load all child ids for javascript codes
 		foreach (array_keys($this->_itemTree) as $item_id) {
 			$this->_itemTree[$item_id]['allchild'] = array();
@@ -170,7 +174,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 		$jsuncheckbutton = new XoopsFormButton('', 'none', _NONE, 'button');
 		$jsuncheckbutton->setExtra( "onclick=\"with(document.groupperm_form){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=false;}}}\"" ) ;
 		$jscheckbutton = new XoopsFormButton('', 'all', _ALL, 'button');
-		$jscheckbutton->setExtra( "onclick=\"with(document.groupperm_form){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=true;}}}\"" ) ;
+		$jscheckbutton->setExtra( "onclick=\"with(document.groupperm_form){for(i=0;i<length;i++){if(elements[i].type=='checkbox' && (elements[i].name.indexOf('module_admin')<0 || elements[i].name.indexOf('[groups][1]')>=0)){elements[i].checked=true;}}}\"" ) ;
 		$jstray->addElement( $jsuncheckbutton ) ;
 		$jstray->addElement( $jscheckbutton ) ;
 		$this->addElement($jstray);
@@ -188,7 +192,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 			if (!is_object($elements[$i])) {
 				$ret .= $elements[$i];
 			} elseif (!$elements[$i]->isHidden()) {
-				$ret .= "<tr valign='top' align='left'><td class='head'>".$elements[$i]->getCaption();
+				$ret .= "<tr valign='top' style='text-align: left;'><td class='head'>".$elements[$i]->getCaption();
 				if ($elements[$i]->getDescription() != '') {
 					$ret .= '<br /><br /><span style="font-weight: normal;">'.$elements[$i]->getDescription().'</span>';
 				}
@@ -197,7 +201,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 				$ret .= $elements[$i]->render();
 			}
 		}
-		$ret .= '</table></form>';
+		$ret .= "</table>".$xoopsGTicket->getTicketHtml(__LINE__)."</form>";
 		return $ret;
 	}
 }
@@ -316,16 +320,18 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
 
 		$ret .= '<table class="outer"><tr>';
 		$cols = 1;
-		foreach ($this->_optionTree[0]['children'] as $topitem) {
-			if ($cols > 4) {
-				$ret .= '</tr><tr>';
-				$cols = 1;
+		if( ! empty( $this->_optionTree[0]['children'] ) ) {
+			foreach ($this->_optionTree[0]['children'] as $topitem) {
+				if ($cols > 4) {
+					$ret .= '</tr><tr>';
+					$cols = 1;
+				}
+				$tree = '<td class="odd">';
+				$prefix = '';
+				$this->_renderOptionTree($tree, $this->_optionTree[$topitem], $prefix);
+				$ret .= $tree.'</td>';
+				$cols++;
 			}
-			$tree = '<td class="odd">';
-			$prefix = '';
-			$this->_renderOptionTree($tree, $this->_optionTree[$topitem], $prefix);
-			$ret .= $tree.'</td>';
-			$cols++;
 		}
 		$ret .= '</tr></table>';
 		return $ret;
