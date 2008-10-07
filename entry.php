@@ -8,14 +8,9 @@
  * Licence: GNU
  */
 
-include( "header.php" );
-
-$glossdirname = basename( dirname( __FILE__ ) );
+include 'header.php';
 
 include_once XOOPS_ROOT_PATH . "/class/module.textsanitizer.php"; 
-
-//$xoopsOption['template_main'] = 'wb_entry.html';
-//include_once XOOPS_ROOT_PATH . "/header.php";
 
 global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL; 
 $myts =& MyTextSanitizer::getInstance();
@@ -68,10 +63,10 @@ if ( !$entryID ) {
 	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND (submit=0) ORDER BY datesub DESC", 1, 0 );
 } else {
 	if ( !$xoopsUser || ( $xoopsUser -> isAdmin( $xoopsModule -> mid() ) && $xoopsModuleConfig['adminhits'] == 1 ) || ( $xoopsUser && !$xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) ) {
-		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET counter=counter+1 WHERE entryID=$entryID" );
+		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET counter=counter+1 WHERE entryID='$entryID'" );
 	}	
 
-	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
+	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID'" );
 	}
 
 while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchRow( $result ) ) {
@@ -81,7 +76,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
 		$thisterm['categoryID'] = intval($categoryID);
-		$catname = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID");
+		$catname = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID='$categoryID'");
 		while ( list( $name ) = $xoopsDB -> fetchRow ( $catname ) ) {
 			$thisterm['catname'] = $myts -> makeTboxData4Show( $name );
 		}
@@ -97,40 +92,40 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 
 	if ( $xoopsModuleConfig['linkterms'] == 1 ) {
 		// Code to make links out of glossary terms
-		$parts = explode( ">", $definition );
+		$parts = explode( "¤", $definition );
 
 		// First, retrieve all terms from the glossary...
-		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ));
+		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) );
 		while ( list( $entryID, $term ) = $xoopsDB -> fetchrow( $allterms ) ) {
 			foreach( $parts as $key => $part ) {
-				if ( $term != $glossaryterm) {
+				if ( $term != $glossaryterm ) {
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
-					$term = $term."s";
+					$term = $term . "s";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural with e
 					$term = $term . "es";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
+
 				}
 			}
 		}
-		$definition = implode( ">", $parts );
+		$definition = implode( "¤", $parts );
 	}
 
-//	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
-	$thisterm['definition'] = $myts -> displayTarea( $definition, 1, 1, 1, 1, 1 );
+	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	$thisterm['ref'] = $myts -> makeTboxData4Show( $ref );
 	$thisterm['url'] = $myts -> makeClickable( $url, $allowimage = 0 );
@@ -141,16 +136,16 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	$thisterm['block'] = intval( $block );
 	$thisterm['offline'] = intval( $offline );
 	$thisterm['notifypub'] = intval( $notifypub );
-	$thisterm['dir'] = $xoopsModule -> dirname();
+	$thisterm['dir'] = $glossdirname;
 	}
 $xoopsTpl -> assign( 'thisterm', $thisterm );
 
-$microlinks = serviceLinks ( $thisterm );
+$microlinks = serviceLinks( $thisterm );   // Get icons
 
 $xoopsTpl -> assign( 'microlinks', $microlinks );
 
 $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
+$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( 'entryID', $entryID );
 $xoopsTpl -> assign( 'submitted', sprintf( _MD_WB_SUBMITTED, $thisterm['submitter'], $thisterm['datesub'] ) );

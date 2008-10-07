@@ -164,12 +164,6 @@ switch ( $op ) {
 			$name = ucfirst( $xoopsUser -> getVar( "uname" ) );
         }
 
-		//echo "<table id=\"moduleheader\"><tr>";
-		//echo "<td width=\"100%\"><span class=\"leftheader\"><a href=".XOOPS_URL.">"._MD_WB_HOME."</a> > <a href=\"".XOOPS_URL."/modules/".$xoopsModule->dirname()."/index.php\">".ucfirst($xoopsModule->name())."</a> > "._MD_WB_SUBMITART."</span></td>";
-		//echo "<td width=\"100\"><span class=\"rightheader\">".$xoopsModule->name()."</span></td></tr></table>";
-
-		//echo "<h3 class='cat'>" . sprintf(_MD_WB_SUB_SNEWNAME,ucfirst($xoopsModule->name())) . "</h3>";
-		//echo "<p class='intro'>" . _MD_WB_GOODDAY . "<b>$name</b>, " . _MD_WB_SUB_SNEWNAMEDESC . "</p>";
 		$xoopsOption['template_main'] = 'wb_submit.html';
 		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );

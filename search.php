@@ -18,7 +18,7 @@ global $xoopsDB, $xoopsModule, $xoopsModuleConfig, $searchtype;
 $myts =& MyTextSanitizer::getInstance();
 
 include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/cleantags.php";
+include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 // Check if search is enabled site-wide
 $config_handler =& xoops_gethandler('config');
@@ -31,11 +31,11 @@ if ( $xoopsConfigSearch['enable_search'] != 1 ) {
 extract( $_GET );
 extract( $_POST, EXTR_OVERWRITE );
 
-$action = isset($action) ? trim($action) : "search";
-$query = isset($term) ? trim($term) : "";
-$start = isset($start) ? intval($start) : 0;
-$categoryID = isset($categoryID) ? intval($categoryID) : 0;
-$type = isset($type) ? intval($type) : 3;
+$action = isset( $action ) ? trim( $action ) : "search";
+$query = isset( $term ) ? trim( $term ) : "";
+$start = isset( $start ) ? intval( $start ) : 0;
+$categoryID = isset( $categoryID ) ? intval( $categoryID ) : 0;
+$type = isset( $type ) ? intval( $type ) : 3;
 $queries = array();
 
 $xoopsOption['template_main'] = 'wb_search.html';
@@ -85,7 +85,7 @@ if ( !$query ) {
 	$xoopsTpl -> assign( 'searchform', $searchform );
 } else {
 	// IF there IS term, count number of results
-	//$searchquery = $xoopsDB -> query ("SELECT * FROM ".$xoopsDB->prefix ("imglossary_entries")." WHERE $searchtype AND submit ='0' AND offline='0' ".$andcatid." ORDER BY term");
+
 	$searchquery = $xoopsDB -> query( "SELECT COUNT(*) AS nrows FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w WHERE $searchtype AND submit=0 AND offline=0 " . $andcatid);
 	list($results) = $xoopsDB -> fetchRow( $searchquery );
 	//$results = $xoopsDB -> getRowsNum ( $searchquery );
@@ -95,7 +95,7 @@ if ( !$query ) {
 		$xoopsTpl -> assign( 'intro', _MD_WB_NORESULTS );
 		// Display search form
 		$searchform = showSearchForm();
-		$xoopsTpl->assign('searchform', $searchform);
+		$xoopsTpl -> assign( 'searchform', $searchform );
 	} else {	
 		// $results > 0 -> there were search results
 		// Show paginated list of results
@@ -103,7 +103,6 @@ if ( !$query ) {
 		$resultset = array();
 
 		// How many results will we show in this page?
-		//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE ".$searchtype." AND submit = '0' AND offline = '0' ".$andcatid." ORDER BY term";
 		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 		
@@ -111,7 +110,7 @@ if ( !$query ) {
 		while ( list( $entryID, $categoryID, $term, $init, $definition, $catname ) = $xoopsDB -> fetchRow( $resultA ) ) {
 			$eachresult = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-			$eachresult['dir'] = $xoopsModule -> dirname();
+			$eachresult['dir'] = $glossdirname;
 			$eachresult['entryID'] = $entryID;
 			$eachresult['categoryID'] = $categoryID;
 			$eachresult['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
@@ -142,7 +141,7 @@ if ( !$query ) {
 
 // Assign variables and close
 $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
+$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 

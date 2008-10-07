@@ -12,7 +12,9 @@ global $xoopsModule;
 
 include "../../mainfile.php";
 
-include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
+$glossdirname = basename( dirname( __FILE__ ) );
+
+include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/functions.php";
 $myts = &MyTextSanitizer::getInstance();
 
 ?>
