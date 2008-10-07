@@ -125,12 +125,12 @@ if ( !$categoryID )	{
 			$eachentry['dir'] = $xoopsModule -> dirname();
 			$eachentry['id'] = $entryID;
 			$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
-		//	if ( !XOOPS_USE_MULTIBYTES ) {
+			if ( !XOOPS_USE_MULTIBYTES ) {
 			//	$deftemp = $myts -> displayTarea( substr( $definition, 0, 300 ), 1, 1, 1, 1, 1 ) . "...";
-				$deftemp = imgloss_substr( $definition, 0, 300, '...' );
+				$deftemp = imgloss_substr( $definition, 0, $wbConfig['rndlength'] -1, '...' );
 			//	$deftemp = cleanTags( $deftemp );
 				$eachentry['definition'] = $deftemp;
-		//	}
+			}
 
 			// Functional links
 			$microlinks = serviceLinks( $eachentry );

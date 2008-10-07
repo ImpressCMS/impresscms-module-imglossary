@@ -102,11 +102,11 @@ if ( !$query ) {
 		$resultset = array();
 
 		// How many results will we show in this page?
-		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 		
 		//while (list( $entryID, $categoryID, $term, $init, $definition ) = $xoopsDB->fetchRow($resultA))
-		while ( list( $entryID, $categoryID, $term, $init, $definition, $catname ) = $xoopsDB -> fetchRow( $resultA ) ) {
+		while ( list( $entryID, $categoryID, $term, $init, $definition, $html, $smiley, $xcodes, $breaks, $catname ) = $xoopsDB -> fetchRow( $resultA ) ) {
 			$eachresult = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 			$eachresult['dir'] = $glossdirname;
@@ -114,7 +114,7 @@ if ( !$query ) {
 			$eachresult['categoryID'] = $categoryID;
 			$eachresult['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 			$eachresult['catname'] = $myts -> makeTboxData4Show( $catname );
-			$tempdef = $myts -> displayTarea( $definition, 1, 1, 1, 1, 1 );
+			$tempdef = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 			$eachresult['definition'] = getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
 
 			// Functional links

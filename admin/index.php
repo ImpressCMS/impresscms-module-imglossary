@@ -27,7 +27,7 @@ switch ( $op ) {
 		$startcat = isset( $_GET['startcat'] ) ? intval( $_GET['startcat'] ) : 0;
 		$startsub = isset( $_GET['startsub'] ) ? intval( $_GET['startsub'] ) : 0;
 		$datesub = isset( $_GET['datesub'] ) ? intval( $_GET['datesub'] ) : 0;
-		$entryID = 
+		$entryID = '';
 
 		xoops_cp_header();
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $entryID;
@@ -36,20 +36,20 @@ switch ( $op ) {
 		adminMenu( 0, _AM_WB_INDEX );
         $result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $totalcategories ) = $xoopsDB -> fetchRow( $result01 );
-        $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = 0" );
+        $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 			list( $totalpublished ) = $xoopsDB -> fetchRow( $result02 );
-        $result03 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = '1' AND request = '0' " );
+        $result03 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
 			list( $totalsubmitted ) = $xoopsDB -> fetchRow( $result03 );
-        $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = '1' AND request = '1' " );
+        $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 			list( $totalrequested ) = $xoopsDB -> fetchRow( $result04 );
 		
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-			echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_MODULEHEADMULTI . "</h3>";
+			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADMULTI . "</h3>";
 		} else {
-			echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_MODULEHEADSINGLE . "</h3>";
+			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADSINGLE . "</h3>";
 		}
 		
-		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_INVENTORY . "</legend>";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_INVENTORY . "</legend>";
         echo "<div style='padding: 12px;'>" . _AM_WB_TOTALENTRIES . " <b>$totalpublished</b> | ";
 		
 		if ($xoopsModuleConfig['multicats'] == 1) {
@@ -61,8 +61,8 @@ switch ( $op ) {
 		echo "</fieldset><br />";
 
 		/* -- Code to show existing terms -- */
-		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWENTRIES . "</legend><br />";
-		echo "<a style='border: 1px solid #5E5D63; color: #000000; font-family: verdana, tahoma, arial, helvetica, sans-serif; font-size: 1em; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_WB_CREATEENTRY . "</a><br /><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWENTRIES . "</legend><br />";
+		echo "<a style='border: 1px solid #5E5D63; color: #000000; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_WB_CREATEENTRY . "</a><br /><br />";
 		// To create existing terms table
 		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
@@ -89,24 +89,24 @@ switch ( $op ) {
 				$resultA3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID='$categoryID'" );
 				list( $name ) = $xoopsDB -> fetchrow( $resultA3 );
 
-				$sentby = xoops_getLinkedUnameFromId($uid);
+				$sentby = xoops_getLinkedUnameFromId( $uid );
 
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITENTRY . "'></a>";
-				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETEENTRY . "'></a>";
+				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITENTRY . "' /></a>";
+				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETEENTRY . "' /></a>";
 
 				if ( $offline == 0 ) {
-					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/on.gif' alt='" . _AM_WB_ENTRYISON . "'>";
+					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/on.gif' alt='" . _AM_WB_ENTRYISON . "' />";
 				} else {
-					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/off.gif' alt='" . _AM_WB_ENTRYISOFF . "'>";
+					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/off.gif' alt='" . _AM_WB_ENTRYISOFF . "' />";
 				}
 
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
-					echo "<td class='even' align='left'>" . $catname . "</td>";
+					echo "<td class='even' align='center'>" . $catname . "</td>";
 				}
 				echo "<td class='even' align='left'>" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
@@ -121,16 +121,16 @@ switch ( $op ) {
 				echo "<td class='head' align='center' colspan= '7'>" . _AM_WB_NOTERMS . "</td>";
 				echo "</tr>";
 			} 
-		echo "</table>\n";
+		echo "</table>";
 		$pagenav = new XoopsPageNav( $numrows, $xoopsModuleConfig['perpage'], $startentry, 'startentry', 'entryID=' . $entryID );
-		echo '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+		echo "<div style='text-align: right;'>" . $pagenav -> renderNav() . "</div>";
 		echo "</fieldset>";
-		echo "<br />\n";
+		echo "<br />";
 
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			/* -- Code to show existing categories -- */
-			echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWCATS . "</legend><br />";
-			echo "<a style='border: 1px solid #5E5D63; color: #000000; font-family: verdana, tahoma, arial, helvetica, sans-serif; font-size: 1em; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_WB_CREATECAT . "</a><br /><br />";
+			echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWCATS . "</legend><br />";
+			echo "<a style='border: 1px solid #5E5D63; color: #000000; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_WB_CREATECAT . "</a><br /><br />";
 			// To create existing columns table
 			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $numrows ) = $xoopsDB -> fetchRow( $resultC1 );
@@ -141,9 +141,9 @@ switch ( $op ) {
 			echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
 			echo "<tr>";
 			echo "<td width='40' class='bg3' align='center'><b>" . _AM_WB_ID . "</b></td>";
-			echo "<td class='bg3' align='center'><b>" . _AM_WB_WEIGHT . "</b></td>";
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_WB_CATNAME . "</b></td>";
 			echo "<td class='bg3' align='center'><b>" . _AM_WB_DESCRIP . "</b></td>";
+			echo "<td width='80' class='bg3' align='center'><b>" . _AM_WB_WEIGHT . "</b></td>";
 			echo "<td width='60' class='bg3' align='center'><b>" . _AM_WB_ACTION . "</b></td>";
 			echo "</tr>";
 
@@ -157,9 +157,9 @@ switch ( $op ) {
 
 					echo "<tr>";
 					echo "<td class='head' align='center'>" . $categoryID . "</td>";
-					echo "<td class='even' align='center'>" . $weight . "</td>";
 					echo "<td class='even' align='lefet'>" . $name . "</td>";
 					echo "<td class='even' align='left'>" . $description . "</td>";
+					echo "<td class='even' align='center'>" . $weight . "</td>";
 					echo "<td class='even' align='center'> $modify $delete </td>";
 					echo "</tr>";
 				} 
@@ -178,7 +178,7 @@ switch ( $op ) {
 		}
 
 		/* -- Code to show submitted entries -- */
-		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWSUBMISSIONS . "</legend><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWSUBMISSIONS . "</legend><br />";
 		$resultS1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultS1 );
 
@@ -235,7 +235,7 @@ switch ( $op ) {
 		echo "<br />\n";
 
 		/* -- Code to show requested entries -- */
-		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWREQUESTS . "</legend><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWREQUESTS . "</legend><br />";
 		$resultS2 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 		list( $numrowsX ) = $xoopsDB -> fetchRow( $resultS2 );
 

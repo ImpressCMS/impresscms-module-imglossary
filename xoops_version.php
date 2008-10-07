@@ -1,25 +1,30 @@
 <?php
 /**
- * $Id: xoops_version.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.16
+ * $Id: xoops_version.php
+ * Module: imGlossary - a multicategory glossary 
+ * Version: v 1.00
+ * Author: McDonald
+ * ----------------------------------------------
+ * Module: Wordbook v 1.16
  * Release Date: 8 May 2004
  * Author: hsalazar
  * Additions: Dario Garcia
+ * ----------------------------------------------
  * Licence: GNU
  */
  
 $glossdirname = basename( dirname( __FILE__ ) );
 
 $modversion['name'] = _MI_WB_MD_NAME;
-$modversion['version'] = "1.17";
+$modversion['version'] = "1.00";
 $modversion['status'] = "RC-1";
+$modversion['releasedate'] = "xx xxxxxx 2008";
 $modversion['description'] = _MI_WB_MD_DESC;
 $modversion['author'] = "McDonald";
 $modversion['credits'] = "hsalazar, Catzwolf";
 $modversion['support_site_url'] = "http://community.impresscms.org/modules/newbb/viewforum.php?forum=9";
 $modversion['support_site_name'] = "ImpressCMS Community - Modules Support Forum";
-$modversion['license'] = "GPL see LICENSE";
+$modversion['license'] = "GNU General Public License (GPL)";
 $modversion['official'] = 0;
 $modversion['image'] = "images/imglossary_logo.png";
 $modversion['iconbig'] = "images/imglossary_iconsbig.png";
@@ -42,7 +47,7 @@ $modversion['tables'][1] = "imglossary_entries";
 // Search
 $modversion['hasSearch'] = 1;
 $modversion['search']['file'] = "include/search.inc.php";
-$modversion['search']['func'] = "wb_search";
+$modversion['search']['func'] = "imgloss_search";
 
 // Menu
 global $xoopsUser, $xoopsDB, $xoopsModule;
@@ -228,5 +233,10 @@ $modversion['comments']['pageName'] = 'entry.php';
 $modversion['comments']['callbackFile'] = 'include/comment_functions.php';
 $modversion['comments']['callback']['approve'] = 'wordbook_com_approve';
 $modversion['comments']['callback']['update'] = 'wordbook_com_update';
+
+// On Update
+if( ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] ) {
+	include dirname( __FILE__ ) . "/include/onupdate.inc.php" ;
+}
 
 ?>
