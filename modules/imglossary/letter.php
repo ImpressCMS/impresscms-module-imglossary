@@ -8,9 +8,7 @@
  * Licence: GNU
  */
 
-include( "header.php" );
-
-$glossdirname = basename( dirname( __FILE__ ) );
+include 'header.php';
 
 global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
@@ -18,7 +16,7 @@ $myts =& MyTextSanitizer::getInstance();
 $init = isset($_GET['init']) ? $_GET['init'] : 0;
 
 include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/cleantags.php";
+include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 
@@ -47,8 +45,8 @@ $xoopsTpl -> assign( 'totalother', $howmanyother );
 if ( $xoopsModuleConfig['multicats'] == 1 )	{
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats') . " ORDER BY name ASC" );
-	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow($resultcat) ) {
+	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats') . " ORDER BY name ASC" );
+	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 		$catlinks['id'] = $catID;
@@ -66,7 +64,6 @@ if ( $init == _MD_WB_ALL ) {
 	$pagetype = 0;
 
 	// How many entries will we show in this page?
-	//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit ='0' AND offline = '0' ORDER BY term ASC";
 	$queryA = "SELECT w.*, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 	$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 
@@ -77,15 +74,11 @@ if ( $init == _MD_WB_ALL ) {
 	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request, $comments, $catname ) = $xoopsDB -> fetchRow( $resultA ) ) {
 		$eachentry = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-		$eachentry['dir'] = $xoopsModule -> dirname();
+		$eachentry['dir'] = $glossdirname;
 
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-			//$eachentry['catid'] = intval($categoryID);
-			//$resultF = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( "imglossary_cats") . " WHERE categoryID = $categoryID ORDER BY name ASC" );
-			//while (list( $name) = $xoopsDB->fetchRow($resultF))
-			//	{
-				$eachentry['catname'] = $myts -> makeTboxData4Show( $catname );
-			//	}
+			$eachentry['catname'] = $myts -> makeTboxData4Show( $catname );
+
 		}
 
 		$eachentry['id'] = intval( $entryID );
@@ -98,13 +91,14 @@ if ( $init == _MD_WB_ALL ) {
 		}
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
-			$deftemp = cleanTags( $definition );
-			$deftemp = $myts -> displayTarea( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
+			//$deftemp = cleanTags( $definition );
+			//$deftemp = $myts -> displayTarea( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
+			$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
 			$eachentry['definition'] = $deftemp;
 		}
 
 		// Functional links
-		$microlinks = serviceLinks ( $eachentry );
+		$microlinks = serviceLinks( $eachentry );
 		$eachentry['microlinks'] = $microlinks;
 
 		$entriesarray['single'][] = $eachentry;
@@ -175,7 +169,7 @@ if ( $init == _MD_WB_ALL ) {
 		if ( !XOOPS_USE_MULTIBYTES ) {
 		//	$deftemp = cleanTags($definition);
 		//	$deftemp = $myts -> displayTarea ( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
-			$deftemp = imgloss_substr( $definition, 0, 300, '...' );
+			$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
 			$eachentry['definition'] = $deftemp;
 		}
 

@@ -7,10 +7,8 @@
  * Author: hsalazar
  * Licence: GNU
  */
- 
-$glossdirname = basename( dirname( __FILE__ ) );
 
-include "header.php";
+include 'header.php';
 
 global $xoopsUser, $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
@@ -130,7 +128,7 @@ if ( !$categoryID )	{
 		//	if ( !XOOPS_USE_MULTIBYTES ) {
 			//	$deftemp = $myts -> displayTarea( substr( $definition, 0, 300 ), 1, 1, 1, 1, 1 ) . "...";
 				$deftemp = imgloss_substr( $definition, 0, 300, '...' );
-				$deftemp = cleanTags( $deftemp );
+			//	$deftemp = cleanTags( $deftemp );
 				$eachentry['definition'] = $deftemp;
 		//	}
 

@@ -8,7 +8,8 @@
  * Licence: GNU
  */
 
-include "header.php";
+include 'header.php';
+
 global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 
 if ( empty($_POST['submit']) ) {
@@ -21,12 +22,12 @@ if ( empty($_POST['submit']) ) {
 	$usermail_v = !empty($xoopsUser) ? $xoopsUser -> getVar( "email", "E" ) : "";
 	$notifypub = '1';
 	include "include/requestform.php";
-	$xoopsTpl -> assign ( 'modulename', $xoopsModule -> dirname() );
+	$xoopsTpl -> assign ( 'modulename', $glossdirname );
 
 	$rform -> assign( $xoopsTpl );
 
 	$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-	$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
+	$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
@@ -59,15 +60,15 @@ if ( empty($_POST['submit']) ) {
 
 	$adminmail = $xoopsConfig['adminmail'];
 
-	if ($xoopsUser) {
+	if ( $xoopsUser ) {
 		$logname = $xoopsUser -> getVar( "uname", "E");
 	} else {
 		$logname = $xoopsConfig['anonymous'];
 	}
 
-	if ($xoopsUser) {
+	if ( $xoopsUser ) {
 		$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=$logname" );
-		list($address) = $xoopsDB->fetchRow($result);
+		list($address) = $xoopsDB -> fetchRow( $result );
 	} else {
 		$address = $xoopsConfig['adminmail'];
 	}
@@ -77,7 +78,7 @@ if ( empty($_POST['submit']) ) {
 		$adminMessage .= "<b>" . $reqterm . "</b>\n";
 		$adminMessage .= "" . _MD_WB_EMAILLEFT . " $address\n";
 		$adminMessage .= "\n";
-		if ($notifypub == '1') {
+		if ( $notifypub == '1' ) {
 			$adminMessage .= _MD_WB_NOTIFYONPUB;
 		}
 		$adminMessage .= "\n" . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . "\n";

@@ -7,42 +7,43 @@
  * Author: hsalazar
  * Licence: GNU
  */
+ 
 include 'header.php';
 
-foreach ($_POST as $k => $v) {
+foreach ( $_POST as $k => $v ) {
 	${$k} = $v;
 }
 
-foreach ($_GET as $k => $v)	{
+foreach ( $_GET as $k => $v )	{
 	${$k} = $v;
 }
 
-if (empty($entryID)) {
-	redirect_header("index.php");
+if ( empty( $entryID ) ) {
+	redirect_header( "index.php" );
 }
 
-function printPage($entryID) {
+function printPage( $entryID ) {
 	global $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $myts;
 	
 	$result1 = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID' AND submit=0 ORDER BY datesub" );
-	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow($result1);
+	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow( $result1 );
 
-	$result2 = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
-	list ($name) = $xoopsDB -> fetchRow($result2);
+	$result2 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
+	list ($name) = $xoopsDB -> fetchRow( $result2 );
 
 	$result3 = $xoopsDB -> query( "SELECT name, uname FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uid=$uid" );
-	list( $authorname, $username ) = $xoopsDB -> fetchRow($result3);
+	list( $authorname, $username ) = $xoopsDB -> fetchRow( $result3 );
 
 	$datetime = formatTimestamp( $datesub, "D, d-M-Y, H:i" );
-	$categoryname = $myts -> makeTboxData4Show($name);
-	$term = $myts -> makeTboxData4Show($term);
+	$categoryname = $myts -> makeTboxData4Show( $name );
+	$term = $myts -> makeTboxData4Show( $term );
 	$definition = str_replace( "[pagebreak]", "<br style=\"page-break-after:always;\">", $definition );
 	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, '', $breaks );
 	
 	if ($authorname == '') {
 		$authorname = $myts -> makeTboxData4Show( $username );
 	} else {
-		$authorname = $myts->makeTboxData4Show($authorname);
+		$authorname = $myts -> makeTboxData4Show( $authorname );
 	}
 	
 	echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>\n";
@@ -58,7 +59,7 @@ function printPage($entryID) {
 			<div style='width: 650px; border: 1px solid #000; padding: 20px;'>
 			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/wb_slogo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
-		echo "<div>"._MD_WB_ENTRYCATEGORY."<b>".$categoryname."</b></div>";
+		echo "<div>" . _MD_WB_ENTRYCATEGORY . "<b>" . $categoryname . "</b></div>";
 	}
 	echo "<div style='padding-bottom: 6px; border-bottom: 1px solid #ccc;'>" . _MD_WB_SUBMITTER . "<b>" . $authorname . "</b></div>
 			<h3 style='margin: 0;'>" . $term . "</h3>
@@ -70,6 +71,6 @@ function printPage($entryID) {
 		  </html>";
 }
 
-printPage($entryID);
+printPage( $entryID );
 
 ?>
