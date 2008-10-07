@@ -23,6 +23,9 @@ if ( empty( $entryID ) ) {
 }
 
 function printPage( $entryID ) {
+
+	$glossdirname = basename( dirname( __FILE__ ) );
+	
 	global $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $myts;
 	
 	$result1 = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID' AND submit=0 ORDER BY datesub" );
@@ -38,7 +41,7 @@ function printPage( $entryID ) {
 	$categoryname = $myts -> makeTboxData4Show( $name );
 	$term = $myts -> makeTboxData4Show( $term );
 	$definition = str_replace( "[pagebreak]", "<br style=\"page-break-after:always;\">", $definition );
-	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, '', $breaks );
+	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	if ($authorname == '') {
 		$authorname = $myts -> makeTboxData4Show( $username );
@@ -50,14 +53,16 @@ function printPage( $entryID ) {
 	echo "<html>\n<head>\n";
 	echo "<title>" . $xoopsConfig['sitename'] . "</title>\n";
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=" . _CHARSET . "' />\n";
+	echo "<meta name='ROBOTS' content='noindex,nofollow' />\n";
 	echo "<meta name='AUTHOR' content='" . $xoopsConfig['sitename'] . "' />\n";
 	echo "<meta name='COPYRIGHT' content='Copyright (c) 2004 by " . $xoopsConfig['sitename'] . "' />\n";
 	echo "<meta name='DESCRIPTION' content='" . $xoopsConfig['slogan'] . "' />\n";
 	echo "<meta name='GENERATOR' content='" . XOOPS_VERSION . "' />\n\n\n";
 
 	echo "<body bgcolor='#ffffff' text='#000000'>
+			<font face='Verdana, Arial, Helvetica, sans-serif'>
 			<div style='width: 650px; border: 1px solid #000; padding: 20px;'>
-			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" .  . "/modules/" . $xoopsModule -> dirname() . "/images/wb_slogo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
+			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/imglossary_logo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
 		echo "<div>" . _MD_WB_ENTRYCATEGORY . "<b>" . $categoryname . "</b></div>";
 	}
@@ -67,6 +72,7 @@ function printPage( $entryID ) {
 			<div style='padding-top: 12px; border-top: 2px solid #ccc;'><b>" . _MD_WB_SENT . "</b>&nbsp;" . $datetime . "<br /></div>
 			</div>
 			<br />
+			</font>
 		  </body>
 		  </html>";
 }
