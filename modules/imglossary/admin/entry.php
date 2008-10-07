@@ -73,7 +73,7 @@ function entryEdit( $entryID = '' ) {
 		$mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID' , '0' );
 
 		ob_start();
-			$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
+			//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 			$mytree -> makeMySelBox( 'name', 'name', $categoryID );
 			$sform -> addElement( new XoopsFormLabel( _AM_WB_CATNAME, ob_get_contents() ) );
 		ob_end_clean();
