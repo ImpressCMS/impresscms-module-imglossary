@@ -119,10 +119,10 @@ function serviceLinks( $variable ) {
 	$srvlinks = "";
 	if ( $xoopsUser ) {
 		if ( $xoopsUser->isAdmin() ) {
-			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/edit.gif\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/delete.gif\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
+			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/edit.png\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/delete.png\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
 		}
 	}
-	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/print.gif\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/email.gif\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
+	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/print.png\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/email.png\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
 	return $srvlinks;
 }
 
