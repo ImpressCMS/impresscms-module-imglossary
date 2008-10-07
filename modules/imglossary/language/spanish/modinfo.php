@@ -25,43 +25,43 @@ define("_MI_WB_RANDOMTERM", "Término al azar");
 
 // A brief description of this module
 define("_MI_WB_ALLOWSUBMIT", "¿Pueden los usuarios enviar definiciones?");
-define("_MI_WB_ALLOWSUBMITDSC", "Si se define como 'Sí', los usuarios tendrán acceso al formulario de envío");
+define("_MI_WB_ALLOWSUBMITDSC", "Si selecciona 'Sí', los usuarios tendrán acceso al formulario de envío");
 
 define("_MI_WB_ANONSUBMIT", "Pueden los invitados enviar definiciones?");
-define("_MI_WB_ANONSUBMITDSC", "Si se define como 'Sí', los invitados tendrán acceso al formulario de envío");
+define("_MI_WB_ANONSUBMITDSC", "Si selecciona 'Sí', los invitados tendrán acceso al formulario de envío");
 
 define("_MI_WB_DATEFORMAT", "¿En qué formato debe verse la fecha?");
-define("_MI_WB_DATEFORMATDSC", "Usa la parte final de language/english/global.php para elegir un estilo. Ejemplo: 'd-M-Y H:i' significa '23-Mar-2004 22:35'");
+define("_MI_WB_DATEFORMATDSC", "Use la parte final de language/english/global.php para elegir un estilo. Ejemplo: 'd-M-Y H:i' significa '23-Mar-2004 22:35'");
 
 define("_MI_WB_PERPAGE", "¿Número de definiciones por página (Administrador)?");
-define("_MI_WB_PERPAGEDSC", "Número de definiciones que se verán a la vez en la tabla que muestra definiciones en el lado del administrador.");
+define("_MI_WB_PERPAGEDSC", "Número de definiciones que se verán a la vez en la tabla que muestra definiciones en la sección de administración.");
 
 define("_MI_WB_PERPAGEINDEX", "¿Número de definiciones por página (Usuario)?");
-define("_MI_WB_PERPAGEINDEXDSC", "Número de definiciones que se mostrarán en cada página del módulo, en el lado del usuario .");
+define("_MI_WB_PERPAGEINDEXDSC", "Número de definiciones que se mostrarán en cada página del módulo a los usuarios de la página.");
 
-define("_MI_WB_AUTOAPPROVE", "¿Aprobar definiciones en automático?");
-define("_MI_WB_AUTOAPPROVEDSC", "Si se define como 'Sí', ImpressCMS publicará las definiciones enviadas sin intervención del administrador.");
+define("_MI_WB_AUTOAPPROVE", "¿Aprobar definiciones automáticamente?");
+define("_MI_WB_AUTOAPPROVEDSC", "Si selecciona 'Sí', ImpressCMS publicará las definiciones enviadas sin intervención del administrador.");
 
-define("_MI_WB_MULTICATS", "¿Quieres tener categorías?");
-define("_MI_WB_MULTICATSDSC", "Si se define como 'Sí', podrás tener categorías en tu glosario, o bien varios glosarios distintos. Si se define como 'No', tendrás una sola categoría automática.");
+define("_MI_WB_MULTICATS", "¿Quiere tener categorías?");
+define("_MI_WB_MULTICATSDSC", "Si selecciona 'Sí', podrá tener categorías en su glosario o bien varios glosarios distintos. Si se define como 'No', tendrá una sola categoría automática.");
 
 define("_MI_WB_CATSINMENU","¿Deben mostrarse las categorías en el menú?"); 
-define("_MI_WB_CATSINMENUDSC","Si se define como 'Sí', habrá enlaces a las categorías en el menú principal."); 
+define("_MI_WB_CATSINMENUDSC","Si selecciona 'Sí', habrá enlaces a las categorías en el menú principal."); 
 
 define("_MI_WB_CATSPERINDEX","¿Categorías por página (Usuarios)?"); 
 define("_MI_WB_CATSPERINDEXDSC","Esto definirá cuántas categorías mostrar en la página índice de categorías."); 
 
-define("_MI_WB_ALLOWADMINHITS", "¿Contarán también las visitas del administrador?");
-define("_MI_WB_ALLOWADMINHITSDSC", "Si se define como 'Sí', el contado se moverá para cada definición cuando la visite el administrador.");
+define("_MI_WB_ALLOWADMINHITS", "¿Se contarán también las visitas del administrador?");
+define("_MI_WB_ALLOWADMINHITSDSC", "Si selecciona 'Sí', el contador se incrementará para cada definición cuando la visite el administrador.");
 
 define("_MI_WB_MAILTOADMIN", "¿Enviar correo al administrador en cada nuevo envío?");  
-define("_MI_WB_MAILTOADMINDSC", "Si se define como 'Sí', el administrador recibirá un e-mail para cada definición que se envíe al sitio.");  
+define("_MI_WB_MAILTOADMINDSC", "Si selecciona 'Sí', el administrador recibirá un e-mail para cada definición que se envíe al sitio.");  
 
 define("_MI_WB_RANDOMLENGTH", "¿Cuántos caracteres mostrar en términos al azar?");  
-define("_MI_WB_RANDOMLENGTHDSC", "¿Cuántos caracteres quieres mostrar en los bloques de términos al azar, tanto en la página inicial del módulo como en el bloque? (Por defecto: 150)");
+define("_MI_WB_RANDOMLENGTHDSC", "¿Cuántos caracteres quiere mostrar en los bloques de términos al azar, tanto en la página inicial del módulo como en el bloque? (Por defecto: 150)");
 
 define("_MI_WB_LINKTERMS", "¿Mostrar enlaces a otras definiciones del glosario en cada definición?");  
-define("_MI_WB_LINKTERMSDSC", "Si se define como 'Sí', automáticamente creará enlaces en tus definiciones para aquellos términos que ya tengas definidos en tus glosarios.");
+define("_MI_WB_LINKTERMSDSC", "Si selecciona 'Sí', automáticamente creará enlaces en sus definiciones para aquellos términos que ya tenga definidos en sus glosarios.");
 
 // Names of admin menu items
 define("_MI_WB_ADMENU1", "Índice");
