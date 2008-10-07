@@ -10,18 +10,18 @@
 
 include 'header.php';
 
-global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL, $indexp; 
+global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
 
 $init = isset($_GET['init']) ? $_GET['init'] : 0;
 
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+include_once ICMS_ROOT_PATH . '/class/pagenav.php';
+include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 
 $xoopsOption['template_main'] = 'wb_letter.html';
-include_once XOOPS_ROOT_PATH . '/header.php';
+include_once ICMS_ROOT_PATH . '/header.php';
 
 $xoopsTpl -> assign( 'firstletter', $init );
 $pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
@@ -199,6 +199,6 @@ $xoopsTpl -> assign( 'alpha', $alpha );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include XOOPS_ROOT_PATH . "/footer.php";
+include ICMS_ROOT_PATH . "/footer.php";
 
 ?>

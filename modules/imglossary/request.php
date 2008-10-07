@@ -15,8 +15,8 @@ global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 if ( empty($_POST['submit']) ) {
 
 	$xoopsOption['template_main'] = 'wb_request.html';
-	include XOOPS_ROOT_PATH . "/header.php";
-	include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
+	include ICMS_ROOT_PATH . "/header.php";
+	include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 	
 	$username_v = !empty($xoopsUser) ? $xoopsUser -> getVar( "uname", "E" ) : "";
 	$usermail_v = !empty($xoopsUser) ? $xoopsUser -> getVar( "email", "E" ) : "";
@@ -31,7 +31,7 @@ if ( empty($_POST['submit']) ) {
 
 	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
-	include XOOPS_ROOT_PATH . "/footer.php";
+	include ICMS_ROOT_PATH . "/footer.php";
 } else {
 	extract($_POST);
 	$display = "D";

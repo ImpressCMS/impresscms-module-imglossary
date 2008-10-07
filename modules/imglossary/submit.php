@@ -9,9 +9,9 @@
  */
 
 include "../../mainfile.php";
-include XOOPS_ROOT_PATH . "/header.php";
+include ICMS_ROOT_PATH . "/header.php";
 
-include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
+include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 
 global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
 
@@ -56,7 +56,7 @@ switch ( $op ) {
 	case 'post':
 		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
 
-		include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
+		include_once ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
 		$myts = & MyTextSanitizer :: getInstance();
 
 		$html = 1;
@@ -192,7 +192,7 @@ switch ( $op ) {
 		
 		$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
-		include XOOPS_ROOT_PATH . '/footer.php';
+		include ICMS_ROOT_PATH . '/footer.php';
 		
 		break;
 } 

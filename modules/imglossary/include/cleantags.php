@@ -3,7 +3,8 @@
 /**
  * Allow these tags
  */
-$allowedTags = '<h1><b><i><img><a><ul><li><pre><hr><blockquote>';
+ $allowedTags = '<h1><b><i><img><a><ul><li><pre><hr><blockquote>';
+
 
 /**
  * Disallow these attributes/prefix within a tag

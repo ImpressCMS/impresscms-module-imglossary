@@ -10,9 +10,9 @@
 
 global $term, $definition, $ref, $url, $xoopsUser, $xoopsModule, $xoopsModuleConfig;
 
-include_once XOOPS_ROOT_PATH . "/class/xoopstree.php";
-include XOOPS_ROOT_PATH . "/class/xoopslists.php";
-include XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
+include_once ICMS_ROOT_PATH . "/class/xoopstree.php";
+include ICMS_ROOT_PATH . "/class/xoopslists.php";
+include ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 
 $mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), "categoryID", "0" );
 $sform = new XoopsThemeForm( _MD_WB_SUB_SMNAME, "storyform", xoops_getenv( 'PHP_SELF' ) );

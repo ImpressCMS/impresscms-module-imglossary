@@ -42,7 +42,7 @@ function editentry( $entryID = '' ) {
 
 	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $myts; 
 
-	include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+	include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 
 	// Since this is a submission, the id exists, so retrieve data: we're editing an entry
 	$result = $xoopsDB -> query( "SELECT categoryID, term, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID'" );

@@ -10,18 +10,18 @@
 
 include 'header.php';
 
-global $xoopsUser, $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL, $indexp; 
+global $xoopsUser, $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
 
 $categoryID = isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0;
 
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
+include_once ICMS_ROOT_PATH . '/class/pagenav.php';
+include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 
 $xoopsOption['template_main'] = 'wb_category.html';
-include_once XOOPS_ROOT_PATH . '/header.php';
+include_once ICMS_ROOT_PATH . '/header.php';
 
 $xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 
@@ -29,7 +29,7 @@ $xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 $pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 $publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 if ( $publishedwords == 0 )	{
-	redirect_header( XOOPS_URL, 1, _MD_WB_STILLNOTHINGHERE );
+	redirect_header( ICMS_URL, 1, _MD_WB_STILLNOTHINGHERE );
 	exit();
 }
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
@@ -153,6 +153,6 @@ $xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
 // This will let us include the module's styles in the theme
 $xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
-include XOOPS_ROOT_PATH . '/footer.php';
+include ICMS_ROOT_PATH . '/footer.php';
 
 ?>

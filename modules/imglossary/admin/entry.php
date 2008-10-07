@@ -18,7 +18,7 @@ if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
 // -- Edit function -- //
 function entryEdit( $entryID = '' ) {
-	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL; 
+	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule; 
 
 	/**
 	 * Clear all variables before we start
@@ -47,7 +47,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_WB_NOENTRYTOEDIT );
 			exit();
 		}
-		adminMenu(2, _AM_WB_ENTRIES);
+		adminMenu( 2, _AM_WB_ENTRIES );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_WB_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );

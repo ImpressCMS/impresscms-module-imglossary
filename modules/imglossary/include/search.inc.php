@@ -10,28 +10,32 @@
 
 function wb_search( $queryarray, $andor, $limit, $offset, $userid )	{
 
-	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig;
+	global $xoopsUser, $xoopsDB;
+	
+	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0";
 
-	$ret = array();
-	if ( $userid != 0 )	{
-		return $ret;
-	} 
-	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0"; 
+	if ( $userid != 0 ) {
+        $sql .= " AND uid=" . $userid . " ";
+    }
 
 	// because count() returns 1 even if a supplied variable
 	// is not an array, we must check if $querryarray is really an array
-	$count = count( $queryarray );
-	if ( $count > 0 && is_array( $queryarray ) ) {
-		$sql .= "AND ( (term LIKE '%$queryarray[0]%' OR definition OR ref LIKE '%$queryarray[0]%')";
+	if ( is_array( $queryarray ) && $count = count( $queryarray ) ) {
+		$sql .= " AND ( ( term LIKE LOWER('%$queryarray[0]%') OR LOWER(definition) 
+							   LIKE LOWER('%$queryarray[0]%') OR LOWER(ref) 
+							   LIKE LOWER('%$queryarray[0]%') )";
 		for ( $i = 1; $i < $count; $i++ ) {
 			$sql .= " $andor ";
-			$sql .= "(term LIKE '%$queryarray[$i]%' OR definition OR ref LIKE '%$queryarray[$i]%')";
+			$sql .= "( term LIKE LOWER('%$queryarray[$i]%') OR LOWER(definition) 
+						    LIKE LOWER('%$queryarray[$i]%') OR LOWER(ref) 
+						    LIKE LOWER('%$queryarray[$i]%') )";
 		} 
 		$sql .= ") ";
 	} 
 	$sql .= "ORDER BY entryID DESC";
 	$result = $xoopsDB -> query( $sql, $limit, $offset );
-	$i = 0;
+    $ret = array();
+    $i = 0;
 
 	while ( $myrow = $xoopsDB -> fetchArray( $result ) ) {
 		$ret[$i]['image'] = "images/wb.png";
