@@ -7,6 +7,7 @@
  * Author: hsalazar
  * Licence: GNU
  */
+ 
 define("_AM_WB_ACTION", "Action");
 define("_AM_WB_ADMINCATMNGMT", "Category edition");
 define("_AM_WB_ADMINENTRYMNGMT", "Entry edition");
@@ -26,8 +27,8 @@ define("_AM_WB_CATIMAGE", "Category image");
 define("_AM_WB_CATIMAGEUPLOAD", " Upload category image");
 define("_AM_WB_CATISDELETED", "Category %s has been deleted");
 define("_AM_WB_CATMODIFIED", "Chosen category was modified and saved!");
-define("_AM_WB_CATNAME", "[*] Category name");
-define("_AM_WB_CATPOSIT", "[*] Category position");
+define("_AM_WB_CATNAME", "Category name");
+define("_AM_WB_CATPOSIT", "Category position");
 define("_AM_WB_CATS", "Categories");
 define("_AM_WB_CATSHEADER", "Category edition");
 define("_AM_WB_CLEAR", "Clear");
@@ -53,7 +54,7 @@ define("_AM_WB_ENTRYAUTHORIZED", "The entry has been authorized.");
 define("_AM_WB_ENTRYCATNAME", "Category name");
 define("_AM_WB_ENTRYCREATED", "Created");
 define("_AM_WB_ENTRYCREATEDOK", "The entry was created successfully!");
-define("_AM_WB_ENTRYDEF", "[*] Definition");
+define("_AM_WB_ENTRYDEF", "Definition");
 define("_AM_WB_ENTRYID", "Id");
 define("_AM_WB_ENTRYISDELETED", "The entry %s has been deleted.");
 define("_AM_WB_ENTRYISOFF", "Entry is offline");
@@ -62,7 +63,7 @@ define("_AM_WB_ENTRYMODIFIED", "The article was modified successfully!");
 define("_AM_WB_ENTRYNOTCREATED", "Sorry. It was not possible to create this entry!");
 define("_AM_WB_ENTRYNOTUPDATED", "Sorry. It was not possible to update the entry!");
 define("_AM_WB_ENTRYREFERENCE", "Reference<span style='font-size: xx-small; font-weight: normal; display: block;'>(Write here the source of your<br />definition, such as a book,<br />article, or person.)</span>");
-define("_AM_WB_ENTRYTERM", "[*] Term");
+define("_AM_WB_ENTRYTERM", "Term");
 define("_AM_WB_ENTRYURL", "Related site<span style='font-size: xx-small; font-weight: normal; display: block;'>(Please enter a valid URL with<br />or without the HTTP prefix.)</span>");
 define("_AM_WB_FILEEXISTS", "A file with that name already exists on server. Please choose another one!");
 define("_AM_WB_GOMOD", "Go to module");
@@ -114,13 +115,13 @@ define("_AM_WB_IMPORTWARN", "Warning!!:<br />Backup your database before continu
 
 // Taken from importdictionary091.php (McDonald)
 define("_AM_WB_IMPDICT_01","Database for import missing or empty!");
-define("_AM_WB_IMPDICT_02","Wordbook Entries Import Script");
+define("_AM_WB_IMPDICT_02","imGlossary Entries Import Script");
 define("_AM_WB_IMPDICT_03","Import from Dictionary Version 0.92");
 define("_AM_WB_IMPDICT_04","Error: #");
 define("_AM_WB_IMPDICT_05","Dictionary Module ID: ");
-define("_AM_WB_IMPDICT_06","Wordbook Module ID: ");
-define("_AM_WB_IMPDICT_07","Error while moving Comments from Dictionary to Wordbook module.");
-define("_AM_WB_IMPDICT_08","Comments successfully moved from Dictionary to Wordbook");
+define("_AM_WB_IMPDICT_06","imGlossary Module ID: ");
+define("_AM_WB_IMPDICT_07","Error while moving Comments from Dictionary to imGlossary module.");
+define("_AM_WB_IMPDICT_08","Comments successfully moved from Dictionary to imGlossary");
 define("_AM_WB_IMPDICT_09","Incorrectly: ");
 define("_AM_WB_IMPDICT_10","Processed: ");
 define("_AM_WB_IMPDICT_11","Back to Admin");
