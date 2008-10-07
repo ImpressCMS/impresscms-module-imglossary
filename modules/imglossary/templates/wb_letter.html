@@ -35,8 +35,8 @@
 <div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$totalentries}> <{$smarty.const._MD_WB_INALLGLOSSARIES}></div>
 <br />
 <{foreach item=eachentry from=$entriesarray.single}>
-<h4 class="term"><{$eachentry.microlinks}><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a> <{if $multicats == 1}>[<{$eachentry.catname}>]<{/if}></h4>
-<div class="definition"><{$eachentry.definition}></div>
+<h4 class="term"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a> <{if $multicats == 1}>[<{$eachentry.catname}>]<{/if}></h4>
+<div class="definition"><{$eachentry.definition}><br /><{$eachentry.microlinks}></div>
 <{$eachentry.comments}><br /><br />
 <{/foreach}>
 <div align = 'left'><{$entriesarray.navbar}></div>
