@@ -57,7 +57,7 @@ function printPage( $entryID ) {
 
 	echo "<body bgcolor='#ffffff' text='#000000'>
 			<div style='width: 650px; border: 1px solid #000; padding: 20px;'>
-			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/wb_slogo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
+			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" .  . "/modules/" . $xoopsModule -> dirname() . "/images/wb_slogo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
 		echo "<div>" . _MD_WB_ENTRYCATEGORY . "<b>" . $categoryname . "</b></div>";
 	}

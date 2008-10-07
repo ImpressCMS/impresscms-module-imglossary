@@ -34,9 +34,9 @@ function wb_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
                  	$username = $user -> getVar('name');
                 }
 				if ( !empty($usernameu)) {
-					$linkeduser = "$usernameu [<a href='" . XOOPS_URL . "/userinfo.php?uid=" . $userid . "'>" . $ts -> htmlSpecialChars($username) . "</a>]";
+					$linkeduser = "$usernameu [<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . $ts -> htmlSpecialChars($username) . "</a>]";
 				} else {
-					$linkeduser = "<a href='" . XOOPS_URL . "/userinfo.php?uid=" . $userid . "'>" . ucfirst( $ts -> htmlSpecialChars($username) ) ."</a>";
+					$linkeduser = "<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . ucfirst( $ts -> htmlSpecialChars($username) ) ."</a>";
 				}
 				return $linkeduser;
             }
@@ -122,7 +122,7 @@ function serviceLinks( $variable ) {
 			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/edit.gif\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/delete.gif\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
 		}
 	}
-	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/print.gif\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . XOOPS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/email.gif\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
+	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/print.gif\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/email.gif\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
 	return $srvlinks;
 }
 
@@ -162,13 +162,13 @@ function getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 		$pL = "";
 		$pR = "";
 
-		if(( $pos = strpos( $part, "<" ) ) === false )
+		if( ( $pos = strpos( $part, "<" ) ) === false )
 			$pL = $part;
-		elseif ($pos > 0) {
+		elseif ( $pos > 0 ) {
 			$pL = substr( $part, 0, $pos );
 			$pR = substr( $part, $pos, strlen( $part ) );
 		}
-		if($pL != "")
+		if( $pL != "" )
 			$parts[$key] = preg_replace( '|(' . quotemeta($needle) . ')|iU', $hlS . '\\1' . $hlE, $pL ) . $pR;
 	}
 	return ( implode( ">", $parts ) );
@@ -179,7 +179,7 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	$tblColors = array();
 	$tblColors[0]=$tblColors[1]=$tblColors[2]=$tblColors[3]=$tblColors[4]=$tblColors[5]=$tblColors[6]=$tblColors[7]=$tblColors[8]='#DDE';
     $tblColors[$currentoption] = '#FFF';
-    if ( file_exists( XOOPS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php' ) ) {
+    if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php' ) ) {
 		include_once '../language/' . $xoopsConfig['language'] . '/modinfo.php';
 	} else {
 		include_once '../language/english/modinfo.php';
@@ -200,7 +200,7 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	//mondarse
 	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"importdictionary091.php\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[6] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_IMPORT . "</a></li>";
 	//mondarse
-	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
+//	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
 	}
 	
 function imgloss_substr( $str, $start, $length, $trimmarker = '...' ) {

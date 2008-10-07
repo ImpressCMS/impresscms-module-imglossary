@@ -23,22 +23,22 @@ $glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 //	include "../language/english/main.php";
 //	}
 
-include_once XOOPS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
 
-include_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/kernel/module.php';
+include_once ICMS_ROOT_PATH . '/class/xoopstree.php';
+include_once ICMS_ROOT_PATH . '/class/xoopslists.php';
+include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
+include_once ICMS_ROOT_PATH . '/kernel/module.php';
 $myts =& MyTextSanitizer::getInstance();
 
 if ( is_object( $xoopsUser) ) {
 	$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 	if ( !$xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) {
-		redirect_header( XOOPS_URL . "/", 1, _NOPERM );
+		redirect_header( ICMS_ROOT_PATH . "/", 1, _NOPERM );
 		exit();
 	}
 } else {
-	redirect_header ( XOOPS_URL . "/", 1, _NOPERM );
+	redirect_header ( ICMS_ROOT_PATH . "/", 1, _NOPERM );
 	exit();
 }
 

@@ -14,7 +14,7 @@ function b_entries_random_show() {
 
 	global $xoopsDB, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $xoopsUser;
 	$myts =& MyTextSanitizer::getInstance();
-	include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 	$adminlinks = '';
 	$block = array();
@@ -55,20 +55,20 @@ function b_entries_random_show() {
 		// Functional links
 		if ( $xoopsUser ) {
 			if ( $xoopsUser->isAdmin() ) {
-				$adminlinks = "<a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "\" target=\"_blank\"><img src=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/images/edit.gif\" border=\"0\" alt=\"" . _MB_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "\" target=\"_self\"><img src=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/images/delete.gif\" border=\"0\" alt=\"" . _MB_WB_DELTERM . "\" ></a>&nbsp;";
+				$adminlinks = "<a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "\" target=\"_blank\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/edit.gif\" border=\"0\" alt=\"" . _MB_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "\" target=\"_self\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/delete.gif\" border=\"0\" alt=\"" . _MB_WB_DELTERM . "\" ></a>&nbsp;";
 			}
 		}
-		$userlinks = "<a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "\" target=\"_blank\"><img src=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/images/print.gif\" border=\"0\" alt=\"" . _MB_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf( _MB_WB_INTENTRY, $xoopsConfig["sitename"] ) . "&amp;body=" . sprintf( _MB_WB_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . " \" target=\"_blank\"><img src=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/images/email.gif\" border=\"0\" alt=\"" . _MB_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
+		$userlinks = "<a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "\" target=\"_blank\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/print.gif\" border=\"0\" alt=\"" . _MB_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf( _MB_WB_INTENTRY, $xoopsConfig["sitename"] ) . "&amp;body=" . sprintf( _MB_WB_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . " \" target=\"_blank\"><img src=\"" . ICMS_URL . "/modules/" . $glossdirname . "/images/email.gif\" border=\"0\" alt=\"" . _MB_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
 
 		if ( $wbConfig['multicats'] == 1 ) {
-			$block['content'] = "<div style=\"font-size: 12px; font-weight: bold; background-color: #ccc; padding: 4px; margin: 0;\"><a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=$categoryID\">$categoryname</a></div>";
-			$block['content'] .= "<div style=\"padding: 4px 0 0 0; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5><div>$definition</div>";
+			$block['content'] = "<div style=\"font-size: 12px; font-weight: bold; background-color: #ccc; padding: 4px; margin: 0;\"><a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=$categoryID\">$categoryname</a></div>";
+			$block['content'] .= "<div style=\"padding: 4px 0 0 0; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5><div>$definition</div>";
 		} else {
-			$block['content'] = "<div style=\"padding: 4px; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a style=\"margin: 0;\" href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5>$definition";
+			$block['content'] = "<div style=\"padding: 4px; color: #456;\"><h5 style=\"margin: 0;\">$adminlinks $userlinks <a style=\"margin: 0;\" href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID\">$term</a></h5>$definition";
 		}
 	}
 
-	$block['content'] .= "<div style=\"text-align: right; font-size: x-small;\"><a href=\"" . XOOPS_URL . "/modules/" . $glossdirname . "/index.php\">" . _MB_WB_SEEMORE . "</a></div>";
+	$block['content'] .= "<div style=\"text-align: right; font-size: x-small;\"><a href=\"" . ICMS_URL . "/modules/" . $glossdirname . "/index.php\">" . _MB_WB_SEEMORE . "</a></div>";
 	return $block;
 }
 ?>

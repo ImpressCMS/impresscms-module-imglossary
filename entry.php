@@ -10,15 +10,15 @@
 
 include 'header.php';
 
-include_once XOOPS_ROOT_PATH . "/class/module.textsanitizer.php"; 
+include_once ICMS_ROOT_PATH . "/class/module.textsanitizer.php"; 
 
-global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $XOOPS_URL; 
+global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL; 
 $myts =& MyTextSanitizer::getInstance();
 
 $entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
 
 $xoopsOption['template_main'] = 'wb_entry.html';
-include XOOPS_ROOT_PATH . "/header.php";
+include ICMS_ROOT_PATH . "/header.php";
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	$xoopsTpl -> assign( 'multicats', 1 );
@@ -102,21 +102,21 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
 					$term = $term . "s";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural with e
 					$term = $term . "es";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . XOOPS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				}
@@ -154,7 +154,7 @@ $xoopsTpl -> assign( 'counter', sprintf( _MD_WB_COUNT, $thisterm['counter'] ) );
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 //Comments
-include XOOPS_ROOT_PATH . '/include/comment_view.php';
+include ICMS_ROOT_PATH . '/include/comment_view.php';
 
-include_once XOOPS_ROOT_PATH . '/footer.php';
+include_once ICMS_ROOT_PATH . '/footer.php';
 ?>

@@ -7,24 +7,22 @@
  * Author: hsalazar
  * Licence: GNU
  */
+ 
 $xoopsOption['pagetype'] = "search";
 
-$glossdirname = basename( dirname( __FILE__ ) );
-
-include "header.php";
-include XOOPS_ROOT_PATH . "/header.php"
+include 'header.php';
 
 global $xoopsDB, $xoopsModule, $xoopsModuleConfig, $searchtype;
 $myts =& MyTextSanitizer::getInstance();
 
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+include_once ICMS_ROOT_PATH . '/class/pagenav.php';
+//include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 // Check if search is enabled site-wide
 $config_handler =& xoops_gethandler('config');
 $xoopsConfigSearch =& $config_handler -> getConfigsByCat( XOOPS_CONF_SEARCH );
 if ( $xoopsConfigSearch['enable_search'] != 1 ) {
-	header( 'Location: ' . XOOPS_URL . '/index.php' );
+	header( 'Location: ' . ICMS_URL . '/index.php' );
 	exit();
 }
 
@@ -39,6 +37,7 @@ $type = isset( $type ) ? intval( $type ) : 3;
 $queries = array();
 
 $xoopsOption['template_main'] = 'wb_search.html';
+include ICMS_ROOT_PATH . "/header.php";
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	$xoopsTpl -> assign( 'multicats', 1 );
@@ -86,11 +85,11 @@ if ( !$query ) {
 } else {
 	// IF there IS term, count number of results
 
-	$searchquery = $xoopsDB -> query( "SELECT COUNT(*) AS nrows FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w WHERE $searchtype AND submit=0 AND offline=0 " . $andcatid);
+	$searchquery = $xoopsDB -> query( "SELECT COUNT(*) AS nrows FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE " . $searchtype . " AND submit=0 AND offline=0 " . $andcatid );
 	list($results) = $xoopsDB -> fetchRow( $searchquery );
 	//$results = $xoopsDB -> getRowsNum ( $searchquery );
 
-	if ($results == 0) {
+	if ( $results == 0 ) {
 		// There's been no correspondences with the searched terms
 		$xoopsTpl -> assign( 'intro', _MD_WB_NORESULTS );
 		// Display search form
@@ -115,12 +114,11 @@ if ( !$query ) {
 			$eachresult['categoryID'] = $categoryID;
 			$eachresult['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 			$eachresult['catname'] = $myts -> makeTboxData4Show( $catname );
-			$tempdef = cleanTags( $definition );
-			$tempdef = $myts -> displayTarea( $tempdef );
+			$tempdef = $myts -> displayTarea( $definition, 1, 1, 1, 1, 1 );
 			$eachresult['definition'] = getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
 
 			// Functional links
-			$microlinks = serviceLinks( $eachresult );
+			$microlinks = serviceLinks( $eachresult['entryID'] );
 			$eachresult['microlinks'] = $microlinks;
 			$resultset['match'][] = $eachresult;
 			}
@@ -145,6 +143,6 @@ $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include XOOPS_ROOT_PATH . "/footer.php";
+include ICMS_ROOT_PATH . "/footer.php";
 
 ?>

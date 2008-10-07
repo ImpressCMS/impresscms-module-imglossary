@@ -16,8 +16,8 @@ $glossdirname = basename( dirname( __FILE__ ) );
 
 $op = '';
 
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . '/modules/' . $glossdirname . '/include/cleantags.php';
+include_once ICMS_ROOT_PATH . '/class/pagenav.php';
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/cleantags.php';
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 
@@ -31,7 +31,7 @@ switch ( $op ) {
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule;
 
 		$xoopsOption['template_main'] = 'wb_index.html';
-		include  XOOPS_ROOT_PATH . '/header.php';
+		include  ICMS_ROOT_PATH . '/header.php';
 		
 		calculateTotals();
 		$xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
@@ -260,5 +260,5 @@ switch ( $op ) {
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include XOOPS_ROOT_PATH . "/footer.php" ;
+include ICMS_ROOT_PATH . "/footer.php" ;
 ?>
