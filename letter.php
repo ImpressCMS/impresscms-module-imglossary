@@ -134,8 +134,10 @@ if ( $init == _MD_WB_ALL ) {
 
 	$entrieshere = $xoopsDB -> getRowsNum( $resultB );
 	if ( $entrieshere == 0 ) {
-		redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOTERMSINLETTER );
-		exit();
+		// redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOTERMSINLETTER );
+		// exit();
+		$xoopsTpl -> assign( 'pageinitial', _MD_WB_OTHER );
+		$eachentry['init']='';
 	} 
 
 	if ( $init == _MD_WB_OTHER ) {
@@ -184,7 +186,7 @@ if ( $init == _MD_WB_ALL ) {
 		$entriesarray2['single'][] = $eachentry;
 	}
 	
-	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'init=' . $eachentry["init"] . '&start' );
+	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'init=' . $eachentry['init'] . '&start' );
 	$entriesarray2['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign( 'entriesarray2', $entriesarray2 );
