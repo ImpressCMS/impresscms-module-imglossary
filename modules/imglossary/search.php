@@ -85,8 +85,8 @@ if ( !$query ) {
 	$xoopsTpl -> assign( 'searchform', $searchform );
 } else {
 	// IF there IS term, count number of results
-	//$searchquery = $xoopsDB -> query ("SELECT * FROM ".$xoopsDB->prefix ("wbentries")." WHERE $searchtype AND submit ='0' AND offline='0' ".$andcatid." ORDER BY term");
-	$searchquery = $xoopsDB -> query( "SELECT COUNT(*) AS nrows FROM " . $xoopsDB -> prefix( 'wbentries' ) . " w WHERE $searchtype AND submit=0 AND offline=0 " . $andcatid);
+	//$searchquery = $xoopsDB -> query ("SELECT * FROM ".$xoopsDB->prefix ("imglossary_entries")." WHERE $searchtype AND submit ='0' AND offline='0' ".$andcatid." ORDER BY term");
+	$searchquery = $xoopsDB -> query( "SELECT COUNT(*) AS nrows FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w WHERE $searchtype AND submit=0 AND offline=0 " . $andcatid);
 	list($results) = $xoopsDB -> fetchRow( $searchquery );
 	//$results = $xoopsDB -> getRowsNum ( $searchquery );
 
@@ -103,8 +103,8 @@ if ( !$query ) {
 		$resultset = array();
 
 		// How many results will we show in this page?
-		//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE ".$searchtype." AND submit = '0' AND offline = '0' ".$andcatid." ORDER BY term";
-		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, c.name AS catname FROM " . $xoopsDB -> prefix( 'wbentries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'wbcategories' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+		//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE ".$searchtype." AND submit = '0' AND offline = '0' ".$andcatid." ORDER BY term";
+		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 		
 		//while (list( $entryID, $categoryID, $term, $init, $definition ) = $xoopsDB->fetchRow($resultA))

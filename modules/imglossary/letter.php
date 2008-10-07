@@ -26,7 +26,7 @@ $xoopsOption['template_main'] = 'wb_letter.html';
 include_once XOOPS_ROOT_PATH . '/header.php';
 
 $xoopsTpl -> assign( 'firstletter', $init );
-$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0" );
+$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 $publishedwords = $xoopsDB -> getRowsNum( $pubwords );
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
@@ -40,14 +40,14 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 $alpha = alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
-$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE init='#'" );
+$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#'" );
 $howmanyother = $xoopsDB -> getRowsNum( $sql );
 $xoopsTpl -> assign( 'totalother', $howmanyother );
 
 if ( $xoopsModuleConfig['multicats'] == 1 )	{
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'wbcategories') . " ORDER BY name ASC" );
+	$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats') . " ORDER BY name ASC" );
 	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow($resultcat) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -66,11 +66,11 @@ if ( $init == _MD_WB_ALL ) {
 	$pagetype = 0;
 
 	// How many entries will we show in this page?
-	//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit ='0' AND offline = '0' ORDER BY term ASC";
-	$queryA = "SELECT w.*, c.name AS catname FROM " . $xoopsDB -> prefix( 'wbentries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'wbcategories' ) . " c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+	//$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit ='0' AND offline = '0' ORDER BY term ASC";
+	$queryA = "SELECT w.*, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 	$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 
-	$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 ORDER BY term ASC" );
+	$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 ORDER BY term ASC" );
 	$totalentries = $xoopsDB -> getRowsNum( $allentries );
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 	
@@ -81,7 +81,7 @@ if ( $init == _MD_WB_ALL ) {
 
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			//$eachentry['catid'] = intval($categoryID);
-			//$resultF = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( "wbcategories") . " WHERE categoryID = $categoryID ORDER BY name ASC" );
+			//$resultF = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( "imglossary_cats") . " WHERE categoryID = $categoryID ORDER BY name ASC" );
 			//while (list( $name) = $xoopsDB->fetchRow($resultF))
 			//	{
 				$eachentry['catname'] = $myts -> makeTboxData4Show( $catname );
@@ -125,10 +125,10 @@ if ( $init == _MD_WB_ALL ) {
 
 	// How many entries will we show in this page?
 	if ( $init == _MD_WB_OTHER ) {
-		$queryB = "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 AND init='#' ORDER BY term ASC";
+		$queryB = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='#' ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 	} else {
-		$queryB = "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 AND init='$init' AND init!='#' ORDER BY term ASC";
+		$queryB = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='$init' AND init!='#' ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 	}
 
@@ -139,9 +139,9 @@ if ( $init == _MD_WB_ALL ) {
 	} 
 
 	if ( $init == _MD_WB_OTHER ) {
-		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE init='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
+		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
 	} else {
-		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE init='$init' AND init!='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
+		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='$init' AND init!='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
 	}
 	
 	$totalentries = $xoopsDB -> getRowsNum( $allentries );
@@ -154,7 +154,7 @@ if ( $init == _MD_WB_ALL ) {
 
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			$eachentry['catid'] = intval($categoryID);
-			$resultF = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " WHERE categoryID='$categoryID' ORDER BY name ASC" );
+			$resultF = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID='$categoryID' ORDER BY name ASC" );
 			while ( list( $name) = $xoopsDB -> fetchRow( $resultF ) ) {
 				$eachentry['catname'] = $myts -> makeTboxData4Show( $name );
 			}

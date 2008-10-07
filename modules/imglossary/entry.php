@@ -33,7 +33,7 @@ else
 	}
 
 // If there's no entries yet in the system...
-$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( "wbentries" ) . " WHERE submit = '0' AND offline ='0' " );
+$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( "imglossary_entries" ) . " WHERE submit = '0' AND offline ='0' " );
 $publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 $xoopsTpl->assign('publishedwords', $publishedwords);
 if ( $publishedwords == 0 )
@@ -46,7 +46,7 @@ if ( $publishedwords == 0 )
 $alpha = alphaArray();
 $xoopsTpl->assign('alpha', $alpha);
 
-$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( "wbentries") . " WHERE init = '#' " );
+$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( "imglossary_entries") . " WHERE init = '#' " );
 $howmanyother = $xoopsDB -> getRowsNum( $sql );
 $xoopsTpl->assign('totalother', $howmanyother);
 
@@ -54,7 +54,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 )
 	{
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( "wbcategories") . " ORDER BY name ASC" );
+	$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( "imglossary_cats") . " ORDER BY name ASC" );
 	while (list( $catID, $name, $total) = $xoopsDB->fetchRow($resultcat))
 		{
 		$catlinks = array();
@@ -70,16 +70,16 @@ if ( $xoopsModuleConfig['multicats'] == 1 )
 
 if ( !$entryID )
 	{
-	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( "wbentries" ) . " WHERE datesub < " . time() . " AND datesub > 0 AND (submit = 0) ORDER BY datesub DESC", 1, 0 );
+	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( "imglossary_entries" ) . " WHERE datesub < " . time() . " AND datesub > 0 AND (submit = 0) ORDER BY datesub DESC", 1, 0 );
 	}
 else
 	{
 	if ( !$xoopsUser || ( $xoopsUser->isAdmin($xoopsModule->mid()) && $xoopsModuleConfig['adminhits'] == 1 ) || ( $xoopsUser && !$xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) )
 		{
-		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( "wbentries" ) . " SET counter = counter+1 WHERE entryID = $entryID " );
+		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( "imglossary_entries" ) . " SET counter = counter+1 WHERE entryID = $entryID " );
 		}	
 
-	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( "wbentries" ) . " WHERE entryID = $entryID" );
+	$result = $xoopsDB -> query( "SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( "imglossary_entries" ) . " WHERE entryID = $entryID" );
 	}
 
 while (list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB->fetchRow($result))
@@ -91,7 +91,7 @@ while (list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid,
 	if ($xoopsModuleConfig['multicats'] == 1)
 		{
 		$thisterm['categoryID'] = intval($categoryID);
-		$catname = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( "wbcategories" ) . " WHERE categoryID = $categoryID ");
+		$catname = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( "imglossary_cats" ) . " WHERE categoryID = $categoryID ");
 		while (list ($name) = $xoopsDB -> fetchRow ( $catname ))
 			{
 			$thisterm['catname'] = $myts -> makeTboxData4Show( $name );
@@ -115,7 +115,7 @@ while (list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid,
 		$parts = explode(">", $definition);
 
 		// First, retrieve all terms from the glossary...
-		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( "wbentries" ));
+		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( "imglossary_entries" ));
 		while ( list( $entryID, $term ) = $xoopsDB -> fetchrow( $allterms ))
 			{
 			foreach($parts as $key=>$part)

@@ -34,13 +34,13 @@ switch ( $op ) {
 
 		$myts =& MyTextSanitizer::getInstance();
 		adminMenu( 0, _AM_WB_INDEX );
-        $result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " " );
+        $result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $totalcategories ) = $xoopsDB -> fetchRow( $result01 );
-        $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit = 0" );
+        $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = 0" );
 			list( $totalpublished ) = $xoopsDB -> fetchRow( $result02 );
-        $result03 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit = '1' AND request = '0' " );
+        $result03 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = '1' AND request = '0' " );
 			list( $totalsubmitted ) = $xoopsDB -> fetchRow( $result03 );
-        $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit = '1' AND request = '1' " );
+        $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit = '1' AND request = '1' " );
 			list( $totalrequested ) = $xoopsDB -> fetchRow( $result04 );
 		
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
@@ -64,10 +64,10 @@ switch ( $op ) {
 		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWENTRIES . "</legend><br />";
 		echo "<a style='border: 1px solid #5E5D63; color: #000000; font-family: verdana, tahoma, arial, helvetica, sans-serif; font-size: 1em; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_WB_CREATEENTRY . "</a><br /><br />";
 		// To create existing terms table
-		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0" );
+		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
 
-		$sql = "SELECT entryID, categoryID, term, uid, datesub, offline FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 ORDER BY entryID DESC";
+		$sql = "SELECT entryID, categoryID, term, uid, datesub, offline FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 ORDER BY entryID DESC";
 		$resultA2 = $xoopsDB -> query( $sql, $xoopsModuleConfig['perpage'], $startentry );
 
 		echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
@@ -86,7 +86,7 @@ switch ( $op ) {
 		if ( $numrows > 0 ) {
 			// That is, if there ARE entries in the system
 			while ( list( $entryID, $categoryID, $term, $uid, $created, $offline ) = $xoopsDB -> fetchrow( $resultA2 ) ) {
-				$resultA3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID='$categoryID'" );
+				$resultA3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID='$categoryID'" );
 				list( $name ) = $xoopsDB -> fetchrow( $resultA3 );
 
 				$sentby = xoops_getLinkedUnameFromId($uid);
@@ -132,10 +132,10 @@ switch ( $op ) {
 			echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWCATS . "</legend><br />";
 			echo "<a style='border: 1px solid #5E5D63; color: #000000; font-family: verdana, tahoma, arial, helvetica, sans-serif; font-size: 1em; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_WB_CREATECAT . "</a><br /><br />";
 			// To create existing columns table
-			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " " );
+			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $numrows ) = $xoopsDB -> fetchRow( $resultC1 );
 
-			$sql = "SELECT * FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " ORDER BY weight";
+			$sql = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY weight";
 			$resultC2 = $xoopsDB -> query( $sql, $xoopsModuleConfig['perpage'], $startcat );
 
 			echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
@@ -179,10 +179,10 @@ switch ( $op ) {
 
 		/* -- Code to show submitted entries -- */
 		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWSUBMISSIONS . "</legend><br />";
-		$resultS1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=1 AND request=0" );
+		$resultS1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultS1 );
 
-		$sql = "SELECT entryID, categoryID, term, uid, datesub FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=1 AND request=0 ORDER BY datesub DESC";
+		$sql = "SELECT entryID, categoryID, term, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0 ORDER BY datesub DESC";
 		$resultS2 = $xoopsDB -> query( $sql, $xoopsModuleConfig['perpage'], $startsub );
 
 		echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
@@ -200,7 +200,7 @@ switch ( $op ) {
 		if ( $numrows > 0 ) { 
 			// That is, if there ARE submitted entries in the system
 			while ( list( $entryID, $categoryID, $term, $uid, $created) = $xoopsDB -> fetchrow( $resultS2 ) ) {
-				$resultS3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID='$categoryID'" );
+				$resultS3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID='$categoryID'" );
 				list( $name ) = $xoopsDB -> fetchrow( $resultS3 );
 
 				$sentby = xoops_getLinkedUnameFromId( $uid );
@@ -236,10 +236,10 @@ switch ( $op ) {
 
 		/* -- Code to show requested entries -- */
 		echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_WB_SHOWREQUESTS . "</legend><br />";
-		$resultS2 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=1 AND request=1" );
+		$resultS2 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 		list( $numrowsX ) = $xoopsDB -> fetchRow( $resultS2 );
 
-		$sql4 = "SELECT entryID, categoryID, term, uid, datesub FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=1 AND request=1 ORDER BY datesub DESC";
+		$sql4 = "SELECT entryID, categoryID, term, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1 ORDER BY datesub DESC";
 		$resultS4 = $xoopsDB -> query( $sql4, $xoopsModuleConfig['perpage'], $startsub );
 
 		echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
@@ -258,7 +258,7 @@ switch ( $op ) {
 			// That is, if there ARE unauthorized articles in the system
 			while ( list( $entryID, $categoryID, $term, $uid, $created) = $xoopsDB -> fetchrow( $resultS4 ) )
 				{
-				$resultS3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID = '$categoryID'" );
+				$resultS3 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID = '$categoryID'" );
 				list( $name ) = $xoopsDB -> fetchrow( $resultS3 );
 
 				$sentby = xoops_getLinkedUnameFromId($uid);

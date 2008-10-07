@@ -16,7 +16,7 @@ function wb_search( $queryarray, $andor, $limit, $offset, $userid )	{
 	if ( $userid != 0 )	{
 		return $ret;
 	} 
-	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0"; 
+	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0"; 
 
 	// because count() returns 1 even if a supplied variable
 	// is not an array, we must check if $querryarray is really an array

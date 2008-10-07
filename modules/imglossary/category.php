@@ -28,7 +28,7 @@ include_once XOOPS_ROOT_PATH . '/header.php';
 $xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 
 // If there's no entries yet in the system...
-$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0" );
+$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 $publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 if ( $publishedwords == 0 )	{
 	redirect_header( XOOPS_URL, 1, _MD_WB_STILLNOTHINGHERE );
@@ -40,14 +40,14 @@ $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 $alpha = alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
-$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE init=#" );
+$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init=#" );
 $howmanyother = $xoopsDB -> getRowsNum( $sql );
 $xoopsTpl -> assign( 'totalother', $howmanyother );
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " ORDER BY name ASC" );
+	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC" );
 	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -63,7 +63,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 // No ID of category: we need to see all categories descriptions
 if ( !$categoryID )	{
 	// How many categories are there?
-	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " ORDER BY weight" );
+	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY weight" );
 	$totalcats = $xoopsDB -> getRowsNum( $resultcats );
 	if ( $totalcats == 0 ) {
 		redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOCATSINSYSTEM );
@@ -74,7 +74,7 @@ if ( !$categoryID )	{
 	$catsarray = array();
 
 	// How many categories will we show in this page?
-	$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " ORDER BY name ASC";
+	$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC";
 	$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 	
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $resultA ) ) {
@@ -97,7 +97,7 @@ if ( !$categoryID )	{
 	$xoopsTpl -> assign ( 'pagetype', '0' );
 } else {
 	// There IS a $categoryID, thus we show only that category's description
-	$catdata = $xoopsDB -> query( "SELECT categoryID, name, description, total FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID=$categoryID" );
+	$catdata = $xoopsDB -> query( "SELECT categoryID, name, description, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $catdata ) ) {
 		if ( $total == 0 ) {
 			redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOENTRIESINCAT );
@@ -118,7 +118,7 @@ if ( !$categoryID )	{
 		$entriesarray = array();
 		
 		// Now we retrieve a specific number of entries according to start variable	
-		$queryB = "SELECT entryID, term, definition FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
+		$queryB = "SELECT entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 
 		while (list( $entryID, $term, $definition ) = $xoopsDB -> fetchRow( $resultB ) ) {

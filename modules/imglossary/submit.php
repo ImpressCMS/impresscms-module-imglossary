@@ -15,7 +15,7 @@ include_once XOOPS_ROOT_PATH . "/class/xoopsformloader.php";
 
 global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
 
-$result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbcategories' ) . "" );
+$result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
 if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1') {
 	redirect_header( "index.php", 1, _AM_WB_NOCOLEXISTS );
 	exit();
@@ -46,7 +46,7 @@ if( !isset( $HTTP_POST_VARS['suggest'] ) ) {
 }
 
 if ( $suggest > 0 ) {
-	$terminosql = $xoopsDB -> query( "SELECT term FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 AND entryID=" . $suggest . "" );
+	$terminosql = $xoopsDB -> query( "SELECT term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 AND entryID=" . $suggest . "" );
 	list( $termino ) = $xoopsDB -> fetchRow( $terminosql );
 } else {
 	$termino = '';
@@ -107,7 +107,7 @@ switch ( $op ) {
 			$offline = 0;
 		} 
 
-		$result = $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'wbentries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$html', '$smiley', '$xcodes', '$breaks', '$offline', '$notifypub')" );
+		$result = $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$html', '$smiley', '$xcodes', '$breaks', '$offline', '$notifypub')" );
 		$entryID = $xoopsDB -> getInsertId();
 
 		if ( $result ) {
