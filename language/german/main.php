@@ -7,6 +7,7 @@
  * Author: hsalazar
  * Licence: GNU
  */
+ 
 define("_MD_WB_NOCOLEXISTS", "Verzeihung, aber es ist bis jetzt noch keine Kategorie angelegt worden.<br />Bitte teilen Sie dies dem Webmaster mit.");
 define("_MD_WB_ALL", "Alle");
 define("_MD_WB_ALLCATS", "Alle Kategorien");
@@ -25,7 +26,7 @@ define("_MD_WB_CATEGORY", "Suchen in Kategorie");
 define("_MD_WB_CATS", "Kategorien: ");
 define("_MD_WB_COUNT", "Dieser Eintrag wurde %s mal gelesen.");
 define("_MD_WB_CREATE", "Den Eintrag einschicken");
-define("_MD_WB_DEFINITION", "[*] Definition");
+define("_MD_WB_DEFINITION", "Definition");
 define("_MD_WB_DEFINITIONREQ", "Glossar-Definitionsanfrage");
 define("_MD_WB_DEFINITIONSUB", "Glossar-Definitionseinsendung");
 define("_MD_WB_DEFINS", "Definitionen");
@@ -35,7 +36,7 @@ define("_MD_WB_EDITTERM", "Diesen Begriff bearbeiten");
 define("_MD_WB_EMAILLEFT", "Der User hat seine E-Mail-Adresse hinterlassen: ");
 define("_MD_WB_ENTRIES", " Eintr&auml;ge.");
 define("_MD_WB_ENTRIESINCAT", "Eintr&auml;ge in diesem W&ouml;rterbuch.");
-define("_MD_WB_ENTRY", "[*] Eintrag");
+define("_MD_WB_ENTRY", "Eintrag");
 define("_MD_WB_ENTRYCATEGORY", "Kategorie: ");
 define("_MD_WB_ENTRYCOUNT", "Diese Kategorie hat ");
 define("_MD_WB_ENTRYDEFINITION", "Definition: ");
@@ -74,7 +75,7 @@ define("_MD_WB_RECENTENT", "Aktuelle Eintr&auml;ge");
 define("_MD_WB_REFERENCE", "Referenz<span style='font-size: xx-small; font-weight: normal; display: block;'>(Sie k&ouml;nnen optional die Quelle der Definition angeben.)</span>");
 define("_MD_WB_REQRCVD", "Wir haben Ihre Anfrage erhalten und werden sie schnellstm&ouml;glich bearbeiten.");
 define("_MD_WB_REQSEND", "Anfrage abgeschickt");
-define("_MD_WB_REQTERM", "[*] Zu definierender Begriff");
+define("_MD_WB_REQTERM", "Zu definierender Begriff");
 define("_MD_WB_REQUESTDEF", "Eine Definition anfragen");
 define("_MD_WB_REQUESTFORM", "Eine Definition anfragen");
 define("_MD_WB_REQUESTSENT", "Ihre Anfrage wurde weitergeleitet an den Webmaster von %s.");
@@ -83,7 +84,7 @@ define("_MD_WB_RETURN2INDEX", "Zur&uuml;ck zum Index");
 define("_MD_WB_SEARCH", "Suchen!");
 define("_MD_WB_SEARCHENTRY", "Suche nach Eintrag");
 define("_MD_WB_SEARCHHEAD", "Suchergebnisse");
-define("_MD_WB_SECTIONNAME", "W&ouml;rterbuch");
+define("_MD_WB_SECTIONNAME", "imGlossary");
 define("_MD_WB_SEEMORE", "Weitere Definitionen...");
 define("_MD_WB_SENDSTORY", "Diesen Eintrag an einen Freund schicken");
 define("_MD_WB_SENDTOFRIEND", "Diesen Begriff an einen Freund schicken");
@@ -131,5 +132,4 @@ define("_MD_WB_GUEST","Gast");
 define("_MD_WB_NOCATSINSYSTEM","Keine kategorien im system");
 define("_MD_WB_REQUESTSUGGEST","(Klicken Sie die folgenden Wörter an, um eine Definition für die Bezeichnung vorzuschlagen)");
 
-define("_MD_WB_ALL", "All" );
 ?>
