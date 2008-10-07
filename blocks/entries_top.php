@@ -15,11 +15,11 @@ function b_entries_top_show( $options )	{
 	global $xoopsDB, $xoopsModule, $xoopsUser;
 	$myts = & MyTextSanitizer :: getInstance();
  
- 	$words = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . "" );
+ 	$words = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
 	$totalwords = $xoopsDB -> getRowsNum( $words );
 
 	$block = array();
-	$sql = "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
+	$sql = "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
 	$result = $xoopsDB -> query( $sql, $options[1], 0 );
 
 	if ( $totalwords > 0 ) {

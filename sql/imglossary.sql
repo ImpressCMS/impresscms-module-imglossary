@@ -2,21 +2,15 @@
 # version 2.5.3
 # http://www.phpmyadmin.net
 #
-# Host: localhost
-# Generation Time: Dec 12, 2003 at 06:03 AM
-# Server version: 3.23.56
-# PHP Version: 4.3.3
-# 
-# Database : `xoopsv3a`
-# 
+# Module: imGlossary
 
 # --------------------------------------------------------
 
 #
-# Table structure for table `wbcategories`
+# Table structure for table `imglossary_cats`
 #
 
-CREATE TABLE `wbcategories` (	
+CREATE TABLE `imglossary_cats` (	
 	`categoryID` tinyint(4) NOT NULL auto_increment,
 	`name` varchar(100) NOT NULL default '',
 	`description` text NOT NULL,
@@ -24,19 +18,19 @@ CREATE TABLE `wbcategories` (
 	`weight` int(11) NOT NULL default '1',
 	PRIMARY KEY  (`categoryID`),
 	UNIQUE KEY columnID (`categoryID`)
-) TYPE=MyISAM COMMENT='WordBook by hsalazar';	
+) TYPE=MyISAM COMMENT='imGlossary by McDonald';	
 
 #
-# Dumping data for table `wbcategories`
+# Dumping data for table `imglossary_cats`
 #
 
 # --------------------------------------------------------
 
 #
-# Table structure for table `wbentries`
+# Table structure for table `imglossary_entries`
 #
 
-CREATE TABLE `wbentries` (	
+CREATE TABLE `imglossary_entries` (	
 	`entryID` int(8) NOT NULL auto_increment,
 	`categoryID` tinyint(4) NOT NULL default '0',
 	`term` varchar(255) NOT NULL default '0',
@@ -60,8 +54,8 @@ CREATE TABLE `wbentries` (
 	PRIMARY KEY  (`entryID`),
 	UNIQUE KEY entryID (`entryID`),
 	FULLTEXT KEY definition (`definition`)
-) TYPE=MyISAM COMMENT='WordBook by hsalazar';	
+) TYPE=MyISAM COMMENT='imGlossary by McDonald';	
 
 #
-# Dumping data for table `wbentries`
+# Dumping data for table `imglossary_entries`
 #

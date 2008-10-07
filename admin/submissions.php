@@ -45,10 +45,10 @@ function editentry( $entryID = '' ) {
 	include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 	// Since this is a submission, the id exists, so retrieve data: we're editing an entry
-	$result = $xoopsDB -> query( "SELECT categoryID, term, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE entryID='$entryID'" );
+	$result = $xoopsDB -> query( "SELECT categoryID, term, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID'" );
 	list( $categoryID, $term, $definition, $ref, $url, $uid, $submit, $datesub, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow( $result );
 
-	$query = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " WHERE categoryID=$categoryID ");
+	$query = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID ");
 	list($name) = $xoopsDB -> fetchRow( $query );
 
 	if ( $xoopsDB -> getRowsNum( $result ) == 0 ) {
@@ -62,7 +62,7 @@ function editentry( $entryID = '' ) {
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
 
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
-		$mytree = new XoopsTree( $xoopsDB -> prefix( 'wbcategories' ), "categoryID" , "0" );
+		$mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), "categoryID" , "0" );
 
 		ob_start();
 			$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
@@ -164,7 +164,7 @@ switch ( $op ) {
 		$request = 0;
 		$date = time();
 
-		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'wbentries' ) . " SET term='$term', categoryID='$categoryID', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) )	{
+		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) )	{
 			redirect_header( "index.php", 1, _AM_WB_ENTRYAUTHORIZED );
 		} else {
 			redirect_header( "index.php", 1, _AM_WB_ENTRYNOTUPDATED );
@@ -177,7 +177,7 @@ switch ( $op ) {
 		$confirm = ( isset( $confirm ) ) ? 1 : 0;
 
 		if ( $confirm )	{
-			$xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE entryID=$entryID" );
+			$xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
 			// delete comments (mondarse)
 			xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
 			// delete comments (mondarse)
@@ -185,7 +185,7 @@ switch ( $op ) {
 			exit();
 		} else {
 			$entryID = ( isset( $_GET['entryID'] ) ) ? intval( $_GET['entryID'] ) : $entryID;
-			$result = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE entryID=$entryID" );
+			$result = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
 			list( $entryID, $term ) = $xoopsDB -> fetchrow( $result );
 			xoops_cp_header();
 			xoops_confirm( array( 'op' => 'del', 'entryID' => $entryID, 'confirm' => 1, 'term' => $term ), 'submissions.php', _AM_WB_DELETETHISENTRY . "<br /><br>" . $term, _AM_WB_DELETE );

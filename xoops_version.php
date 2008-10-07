@@ -22,8 +22,8 @@ $modversion['support_site_name'] = "ImpressCMS Community - Modules Support Forum
 $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 0;
 $modversion['image'] = "images/imglossary_logo.png";
-$modversion['iconbig'] = "images/iglossary_iconsbig.png";
-$modversion['iconsmall'] = "images/iglossary_iconsmall.png";
+$modversion['iconbig'] = "images/imglossary_iconsbig.png";
+$modversion['iconsmall'] = "images/imglossary_iconsmall.png";
 $modversion['dirname'] = $glossdirname;
 
 // Admin things
@@ -36,8 +36,8 @@ $modversion['adminmenu'] = "admin/menu.php";
 $modversion['sqlfile']['mysql'] = "sql/imglossary.sql";
 
 // Tables created by sql file (without prefix!)
-$modversion['tables'][0] = "wbcategories";
-$modversion['tables'][1] = "wbentries";
+$modversion['tables'][0] = "imglossary_cats";
+$modversion['tables'][1] = "imglossary_entries";
 
 // Search
 $modversion['hasSearch'] = 1;
@@ -50,14 +50,12 @@ global $xoopsUser, $xoopsDB, $xoopsModule;
 $modversion['hasMain'] = 1;
 $hModConfig =& xoops_gethandler('config');
 $hModule =& xoops_gethandler('module');
-if ($wordbookModule =& $hModule->getByDirname('wordbook'))
-{
-	$wordbookConfig =& $hModConfig->getConfigsByCat(0, $wordbookModule->getVar('mid'));
+if ( $wordbookModule =& $hModule -> getByDirname( $glossdirname ) ) {
+	$wordbookConfig =& $hModConfig -> getConfigsByCat( 0, $wordbookModule -> getVar('mid') );
 	//if ( isset($wordbookConfig['catsinmenu']) && $wordbookConfig['anonpost'] == 1 )
-	if (($xoopsUser && ($wordbookConfig['allowsubmit'] == 1)) || ($wordbookConfig['anonpost'] == 1)) 
-	{
-	$modversion['sub'][1]['name'] = _MI_WB_SUB_SMNAME1;
-	$modversion['sub'][1]['url'] = "submit.php";	
+	if ( ( $xoopsUser && ( $wordbookConfig['allowsubmit'] == 1 ) ) || ( $wordbookConfig['anonpost'] == 1 ) ) {
+		$modversion['sub'][1]['name'] = _MI_WB_SUB_SMNAME1;
+		$modversion['sub'][1]['url'] = "submit.php";	
 	}
 }
 //if ($xoopsUser)
@@ -71,24 +69,22 @@ $modversion['sub'][3]['name'] = _MI_WB_SUB_SMNAME3;
 $modversion['sub'][3]['url'] = "search.php";
 
 
-$sql = $xoopsDB->query( "SELECT categoryID, name FROM " . $xoopsDB->prefix( "wbcategories" ) . " " );
+$sql = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 $i = 3;
-$hModConfig =& xoops_gethandler('config');
-$hModule =& xoops_gethandler('module');
-if ($wordbookModule =& $hModule->getByDirname('wordbook'))
-{
-	$wordbookConfig =& $hModConfig->getConfigsByCat(0, $wordbookModule->getVar('mid'));
-	if ( isset($wordbookConfig['catsinmenu']) && $wordbookConfig['catsinmenu'] == 1 )
-	{
-	while ( list( $categoryID, $name ) = $xoopsDB->fetchRow( $sql ) )
-		{
-		$modversion['sub'][$i]['name'] = $name;
-		$modversion['sub'][$i]['url'] = "category.php?categoryID=" . $categoryID . "";
-		$i++;
+$hModConfig =& xoops_gethandler( 'config' );
+$hModule =& xoops_gethandler( 'module' );
+if ($wordbookModule =& $hModule -> getByDirname( $glossdirname ) ) {
+	$wordbookConfig =& $hModConfig -> getConfigsByCat( 0, $wordbookModule -> getVar('mid') );
+	if ( isset( $wordbookConfig['catsinmenu'] ) && $wordbookConfig['catsinmenu'] == 1 )	{
+		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
+			$modversion['sub'][$i]['name'] = $name;
+			$modversion['sub'][$i]['url'] = "category.php?categoryID=" . $categoryID . "";
+			$i++;
 		} 
 	}
 }
 
+// Blocks
 $modversion['blocks'][1]['file'] = "entries_new.php";
 $modversion['blocks'][1]['name'] = _MI_WB_ENTRIESNEW;
 $modversion['blocks'][1]['description'] = "Shows new entries";
@@ -128,101 +124,103 @@ $modversion['templates'][7]['file'] = 'wb_submit.html';
 $modversion['templates'][7]['description'] = 'Submit a definition';
 
 // Config Settings (only for modules that need config settings generated automatically)
-$modversion['config'][1]['name'] = 'allowsubmit';
-$modversion['config'][1]['title'] = '_MI_WB_ALLOWSUBMIT';
-$modversion['config'][1]['description'] = '_MI_WB_ALLOWSUBMITDSC';
-$modversion['config'][1]['formtype'] = 'yesno';
-$modversion['config'][1]['valuetype'] = 'int';
-$modversion['config'][1]['default'] = 1;
+$i = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'allowsubmit';
+$modversion['config'][$i]['title'] = '_MI_WB_ALLOWSUBMIT';
+$modversion['config'][$i]['description'] = '_MI_WB_ALLOWSUBMITDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
+$i++;
+$modversion['config'][$i]['name'] = 'anonpost';
+$modversion['config'][$i]['title'] = '_MI_WB_ANONSUBMIT';
+$modversion['config'][$i]['description'] = '_MI_WB_ANONSUBMITDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'dateformat';
+$modversion['config'][$i]['title'] = '_MI_WB_DATEFORMAT';
+$modversion['config'][$i]['description'] = '_MI_WB_DATEFORMATDSC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 'd-M-Y H:i';
+$i++;
+$modversion['config'][$i]['name'] = 'perpage';
+$modversion['config'][$i]['title'] = '_MI_WB_PERPAGE';
+$modversion['config'][$i]['description'] = '_MI_WB_PERPAGEDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 5;
+$modversion['config'][$i]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
+$i++;
+$modversion['config'][$i]['name'] = 'indexperpage';
+$modversion['config'][$i]['title'] = '_MI_WB_PERPAGEINDEX';
+$modversion['config'][$i]['description'] = '_MI_WB_PERPAGEINDEXDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 5;
+$modversion['config'][$i]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
+$i++;
+$modversion['config'][$i]['name'] = 'autoapprove';
+$modversion['config'][$i]['title'] = '_MI_WB_AUTOAPPROVE';
+$modversion['config'][$i]['description'] = '_MI_WB_AUTOAPPROVEDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'multicats';
+$modversion['config'][$i]['title'] = '_MI_WB_MULTICATS';
+$modversion['config'][$i]['description'] = '_MI_WB_MULTICATSDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
+$i++;
+$modversion['config'][$i]['name'] = 'catsinmenu';
+$modversion['config'][$i]['title'] = '_MI_WB_CATSINMENU';
+$modversion['config'][$i]['description'] = '_MI_WB_CATSINMENUDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'catsperindex';
+$modversion['config'][$i]['title'] = '_MI_WB_CATSPERINDEX';
+$modversion['config'][$i]['description'] = '_MI_WB_CATSPERINDEXDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 3;
+$modversion['config'][$i]['options'] = array( '1' => 1, '3' => 3, '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
+$i++;
+$modversion['config'][$i]['name'] = 'adminhits';
+$modversion['config'][$i]['title'] = '_MI_WB_ALLOWADMINHITS';
+$modversion['config'][$i]['description'] = '_MI_WB_ALLOWADMINHITSDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'mailtoadmin';
+$modversion['config'][$i]['title'] = '_MI_WB_MAILTOADMIN';
+$modversion['config'][$i]['description'] = '_MI_WB_MAILTOADMINDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'rndlength';
+$modversion['config'][$i]['title'] = '_MI_WB_RANDOMLENGTH';
+$modversion['config'][$i]['description'] = '_MI_WB_RANDOMLENGTHDSC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 150;
+$i++;
+$modversion['config'][$i]['name'] = 'linkterms';
+$modversion['config'][$i]['title'] = '_MI_WB_LINKTERMS';
+$modversion['config'][$i]['description'] = '_MI_WB_LINKTERMSDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
 
-$modversion['config'][2]['name'] = 'anonpost';
-$modversion['config'][2]['title'] = '_MI_WB_ANONSUBMIT';
-$modversion['config'][2]['description'] = '_MI_WB_ANONSUBMITDSC';
-$modversion['config'][2]['formtype'] = 'yesno';
-$modversion['config'][2]['valuetype'] = 'int';
-$modversion['config'][2]['default'] = 0;
-
-$modversion['config'][3]['name'] = 'dateformat';
-$modversion['config'][3]['title'] = '_MI_WB_DATEFORMAT';
-$modversion['config'][3]['description'] = '_MI_WB_DATEFORMATDSC';
-$modversion['config'][3]['formtype'] = 'textbox';
-$modversion['config'][3]['valuetype'] = 'text';
-$modversion['config'][3]['default'] = 'd-M-Y H:i';
-
-$modversion['config'][4]['name'] = 'perpage';
-$modversion['config'][4]['title'] = '_MI_WB_PERPAGE';
-$modversion['config'][4]['description'] = '_MI_WB_PERPAGEDSC';
-$modversion['config'][4]['formtype'] = 'select';
-$modversion['config'][4]['valuetype'] = 'int';
-$modversion['config'][4]['default'] = 5;
-$modversion['config'][4]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
-
-$modversion['config'][5]['name'] = 'indexperpage';
-$modversion['config'][5]['title'] = '_MI_WB_PERPAGEINDEX';
-$modversion['config'][5]['description'] = '_MI_WB_PERPAGEINDEXDSC';
-$modversion['config'][5]['formtype'] = 'select';
-$modversion['config'][5]['valuetype'] = 'int';
-$modversion['config'][5]['default'] = 5;
-$modversion['config'][5]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
-
-$modversion['config'][6]['name'] = 'autoapprove';
-$modversion['config'][6]['title'] = '_MI_WB_AUTOAPPROVE';
-$modversion['config'][6]['description'] = '_MI_WB_AUTOAPPROVEDSC';
-$modversion['config'][6]['formtype'] = 'yesno';
-$modversion['config'][6]['valuetype'] = 'int';
-$modversion['config'][6]['default'] = 0;
-
-$modversion['config'][7]['name'] = 'multicats';
-$modversion['config'][7]['title'] = '_MI_WB_MULTICATS';
-$modversion['config'][7]['description'] = '_MI_WB_MULTICATSDSC';
-$modversion['config'][7]['formtype'] = 'yesno';
-$modversion['config'][7]['valuetype'] = 'int';
-$modversion['config'][7]['default'] = 1;
-
-$modversion['config'][8]['name'] = 'catsinmenu';
-$modversion['config'][8]['title'] = '_MI_WB_CATSINMENU';
-$modversion['config'][8]['description'] = '_MI_WB_CATSINMENUDSC';
-$modversion['config'][8]['formtype'] = 'yesno';
-$modversion['config'][8]['valuetype'] = 'int';
-$modversion['config'][8]['default'] = 0;
-
-$modversion['config'][9]['name'] = 'catsperindex';
-$modversion['config'][9]['title'] = '_MI_WB_CATSPERINDEX';
-$modversion['config'][9]['description'] = '_MI_WB_CATSPERINDEXDSC';
-$modversion['config'][9]['formtype'] = 'select';
-$modversion['config'][9]['valuetype'] = 'int';
-$modversion['config'][9]['default'] = 3;
-$modversion['config'][9]['options'] = array( '1' => 1, '3' => 3, '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
-
-$modversion['config'][10]['name'] = 'adminhits';
-$modversion['config'][10]['title'] = '_MI_WB_ALLOWADMINHITS';
-$modversion['config'][10]['description'] = '_MI_WB_ALLOWADMINHITSDSC';
-$modversion['config'][10]['formtype'] = 'yesno';
-$modversion['config'][10]['valuetype'] = 'int';
-$modversion['config'][10]['default'] = 0;
-
-$modversion['config'][11]['name'] = 'mailtoadmin';
-$modversion['config'][11]['title'] = '_MI_WB_MAILTOADMIN';
-$modversion['config'][11]['description'] = '_MI_WB_MAILTOADMINDSC';
-$modversion['config'][11]['formtype'] = 'yesno';
-$modversion['config'][11]['valuetype'] = 'int';
-$modversion['config'][11]['default'] = 1;
-
-$modversion['config'][12]['name'] = 'rndlength';
-$modversion['config'][12]['title'] = '_MI_WB_RANDOMLENGTH';
-$modversion['config'][12]['description'] = '_MI_WB_RANDOMLENGTHDSC';
-$modversion['config'][12]['formtype'] = 'textbox';
-$modversion['config'][12]['valuetype'] = 'int';
-$modversion['config'][12]['default'] = 150;
-
-$modversion['config'][13]['name'] = 'linkterms';
-$modversion['config'][13]['title'] = '_MI_WB_LINKTERMS';
-$modversion['config'][13]['description'] = '_MI_WB_LINKTERMSDSC';
-$modversion['config'][13]['formtype'] = 'yesno';
-$modversion['config'][13]['valuetype'] = 'int';
-$modversion['config'][13]['default'] = 1;
-
-//Comments (Mondarse)
+//Comments
 $modversion['hasComments'] = 1;
 $modversion['comments']['itemName'] = 'entryID';
 $modversion['comments']['pageName'] = 'entry.php';
@@ -230,6 +228,5 @@ $modversion['comments']['pageName'] = 'entry.php';
 $modversion['comments']['callbackFile'] = 'include/comment_functions.php';
 $modversion['comments']['callback']['approve'] = 'wordbook_com_approve';
 $modversion['comments']['callback']['update'] = 'wordbook_com_update';
-//Comments (Mondarse)
 
 ?>

@@ -24,10 +24,10 @@ if (empty($entryID)) {
 function printPage($entryID) {
 	global $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $myts;
 	
-	$result1 = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE entryID='$entryID' AND submit=0 ORDER BY datesub" );
+	$result1 = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID' AND submit=0 ORDER BY datesub" );
 	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow($result1);
 
-	$result2 = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " WHERE categoryID=$categoryID" );
+	$result2 = $xoopsDB -> query ( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 	list ($name) = $xoopsDB -> fetchRow($result2);
 
 	$result3 = $xoopsDB -> query( "SELECT name, uname FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uid=$uid" );

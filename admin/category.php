@@ -25,7 +25,7 @@ function categoryEdit( $categoryID = '' ){
 
 	// If there is a parameter, and the id exists, retrieve data: we're editing a column
 	if ( $categoryID ) {
-		$result = $xoopsDB -> query( "SELECT categoryID, name, description, total, weight FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID = '$categoryID'" );
+		$result = $xoopsDB -> query( "SELECT categoryID, name, description, total, weight FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID = '$categoryID'" );
 		list( $categoryID, $name, $description, $total, $weight ) = $xoopsDB -> fetchrow( $result );
 
 		if ( $xoopsDB -> getRowsNum( $result ) == 0 ) {
@@ -88,19 +88,19 @@ function categoryDelete( $categoryID = '' ) {
 	global $xoopsDB;
 	$categoryID = isset($_POST['categoryID']) ? intval($_POST['categoryID']) : intval($_GET['categoryID']);
 	$ok = isset($_POST['ok']) ? intval($_POST['ok']) : 0;
-	$result = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID=$categoryID" );
+	$result = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 	list( $categoryID, $name ) = $xoopsDB -> fetchrow( $result );
 
 	// confirmed, so delete 
 	if ( $ok == 1 ) {
 			//get all entries in the category
-			$result3 = $xoopsDB -> query( "SELECT entryID FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE categoryID=$categoryID" );
+			$result3 = $xoopsDB -> query( "SELECT entryID FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
 			//now for each entry, delete the coments
 			while ( list($entryID) = $xoopsDB -> fetchRow($result3) ) {
 				xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
 			}		
-		$result = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID=$categoryID" );
-		$result2 = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE categoryID=$categoryID" );
+		$result = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
+		$result2 = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
 		redirect_header( "index.php", 1, sprintf( _AM_WB_CATISDELETED, $name ) );
 	} else {
 		xoops_cp_header();
@@ -119,13 +119,13 @@ function categorySave ( $categoryID = '' ) {
 
 	// Run the query and update the data
 	if ( !$_POST['categoryID'] ) {
-		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'wbcategories' ) . " (categoryID, name, description, weight) VALUES ('', '$name', '$description', '$weight')" ) ) {
+		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_cats' ) . " (categoryID, name, description, weight) VALUES ('', '$name', '$description', '$weight')" ) ) {
 			redirect_header( "index.php", 1, _AM_WB_CATCREATED );
 		} else {
 			redirect_header( "index.php", 1, _AM_WB_NOTUPDATED );
 		} 
 	} else {
-		if ( $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'wbcategories' ) . " SET name='$name', description='$description', weight='$weight' WHERE categoryID='$categoryID'" ) ) {
+		if ( $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_cats' ) . " SET name='$name', description='$description', weight='$weight' WHERE categoryID='$categoryID'" ) ) {
 			redirect_header( "index.php", 1, _AM_WB_CATMODIFIED );
 		} else {
 			redirect_header( "index.php", 1, _AM_WB_NOTUPDATED );

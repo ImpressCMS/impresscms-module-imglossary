@@ -64,18 +64,18 @@ function getuserForm( $user ) {
 
 function calculateTotals() {
 	global $xoopsUser, $xoopsDB, $xoopsModule;
-	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " " );
+	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 	list( $totalcategories ) = $xoopsDB -> getRowsNum( $result01 );
 	while (list ( $categoryID, $total ) = $xoopsDB -> fetchRow ( $result01 ) ) {
 		$newcount = countByCategory ( $categoryID );
-		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'wbcategories' ) . " SET total='$newcount' WHERE categoryID='$categoryID'" );
+		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_cats' ) . " SET total='$newcount' WHERE categoryID='$categoryID'" );
 	}
 }
 
 function countByCategory( $c ) {
     global $xoopsUser, $xoopsDB, $xoopsModule;
     $count = 0;
-    $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 and offline=0 AND categoryID='$c'" );
+    $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 and offline=0 AND categoryID='$c'" );
     while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {
 		$count++;
 	} 
@@ -84,14 +84,14 @@ function countByCategory( $c ) {
 
 function countCats() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
-	$cats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( "wbcategories" ) . "" );
+	$cats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( "imglossary_cats" ) . "" );
 	$totalcats = $xoopsDB -> getRowsNum( $cats );
 	return $totalcats;
 }
 
 function countWords() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
-	$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 AND request=0" );
+	$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND request=0" );
 	$publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 	return $publishedwords;
 }
@@ -102,7 +102,7 @@ function alphaArray() {
 	for ($a = 65; $a < (65+26); $a++ ) {
 		$letterlinks = array();
 		$initial = chr($a);
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'wbentries' ) . " WHERE init='$initial'" );
+		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='$initial'" );
 		$howmany = $xoopsDB -> getRowsNum( $sql );
 		$letterlinks['total'] = $howmany;
 		$letterlinks['id'] = chr($a);
@@ -138,7 +138,7 @@ function showSearchForm() {
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
 		$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">" . _MD_WB_CATEGORY . "</td>";
 		$searchform .= "<td>&nbsp;</td><td style=\"text-align: left;\">";
-		$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " ORDER BY categoryID" );
+		$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
 		$searchform .= "<select name=\"categoryID\">";
 		$searchform .= "<option value=\"0\">" . _MD_WB_ALLOFTHEM . "</option>";
 

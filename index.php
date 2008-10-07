@@ -65,7 +65,7 @@ switch ( $op ) {
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			$searchform .= '<tr><td style="text-align: right; line-height: 200%">' . _MD_WB_CATEGORY . '</td>';
 			$searchform .= '<td>&nbsp;</td><td style="text-align: left;">';
-			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " ORDER BY categoryID" );
+			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
 			$searchform .= '<select name="categoryID">';
 			$searchform .= '<option value="0">' . _MD_WB_ALLOFTHEM . '</option>';
 			while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultcat ) ) {
@@ -84,14 +84,14 @@ switch ( $op ) {
 		$alpha = alphaArray();
 		$xoopsTpl -> assign( 'alpha', $alpha );
 
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'wbentries' ) . " WHERE init='#' " );
+		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#' " );
 		$howmanyother = $xoopsDB -> getRowsNum( $sql );
 		$xoopsTpl -> assign( 'totalother', $howmanyother );
 
 		if ( $xoopsModuleConfig['multicats'] == 1 )	{
 			// To display the list of categories
 			$block0 = array();
-			$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " ORDER BY name ASC" );
+			$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY name ASC" );
 			while (list( $catID, $name, $total) = $xoopsDB -> fetchRow($resultcat)) {
 				$catlinks = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -106,7 +106,7 @@ switch ( $op ) {
 
 		// To display the recent entries block
 		$block1 = array();
-		$result05 = $xoopsDB -> query( "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub < " . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC", $xoopsModuleConfig['indexperpage'], 0 );
+		$result05 = $xoopsDB -> query( "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub < " . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC", $xoopsModuleConfig['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
@@ -125,7 +125,7 @@ switch ( $op ) {
 
 		// To display the most read entries block
 		$block2 = array();
-		$result06 = $xoopsDB -> query( "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC", $xoopsModuleConfig['indexperpage'], 0 );
+		$result06 = $xoopsDB -> query( "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC", $xoopsModuleConfig['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
@@ -143,7 +143,7 @@ switch ( $op ) {
 		}
 
 		// To display the random term block
-		list($numrows) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0" ) );
+		list($numrows) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" ) );
 		if ( $numrows > 1 ) {
 			$numrows = $numrows-1;
 			mt_srand((double)microtime()*1000000);
@@ -152,7 +152,7 @@ switch ( $op ) {
 			$entrynumber = 0;
 		}
 
-		$resultZ = $xoopsDB -> query ( "SELECT categoryID, entryID, term, definition FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
+		$resultZ = $xoopsDB -> query ( "SELECT categoryID, entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
 
 		$zerotest = $xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
@@ -171,7 +171,7 @@ switch ( $op ) {
 				if ( $xoopsModuleConfig['multicats'] == 1 )	{
 					$random['categoryID'] = $myrow['categoryID'];
 		
-					$resultY = $xoopsDB -> query ( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'wbcategories' ) . " WHERE categoryID=" . $myrow['categoryID'] . " " );
+					$resultY = $xoopsDB -> query ( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=" . $myrow['categoryID'] . " " );
 					list ( $categoryID, $name ) = $xoopsDB -> fetchRow ( $resultY );
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
@@ -186,7 +186,7 @@ switch ( $op ) {
 				$xoopsTpl -> assign( 'userisadmin', 1 );
 
 				$blockS = array();
-				$resultS = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term" );
+				$resultS = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term" );
 				$totalSwords = $xoopsDB -> getRowsNum( $resultS );
 
 				// If there are definitions
@@ -207,7 +207,7 @@ switch ( $op ) {
 				}
 
 				$blockR = array();
-				$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
+				$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
 				$totalRwords = $xoopsDB -> getRowsNum ( $resultR );
 
 				// If there are definitions
@@ -230,7 +230,7 @@ switch ( $op ) {
 			} else {
 			$xoopsTpl -> assign( 'userisadmin', 0 );
 			$blockR = array();
-			$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
+			$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
 			$totalRwords = $xoopsDB -> getRowsNum ( $resultR );
              
 			// If there are definitions

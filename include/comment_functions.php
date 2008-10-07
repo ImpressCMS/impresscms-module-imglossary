@@ -3,7 +3,7 @@
 
 function wordbook_com_update( $entry_ID, $total_num ) {
 	$db =& Database::getInstance();
-	$sql = "UPDATE " . $db -> prefix( 'wbentries' ) . " SET comments=" . $total_num . "	WHERE entryID=" . $entry_ID;
+	$sql = "UPDATE " . $db -> prefix( 'imglossary_entries' ) . " SET comments=" . $total_num . "	WHERE entryID=" . $entry_ID;
 	$db -> query( $sql );
 }
 

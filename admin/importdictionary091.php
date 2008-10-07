@@ -24,15 +24,15 @@ function DefinitionImport($delete) {
 
 	/*if ($delete) {
 	  	//get all entries
-		$result3=$xoopsDB->query("select entryID from ".$xoopsDB->prefix("wbentries")."");
+		$result3=$xoopsDB->query("select entryID from ".$xoopsDB->prefix("imglossary_entries")."");
 		//now for each entry, delete the coments
 		while ( list($entryID)=$xoopsDB->fetchRow($result3) ) {
 				xoops_comment_delete(
 				$xoopsModule->getVar('mid'), $entryID);
 			}		 
-		$sqlquery=$xoopsDB->queryF("delete from ".$xoopsDB->prefix("wbentries"));
+		$sqlquery=$xoopsDB->queryF("delete from ".$xoopsDB->prefix("imglossary_entries"));
 	}*/
-	$sqlquery = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'wbentries' ) );
+	$sqlquery = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'imglossary_entries' ) );
 	
 	$sqlquery = $xoopsDB -> query( "SELECT id, letter, name, definition, state, comments FROM " . $xoopsDB -> prefix( 'dictionary' ) );
 	$fecha = time()-1;
@@ -57,7 +57,7 @@ function DefinitionImport($delete) {
 		$glo['comments'] = $sqlfetch["comments"];
 		$glocounter = $glocounter + 1;
 		
-		$insert = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'wbentries' ) . " (entryID, init, term, definition, url, submit, datesub, offline, comments) VALUES ('','" . $glo['letter'] . "','" . $glo['name'] . "','" . $glo['definition'] . "','','" . $glo['submit'] . "','" . $glo['datesub'] . "','" . $glo['state'] . "','" . $glo['comments'] . "')" );
+		$insert = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url, submit, datesub, offline, comments) VALUES ('','" . $glo['letter'] . "','" . $glo['name'] . "','" . $glo['definition'] . "','','" . $glo['submit'] . "','" . $glo['datesub'] . "','" . $glo['state'] . "','" . $glo['comments'] . "')" );
 		if (!$insert) {
 			$errorcounter = $errorcounter + 1;
 			echo "<font color='red'>" . _AM_WB_IMPDICT_04 . $glo['id'] . "</font><br>" . $glo['nom'] . "<br>";

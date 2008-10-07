@@ -20,7 +20,7 @@ function b_entries_random_show() {
 	$block = array();
 	$block['title'] = _MB_WB_RANDOMTITLE;
 		
-	list ( $numrows ) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0" ) );
+	list ( $numrows ) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" ) );
 	if ( $numrows > 1 ) {
 		$numrows = $numrows - 1;
 		mt_srand( ( double )microtime() * 1000000 );
@@ -36,7 +36,7 @@ function b_entries_random_show() {
 	$module_name = $wbModule -> getVar( 'dirname' );
 	$wbConfig =& $hModConfig -> getConfigsByCat( 0, $wbModule -> getVar( 'mid' ) );
 
-	$result = $xoopsDB -> query ( "SELECT entryID, categoryID, term, definition FROM " . $xoopsDB -> prefix( 'wbentries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
+	$result = $xoopsDB -> query ( "SELECT entryID, categoryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
 
 	while ( $myrow = $xoopsDB -> fetchArray( $result ) ) {
 		$entryID = $myts -> displayTarea( $myrow['entryID'] );
@@ -48,7 +48,7 @@ function b_entries_random_show() {
 		}
 
 		$categoryID = $myrow['categoryID'];
-		$result_cat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'wbcategories' ) . " WHERE categoryID=$categoryID");
+		$result_cat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID");
 		list( $categoryID, $name ) = $xoopsDB -> fetchRow( $result_cat );
 		$categoryname = $myts -> displayTarea( $name );
 
