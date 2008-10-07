@@ -30,8 +30,8 @@
 <fieldset>
 <legend><{$smarty.const._MD_WB_BROWSELETTER}></legend>
 <div class="letters">
-<{foreach item=letterlinks from=$alpha.initial}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="[ <{$letterlinks.total}> ]" ><{$letterlinks.linktext}></a> |
-<{/foreach}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_OTHER}>" title="[ <{$totalother}> ]"><{$smarty.const._MD_WB_OTHER}></a> | <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_ALL}>" title="[ <{$publishedwords}> ]"><{$smarty.const._MD_WB_ALL}></a>
+<{foreach item=letterlinks from=$alpha.initial}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.linktext}>" ><{$letterlinks.linktext}></a> |
+<{/foreach}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_OTHER}>" title="<{$smarty.const._MD_WB_OTHER}>"><{$smarty.const._MD_WB_OTHER}></a> | <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_ALL}>" title="<{$smarty.const._MD_WB_ALL}>"><{$smarty.const._MD_WB_ALL}></a>
 </div>
 </fieldset>
 </div>
