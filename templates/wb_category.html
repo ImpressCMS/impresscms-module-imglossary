@@ -31,29 +31,34 @@
 <{/if}>
 
 <{if $pagetype == '0'}>
+<div>&nbsp;</div>
 	<h2 class="cat"><{$smarty.const._MD_WB_ALLCATS}></h2>
 
 	<{foreach item=eachcat from=$catsarray.single}>
-	<h3 class="cat"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></h3>
-	<div class="introcen"><{$eachcat.description}><br /></div>
-	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div><br />
+<!--	<h3 class="cat"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></h3> -->
+	<fieldset style="border: #000 1px solid;">
+	<legend style="display: inline; font-weight: bold;"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
+	<div style="text-align: left; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
+	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div></fieldset><br />
 	<{/foreach}>
 
 	<div align = 'left'><{$catsarray.navbar}></div>
 	<p><div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_WB_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_WB_RETURN2INDEX}></a> ] </div>
 
 <{elseif $pagetype == '1'}>
-	<h2 class="cat"><{$singlecat.name}></h2>
-	<div class="introcen"><{$singlecat.description}></div>
+<!--	<h2 class="cat"><{$singlecat.name}></h2> -->
+	<fieldset style="border: #000 1px solid; padding: 4px;">
+	<legend style="display: inline; font-weight: bold;"><{$singlecat.name}></legend>
+	<div style="text-align: left; padding: 8px; font-size: small;"><{$singlecat.description}></div>
 	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div><br />
 
 	<{foreach item=eachentry from=$entriesarray.single}>
 	<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
-	<div class="definition"><{$eachentry.definition}></div>
+	<div class="definition" style="clear: both;"><{$eachentry.definition}></div>
 	<div class="definition"><{$eachentry.microlinks}></div>
 	<br />
 	<{/foreach}>
-
+</fieldset>
 	<div align = 'left'><{$entriesarray.navbar}></div>
 	<p><div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_WB_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_WB_RETURN2INDEX}></a> ] </div>
 

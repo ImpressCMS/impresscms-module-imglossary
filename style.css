@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5
 	font-size: 18px; 
 	text-align: right; 
 	font-weight: bold; 
-	color: #2F5376; 
+	color: #F3AC03; 
 	letter-spacing: -1.5px; 
 	margin: 0; 
 	line-height: 18px;
@@ -57,7 +57,7 @@ fieldset ul
 legend
 	{
 	font-weight: bold; 
-	color: #900;
+	color: #F3AC03;
 	}
 .inventory
 	{
@@ -97,9 +97,8 @@ legend
 	}
 .catname
 	{
-	font-size: 12px; 
+	font-size: x-small; 
 	font-weight: bold; 
-	background-color: #ccc; 
 	padding: 1px 4px; 
 	margin: 4px;
 	}
@@ -134,8 +133,9 @@ h3.cat
 	}
 h4.term, h5.term
 	{
-	color: #456; 
-	margin: 0 0 4px 0;
+	color: #456;
+	background-color: #E8E6E2;
+	padding: 4px;
 	}
 .catsearch
 	{

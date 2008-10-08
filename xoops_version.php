@@ -95,7 +95,7 @@ $modversion['blocks'][1]['name'] = _MI_WB_ENTRIESNEW;
 $modversion['blocks'][1]['description'] = "Shows new entries";
 $modversion['blocks'][1]['show_func'] = "b_entries_new_show";
 $modversion['blocks'][1]['edit_func'] = "b_entries_new_edit";
-$modversion['blocks'][1]['options'] = "datesub|5";
+$modversion['blocks'][1]['options'] = "datesub|5|d F Y";
 $modversion['blocks'][1]['template'] = "entries_new.html";
 
 $modversion['blocks'][2]['file'] = "entries_top.php";
@@ -197,6 +197,16 @@ $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 3;
 $modversion['config'][$i]['options'] = array( '1' => 1, '3' => 3, '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
 $i++;
+$modversion['config'][$i]['name'] = 'sortcats';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_SORTCATS';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SORTCATSDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 'name';
+$modversion['config'][$i]['options'] = array( _MI_IMGLOSSARY_TITLE => 'name',
+                                              _MI_IMGLOSSARY_WEIGHT => 'weight'
+                                              );
+$i++;
 $modversion['config'][$i]['name'] = 'adminhits';
 $modversion['config'][$i]['title'] = '_MI_WB_ALLOWADMINHITS';
 $modversion['config'][$i]['description'] = '_MI_WB_ALLOWADMINHITSDSC';
@@ -235,8 +245,9 @@ $modversion['comments']['callback']['approve'] = 'wordbook_com_approve';
 $modversion['comments']['callback']['update'] = 'wordbook_com_update';
 
 // On Update
-if( ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] ) {
-	include dirname( __FILE__ ) . "/include/onupdate.inc.php" ;
+if ( ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] )
+{
+    include dirname( __FILE__ ) . "/include/onupdate.inc.php" ;
 }
 
 ?>

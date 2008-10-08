@@ -1,7 +1,7 @@
 <?php
 /**
  * $Id: updateblock.inc.php
- * Module: Impression
+ * Module: imGlossary
  */
 	if( ! defined( 'ICMS_ROOT_PATH' ) ) exit ;
 

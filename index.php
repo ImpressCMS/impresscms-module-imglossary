@@ -8,11 +8,9 @@
  * Licence: GNU
  */
 
-include "header.php";
+include 'header.php';
 
 $glossdirname = basename( dirname( __FILE__ ) );
-
-//global $xoopsUser, $xoopsDB, $xoopsConfig, $myts, $xoopsModuleConfig;
 
 $op = '';
 
@@ -84,7 +82,7 @@ switch ( $op ) {
 		$alpha = alphaArray();
 		$xoopsTpl -> assign( 'alpha', $alpha );
 
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#' " );
+		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#'" );
 		$howmanyother = $xoopsDB -> getRowsNum( $sql );
 		$xoopsTpl -> assign( 'totalother', $howmanyother );
 
@@ -92,11 +90,11 @@ switch ( $op ) {
 			// To display the list of categories
 			$block0 = array();
 			$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY name ASC" );
-			while (list( $catID, $name, $total) = $xoopsDB -> fetchRow($resultcat)) {
+			while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 				$catlinks = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 				$catlinks['id'] = $catID;
-				$catlinks['total'] = intval($total);
+				$catlinks['total'] = intval( $total );
 				$catlinks['linktext'] = $myts -> makeTboxData4Show( $name );
 
 				$block0['categories'][] = $catlinks;
@@ -110,7 +108,7 @@ switch ( $op ) {
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
-			while ( list( $entryID, $term, $datesub ) = $xoopsDB -> fetchRow($result05) ) {
+			while ( list( $entryID, $term, $datesub ) = $xoopsDB -> fetchRow( $result05 ) ) {
 				$newentries = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 				$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );

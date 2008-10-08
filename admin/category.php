@@ -47,9 +47,9 @@ function categoryEdit( $categoryID = '' ){
 	} 
 
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
-    $sform -> addElement( new XoopsFormText( _AM_WB_CATNAME, 'name', 50, 80, $name ), true );
+    $sform -> addElement( new XoopsFormText( _AM_WB_CATNAME, 'name', 80, 80, $name ), true );
 	$sform -> addElement( new XoopsFormTextArea( _AM_WB_CATDESCRIPT, 'description', $description, 7, 60 ) );
-    $sform -> addElement( new XoopsFormText( _AM_WB_CATPOSIT, 'weight', 4, 4, $weight ), true );
+    $sform -> addElement( new XoopsFormText( _AM_WB_CATPOSIT, 'weight', 4, 4, $weight ), false );
 	$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 
 	$button_tray = new XoopsFormElementTray( '', '' );

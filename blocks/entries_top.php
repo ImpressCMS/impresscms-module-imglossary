@@ -31,7 +31,7 @@ function b_entries_top_show( $options )	{
 			$popentries['dir'] = $xoopsModule -> dirname();
 			$popentries['linktext'] = $linktext;
 			$popentries['id'] = $entryID;
-			$popentries['counter'] = intval( $counter );
+			$popentries['counter'] = "<span style='font-size: x-small;'>" . intval( $counter ) . "</span>";
 
 			$block['popstuff'][] = $popentries;
 		} 

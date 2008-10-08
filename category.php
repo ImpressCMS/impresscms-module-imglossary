@@ -10,13 +10,13 @@
 
 include 'header.php';
 
-global $xoopsUser, $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL, $indexp; 
+global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
 
 $categoryID = isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0;
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
-include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
+// include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 
@@ -38,14 +38,14 @@ $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 $alpha = alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
-$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init=#" );
+$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#'" );
 $howmanyother = $xoopsDB -> getRowsNum( $sql );
 $xoopsTpl -> assign( 'totalother', $howmanyother );
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC" );
+	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . $xoopsModuleConfig['sortcats'] . " ASC" );
 	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -61,7 +61,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 // No ID of category: we need to see all categories descriptions
 if ( !$categoryID )	{
 	// How many categories are there?
-	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY weight" );
+	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . $xoopsModuleConfig['sortcats'] . "" );
 	$totalcats = $xoopsDB -> getRowsNum( $resultcats );
 	if ( $totalcats == 0 ) {
 		redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOCATSINSYSTEM );
@@ -72,7 +72,7 @@ if ( !$categoryID )	{
 	$catsarray = array();
 
 	// How many categories will we show in this page?
-	$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC";
+	$queryA = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . $xoopsModuleConfig['sortcats'] . " ASC";
 	$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 	
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $resultA ) ) {
@@ -129,7 +129,7 @@ if ( !$categoryID )	{
 				if ( $xoopsModuleConfig['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 				}	
-				$deftemp = imgloss_substr( $definition, 0, $wbConfig['rndlength'] -1, '...' );
+				$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
 				$eachentry['definition'] = $deftemp;
 			}
 

@@ -86,7 +86,7 @@ function entryEdit( $entryID = '' ) {
 	ob_end_clean();
 
 	// Term, definition, reference and related URL
-	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYTERM, 'term', 50, 80, $term ), true );
+	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYTERM, 'term', 80, 80, $term ), true );
 
 	$def_block = new XoopsFormDhtmlTextArea( _AM_WB_ENTRYDEF, 'definition', $definition, 15, 60 );
 	if ( $definition == ' . _MD_WB_WRITEHERE . ' ) {
@@ -94,7 +94,7 @@ function entryEdit( $entryID = '' ) {
 	}
 	$sform -> addElement( $def_block );
 	$sform -> addElement( new XoopsFormTextArea( _AM_WB_ENTRYREFERENCE, 'ref', $ref, 5, 60 ), false );
-	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYURL, 'url', 50, 80, $url ), false );
+	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYURL, 'url', 80, 80, $url ), false );
 
 	// Code to take entry offline, for maintenance purposes
 	$offline_radio = new XoopsFormRadioYN( _AM_WB_SWITCHOFFLINE, 'offline', $offline, ' ' . _AM_WB_YES . '', ' ' ._AM_WB_NO . '' );
