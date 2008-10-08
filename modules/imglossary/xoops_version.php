@@ -216,7 +216,7 @@ $modversion['config'][$i]['title'] = '_MI_WB_RANDOMLENGTH';
 $modversion['config'][$i]['description'] = '_MI_WB_RANDOMLENGTHDSC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 150;
+$modversion['config'][$i]['default'] = 500;
 $i++;
 $modversion['config'][$i]['name'] = 'linkterms';
 $modversion['config'][$i]['title'] = '_MI_WB_LINKTERMS';
