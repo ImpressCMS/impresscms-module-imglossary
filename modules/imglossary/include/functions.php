@@ -261,4 +261,42 @@ function imgloss_substr( $str, $start, $length, $trimmarker = '...' ) {
 
 	return $str;
 }
+
+function imglossary_linkterms($definition, $term, $glossaryterm) {
+
+	global $xoopsModule, $xoopsDB;
+	// Code to make links out of glossary terms
+		$parts = explode( "¤", $definition );
+
+		// First, retrieve all terms from the glossary...
+		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) );
+		while ( list( $entryID, $term ) = $xoopsDB -> fetchrow( $allterms ) ) {
+			foreach( $parts as $key => $part ) {
+				if ( $term != $glossaryterm ) {
+					// singular
+					$term_q = preg_quote( $term, '/' );
+					$search_term = "/\b$term_q\b/i";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
+
+					// plural
+					$term = $term . "s";
+					$term_q = preg_quote( $term, '/' );
+					$search_term = "/\b$term_q\b/i";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
+
+					// plural with e
+					$term = $term . "es";
+					$term_q = preg_quote( $term, '/' );
+					$search_term = "/\b$term_q\b/i";
+					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
+
+				}
+			}
+		}
+		$definition = implode( "¤", $parts );
+		return $definition;
+}		
 ?>
