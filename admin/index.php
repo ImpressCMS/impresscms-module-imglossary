@@ -208,8 +208,8 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/edit.gif alt='" . _AM_WB_EDITSUBM . "'></a>";
-				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/delete.gif alt='" . _AM_WB_DELETESUBM . "'></a>";
+				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITSUBM . "'></a>";
+				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETESUBM . "'></a>";
 
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
