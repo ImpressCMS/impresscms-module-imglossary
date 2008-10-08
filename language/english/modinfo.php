@@ -58,7 +58,7 @@ define("_MI_WB_MAILTOADMIN", "Send mail to admin on each new submission?");
 define("_MI_WB_MAILTOADMINDSC", "If set to 'Yes', the manager will receive an e-mail for every submitted entry."); 
  
 define("_MI_WB_RANDOMLENGTH", "Length of string to show in random definitions?");  
-define("_MI_WB_RANDOMLENGTHDSC", "How many characters do you want to show in the random term boxes, both in the main page and in the block? (Default: 150)");
+define("_MI_WB_RANDOMLENGTHDSC", "How many characters do you want to show in the random term boxes, both in the main page and in the block? (Default: 500)");
 
 define("_MI_WB_LINKTERMS", "Show links to other glossary terms in the definitions?");  
 define("_MI_WB_LINKTERMSDSC", "If set to 'yes', will automatically link in your definitions those terms you already have in your glossaries.");
