@@ -43,12 +43,12 @@ switch ( $op ) {
         $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 			list( $totalrequested ) = $xoopsDB -> fetchRow( $result04 );
 		
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADMULTI . "</h3>";
-		} else {
-			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADSINGLE . "</h3>";
-		}
-		
+//		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+//			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADMULTI . "</h3>";
+//		} else {
+//			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_WB_MODULEHEADSINGLE . "</h3>";
+//		}
+		echo "<div>&nbsp;</div>";
 		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_INVENTORY . "</legend>";
         echo "<div style='padding: 12px;'>" . _AM_WB_TOTALENTRIES . " <b>$totalpublished</b> | ";
 		
@@ -62,7 +62,7 @@ switch ( $op ) {
 
 		/* -- Code to show existing terms -- */
 		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWENTRIES . "</legend><br />";
-		echo "<a style='border: 1px solid #5E5D63; color: #000000; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_WB_CREATEENTRY . "</a><br /><br />";
+		echo "<a style='border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_WB_CREATEENTRY . "</a><br /><br />";
 		// To create existing terms table
 		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
@@ -129,8 +129,8 @@ switch ( $op ) {
 
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			/* -- Code to show existing categories -- */
-			echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWCATS . "</legend><br />";
-			echo "<a style='border: 1px solid #5E5D63; color: #000000; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_WB_CREATECAT . "</a><br /><br />";
+			echo "<fieldset style='border: #E8E8E8 1px solid;'><legend style='display: inline; font-weight: bold; color: #900;'>" . _AM_WB_SHOWCATS . "</legend><br />";
+			echo "<a style='border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_WB_CREATECAT . "</a><br /><br />";
 			// To create existing columns table
 			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $numrows ) = $xoopsDB -> fetchRow( $resultC1 );
@@ -143,13 +143,13 @@ switch ( $op ) {
 			echo "<td width='40' class='bg3' align='center'><b>" . _AM_WB_ID . "</b></td>";
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_WB_CATNAME . "</b></td>";
 			echo "<td class='bg3' align='center'><b>" . _AM_WB_DESCRIP . "</b></td>";
-			echo "<td width='80' class='bg3' align='center'><b>" . _AM_WB_WEIGHT . "</b></td>";
+		//	echo "<td width='80' class='bg3' align='center'><b>" . _AM_WB_WEIGHT . "</b></td>";
 			echo "<td width='60' class='bg3' align='center'><b>" . _AM_WB_ACTION . "</b></td>";
 			echo "</tr>";
 
 			if ( $numrows > 0 ) {
 				// That is, if there ARE columns in the system
-				while ( list( $categoryID, $name, $description, $total, $weight, ) = $xoopsDB -> fetchrow( $resultC2 ) ) {
+				while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchrow( $resultC2 ) ) {
 					$name = $myts -> htmlSpecialChars( $name );
 					$description = $myts -> htmlSpecialChars( $description );
 					$modify = "<a href='category.php?op=mod&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITCAT . "'></a>";
@@ -159,7 +159,7 @@ switch ( $op ) {
 					echo "<td class='head' align='center'>" . $categoryID . "</td>";
 					echo "<td class='even' align='lefet'>" . $name . "</td>";
 					echo "<td class='even' align='left'>" . $description . "</td>";
-					echo "<td class='even' align='center'>" . $weight . "</td>";
+				//	echo "<td class='even' align='center'>" . $weight . "</td>";
 					echo "<td class='even' align='center'> $modify $delete </td>";
 					echo "</tr>";
 				} 

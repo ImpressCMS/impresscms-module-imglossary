@@ -18,6 +18,6 @@ $adminmenu[4]['title'] = _MI_WB_ADMENU4;
 $adminmenu[4]['link'] = "admin/myblocksadmin.php";
 $adminmenu[5]['title'] = _MI_WB_ADMENU5;
 $adminmenu[5]['link'] = "index.php";
-$adminmenu[6]['title'] = _MI_WB_ADMENU6;
-$adminmenu[6]['link'] = "admin/importdictionary091.php";
+// $adminmenu[6]['title'] = _MI_WB_ADMENU6;
+// $adminmenu[6]['link'] = "admin/importdictionary091.php";
 ?>

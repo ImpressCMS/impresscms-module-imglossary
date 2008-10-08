@@ -77,4 +77,10 @@ define("_MI_WB_ENTRIESNEW", "Neueste Begriffe");
 define("_MI_WB_ENTRIESTOP", "Meistgelesene Begriffe");
 define("_MD_WB_NOCATSINSYSTEM","No categories in system");
 
+// imGlossary - version 1.00
+define("_MI_IMGLOSSARY_SORTCATS", "Sort categories by:");
+define("_MI_IMGLOSSARY_SORTCATSDSC", "Select how categories are sorted.");
+define("_MI_IMGLOSSARY_TITLE", "Title");
+define("_MI_IMGLOSSARY_WEIGHT", "Weight");
+
 ?>

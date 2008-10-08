@@ -189,11 +189,11 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="index.php" style="padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background:' . $tblColors[0] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_INDEX . '</a></li>';
 
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CATS . '</a></li>';
+		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CREATECAT . '</a></li>';
 	}
 	
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_ENTRIES . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CREATEENTRY . '</a></li>';
+//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_BLOCKS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_OPTS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_GOMOD . '</a></li>';
@@ -276,21 +276,21 @@ function imglossary_linkterms($definition, $term, $glossaryterm) {
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
 					$term = $term . "s";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural with e
 					$term = $term . "es";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376; text-decoration: underline; ' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				}

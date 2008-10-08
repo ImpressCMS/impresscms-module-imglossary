@@ -23,4 +23,9 @@ define("_MB_WB_SENDTOFRIEND", "Enviar definición a un amigo");
 define("_MB_WB_TERMS", "definiciones");
 define("_MB_WB_TITLE", "Título");
 define("_MB_WB_WEIGHT", "Ordenar por posición");
+
+// imGlossary v1.00
+define( '_MB_IMGLOSSARY_DATEFORMAT', 'Date format: ' );
+define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'See <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP manual</a>' );
+define( '_MB_IMGLOSSARY_CATEGORY', 'Category: ' );
 ?>

@@ -55,7 +55,7 @@
 <legend><{$smarty.const._MD_WB_RECENTENT}></legend>
 <ul>
 <{foreach item=newentries from=$block.newstuff}>
-<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small; color: #456;">[<{$newentries.date}>]</span></li>
+<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$newentries.date}>)</span></li>
 <{/foreach}>
 </ul>
 </fieldset>
@@ -66,7 +66,7 @@
 <legend><{$smarty.const._MD_WB_POPULARENT}></legend>
 <ul>
 <{foreach item=popentries from=$block2.popstuff}>
-<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small; color: #456;">[<{$popentries.counter}>]</span></li>
+<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$popentries.counter}>)</span></li>
 <{/foreach}>
 </ul>
 </fieldset>
@@ -77,12 +77,13 @@
 <legend><{$smarty.const._MD_WB_RANDOMTERM}></legend>
 <{if $multicats == 1}>
 <{if $empty != 1}>
-<div class="catname"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a></div>
+<div class="catname"><{$smarty.const._MD_WB_ENTRYCATEGORY}><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a></div>
 <{/if}>
 <{/if}>
 <div class="pad4">
-	<h5 class="term"><{$microlinks}><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h5>
+	<h5 class="term"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h5>
 	<div class="nopadding"><{$random.definition}></div>
+	<div><{$microlinks}></div>
 </div>
 </fieldset>
 </div>

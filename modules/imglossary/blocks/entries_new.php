@@ -38,7 +38,7 @@ function b_entries_new_show( $options )	{
 			$newentries['dir'] = $xoopsModule -> dirname();
 			$newentries['linktext'] = $linktext;
 			$newentries['id'] = $entryID;
-			$newentries['date'] = formatTimestamp( $datesub, $wbConfig['dateformat'] );
+			$newentries['date'] = "<span style='font-size: x-small;'>" . formatTimestamp( $datesub, $options[2] ) . "</span>";
 
 			$block['newstuff'][] = $newentries;
 		} 
@@ -69,7 +69,8 @@ function b_entries_new_edit( $options )	{
 	
 	$form .= ">" . _MB_WB_WEIGHT . "</option>\n";
 	$form .= "</select>\n";
-	$form .= "&nbsp;" . _MB_WB_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_WB_TERMS . "";
+	$form .= "&nbsp;<br />" . _MB_WB_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_WB_TERMS . "";
+	$form .= "&nbsp;<br />" . _MB_IMGLOSSARY_DATEFORMAT . "&nbsp;<input type='text' name='options[]' value='" . $options[2] . "' />&nbsp;" . _MB_IMGLOSSARY_DATEFORMATMANUAL;
 
 	return $form;
 } 
