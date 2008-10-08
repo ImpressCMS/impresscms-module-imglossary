@@ -126,9 +126,10 @@ if ( !$categoryID )	{
 			$eachentry['id'] = $entryID;
 			$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 			if ( !XOOPS_USE_MULTIBYTES ) {
-			//	$deftemp = $myts -> displayTarea( substr( $definition, 0, 300 ), 1, 1, 1, 1, 1 ) . "...";
+				if ( $xoopsModuleConfig['linkterms'] == 1 ) {
+					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
+				}	
 				$deftemp = imgloss_substr( $definition, 0, $wbConfig['rndlength'] -1, '...' );
-			//	$deftemp = cleanTags( $deftemp );
 				$eachentry['definition'] = $deftemp;
 			}
 

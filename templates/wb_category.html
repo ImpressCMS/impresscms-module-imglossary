@@ -48,8 +48,9 @@
 	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div><br />
 
 	<{foreach item=eachentry from=$entriesarray.single}>
-	<h4><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
-	<div class="definition"><{$eachentry.definition}><br /><{$eachentry.microlinks}></div>
+	<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
+	<div class="definition"><{$eachentry.definition}></div>
+	<div class="definition"><{$eachentry.microlinks}></div>
 	<br />
 	<{/foreach}>
 
