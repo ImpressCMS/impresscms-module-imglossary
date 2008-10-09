@@ -262,7 +262,7 @@ function imgloss_substr( $str, $start, $length, $trimmarker = '...' ) {
 	return $str;
 }
 
-function imglossary_linkterms($definition, $term, $glossaryterm) {
+function imglossary_linkterms( $definition, $term, $glossaryterm ) {
 
 	global $xoopsModule, $xoopsDB;
 	// Code to make links out of glossary terms
@@ -276,27 +276,28 @@ function imglossary_linkterms($definition, $term, $glossaryterm) {
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
 					$term = $term . "s";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural with e
 					$term = $term . "es";
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . ucfirst( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				}
 			}
 		}
-		$definition = implode( "¤", $parts );
-		return $definition;
+	$definition = implode( "¤", $parts );
+	
+	return $definition;
 }		
 ?>
