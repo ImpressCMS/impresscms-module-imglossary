@@ -77,9 +77,9 @@ define("_MI_WB_ENTRIESNEW", "Términos más nuevos");
 define("_MI_WB_ENTRIESTOP", "Términos más leídos");
 
 // imGlossary - version 1.00
-define("_MI_IMGLOSSARY_SORTCATS", "Sort categories by:");
-define("_MI_IMGLOSSARY_SORTCATSDSC", "Select how categories are sorted.");
-define("_MI_IMGLOSSARY_TITLE", "Title");
-define("_MI_IMGLOSSARY_WEIGHT", "Weight");
+define("_MI_IMGLOSSARY_SORTCATS", "Ordenar categorías por:");
+define("_MI_IMGLOSSARY_SORTCATSDSC", "Seleccione la forma en la que las categorías son ordenadas.");
+define("_MI_IMGLOSSARY_TITLE", "Título");
+define("_MI_IMGLOSSARY_WEIGHT", "Importancia");
 
 ?>
