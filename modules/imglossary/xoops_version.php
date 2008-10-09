@@ -47,7 +47,7 @@ $modversion['tables'][1] = "imglossary_entries";
 // Search
 $modversion['hasSearch'] = 1;
 $modversion['search']['file'] = "include/search.inc.php";
-$modversion['search']['func'] = "imgloss_search";
+$modversion['search']['func'] = "imglossary_search";
 
 // Menu
 global $xoopsUser, $xoopsDB, $xoopsModule;
@@ -55,10 +55,10 @@ global $xoopsUser, $xoopsDB, $xoopsModule;
 $modversion['hasMain'] = 1;
 $hModConfig =& xoops_gethandler('config');
 $hModule =& xoops_gethandler('module');
-if ( $wordbookModule =& $hModule -> getByDirname( $glossdirname ) ) {
-	$wordbookConfig =& $hModConfig -> getConfigsByCat( 0, $wordbookModule -> getVar('mid') );
-	//if ( isset($wordbookConfig['catsinmenu']) && $wordbookConfig['anonpost'] == 1 )
-	if ( ( $xoopsUser && ( $wordbookConfig['allowsubmit'] == 1 ) ) || ( $wordbookConfig['anonpost'] == 1 ) ) {
+if ( $imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
+	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar('mid') );
+	//if ( isset($wimglossaryConfig['catsinmenu']) && $imglossaryConfig['anonpost'] == 1 )
+	if ( ( $xoopsUser && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
 		$modversion['sub'][1]['name'] = _MI_WB_SUB_SMNAME1;
 		$modversion['sub'][1]['url'] = "submit.php";	
 	}
@@ -78,9 +78,9 @@ $sql = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 
 $i = 3;
 $hModConfig =& xoops_gethandler( 'config' );
 $hModule =& xoops_gethandler( 'module' );
-if ($wordbookModule =& $hModule -> getByDirname( $glossdirname ) ) {
-	$wordbookConfig =& $hModConfig -> getConfigsByCat( 0, $wordbookModule -> getVar('mid') );
-	if ( isset( $wordbookConfig['catsinmenu'] ) && $wordbookConfig['catsinmenu'] == 1 )	{
+if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
+	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar('mid') );
+	if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
 		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
 			$modversion['sub'][$i]['name'] = $name;
 			$modversion['sub'][$i]['url'] = "category.php?categoryID=" . $categoryID . "";

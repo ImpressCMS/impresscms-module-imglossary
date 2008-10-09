@@ -8,7 +8,7 @@
  * Licence: GNU
  */
 
-function imgloss_search( $queryarray, $andor, $limit, $offset, $userid )	{
+function imglossary_search( $queryarray, $andor, $limit, $offset, $userid )	{
 
 	global $xoopsUser, $xoopsDB;
 	
