@@ -106,9 +106,9 @@ switch ( $op ) {
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
-					echo "<td class='even' align='center'>" . $catname . "</td>";
+					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
-				echo "<td class='even' align='left'>" . $term . "</td>";
+				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'>" . $status . "</td>";
@@ -157,8 +157,8 @@ switch ( $op ) {
 
 					echo "<tr>";
 					echo "<td class='head' align='center'>" . $categoryID . "</td>";
-					echo "<td class='even' align='lefet'>" . $name . "</td>";
-					echo "<td class='even' align='left'>" . $description . "</td>";
+					echo "<td class='even' align='left'>&nbsp;" . $name . "</td>";
+					echo "<td class='even' align='left'>&nbsp;" . $description . "</td>";
 				//	echo "<td class='even' align='center'>" . $weight . "</td>";
 					echo "<td class='even' align='center'> $modify $delete </td>";
 					echo "</tr>";
@@ -214,9 +214,9 @@ switch ( $op ) {
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
-					echo "<td class='even' align='left'>" . $catname . "</td>";
+					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
-				echo "<td class='even' align='left'>" . $term . "</td>";
+				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'> $modify $delete </td>";
@@ -272,9 +272,9 @@ switch ( $op ) {
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
-					echo "<td class='even' align='left'>" . $catname . "</td>";
+					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
-				echo "<td class='even' align='left'>" . $term . "</td>";
+				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'> $modify $delete </td>";
