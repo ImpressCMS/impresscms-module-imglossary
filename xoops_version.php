@@ -96,7 +96,7 @@ $modversion['blocks'][1]['description'] = "Shows new entries";
 $modversion['blocks'][1]['show_func'] = "b_entries_new_show";
 $modversion['blocks'][1]['edit_func'] = "b_entries_new_edit";
 $modversion['blocks'][1]['options'] = "datesub|5|d F Y";
-$modversion['blocks'][1]['template'] = "entries_new.html";
+$modversion['blocks'][1]['template'] = "imglossary_entries_new.html";
 
 $modversion['blocks'][2]['file'] = "entries_top.php";
 $modversion['blocks'][2]['name'] = _MI_WB_ENTRIESTOP;
@@ -104,28 +104,28 @@ $modversion['blocks'][2]['description'] = "Shows popular entries";
 $modversion['blocks'][2]['show_func'] = "b_entries_top_show";
 $modversion['blocks'][2]['edit_func'] = "b_entries_top_edit";
 $modversion['blocks'][2]['options'] = "counter|5";
-$modversion['blocks'][2]['template'] = "entries_top.html";
+$modversion['blocks'][2]['template'] = "imglossary_entries_top.html";
 
 $modversion['blocks'][3]['file'] = "random_term.php";
 $modversion['blocks'][3]['name'] = _MI_WB_RANDOMTERM;
 $modversion['blocks'][3]['description'] = "Shows a random term";
 $modversion['blocks'][3]['show_func'] = "b_entries_random_show";
-$modversion['blocks'][3]['template'] = "entries_random.html";
+$modversion['blocks'][3]['template'] = "imglossary_entries_random.html";
 
 // Templates
-$modversion['templates'][1]['file'] = 'wb_category.html';
+$modversion['templates'][1]['file'] = 'imglossary_category.html';
 $modversion['templates'][1]['description'] = 'Display categories';
-$modversion['templates'][2]['file'] = 'wb_index.html';
+$modversion['templates'][2]['file'] = 'imglossary_index.html';
 $modversion['templates'][2]['description'] = 'Display index';
-$modversion['templates'][3]['file'] = 'wb_entry.html';
+$modversion['templates'][3]['file'] = 'imglossary_entry.html';
 $modversion['templates'][3]['description'] = 'Display entry';
-$modversion['templates'][4]['file'] = 'wb_letter.html';
+$modversion['templates'][4]['file'] = 'imglossary_letter.html';
 $modversion['templates'][4]['description'] = 'Display letter';
-$modversion['templates'][5]['file'] = 'wb_search.html';
+$modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
-$modversion['templates'][6]['file'] = 'wb_request.html';
+$modversion['templates'][6]['file'] = 'imglossary_request.html';
 $modversion['templates'][6]['description'] = 'Request a definition';
-$modversion['templates'][7]['file'] = 'wb_submit.html';
+$modversion['templates'][7]['file'] = 'imglossary_submit.html';
 $modversion['templates'][7]['description'] = 'Submit a definition';
 
 // Config Settings (only for modules that need config settings generated automatically)

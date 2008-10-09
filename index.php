@@ -27,7 +27,7 @@ switch ( $op ) {
 
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule, $xoopsTpl;
 
-		$xoopsOption['template_main'] = 'wb_index.html';
+		$xoopsOption['template_main'] = 'imglossary_index.html';
 		include  ICMS_ROOT_PATH . '/header.php';
 		
 		calculateTotals();
