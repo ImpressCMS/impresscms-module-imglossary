@@ -94,13 +94,13 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITENTRY . "' /></a>";
-				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETEENTRY . "' /></a>";
+				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_WB_EDITENTRY . "' /></a>";
+				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_WB_DELETEENTRY . "' /></a>";
 
 				if ( $offline == 0 ) {
-					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/on.gif' alt='" . _AM_WB_ENTRYISON . "' />";
+					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/on.png' alt='" . _AM_WB_ENTRYISON . "' />";
 				} else {
-					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/off.gif' alt='" . _AM_WB_ENTRYISOFF . "' />";
+					$status = "<img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/off.png' alt='" . _AM_WB_ENTRYISOFF . "' />";
 				}
 
 				echo "<tr>";
@@ -152,8 +152,8 @@ switch ( $op ) {
 				while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchrow( $resultC2 ) ) {
 					$name = $myts -> htmlSpecialChars( $name );
 					$description = $myts -> htmlSpecialChars( $description );
-					$modify = "<a href='category.php?op=mod&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITCAT . "'></a>";
-					$delete = "<a href='category.php?op=del&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETECAT . "'></a>";
+					$modify = "<a href='category.php?op=mod&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_WB_EDITCAT . "'></a>";
+					$delete = "<a href='category.php?op=del&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_WB_DELETECAT . "'></a>";
 
 					echo "<tr>";
 					echo "<td class='head' align='center'>" . $categoryID . "</td>";
@@ -208,8 +208,8 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITSUBM . "'></a>";
-				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule->dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETESUBM . "'></a>";
+				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_WB_EDITSUBM . "'></a>";
+				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_WB_DELETESUBM . "'></a>";
 
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
@@ -266,8 +266,8 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.gif' alt='" . _AM_WB_EDITSUBM . "'></a>";
-				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.gif' alt='" . _AM_WB_DELETESUBM . "'></a>";
+				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_WB_EDITSUBM . "'></a>";
+				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_WB_DELETESUBM . "'></a>";
 
 				echo "<tr>";
 				echo "<td class='head' align='center'>" . $entryID . "</td>";
