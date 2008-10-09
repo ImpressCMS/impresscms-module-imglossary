@@ -38,7 +38,7 @@ function imgloss_search( $queryarray, $andor, $limit, $offset, $userid )	{
     $i = 0;
 
 	while ( $myrow = $xoopsDB -> fetchArray( $result ) ) {
-		$ret[$i]['image'] = "images/wb.png";
+		$ret[$i]['image'] = "images/imglossary.png";
 		$ret[$i]['link'] = "entry.php?entryID=" . $myrow['entryID'];
 		$ret[$i]['title'] = $myrow['term'];
 		$ret[$i]['time'] = $myrow['datesub'];

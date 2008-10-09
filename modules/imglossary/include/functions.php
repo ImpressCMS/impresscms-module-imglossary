@@ -119,10 +119,10 @@ function serviceLinks( $variable ) {
 	$srvlinks = "";
 	if ( $xoopsUser ) {
 		if ( $xoopsUser->isAdmin() ) {
-			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/edit.png\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/delete.png\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
+			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/icon/edit.png\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/icon/delete.png\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
 		}
 	}
-	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/print.png\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/email.png\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
+	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/icon/print.png\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/icon/email.png\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
 	return $srvlinks;
 }
 
@@ -179,7 +179,7 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	$tblColors = array();
 	$tblColors[0]=$tblColors[1]=$tblColors[2]=$tblColors[3]=$tblColors[4]=$tblColors[5]=$tblColors[6]=$tblColors[7]=$tblColors[8]='#DDE';
     $tblColors[$currentoption] = '#FFF';
-    if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar('dirname') . '/language/' . $xoopsConfig['language'] . '/modinfo.php' ) ) {
+    if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar( 'dirname' ) . '/language/' . $xoopsConfig['language'] . '/modinfo.php' ) ) {
 		include_once '../language/' . $xoopsConfig['language'] . '/modinfo.php';
 	} else {
 		include_once '../language/english/modinfo.php';
