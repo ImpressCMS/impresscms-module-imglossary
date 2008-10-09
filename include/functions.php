@@ -201,66 +201,8 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_IMPORT . '</a></li>';
 	//mondarse
 //	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
-	}
-	
-function imgloss_substr( $str, $start, $length, $trimmarker = '...' ) {
-	$config_handler =& xoops_gethandler( 'config' );
-	$im_multilanguageConfig =& $config_handler -> getConfigsByCat( IM_CONF_MULILANGUAGE );
-    
-	if ( $im_multilanguageConfig['ml_enable'] ) {
-		$tags = explode( ',', $im_multilanguageConfig['ml_tags'] );
-		$strs = array();
-		$hasML = false;
-		foreach ( $tags as $tag ) {
-			if ( preg_match( "/\[" . $tag . "](.*)\[\/" . $tag . "\]/sU", $str, $matches ) ) {
-				if ( count( $matches ) > 0 ) {
-					$hasML = true;
-					$strs[] = $matches[1];
-				}
-			}
-		}
-	} else {
-		$hasML = false;
-	}
-	
-	if ( !$hasML ) {
-        $strs = array( $str );
-	}
-	
-	for ( $i = 0; $i <= count( $strs ) - 1; $i++ ) {
-		if ( !XOOPS_USE_MULTIBYTES ) {
-			$strs[$i] = ( strlen( $strs[$i] ) - $start <= $length ) ? substr( $strs[$i], $start, $length ) : substr( $strs[$i], $start, $length - strlen( $trimmarker) ) . $trimmarker;
-		}
-
-		if ( function_exists( 'mb_internal_encoding' ) && @mb_internal_encoding( _CHARSET ) ) {
-			$str2 = mb_strcut( $strs[$i], $start, $length - strlen( $trimmarker ) );
-			$strs[$i] = $str2 . ( mb_strlen( $strs[$i] ) != mb_strlen( $str2 ) ? $trimmarker : '' );
-		}
-
-		// phppp patch
-		$DEP_CHAR = 127;
-		$pos_st = 0;
-		$action = false;
-		for ( $pos_i = 0; $pos_i < strlen( $strs[$i] ); $pos_i++ ) {
-			if ( ord( substr( $strs[$i], $pos_i, 1 ) ) > 127 ) {
-				$pos_i++;
-			}
-			if ( $pos_i <= $start ) {
-				$pos_st=$pos_i;
-			}
-			if ( $pos_i >= $pos_st + $length ) {
-				$action = true;
-				break;
-			}
-		}
-		$strs[$i] = ($action) ? substr( $strs[$i], $pos_st, $pos_i - $pos_st - strlen($trimmarker) ) . $trimmarker : $strs[$i];
-
-		$strs[$i] = ($hasML)?'[' . $tags[$i] . ']' . $strs[$i] . '[/' . $tags[$i] . ']':$strs[$i];
-	}
-	$str = implode( '', $strs );
-
-	return $str;
 }
+	
 
 function imglossary_linkterms( $definition, $term, $glossaryterm ) {
 
