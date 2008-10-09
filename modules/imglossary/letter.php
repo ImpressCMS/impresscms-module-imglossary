@@ -22,7 +22,7 @@ include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 $start = intval( $start );
 
-$xoopsOption['template_main'] = 'wb_letter.html';
+$xoopsOption['template_main'] = 'imglossary_letter.html';
 include_once ICMS_ROOT_PATH . '/header.php';
 
 $xoopsTpl -> assign( 'firstletter', $init );

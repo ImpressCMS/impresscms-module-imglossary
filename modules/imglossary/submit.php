@@ -164,7 +164,7 @@ switch ( $op ) {
 			$name = ucfirst( $xoopsUser -> getVar( "uname" ) );
         }
 
-		$xoopsOption['template_main'] = 'wb_submit.html';
+		$xoopsOption['template_main'] = 'imglossary_submit.html';
 		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'wb_user_name', $name );

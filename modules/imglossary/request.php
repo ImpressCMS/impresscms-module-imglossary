@@ -14,7 +14,7 @@ global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 
 if ( empty($_POST['submit']) ) {
 
-	$xoopsOption['template_main'] = 'wb_request.html';
+	$xoopsOption['template_main'] = 'imglossary_request.html';
 	include ICMS_ROOT_PATH . "/header.php";
 	include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 	

@@ -18,7 +18,7 @@ $myts =& MyTextSanitizer::getInstance();
 $entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
 $entryID = intval( $entryID );
 
-$xoopsOption['template_main'] = 'wb_entry.html';
+$xoopsOption['template_main'] = 'imglossary_entry.html';
 include ICMS_ROOT_PATH . "/header.php";
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
