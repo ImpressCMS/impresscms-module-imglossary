@@ -13,12 +13,14 @@ include 'header.php';
 global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL, $indexp; 
 $myts =& MyTextSanitizer::getInstance();
 
-$init = isset($_GET['init']) ? $_GET['init'] : 0;
+//$init = isset($_GET['init']) ? $_GET['init'] : 0;
+$init = trim( StopXSS( $_GET['init'] ) );
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
-$start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+// $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+$start = trim( StopXSS( $_GET['start'] ) );
 
 $xoopsOption['template_main'] = 'wb_letter.html';
 include_once ICMS_ROOT_PATH . '/header.php';
@@ -93,7 +95,7 @@ if ( $init == _MD_WB_ALL ) {
 		if ( !XOOPS_USE_MULTIBYTES ) {
 			//$deftemp = cleanTags( $definition );
 			//$deftemp = $myts -> displayTarea( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
-			$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
+			$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
 			$eachentry['definition'] = $deftemp;
 		}
 
