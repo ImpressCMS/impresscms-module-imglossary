@@ -15,8 +15,8 @@ $op = '';
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 // include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/cleantags.php';
 
-// $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
-$start = trim( StopXSS( $_GET['start'] ) );
+$start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+$start = intval( $start );
 
 $columna = array ();
 
@@ -81,14 +81,14 @@ switch ( $op ) {
 		$alpha = alphaArray();
 		$xoopsTpl -> assign( 'alpha', $alpha );
 
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#'" );
+		$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#'" );
 		$howmanyother = $xoopsDB -> getRowsNum( $sql );
 		$xoopsTpl -> assign( 'totalother', $howmanyother );
 
 		if ( $xoopsModuleConfig['multicats'] == 1 )	{
 			// To display the list of categories
 			$block0 = array();
-			$resultcat = $xoopsDB -> query ( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY name ASC" );
+			$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY name ASC" );
 			while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 				$catlinks = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -98,12 +98,12 @@ switch ( $op ) {
 
 				$block0['categories'][] = $catlinks;
 			}
-			$xoopsTpl -> assign ( 'block0', $block0 );
+			$xoopsTpl -> assign( 'block0', $block0 );
 			}
 
 		// To display the recent entries block
 		$block1 = array();
-		$result05 = $xoopsDB -> query( "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub < " . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC", $xoopsModuleConfig['indexperpage'], 0 );
+		$result05 = $xoopsDB -> query( "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC", $xoopsModuleConfig['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
@@ -117,7 +117,7 @@ switch ( $op ) {
 
 				$block1['newstuff'][] = $newentries;
 			} 
-			$xoopsTpl -> assign( 'block', $block1);
+			$xoopsTpl -> assign( 'block', $block1 );
 		}
 
 		// To display the most read entries block
@@ -144,22 +144,22 @@ switch ( $op ) {
 		if ( $numrows > 1 ) {
 			$numrows = $numrows-1;
 			mt_srand((double)microtime()*1000000);
-			$entrynumber = mt_rand(0, $numrows);
+			$entrynumber = mt_rand( 0, $numrows );
 		} else {
 			$entrynumber = 0;
 		}
 
-		$resultZ = $xoopsDB -> query ( "SELECT categoryID, entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
+		$resultZ = $xoopsDB -> query( "SELECT categoryID, entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
 
 		$zerotest = $xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
-			while( $myrow = $xoopsDB -> fetchArray($resultZ))	{
+			while( $myrow = $xoopsDB -> fetchArray( $resultZ ) )	{
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
 				$random['term'] = ucfirst( $myrow['term'] );
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
-					$deftemp = substr ( $myrow['definition'], 0, ( $xoopsModuleConfig['rndlength'] -1 ) );
+					$deftemp = substr( $myrow['definition'], 0, ( $xoopsModuleConfig['rndlength'] -1 ) );
 					$deftemp = $myts -> displayTarea ( $deftemp, 1, 1, 1, 1) . "...";
 				//	$deftemp = cleanTags( $deftemp );
 					$random['definition'] = $deftemp;
@@ -168,8 +168,8 @@ switch ( $op ) {
 				if ( $xoopsModuleConfig['multicats'] == 1 )	{
 					$random['categoryID'] = $myrow['categoryID'];
 		
-					$resultY = $xoopsDB -> query ( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=" . $myrow['categoryID'] . " " );
-					list ( $categoryID, $name ) = $xoopsDB -> fetchRow ( $resultY );
+					$resultY = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=" . $myrow['categoryID'] . " " );
+					list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultY );
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
 				}
@@ -188,7 +188,7 @@ switch ( $op ) {
 
 				// If there are definitions
 				if ( $totalSwords > 0 ) {
-					while ( list( $entryID, $term ) = $xoopsDB -> fetchRow($resultS) ) {
+					while ( list( $entryID, $term ) = $xoopsDB -> fetchRow( $resultS ) ) {
 						$subentries = array();
 						$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 						$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
@@ -205,7 +205,7 @@ switch ( $op ) {
 
 				$blockR = array();
 				$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
-				$totalRwords = $xoopsDB -> getRowsNum ( $resultR );
+				$totalRwords = $xoopsDB -> getRowsNum( $resultR );
 
 				// If there are definitions
 				if ( $totalRwords > 0 )	{
@@ -241,7 +241,7 @@ switch ( $op ) {
                         	
 		        	$blockR['reqstuff'][] = $reqentries;
 				} 
-				$xoopsTpl -> assign( 'blockR', $blockR);
+				$xoopsTpl -> assign( 'blockR', $blockR );
 				$xoopsTpl -> assign( 'wehavereqs', 1 );
 			} else {
 				$xoopsTpl -> assign( 'wehavereqs', 0 );
@@ -257,5 +257,5 @@ switch ( $op ) {
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include ICMS_ROOT_PATH . "/footer.php" ;
+include ICMS_ROOT_PATH . '/footer.php';
 ?>

@@ -17,10 +17,10 @@ $myts =& MyTextSanitizer::getInstance();
 $init = trim( StopXSS( $_GET['init'] ) );
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
-include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+//include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
-// $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
-$start = trim( StopXSS( $_GET['start'] ) );
+$start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+$start = intval( $start );
 
 $xoopsOption['template_main'] = 'wb_letter.html';
 include_once ICMS_ROOT_PATH . '/header.php';
@@ -48,11 +48,11 @@ if ( $xoopsModuleConfig['multicats'] == 1 )	{
 	// To display the list of categories
 	$block0 = array();
 	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats') . " ORDER BY name ASC" );
-	while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
+	while ( list( $catID, $name, $total ) = $xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 		$catlinks['id'] = $catID;
-		$catlinks['total'] = intval($total);
+		$catlinks['total'] = intval( $total );
 		$catlinks['linktext'] = $myts -> makeTboxData4Show( $name );
 
 		$block0['categories'][] = $catlinks;
@@ -133,7 +133,7 @@ if ( $init == _MD_WB_ALL ) {
 		// redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOTERMSINLETTER );
 		// exit();
 		$xoopsTpl -> assign( 'pageinitial', _MD_WB_OTHER );
-		$eachentry['init']='';
+		$eachentry['init'] = '';
 	} 
 
 	if ( $init == _MD_WB_OTHER ) {
@@ -171,7 +171,7 @@ if ( $init == _MD_WB_ALL ) {
 		if ( !XOOPS_USE_MULTIBYTES ) {
 		//	$deftemp = cleanTags($definition);
 		//	$deftemp = $myts -> displayTarea ( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
-			$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
+			$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
 			$eachentry['definition'] = $deftemp;
 		}
 
@@ -201,6 +201,6 @@ $xoopsTpl -> assign( 'alpha', $alpha );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include ICMS_ROOT_PATH . "/footer.php";
+include ICMS_ROOT_PATH . '/footer.php';
 
 ?>

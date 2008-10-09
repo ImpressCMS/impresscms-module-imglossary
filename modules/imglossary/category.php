@@ -14,12 +14,13 @@ global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsMo
 $myts =& MyTextSanitizer::getInstance();
 
 $categoryID = isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0;
-$categoryID = intval( $categoryID);
+$categoryID = intval( $categoryID );
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 // include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+$start = intval( $start );
 
 $xoopsOption['template_main'] = 'wb_category.html';
 include_once ICMS_ROOT_PATH . '/header.php';
