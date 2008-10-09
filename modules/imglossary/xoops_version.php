@@ -241,8 +241,8 @@ $modversion['comments']['itemName'] = 'entryID';
 $modversion['comments']['pageName'] = 'entry.php';
 
 $modversion['comments']['callbackFile'] = 'include/comment_functions.php';
-$modversion['comments']['callback']['approve'] = 'wordbook_com_approve';
-$modversion['comments']['callback']['update'] = 'wordbook_com_update';
+$modversion['comments']['callback']['approve'] = 'imglossary_com_approve';
+$modversion['comments']['callback']['update'] = 'imglossary_com_update';
 
 // On Update
 if ( ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] )
