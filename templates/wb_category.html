@@ -55,7 +55,7 @@
 	<{foreach item=eachentry from=$entriesarray.single}>
 	<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
 	<div class="definition" style="clear: both;"><{$eachentry.definition}></div>
-	<div class="definition"><{$eachentry.microlinks}></div>
+	<div style="margin-left: 8px;padding: 5px;"><{$eachentry.microlinks}></div>
 	<br />
 	<{/foreach}>
 </fieldset>
