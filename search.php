@@ -36,8 +36,8 @@ $categoryID = isset( $categoryID ) ? intval( $categoryID ) : 0;
 $type = isset( $type ) ? intval( $type ) : 3;
 $queries = array();
 
-$xoopsOption['template_main'] = 'wb_search.html';
-include ICMS_ROOT_PATH . "/header.php";
+$xoopsOption['template_main'] = 'imglossary_search.html';
+include ICMS_ROOT_PATH . '/header.php';
 
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	$xoopsTpl -> assign( 'multicats', 1 );
