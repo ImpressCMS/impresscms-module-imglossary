@@ -12,10 +12,11 @@ include 'header.php';
 
 include_once ICMS_ROOT_PATH . "/class/module.textsanitizer.php"; 
 
-global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL; 
+global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule; 
 $myts =& MyTextSanitizer::getInstance();
 
 $entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
+$entryID = intval( $entryID );
 
 $xoopsOption['template_main'] = 'wb_entry.html';
 include ICMS_ROOT_PATH . "/header.php";
@@ -91,7 +92,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	}
 
 	if ( $xoopsModuleConfig['linkterms'] == 1 ) {
-			$definition = imglossary_linkterms( $definition, $term, $glossaryterm );		
+		$definition = imglossary_linkterms( $definition, $term, $glossaryterm );		
 	}
 
 	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );

@@ -46,7 +46,7 @@ function b_entries_random_show() {
 		if ( !XOOPS_USE_MULTIBYTES ) {
 		//	$deftemp = cleanTags( $myrow['definition'] );
 		//	$definition = $myts -> displayTarea( substr( $myrow['definition'], 0, ( $wbConfig['rndlength'] -1 ) ) ) . "...";
-			$definition = imgloss_substr( $myrow['definition'], 0, $wbConfig['rndlength'] -1, '...' );
+			$definition = icms_substr( $myrow['definition'], 0, $wbConfig['rndlength'] -1, '...' );
 		}
 
 		$categoryID = $myrow['categoryID'];

@@ -14,6 +14,7 @@ global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsMo
 $myts =& MyTextSanitizer::getInstance();
 
 $categoryID = isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0;
+$categoryID = intval( $categoryID);
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 // include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/cleantags.php';
@@ -129,7 +130,7 @@ if ( !$categoryID )	{
 				if ( $xoopsModuleConfig['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 				}	
-				$deftemp = imgloss_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
+				$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
 				$eachentry['definition'] = $deftemp;
 			}
 

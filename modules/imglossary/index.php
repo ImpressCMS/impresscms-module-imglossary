@@ -10,14 +10,13 @@
 
 include 'header.php';
 
-$glossdirname = basename( dirname( __FILE__ ) );
-
 $op = '';
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
-include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/cleantags.php';
+// include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/cleantags.php';
 
-$start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+// $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
+$start = trim( StopXSS( $_GET['start'] ) );
 
 $columna = array ();
 
@@ -26,7 +25,7 @@ switch ( $op ) {
 	case "default":
 	default:
 
-		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule;
+		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule, $xoopsTpl;
 
 		$xoopsOption['template_main'] = 'wb_index.html';
 		include  ICMS_ROOT_PATH . '/header.php';
@@ -35,22 +34,22 @@ switch ( $op ) {
 		$xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 
 		// Counts
-		if ($xoopsModuleConfig['multicats'] == 1) {
+		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			$totalcats = countCats();
-			$xoopsTpl->assign('totalcats', $totalcats);
+			$xoopsTpl -> assign( 'totalcats', $totalcats );
 		}
 		$publishedwords = countWords();
-		$xoopsTpl -> assign('publishedwords', $publishedwords);
+		$xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
-		if ($xoopsModuleConfig['multicats'] == 1) {
-			$xoopsTpl -> assign('multicats', 1);
+		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+			$xoopsTpl -> assign( 'multicats', 1 );
 		} else {
-			$xoopsTpl -> assign('multicats', 0);
+			$xoopsTpl -> assign( 'multicats', 0 );
 		}
 
 		// If there are no entries yet in the system...
 		if ( $publishedwords == 0 ) {
-			$xoopsTpl -> assign ('empty', '1');
+			$xoopsTpl -> assign ( 'empty', '1' );
 		}
 
 		// To display the search form
@@ -60,7 +59,7 @@ switch ( $op ) {
 		$searchform .= _MD_WB_LOOKON . '</td><td width="10">&nbsp;</td><td style="text-align: left;">';
 		$searchform .= '<select name="type"><option value="1">' . _MD_WB_TERMS . '</option><option value="2">' . _MD_WB_DEFINS . '</option>';
 		$searchform .= '<option value="3">' . _MD_WB_TERMSDEFS . '</option></select></td></tr>';
-		if ($xoopsModuleConfig['multicats'] == 1) {
+		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			$searchform .= '<tr><td style="text-align: right; line-height: 200%">' . _MD_WB_CATEGORY . '</td>';
 			$searchform .= '<td>&nbsp;</td><td style="text-align: left;">';
 			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
@@ -157,12 +156,12 @@ switch ( $op ) {
 			while( $myrow = $xoopsDB -> fetchArray($resultZ))	{
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
-				$random['term'] = ucfirst($myrow['term']);
+				$random['term'] = ucfirst( $myrow['term'] );
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$deftemp = substr ( $myrow['definition'], 0, ( $xoopsModuleConfig['rndlength'] -1 ) );
 					$deftemp = $myts -> displayTarea ( $deftemp, 1, 1, 1, 1) . "...";
-					$deftemp = cleanTags( $deftemp );
+				//	$deftemp = cleanTags( $deftemp );
 					$random['definition'] = $deftemp;
 					}
 
@@ -233,10 +232,10 @@ switch ( $op ) {
              
 			// If there are definitions
 			if ( $totalRwords > 0 ) {
-				while ( list( $entryID, $term ) = $xoopsDB -> fetchRow($resultR) ) {
+				while ( list( $entryID, $term ) = $xoopsDB -> fetchRow( $resultR ) ) {
 					$reqentries = array();
-					$xoopsModule = XoopsModule::getByDirname("wordbook");
-					$linktext = ucfirst($myts -> makeTboxData4Show( $term ));
+					$xoopsModule = XoopsModule::getByDirname( $glossdirname );
+					$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
 					$reqentries['linktext'] = $linktext;
 					$reqentries['id'] = $entryID;
                         	
@@ -251,7 +250,7 @@ switch ( $op ) {
 		}       	
 		// Various strings
 		$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-		$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
+		$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 		$xoopsTpl -> assign( 'microlinks', $microlinks );
 		$xoopsTpl -> assign( 'alpha', $alpha );
 		} 
