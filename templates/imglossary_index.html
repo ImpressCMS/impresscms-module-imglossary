@@ -72,7 +72,14 @@
 </fieldset>
 </div>
 
-<div>
+<div class="search">
+<fieldset>
+<legend><{$smarty.const._MD_WB_SEARCHENTRY}></legend>
+<{$searchform}>
+</fieldset>
+</div>
+
+<div style="width: 100%;">
 <fieldset>
 <legend><{$smarty.const._MD_WB_RANDOMTERM}></legend>
 <{if $multicats == 1}>
@@ -82,8 +89,8 @@
 <{/if}>
 <div class="pad4">
 	<h5 class="term"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h5>
-	<div class="nopadding"><{$random.definition}></div>
-	<div><{$microlinks}></div>
+	<div style="padding: 0 4px;"><{$random.definition}></div>
+	<div style="padding-top: 5px; margin-left: 8px;"><{$microlinks}></div>
 </div>
 </fieldset>
 </div>
@@ -128,10 +135,11 @@
 </fieldset>
 <div>
 <{/if}>
--->
+
 <div id="search">
 <fieldset>
 <legend><{$smarty.const._MD_WB_SEARCHENTRY}></legend>
 <{$searchform}>
 </fieldset>
 </div>
+-->

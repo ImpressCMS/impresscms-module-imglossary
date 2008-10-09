@@ -55,7 +55,7 @@ switch ( $op ) {
 		// To display the search form
 		$searchform = '<table width="100%">';
 		$searchform .= '<form name="op" id="op" action="search.php" method="post">';
-		$searchform .= '<tr><td style="text-align: right; line-height: 200%" width="150">';
+		$searchform .= '<tr><td style="text-align: right; line-height: 200%">';
 		$searchform .= _MD_WB_LOOKON . '</td><td width="10">&nbsp;</td><td style="text-align: left;">';
 		$searchform .= '<select name="type"><option value="1">' . _MD_WB_TERMS . '</option><option value="2">' . _MD_WB_DEFINS . '</option>';
 		$searchform .= '<option value="3">' . _MD_WB_TERMSDEFS . '</option></select></td></tr>';
@@ -159,8 +159,8 @@ switch ( $op ) {
 				$random['term'] = ucfirst( $myrow['term'] );
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
-					$deftemp = substr( $myrow['definition'], 0, ( $xoopsModuleConfig['rndlength'] -1 ) );
-					$deftemp = $myts -> displayTarea ( $deftemp, 1, 1, 1, 1) . "...";
+					$deftemp = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
+					//$deftemp = $myts -> displayTarea ( $deftemp, 1, 1, 1, 1) . "...";
 				//	$deftemp = cleanTags( $deftemp );
 					$random['definition'] = $deftemp;
 					}

@@ -21,7 +21,7 @@ define("_MD_WB_ASKFORDEF", "Request a definition");
 define("_MD_WB_BEGINWITHLETTER", "entries that begin with this letter.");
 define("_MD_WB_BROWSECAT", "Browse by category");
 define("_MD_WB_BROWSELETTER", "Browse by letter");
-define("_MD_WB_CATEGORY", "Search in category");
+define("_MD_WB_CATEGORY", "Search in");
 define("_MD_WB_CATS", "Categories: ");
 define("_MD_WB_COUNT", "This entry has been seen individually %s times.");
 define("_MD_WB_CREATE", "Submit the entry");
