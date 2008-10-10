@@ -126,4 +126,8 @@ define("_AM_WB_IMPDICT_10","Procesado: ");
 define("_AM_WB_IMPDICT_11","Volver a la administración");
 
 define("_AM_WB_NOCOLEXISTS", "Lo sentimos: no hay aún categorías definidas.<br />Por favor, contacte con el administrador del sitio para comentarle esta circunstancia."); // This was originally in the main.php file
+
+// imGlossary v1.00
+define("_AM_WB_SHOWOFFLINE", "Offline");
+
 ?>

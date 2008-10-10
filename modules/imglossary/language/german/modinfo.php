@@ -82,5 +82,5 @@ define("_MI_IMGLOSSARY_SORTCATS", "Sort categories by:");
 define("_MI_IMGLOSSARY_SORTCATSDSC", "Select how categories are sorted.");
 define("_MI_IMGLOSSARY_TITLE", "Title");
 define("_MI_IMGLOSSARY_WEIGHT", "Weight");
-
+define("_MI_IMGLOSSARY_ADMENU7", "Submissions");
 ?>
