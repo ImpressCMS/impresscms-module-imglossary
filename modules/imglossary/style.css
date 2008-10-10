@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5
 	text-align: right; 
 	font-weight: bold; 
 	color: #F3AC03; 
-	letter-spacing: -1.5px; 
+	letter-spacing: -1.5px;
 	margin: 0; 
 	line-height: 18px;
 	}
@@ -43,6 +43,12 @@ h1, h2, h3, h4, h5
 	width: 30%;
 	margin-right: 10px;
 	}
+#search2
+	{
+
+	width: 100%;
+	margin-right: 10px;
+	}
 fieldset
 	{
 	margin-bottom: 10px;
@@ -53,11 +59,9 @@ fieldset ul
 	list-style-position: outside; 
 	line-height: 120%;
 	}
-
 legend
 	{
-	font-weight: bold; 
-	color: #F3AC03;
+	font-weight: bold;
 	}
 .inventory
 	{

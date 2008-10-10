@@ -37,7 +37,7 @@ if ( $publishedwords == 0 )	{
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
 // To display the list of linked initials
-$alpha = alphaArray();
+$alpha = imglossary_alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
 $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#'" );
@@ -57,7 +57,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 
 		$block0['categories'][] = $catlinks;
 	}
-	$xoopsTpl -> assign ( 'block0', $block0 );
+	$xoopsTpl -> assign( 'block0', $block0 );
 }
 
 // No ID of category: we need to see all categories descriptions
@@ -80,12 +80,12 @@ if ( !$categoryID )	{
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $resultA ) ) {
 		$eachcat = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-		$eachcat['dir'] = $xoopsModule -> dirname();
+		$eachcat['dir'] = $glossdirname;
 		$eachcat['id'] = $categoryID;
 		$eachcat['name'] = $myts -> makeTboxData4Show( $name );
 		$eachcat['description'] = $myts -> makeTboxData4Show( $description );
 		// Total entries in this category
-		$entriesincat = countByCategory( $categoryID );
+		$entriesincat = imglossary_countByCategory( $categoryID );
 		$eachcat['total'] = intval( $entriesincat );
 
 		$catsarray['single'][] = $eachcat;
@@ -93,8 +93,8 @@ if ( !$categoryID )	{
 	$pagenav = new XoopsPageNav( $totalcats, $xoopsModuleConfig['indexperpage'], $start, 'start' );
 	$catsarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
 
-	$xoopsTpl -> assign ( 'catsarray', $catsarray );
-	$xoopsTpl -> assign ( 'pagetype', '0' );
+	$xoopsTpl -> assign( 'catsarray', $catsarray );
+	$xoopsTpl -> assign( 'pagetype', '0' );
 } else {
 	// There IS a $categoryID, thus we show only that category's description
 	$catdata = $xoopsDB -> query( "SELECT categoryID, name, description, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
@@ -108,7 +108,7 @@ if ( !$categoryID )	{
 		$singlecat['name'] = $myts -> makeTboxData4Show( $name );
 		$singlecat['description'] = $myts -> makeTboxData4Show( $description );
 		// Total entries in this category
-		$entriesincat = countByCategory( $categoryID );
+		$entriesincat = imglossary_countByCategory( $categoryID );
 
 		$singlecat['total'] = intval( $entriesincat );
 		$xoopsTpl -> assign( 'singlecat', $singlecat );
@@ -123,7 +123,7 @@ if ( !$categoryID )	{
 		while (list( $entryID, $term, $definition ) = $xoopsDB -> fetchRow( $resultB ) ) {
 			$eachentry = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-			$eachentry['dir'] = $xoopsModule -> dirname();
+			$eachentry['dir'] = $glossdirname;
 			$eachentry['id'] = $entryID;
 			$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 			if ( !XOOPS_USE_MULTIBYTES ) {
@@ -135,7 +135,7 @@ if ( !$categoryID )	{
 			}
 
 			// Functional links
-			$microlinks = serviceLinks( $eachentry );
+			$microlinks = imglossary_serviceLinks( $eachentry );
 			$eachentry['microlinks'] = $microlinks;
 			$entriesarray['single'][] = $eachentry;
 		}
@@ -150,7 +150,7 @@ if ( !$categoryID )	{
 	}
 
 $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
+$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 // This will let us include the module's styles in the theme
 $xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');

@@ -9,7 +9,7 @@
  */
 
 // -- General Stuff -- //
-include( "admin_header.php" );
+include 'admin_header.php';
 
 $op = '';
 
@@ -40,7 +40,7 @@ function categoryEdit( $categoryID = '' ){
 		$sform = new XoopsThemeForm( _AM_WB_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		xoops_cp_header();
-		adminMenu(1, _AM_WB_CATS);
+		imglossary_adminMenu(1, _AM_WB_CATS);
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_CATSHEADER . "</h3>";
 		$sform = new XoopsThemeForm( _AM_WB_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );

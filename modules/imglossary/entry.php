@@ -37,7 +37,7 @@ if ( $publishedwords == 0 )	{
 }
 
 // To display the linked letter list
-$alpha = alphaArray();
+$alpha = imglossary_alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
 $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#'" );
@@ -110,7 +110,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	}
 $xoopsTpl -> assign( 'thisterm', $thisterm );
 
-$microlinks = serviceLinks( $thisterm );   // Get icons
+$microlinks = imglossary_serviceLinks( $thisterm );   // Get icons
 
 $xoopsTpl -> assign( 'microlinks', $microlinks );
 
@@ -118,6 +118,8 @@ $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( 'entryID', $entryID );
+$xoopsTpl -> assign( 'xoops_pagetitle', $thisterm['term'] );
+$xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags($thisterm['definition']), 0, 250, '' ) );
 $xoopsTpl -> assign( 'submitted', sprintf( _MD_WB_SUBMITTED, $thisterm['submitter'], $thisterm['datesub'] ) );
 $xoopsTpl -> assign( 'counter', sprintf( _MD_WB_COUNT, $thisterm['counter'] ) );
 
