@@ -100,8 +100,7 @@ if ( !$categoryID )	{
 	$catdata = $xoopsDB -> query( "SELECT categoryID, name, description, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $catdata ) ) {
 		if ( $total == 0 ) {
-			redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOENTRIESINCAT );
-			exit();
+			$xoopsTpl -> assign( 'singlecat', _MD_WB_NOENTRIESINCAT );
 		} 
 		$singlecat = array();
 		$singlecat['dir'] = $xoopsModule -> dirname();
