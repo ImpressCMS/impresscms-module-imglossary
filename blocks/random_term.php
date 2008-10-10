@@ -19,7 +19,7 @@ function b_entries_random_show() {
 
 	$adminlinks = '';
 	$block = array();
-	$block['title'] = _MB_WB_RANDOMTITLE;
+	$block['title'] = _MB_IMGLOSSARY_RANDOMTITLE;
 		
 	list ( $numrows ) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" ) );
 	if ( $numrows > 1 ) {
@@ -57,18 +57,18 @@ function b_entries_random_show() {
 		// Functional links
 		if ( $xoopsUser ) {
 			if ( $xoopsUser -> isAdmin() ) {
-				$adminlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png' border='0' alt='" . _MB_WB_EDITTERM . "' /></a>&nbsp;<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png' border='0' alt='" . _MB_WB_DELTERM . "' /></a>&nbsp;";
+				$adminlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png' border='0' alt='" . _MB_IMGLOSSARY_EDITTERM . "' /></a>&nbsp;<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png' border='0' alt='" . _MB_IMGLOSSARY_DELTERM . "' /></a>&nbsp;";
 			}
 		}
-		$userlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/print.png' border='0' alt='" . _MB_WB_PRINTTERM . "' /></a>&nbsp;<a href='mailto:?subject=" . sprintf( _MB_WB_INTENTRY, $xoopsConfig['sitename'] ) . "&amp;body=" . sprintf( _MB_WB_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/email.png' border='0' alt='" . _MB_WB_SENDTOFRIEND . "' /></a>&nbsp;";
+		$userlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/print.png' border='0' alt='" . _MB_IMGLOSSARY_PRINTTERM . "' /></a>&nbsp;<a href='mailto:?subject=" . sprintf( _MB_IMGLOSSARY_INTENTRY, $xoopsConfig['sitename'] ) . "&amp;body=" . sprintf( _MB_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/email.png' border='0' alt='" . _MB_IMGLOSSARY_SENDTOFRIEND . "' /></a>&nbsp;";
 
 		if ( $wbConfig['multicats'] == 1 ) {
 			$block['content'] = "<div style='font-size: x-small; font-weight: bold; padding: 4px; margin: 0;'><a href'" . ICMS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=" . $categoryID . "'>" . _MB_IMGLOSSARY_CATEGORY . $categoryname . "</a></div>";
 			$block['content'] .= "<div style='padding: 4px; color: #456; background-color: #E8E6E2;'><h5 style='margin: 0;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "'>" . $term . "</a></h5></div><div style='padding: 4px;'>" . $definition . "</div>";
-			$block['content'] .= "<div><div style='float: left; padding: 4px;'>" . $adminlinks . $userlinks . "</div><div style='float: right; font-size: x-small; padding: 4px;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/index.php'>" . _MB_WB_SEEMORE . "</a></div>&nbsp;</div>";
+			$block['content'] .= "<div><div style='float: left; padding: 4px;'>" . $adminlinks . $userlinks . "</div><div style='float: right; font-size: x-small; padding: 4px;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/index.php'>" . _MB_IMGLOSSARY_SEEMORE . "</a></div>&nbsp;</div>";
 		} else {
 			$block['content'] = "<div style='padding: 4px; color: #456; background-color: #E8E6E2;'><h5 style='margin: 0;'><a style='margin: 0;' href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=$entryID'>$term</a></h5></div><div style='padding: 4px;'>" . $definition . "</div>";
-			$block['content'] .= "<div><div style='float: left; padding: 4px;'>&nbsp;" . $adminlinks . $userlinks . "</div><div style='float: right; font-size: x-small; padding: 4px;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/index.php'>" . _MB_WB_SEEMORE . "</a>&nbsp;</div>&nbsp;</div>";
+			$block['content'] .= "<div><div style='float: left; padding: 4px;'>&nbsp;" . $adminlinks . $userlinks . "</div><div style='float: right; font-size: x-small; padding: 4px;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/index.php'>" . _MB_IMGLOSSARY_SEEMORE . "</a>&nbsp;</div>&nbsp;</div>";
 		}
 	}
 	

@@ -31,7 +31,7 @@ $xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 $pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 $publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 if ( $publishedwords == 0 )	{
-	redirect_header( ICMS_URL, 1, _MD_WB_STILLNOTHINGHERE );
+	redirect_header( ICMS_URL, 1, _MD_IMGLOSSARY_STILLNOTHINGHERE );
 	exit();
 }
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
@@ -66,7 +66,7 @@ if ( !$categoryID )	{
 	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . $xoopsModuleConfig['sortcats'] . "" );
 	$totalcats = $xoopsDB -> getRowsNum( $resultcats );
 	if ( $totalcats == 0 ) {
-		redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOCATSINSYSTEM );
+		redirect_header( "javascript:history.go(-1)", 1, _MD_IMGLOSSARY_NOCATSINSYSTEM );
 		exit();
 	} 
 
@@ -100,7 +100,7 @@ if ( !$categoryID )	{
 	$catdata = $xoopsDB -> query( "SELECT categoryID, name, description, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 	while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchRow( $catdata ) ) {
 		if ( $total == 0 ) {
-			$xoopsTpl -> assign( 'singlecat', _MD_WB_NOENTRIESINCAT );
+			$xoopsTpl -> assign( 'singlecat', _MD_IMGLOSSARY_NOENTRIESINCAT );
 		} 
 		$singlecat = array();
 		$singlecat['dir'] = $xoopsModule -> dirname();

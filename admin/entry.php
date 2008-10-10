@@ -34,7 +34,7 @@ function entryEdit( $entryID = '' ) {
 	if( !isset($notifypub) ) { $notifypub = 1; }
 	if( !isset($categoryID) ) { $categoryID = 1; }
 	if( !isset($term) ) { $term = ""; }
-	if( !isset($definition) ) {	$definition = _AM_WB_WRITEHERE;	}
+	if( !isset($definition) ) {	$definition = _AM_IMGLOSSARY_WRITEHERE;	}
 	if( !isset($ref) ) { $ref = ""; }
 	if( !isset($url) ) { $url = ""; }
 
@@ -44,26 +44,26 @@ function entryEdit( $entryID = '' ) {
 		list( $categoryID, $term, $definition, $ref, $url, $uid, $submit, $datesub, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request ) = $xoopsDB -> fetchrow( $result );
 
 		if ( !$xoopsDB -> getRowsNum( $result ) ) {
-			redirect_header( "index.php", 1, _AM_WB_NOENTRYTOEDIT );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
 			exit();
 		}
-		imglossary_adminMenu( 2, _AM_WB_ENTRIES );
+		imglossary_adminMenu( 2, _AM_IMGLOSSARY_ENTRIES );
 
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_ADMINENTRYMNGMT . "</h3>";
-		$sform = new XoopsThemeForm( _AM_WB_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
+		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		// there's no parameter, so we're adding an entry
 
 		$result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
         list( $totalcats ) = $xoopsDB -> fetchRow( $result01 );
 		if ( $totalcats == 0 && $xoopsModuleConfig['multicats'] == 1 ) {
-			redirect_header( "index.php", 1, _AM_WB_NEEDONECOLUMN );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
 			exit();
 		}
-		imglossary_adminMenu( 2, _AM_WB_ENTRIES );
+		imglossary_adminMenu( 2, _AM_IMGLOSSARY_ENTRIES );
 		$uid = $xoopsUser -> getVar('uid');
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_ADMINENTRYMNGMT . "</h3>";
-		$sform = new XoopsThemeForm( _AM_WB_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
+		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
 	} 
 
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
@@ -75,52 +75,52 @@ function entryEdit( $entryID = '' ) {
 		ob_start();
 			//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 			$mytree -> makeMySelBox( 'name', 'name', 0, 0 );
-			$sform -> addElement( new XoopsFormLabel( _AM_WB_CATNAME, ob_get_contents() ) );
+			$sform -> addElement( new XoopsFormLabel( _AM_IMGLOSSARY_CATNAME, ob_get_contents() ) );
 		ob_end_clean();
 	}
 
 	// Author selector
 	ob_start();
 		imglossary_getuserForm( intval($uid) );
-		$sform -> addElement( new XoopsFormLabel( _AM_WB_AUTHOR, ob_get_contents() ) );
+		$sform -> addElement( new XoopsFormLabel( _AM_IMGLOSSARY_AUTHOR, ob_get_contents() ) );
 	ob_end_clean();
 
 	// Term, definition, reference and related URL
-	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYTERM, 'term', 80, 80, $term ), true );
+	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYTERM, 'term', 80, 80, $term ), true );
 
-	$def_block = new XoopsFormDhtmlTextArea( _AM_WB_ENTRYDEF, 'definition', $definition, 15, 60 );
+	$def_block = new XoopsFormDhtmlTextArea( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition, 15, 60 );
 	if ( $definition == ' . _MD_WB_WRITEHERE . ' ) {
 		$def_block -> setExtra( 'onfocus="this.select()"' );
 	}
 	$sform -> addElement( $def_block );
-	$sform -> addElement( new XoopsFormTextArea( _AM_WB_ENTRYREFERENCE, 'ref', $ref, 5, 60 ), false );
-	$sform -> addElement( new XoopsFormText( _AM_WB_ENTRYURL, 'url', 80, 80, $url ), false );
+	$sform -> addElement( new XoopsFormTextArea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 ), false );
+	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url ), false );
 
 	// Code to take entry offline, for maintenance purposes
-	$offline_radio = new XoopsFormRadioYN( _AM_WB_SWITCHOFFLINE, 'offline', $offline, ' ' . _AM_WB_YES . '', ' ' ._AM_WB_NO . '' );
+	$offline_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_SWITCHOFFLINE, 'offline', $offline, ' ' . _AM_IMGLOSSARY_YES . '', ' ' ._AM_IMGLOSSARY_NO . '' );
 	$sform -> addElement( $offline_radio );
 
 	// Code to put entry in block
-	$block_radio = new XoopsFormRadioYN( _AM_WB_BLOCK, 'block', $block, ' ' . _AM_WB_YES . '', ' ' . _AM_WB_NO . '' );
+	$block_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_BLOCK, 'block', $block, ' ' . _AM_IMGLOSSARY_YES . '', ' ' . _AM_IMGLOSSARY_NO . '' );
 	$sform -> addElement( $block_radio );
 
 	// VARIOUS OPTIONS
-	$options_tray = new XoopsFormElementTray( _AM_WB_OPTIONS, '<br />' );
+	$options_tray = new XoopsFormElementTray( _AM_IMGLOSSARY_OPTIONS, '<br />' );
 
 	$html_checkbox = new XoopsFormCheckBox( '', 'html', $html );
-	$html_checkbox -> addOption( 1, _AM_WB_DOHTML );
+	$html_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOHTML );
 	$options_tray -> addElement( $html_checkbox );
 
 	$smiley_checkbox = new XoopsFormCheckBox( '', 'smiley', $smiley );
-	$smiley_checkbox -> addOption( 1, _AM_WB_DOSMILEY );
+	$smiley_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOSMILEY );
 	$options_tray -> addElement( $smiley_checkbox );
 
 	$xcodes_checkbox = new XoopsFormCheckBox( '', 'xcodes', $xcodes );
-	$xcodes_checkbox -> addOption( 1, _AM_WB_DOXCODE );
+	$xcodes_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOXCODE );
 	$options_tray -> addElement( $xcodes_checkbox );
 
 	$breaks_checkbox = new XoopsFormCheckBox( '', 'breaks', $breaks );
-	$breaks_checkbox -> addOption( 1, _AM_WB_BREAKS );
+	$breaks_checkbox -> addOption( 1, _AM_IMGLOSSARY_BREAKS );
 	$options_tray -> addElement( $breaks_checkbox );
 
 	$sform -> addElement( $options_tray );
@@ -134,25 +134,25 @@ function entryEdit( $entryID = '' ) {
 	if ( !$entryID ) {
 		// there's no entryID? Then it's a new entry
 		
-		$butt_create = new XoopsFormButton( '', '', _AM_WB_CREATE, 'submit' );
+		$butt_create = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CREATE, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addentry\'"' );
 		$button_tray -> addElement( $butt_create );
 
-		$butt_clear = new XoopsFormButton( '', '', _AM_WB_CLEAR, 'reset' );
+		$butt_clear = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CLEAR, 'reset' );
 		$button_tray -> addElement( $butt_clear );
 
-		$butt_cancel = new XoopsFormButton( '', '', _AM_WB_CANCEL, 'button' );
+		$butt_cancel = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CANCEL, 'button' );
 		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
 		$button_tray -> addElement( $butt_cancel );
 		
 	} else { 
 		
 		// else, we're editing an existing entry
-		$butt_create = new XoopsFormButton( '', '', _AM_WB_MODIFY, 'submit' );
+		$butt_create = new XoopsFormButton( '', '', _AM_IMGLOSSARY_MODIFY, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addentry\'"' );
 		$button_tray -> addElement( $butt_create );
 
-		$butt_cancel = new XoopsFormButton( '', '', _AM_WB_CANCEL, 'button' );
+		$butt_cancel = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CANCEL, 'button' );
 		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
 		$button_tray -> addElement( $butt_cancel );
 		
@@ -207,18 +207,18 @@ function entrySave( $entryID = '' )	{
 	if ( !$entryID ) {
 		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )" ) ) {
 			imglossary_calculateTotals();
-			redirect_header( "index.php", 1, _AM_WB_ENTRYCREATEDOK );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYCREATEDOK );
 		} else {
-			redirect_header( "index.php", 1, _AM_WB_ENTRYNOTCREATED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTCREATED );
 		}
 	} else { 
 		// That is, $entryID exists, thus we're editing an entry
 		
 		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
 			imglossary_calculateTotals();
-			redirect_header( "index.php", 1, _AM_WB_ENTRYMODIFIED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 		} else {
-			redirect_header( "index.php", 1, _AM_WB_ENTRYNOTUPDATED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
 		}
 	}
 }
@@ -236,10 +236,10 @@ function entryDelete( $entryID = '' ) {
 		// delete comments (mondarse)
 		xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
 		// delete comments (mondarse)
-		redirect_header( "index.php", 1, sprintf( _AM_WB_ENTRYISDELETED, $term ) );
+		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_ENTRYISDELETED, $term ) );
 	} else {
 		xoops_cp_header();
-		xoops_confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entry.php', _AM_WB_DELETETHISENTRY . "<br /><br />" . $term, _AM_WB_DELETE );
+		xoops_confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entry.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );
 		xoops_cp_footer();
 	}
 	exit();

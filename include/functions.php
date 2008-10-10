@@ -119,10 +119,10 @@ function imglossary_serviceLinks( $variable ) {
 	$srvlinks = "";
 	if ( $xoopsUser ) {
 		if ( $xoopsUser->isAdmin() ) {
-			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/icon/edit.png\" border=\"0\" alt=\"" . _MD_WB_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/icon/delete.png\" border=\"0\" alt=\"" . _MD_WB_DELTERM . "\" ></a>&nbsp;";
+			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/icon/edit.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/icon/delete.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_DELTERM . "\" ></a>&nbsp;";
 		}
 	}
-	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/icon/print.png\" border=\"0\" alt=\"" . _MD_WB_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_WB_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_WB_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/icon/email.png\" border=\"0\" alt=\"" . _MD_WB_SENDTOFRIEND . "\" ></a>&nbsp;";
+	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/icon/print.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_IMGLOSSARY_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/icon/email.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_SENDTOFRIEND . "\" ></a>&nbsp;";
 	return $srvlinks;
 }
 
@@ -131,16 +131,16 @@ function imglossary_showSearchForm() {
 	$searchform = "<table width=\"100%\">";
 	$searchform .= "<form name=\"op\" id=\"op\" action=\"search.php\" method=\"post\">";
 	$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\" width=\"150\">";
-	$searchform .= _MD_WB_LOOKON . "</td><td width=\"10\">&nbsp;</td><td style=\"text-align: left;\">";
-	$searchform .= "<select name=\"type\"><option value=\"1\">" . _MD_WB_TERMS . "</option><option value=\"2\">" . _MD_WB_DEFINS . "</option>";
-	$searchform .= "<option value=\"3\">" . _MD_WB_TERMSDEFS . "</option></select></td></tr>";
+	$searchform .= _MD_IMGLOSSARY_LOOKON . "</td><td width=\"10\">&nbsp;</td><td style=\"text-align: left;\">";
+	$searchform .= "<select name=\"type\"><option value=\"1\">" . _MD_IMGLOSSARY_TERMS . "</option><option value=\"2\">" . _MD_IMGLOSSARY_DEFINS . "</option>";
+	$searchform .= "<option value=\"3\">" . _MD_IMGLOSSARY_TERMSDEFS . "</option></select></td></tr>";
 
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">" . _MD_WB_CATEGORY . "</td>";
+		$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">" . _MD_IMGLOSSARY_CATEGORY . "</td>";
 		$searchform .= "<td>&nbsp;</td><td style=\"text-align: left;\">";
 		$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
 		$searchform .= "<select name=\"categoryID\">";
-		$searchform .= "<option value=\"0\">" . _MD_WB_ALLOFTHEM . "</option>";
+		$searchform .= "<option value=\"0\">" . _MD_IMGLOSSARY_ALLOFTHEM . "</option>";
 
 		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultcat ) ) {
 			$searchform .= "<option value=\"$categoryID\">$categoryID : $name</option>";
@@ -149,9 +149,9 @@ function imglossary_showSearchForm() {
 	}
 
 	$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">";
-	$searchform .= _MD_WB_TERM . "</td><td>&nbsp;</td><td style=\"text-align: left;\">";
+	$searchform .= _MD_IMGLOSSARY_TERM . "</td><td>&nbsp;</td><td style=\"text-align: left;\">";
 	$searchform .= "<input type=\"text\" name=\"term\" /></td></tr><tr>";
-	$searchform .= "<td>&nbsp;</td><td>&nbsp;</td><td><input type=\"submit\" value=\"" . _MD_WB_SEARCH . "\" />";
+	$searchform .= "<td>&nbsp;</td><td>&nbsp;</td><td><input type=\"submit\" value=\"" . _MD_IMGLOSSARY_SEARCH . "\" />";
 	$searchform .= "</td></tr></form></table>";
 	return $searchform;
 }
@@ -184,23 +184,23 @@ function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	} else {
 		include_once '../language/english/modinfo.php';
 	}
-	echo '<div style="font-size: 10px; text-align: right; color: #2F5376; margin: 0 0 8px 0; padding: 2px 6px; line-height: 18px; border: 1px solid #e7e7e7; "><b>' . $xoopsModule -> name() . _AM_WB_MODADMIN . '</b> ' . $breadcrumb . '</div>';	
+	echo '<div style="font-size: 10px; text-align: right; color: #2F5376; margin: 0 0 8px 0; padding: 2px 6px; line-height: 18px; border: 1px solid #e7e7e7; "><b>' . $xoopsModule -> name() . _AM_IMGLOSSARY_MODADMIN . '</b> ' . $breadcrumb . '</div>';	
 	echo '<div id="navcontainer"><ul style="padding: 3px 0; margin-left: 0;">';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="index.php" style="padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background:' . $tblColors[0] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_INDEX . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="index.php" style="padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background:' . $tblColors[0] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_INDEX . '</a></li>';
 
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CREATECAT . '</a></li>';
+		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_CREATECAT . '</a></li>';
 	}
 	
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CREATEENTRY . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_BLOCKS . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_OPTS . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_GOMOD . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_CREATEENTRY . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_SUBMITS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_BLOCKS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_OPTS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_GOMOD . '</a></li>';
 	//mondarse
-//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_IMPORT . '</a></li>';
+//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . '</a></li>';
 	//mondarse
-//	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
+//	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_IMGLOSSARY_HELP . "</a></li></ul></div>";
 
 }
 	

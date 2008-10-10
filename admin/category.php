@@ -29,27 +29,27 @@ function categoryEdit( $categoryID = '' ){
 		list( $categoryID, $name, $description, $total, $weight ) = $xoopsDB -> fetchrow( $result );
 
 		if ( $xoopsDB -> getRowsNum( $result ) == 0 ) {
-			redirect_header( "category.php", 1, _AM_WB_NOCATTOEDIT );
+			redirect_header( "category.php", 1, _AM_IMGLOSSARY_NOCATTOEDIT );
 			exit();
 		} 
 		
 		xoops_cp_header();
-		adminMenu( 1, _AM_WB_CATS );
+		adminMenu( 1, _AM_IMGLOSSARY_CATS );
 
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_CATSHEADER . "</h3>";
-		$sform = new XoopsThemeForm( _AM_WB_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
+		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		xoops_cp_header();
-		imglossary_adminMenu(1, _AM_WB_CATS);
+		imglossary_adminMenu(1, _AM_IMGLOSSARY_CATS);
 
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_CATSHEADER . "</h3>";
-		$sform = new XoopsThemeForm( _AM_WB_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );
+		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );
 	} 
 
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
-    $sform -> addElement( new XoopsFormText( _AM_WB_CATNAME, 'name', 80, 80, $name ), true );
-	$sform -> addElement( new XoopsFormTextArea( _AM_WB_CATDESCRIPT, 'description', $description, 7, 60 ) );
-    $sform -> addElement( new XoopsFormText( _AM_WB_CATPOSIT, 'weight', 4, 4, $weight ), false );
+    $sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_CATNAME, 'name', 80, 80, $name ), true );
+	$sform -> addElement( new XoopsFormTextArea( _AM_IMGLOSSARY_CATDESCRIPT, 'description', $description, 7, 60 ) );
+    $sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_CATPOSIT, 'weight', 4, 4, $weight ), false );
 	$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 
 	$button_tray = new XoopsFormElementTray( '', '' );
@@ -58,23 +58,23 @@ function categoryEdit( $categoryID = '' ){
 
 	// No ID for column -- then it's new column, button says 'Create'
     if ( !$categoryID ) {
-		$butt_create = new XoopsFormButton( '', '', _AM_WB_CREATE, 'submit' );
+		$butt_create = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CREATE, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addcat\'"' );
 		$button_tray -> addElement( $butt_create );
 
-		$butt_clear = new XoopsFormButton( '', '', _AM_WB_CLEAR, 'reset' );
+		$butt_clear = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CLEAR, 'reset' );
 		$button_tray -> addElement( $butt_clear );
 
-		$butt_cancel = new XoopsFormButton( '', '', _AM_WB_CANCEL, 'button' );
+		$butt_cancel = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CANCEL, 'button' );
 		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
 		$button_tray -> addElement( $butt_cancel );
 	} else { 
 		// button says 'Update'
-		$butt_create = new XoopsFormButton( '', '', _AM_WB_MODIFY, 'submit' );
+		$butt_create = new XoopsFormButton( '', '', _AM_IMGLOSSARY_MODIFY, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addcat\'"' );
 		$button_tray -> addElement( $butt_create );
 
-		$butt_cancel = new XoopsFormButton( '', '', _AM_WB_CANCEL, 'button' );
+		$butt_cancel = new XoopsFormButton( '', '', _AM_IMGLOSSARY_CANCEL, 'button' );
 		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
 		$button_tray -> addElement( $butt_cancel );
 	} 
@@ -101,10 +101,10 @@ function categoryDelete( $categoryID = '' ) {
 			}		
 		$result = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 		$result2 = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
-		redirect_header( "index.php", 1, sprintf( _AM_WB_CATISDELETED, $name ) );
+		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_CATISDELETED, $name ) );
 	} else {
 		xoops_cp_header();
-		xoops_confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_WB_DELETETHISCAT . "<br /><br>" . $name, _AM_WB_DELETE );
+		xoops_confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_IMGLOSSARY_DELETETHISCAT . "<br /><br>" . $name, _AM_IMGLOSSARY_DELETE );
 		xoops_cp_footer();
 	}
 } 
@@ -120,15 +120,15 @@ function categorySave ( $categoryID = '' ) {
 	// Run the query and update the data
 	if ( !$_POST['categoryID'] ) {
 		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_cats' ) . " (categoryID, name, description, weight) VALUES ('', '$name', '$description', '$weight')" ) ) {
-			redirect_header( "index.php", 1, _AM_WB_CATCREATED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_CATCREATED );
 		} else {
-			redirect_header( "index.php", 1, _AM_WB_NOTUPDATED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOTUPDATED );
 		} 
 	} else {
 		if ( $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_cats' ) . " SET name='$name', description='$description', weight='$weight' WHERE categoryID='$categoryID'" ) ) {
-			redirect_header( "index.php", 1, _AM_WB_CATMODIFIED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_CATMODIFIED );
 		} else {
-			redirect_header( "index.php", 1, _AM_WB_NOTUPDATED );
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOTUPDATED );
 		} 
 	} 
 }
@@ -150,14 +150,14 @@ switch ( $op ) {
 		break;
 
 	case "cancel":
-		redirect_header( "index.php", 1, sprintf( _AM_WB_BACK2IDX, '' ) );
+		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_BACK2IDX, '' ) );
 		exit();
 
     case "default":
     default:
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig;
 		if ( $xoopsModuleConfig['multicats'] != 1 ) {
-			redirect_header( "index.php", 1, sprintf( _AM_WB_SINGLECAT, '' ) );
+			redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_SINGLECAT, '' ) );
 			exit();
 		}		
         categoryEdit();

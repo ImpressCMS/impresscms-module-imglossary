@@ -79,7 +79,7 @@ $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 if ( !$query ) {
 	// Display message saying there's no term and explaining how to search
 
-	$xoopsTpl -> assign( 'intro', _MD_WB_NOSEARCHTERM );
+	$xoopsTpl -> assign( 'intro', _MD_IMGLOSSARY_NOSEARCHTERM );
 	// Display search form
 	$searchform = imglossary_showSearchForm();
 	$xoopsTpl -> assign( 'searchform', $searchform );
@@ -92,7 +92,7 @@ if ( !$query ) {
 
 	if ( $results == 0 ) {
 		// There's been no correspondences with the searched terms
-		$xoopsTpl -> assign( 'intro', _MD_WB_NORESULTS );
+		$xoopsTpl -> assign( 'intro', _MD_IMGLOSSARY_NORESULTS );
 		// Display search form
 		$searchform = imglossary_showSearchForm();
 		$xoopsTpl -> assign( 'searchform', $searchform );
@@ -124,7 +124,7 @@ if ( !$query ) {
 			$resultset['match'][] = $eachresult;
 			}
 		// Msg: there's # results
-		$xoopsTpl -> assign( 'intro', sprintf( _MD_WB_THEREWERE, $results, $query ) );
+		$xoopsTpl -> assign( 'intro', sprintf( _MD_IMGLOSSARY_THEREWERE, $results, $query ) );
 		
 		$linkstring = "term=" . $query . "&start";
 		$pagenav = new XoopsPageNav( $results, $xoopsModuleConfig['indexperpage'], $start, $linkstring );

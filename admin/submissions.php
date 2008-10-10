@@ -34,7 +34,7 @@ case "default":
     $myts =& MyTextSanitizer::getInstance();
 
     //v.1.17 completely rewritten had no content
-    imglossary_adminMenu( 3, _AM_WB_SUBMITS );
+    imglossary_adminMenu( 3, _AM_IMGLOSSARY_SUBMITS );
     $result01 = $xoopsDB -> query( "SELECT COUNT(*)
                                    FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
     list( $totalcategories ) = $xoopsDB -> fetchRow( $result01 );
@@ -60,22 +60,22 @@ case "default":
     list( $totaloffline ) = $xoopsDB -> fetchRow( $result05 );
 
     echo "<div>&nbsp;</div>";
-	echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_WB_INVENTORY . "</legend>";
-	echo "<div style='padding: 12px;'>" . _AM_WB_TOTALENTRIES . " <b>$totalpublished</b> | ";
+	echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_INVENTORY . "</legend>";
+	echo "<div style='padding: 12px;'>" . _AM_IMGLOSSARY_TOTALENTRIES . " <b>$totalpublished</b> | ";
 		
 	if ($xoopsModuleConfig['multicats'] == 1) {
-		echo _AM_WB_TOTALCATS . " <b>$totalcategories</b> | ";
+		echo _AM_IMGLOSSARY_TOTALCATS . " <b>$totalcategories</b> | ";
 	}
 		
-	echo _AM_WB_TOTALSUBM . " <b>$totalsubmitted</b> | ";
-	echo _AM_WB_TOTALREQ . " <b>$totalrequested</b></div>";
+	echo _AM_IMGLOSSARY_TOTALSUBM . " <b>$totalsubmitted</b> | ";
+	echo _AM_IMGLOSSARY_TOTALREQ . " <b>$totalrequested</b></div>";
 	echo "</fieldset><br />";
 
     /**
      * Code to show submitted entries
      **/
 
-    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_WB_SHOWSUBMISSIONS . "</legend>";
+    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWSUBMISSIONS . "</legend>";
 	echo "<div>&nbsp;</div>";
     echo "<table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
 
@@ -90,14 +90,14 @@ case "default":
            ORDER BY datesub DESC";
     $resultS2 = $xoopsDB -> query( $sql, $xoopsModuleConfig['perpage'], $startsub );
 
-    echo " <td width='40' class='bg3' align='center'><b>" . _AM_WB_ENTRYID . "</b></td>";
+    echo " <td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
     if ( $xoopsModuleConfig['multicats'] == 1 ) {
-        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_WB_ENTRYCATNAME . "</b></td>";
+        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
     }
-    echo "<td class='bg3' align='center'><b>" . _AM_WB_ENTRYTERM . "</b></td>
-    <td width='90' class='bg3' align='center'><b>" . _AM_WB_SUBMITTER . "</b></td>
-    <td width='90' class='bg3' align='center'><b>" . _AM_WB_ENTRYCREATED . "</b></td>
-    <td width='60' class='bg3' align='center'><b>" . _AM_WB_ACTION . "</b></td>
+    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>
+    <td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>
+    <td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>
+    <td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>
     </tr>";
 
     if ( $numrows > 0 ) // That is, if there ARE submitted entries in the system
@@ -113,9 +113,9 @@ case "default":
             $catname = $myts -> htmlSpecialChars( $name );
             $term = $myts -> htmlSpecialChars( $term );
             $created = formatTimestamp( $created, 's' );
-            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png alt='" . _AM_WB_EDITSUBM . "'></a>";
-            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png alt='" . _AM_WB_DELETESUBM . "'></a>";
-            //$approve = "<a href='entry.php?op=add&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/approve.png alt='"._AM_WB_APPROVESUBM."'></a>";
+            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
+            //$approve = "<a href='entry.php?op=add&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/approve.png alt='"._AM_IMGLOSSARY_APPROVESUBM."'></a>";
 
             echo "<tr>
             <td class='even' align='center'>" . $entryID . "</td>";
@@ -132,7 +132,7 @@ case "default":
     else // that is, $numrows = 0, there's no columns yet
     {
         echo "<tr>
-        <td class='head' align='center' colspan= '7'>" . _AM_WB_NOSUBMISSYET . "</td>
+        <td class='head' align='center' colspan= '7'>" . _AM_IMGLOSSARY_NOSUBMISSYET . "</td>
         </tr></div>";
     }
     echo "</table>\n";
@@ -145,12 +145,12 @@ case "default":
      * Code to show requested entries
      **/
 
-    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_WB_SHOWREQUESTS . "</legend>";
+    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWREQUESTS . "</legend>";
 	echo "<div>&nbsp;</div>";
     echo "<div style='float:left; width:100%;'><table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
     /*		<tr>
     		<td colspan='7' class='odd'>
-    		<strong>". _AM_WB_SHOWREQUESTS . ' (' . $totalrequested . ')'. "</strong></td></TR>";
+    		<strong>". _AM_IMGLOSSARY_SHOWREQUESTS . ' (' . $totalrequested . ')'. "</strong></td></TR>";
     		echo "<tr>";
     */
     $resultS2 = $xoopsDB -> query( "SELECT COUNT(*)
@@ -164,14 +164,14 @@ case "default":
             ORDER BY datesub DESC";
     $resultS4 = $xoopsDB -> query( $sql4, $xoopsModuleConfig['perpage'], $startsub );
 
-    echo "<td width='40' class='bg3' align='center'><b>" . _AM_WB_ENTRYID . "</b></td>";
+    echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
     if ( $xoopsModuleConfig['multicats'] == 1 ) {
-        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_WB_ENTRYCATNAME . "</b></td>";
+        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
     }
-    echo "<td class='bg3' align='center'><b>" . _AM_WB_ENTRYTERM . "</b></td>";
-    echo "<td width='90' class='bg3' align='center'><b>" . _AM_WB_SUBMITTER . "</b></td>";
-    echo "<td width='90' class='bg3' align='center'><b>" . _AM_WB_ENTRYCREATED . "</b></td>";
-    echo "<td width='60' class='bg3' align='center'><b>" . _AM_WB_ACTION . "</b></td>";
+    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
+    echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+    echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
+    echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
     echo "</tr>";
 
     if ( $numrowsX > 0 ) // That is, if there ARE unauthorized articles in the system
@@ -187,8 +187,8 @@ case "default":
             $catname = $myts -> htmlSpecialChars( $name );
             $term = $myts -> htmlSpecialChars( $term );
             $created = formatTimestamp( $created, 's' );
-            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png alt='" . _AM_WB_EDITSUBM . "'></a>";
-            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png alt='" . _AM_WB_DELETESUBM . "'></a>";
+            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
 
             echo "<tr>";
             echo "<td class='even' align='center'>" . $entryID . "</td>";
@@ -205,7 +205,7 @@ case "default":
     else // that is, $numrows = 0, there's no columns yet
     {
         echo "<tr>
-        <td class='head' align='center' colspan= '7'>" . _AM_WB_NOREQSYET . "</td>
+        <td class='head' align='center' colspan= '7'>" . _AM_IMGLOSSARY_NOREQSYET . "</td>
         </tr></div>";
     }
     echo "</table>\n";
@@ -217,7 +217,7 @@ case "default":
     /**
      * Code to show offline entries
      **/
-    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_WB_SHOWOFFLINE . "</legend>";
+    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWOFFLINE . "</legend>";
 	echo "<div>&nbsp;</div>";
     echo "	<div style='float:left; width:100%;'><table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
 
@@ -232,14 +232,14 @@ case "default":
             ORDER BY datesub DESC";
     $resultS4 = $xoopsDB -> query( $sql4, $xoopsModuleConfig['perpage'], $startsub );
 
-    echo "<td width='40' class='bg3' align='center'><b>" . _AM_WB_ENTRYID . "</b></td>";
+    echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
     if ($xoopsModuleConfig['multicats'] == 1) {
-        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_WB_ENTRYCATNAME . "</b></td>";
+        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
     }
-    echo "<td class='bg3' align='center'><b>" . _AM_WB_ENTRYTERM . "</b></td>";
-    echo "<td width='90' class='bg3' align='center'><b>" . _AM_WB_SUBMITTER . "</b></td>";
-    echo "<td width='90' class='bg3' align='center'><b>" . _AM_WB_ENTRYCREATED . "</b></td>";
-    echo "<td width='60' class='bg3' align='center'><b>" . _AM_WB_ACTION . "</b></td>";
+    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
+    echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+    echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
+    echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
     echo "</tr>";
 
     if ( $numrowsX > 0 ) // That is, if there ARE unauthorized articles in the system
@@ -255,8 +255,8 @@ case "default":
             $catname = $myts -> htmlSpecialChars( $name );
             $term = $myts -> htmlSpecialChars( $term );
             $created = formatTimestamp( $created, 's' );
-            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png ALT='" . _AM_WB_EDITSUBM . "'></a>";
-            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png ALT='" . _AM_WB_DELETESUBM . "'></a>";
+            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png ALT='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png ALT='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
 
             echo "<tr>";
             echo "<td class='even' align='center'>" . $entryID . "</td>";
@@ -273,7 +273,7 @@ case "default":
     else // that is, $numrows = 0, there's no columns yet
     {
         echo "<tr>
-        <td class='head' align='center' colspan= '7'>" . _AM_WB_NOREQSYET . "</td>
+        <td class='head' align='center' colspan= '7'>" . _AM_IMGLOSSARY_NOREQSYET . "</td>
         </tr></div>";
     }
     echo "</table>\n";

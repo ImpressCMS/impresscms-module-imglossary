@@ -33,7 +33,7 @@ $publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 $xoopsTpl->assign('publishedwords', $publishedwords);
 if ( $publishedwords == 0 )	{
 	$xoopsTpl -> assign ( 'empty', '1' );
-	$xoopsTpl -> assign ( 'stillnothing', _MD_WB_STILLNOTHINGHERE );
+	$xoopsTpl -> assign ( 'stillnothing', _MD_IMGLOSSARY_STILLNOTHINGHERE );
 }
 
 // To display the linked letter list
@@ -86,7 +86,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	$glossaryterm = $myts -> makeTboxData4Show( $term );
 	$thisterm['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 	if ( $init == '#' ) {
-		$thisterm['init'] = _MD_WB_OTHER;
+		$thisterm['init'] = _MD_IMGLOSSARY_OTHER;
 	} else {
 		$thisterm['init'] = ucfirst($init);
 	}
@@ -120,8 +120,8 @@ $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 $xoopsTpl -> assign( 'entryID', $entryID );
 $xoopsTpl -> assign( 'xoops_pagetitle', $thisterm['term'] );
 $xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags($thisterm['definition']), 0, 250, '' ) );
-$xoopsTpl -> assign( 'submitted', sprintf( _MD_WB_SUBMITTED, $thisterm['submitter'], $thisterm['datesub'] ) );
-$xoopsTpl -> assign( 'counter', sprintf( _MD_WB_COUNT, $thisterm['counter'] ) );
+$xoopsTpl -> assign( 'submitted', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'], $thisterm['datesub'] ) );
+$xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counter'] ) );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
