@@ -15,11 +15,11 @@
  
 $glossdirname = basename( dirname( __FILE__ ) );
 
-$modversion['name'] = _MI_WB_MD_NAME;
+$modversion['name'] = _MI_IMGLOSSARY_MD_NAME;
 $modversion['version'] = "1.00";
 $modversion['status'] = "RC-1";
 $modversion['releasedate'] = "xx xxxxxx 2008";
-$modversion['description'] = _MI_WB_MD_DESC;
+$modversion['description'] = _MI_IMGLOSSARY_MD_DESC;
 $modversion['author'] = "McDonald";
 $modversion['credits'] = "hsalazar, Catzwolf";
 $modversion['support_site_url'] = "http://community.impresscms.org/modules/newbb/viewforum.php?forum=9";
@@ -59,18 +59,18 @@ if ( $imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
 	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar('mid') );
 	//if ( isset($wimglossaryConfig['catsinmenu']) && $imglossaryConfig['anonpost'] == 1 )
 	if ( ( $xoopsUser && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
-		$modversion['sub'][1]['name'] = _MI_WB_SUB_SMNAME1;
+		$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
 		$modversion['sub'][1]['url'] = "submit.php";	
 	}
 }
 //if ($xoopsUser)
 //	{
-//	$modversion['sub'][1]['name'] = _MI_WB_SUB_SMNAME1;
+//	$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
 //	$modversion['sub'][1]['url'] = "submit.php";
 //	}
-$modversion['sub'][2]['name'] = _MI_WB_SUB_SMNAME2;
+$modversion['sub'][2]['name'] = _MI_IMGLOSSARY_SUB_SMNAME2;
 $modversion['sub'][2]['url'] = "request.php";
-$modversion['sub'][3]['name'] = _MI_WB_SUB_SMNAME3;
+$modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
 $modversion['sub'][3]['url'] = "search.php";
 
 
@@ -91,7 +91,7 @@ if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
 
 // Blocks
 $modversion['blocks'][1]['file'] = "entries_new.php";
-$modversion['blocks'][1]['name'] = _MI_WB_ENTRIESNEW;
+$modversion['blocks'][1]['name'] = _MI_IMGLOSSARY_ENTRIESNEW;
 $modversion['blocks'][1]['description'] = "Shows new entries";
 $modversion['blocks'][1]['show_func'] = "b_entries_new_show";
 $modversion['blocks'][1]['edit_func'] = "b_entries_new_edit";
@@ -99,7 +99,7 @@ $modversion['blocks'][1]['options'] = "datesub|5|d F Y";
 $modversion['blocks'][1]['template'] = "imglossary_entries_new.html";
 
 $modversion['blocks'][2]['file'] = "entries_top.php";
-$modversion['blocks'][2]['name'] = _MI_WB_ENTRIESTOP;
+$modversion['blocks'][2]['name'] = _MI_IMGLOSSARY_ENTRIESTOP;
 $modversion['blocks'][2]['description'] = "Shows popular entries";
 $modversion['blocks'][2]['show_func'] = "b_entries_top_show";
 $modversion['blocks'][2]['edit_func'] = "b_entries_top_edit";
@@ -107,7 +107,7 @@ $modversion['blocks'][2]['options'] = "counter|5";
 $modversion['blocks'][2]['template'] = "imglossary_entries_top.html";
 
 $modversion['blocks'][3]['file'] = "random_term.php";
-$modversion['blocks'][3]['name'] = _MI_WB_RANDOMTERM;
+$modversion['blocks'][3]['name'] = _MI_IMGLOSSARY_RANDOMTERM;
 $modversion['blocks'][3]['description'] = "Shows a random term";
 $modversion['blocks'][3]['show_func'] = "b_entries_random_show";
 $modversion['blocks'][3]['template'] = "imglossary_entries_random.html";
@@ -132,66 +132,66 @@ $modversion['templates'][7]['description'] = 'Submit a definition';
 $i = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'allowsubmit';
-$modversion['config'][$i]['title'] = '_MI_WB_ALLOWSUBMIT';
-$modversion['config'][$i]['description'] = '_MI_WB_ALLOWSUBMITDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_ALLOWSUBMIT';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_ALLOWSUBMITDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 $i++;
 $modversion['config'][$i]['name'] = 'anonpost';
-$modversion['config'][$i]['title'] = '_MI_WB_ANONSUBMIT';
-$modversion['config'][$i]['description'] = '_MI_WB_ANONSUBMITDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_ANONSUBMIT';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_ANONSUBMITDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'dateformat';
-$modversion['config'][$i]['title'] = '_MI_WB_DATEFORMAT';
-$modversion['config'][$i]['description'] = '_MI_WB_DATEFORMATDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_DATEFORMAT';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_DATEFORMATDSC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'd-M-Y H:i';
 $i++;
 $modversion['config'][$i]['name'] = 'perpage';
-$modversion['config'][$i]['title'] = '_MI_WB_PERPAGE';
-$modversion['config'][$i]['description'] = '_MI_WB_PERPAGEDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_PERPAGE';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_PERPAGEDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
 $modversion['config'][$i]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
 $i++;
 $modversion['config'][$i]['name'] = 'indexperpage';
-$modversion['config'][$i]['title'] = '_MI_WB_PERPAGEINDEX';
-$modversion['config'][$i]['description'] = '_MI_WB_PERPAGEINDEXDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_PERPAGEINDEX';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_PERPAGEINDEXDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 5;
 $modversion['config'][$i]['options'] = array( '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
 $i++;
 $modversion['config'][$i]['name'] = 'autoapprove';
-$modversion['config'][$i]['title'] = '_MI_WB_AUTOAPPROVE';
-$modversion['config'][$i]['description'] = '_MI_WB_AUTOAPPROVEDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_AUTOAPPROVE';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_AUTOAPPROVEDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'multicats';
-$modversion['config'][$i]['title'] = '_MI_WB_MULTICATS';
-$modversion['config'][$i]['description'] = '_MI_WB_MULTICATSDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_MULTICATS';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_MULTICATSDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 $i++;
 $modversion['config'][$i]['name'] = 'catsinmenu';
-$modversion['config'][$i]['title'] = '_MI_WB_CATSINMENU';
-$modversion['config'][$i]['description'] = '_MI_WB_CATSINMENUDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_CATSINMENU';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_CATSINMENUDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'catsperindex';
-$modversion['config'][$i]['title'] = '_MI_WB_CATSPERINDEX';
-$modversion['config'][$i]['description'] = '_MI_WB_CATSPERINDEXDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_CATSPERINDEX';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_CATSPERINDEXDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 3;
@@ -208,29 +208,29 @@ $modversion['config'][$i]['options'] = array( _MI_IMGLOSSARY_TITLE => 'name',
                                               );
 $i++;
 $modversion['config'][$i]['name'] = 'adminhits';
-$modversion['config'][$i]['title'] = '_MI_WB_ALLOWADMINHITS';
-$modversion['config'][$i]['description'] = '_MI_WB_ALLOWADMINHITSDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_ALLOWADMINHITS';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_ALLOWADMINHITSDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'mailtoadmin';
-$modversion['config'][$i]['title'] = '_MI_WB_MAILTOADMIN';
-$modversion['config'][$i]['description'] = '_MI_WB_MAILTOADMINDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_MAILTOADMIN';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_MAILTOADMINDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
 $i++;
 $modversion['config'][$i]['name'] = 'rndlength';
-$modversion['config'][$i]['title'] = '_MI_WB_RANDOMLENGTH';
-$modversion['config'][$i]['description'] = '_MI_WB_RANDOMLENGTHDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_RANDOMLENGTH';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_RANDOMLENGTHDSC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 500;
 $i++;
 $modversion['config'][$i]['name'] = 'linkterms';
-$modversion['config'][$i]['title'] = '_MI_WB_LINKTERMS';
-$modversion['config'][$i]['description'] = '_MI_WB_LINKTERMSDSC';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_LINKTERMS';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_LINKTERMSDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;

@@ -61,7 +61,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 )	{
 }
 
 // No initial: we need to see all letters
-if ( $init == _MD_WB_ALL ) {
+if ( $init == _MD_IMGLOSSARY_ALL ) {
 	$entriesarray = array();
 	$pagetype = 0;
 
@@ -111,7 +111,7 @@ if ( $init == _MD_WB_ALL ) {
 
 	$xoopsTpl -> assign ( 'entriesarray', $entriesarray );
 	$xoopsTpl -> assign ( 'pagetype', '0' );
-	$xoopsTpl -> assign ( 'pageinitial', _MD_WB_ALL );
+	$xoopsTpl -> assign ( 'pageinitial', _MD_IMGLOSSARY_ALL );
 } else {
 	// $init does exist
 	$pagetype = 1;
@@ -120,7 +120,7 @@ if ( $init == _MD_WB_ALL ) {
 	$entriesarray2 = array();
 
 	// How many entries will we show in this page?
-	if ( $init == _MD_WB_OTHER ) {
+	if ( $init == _MD_IMGLOSSARY_OTHER ) {
 		$queryB = "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='#' ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 	} else {
@@ -130,13 +130,13 @@ if ( $init == _MD_WB_ALL ) {
 
 	$entrieshere = $xoopsDB -> getRowsNum( $resultB );
 	if ( $entrieshere == 0 ) {
-		// redirect_header( "javascript:history.go(-1)", 1, _MD_WB_NOTERMSINLETTER );
+		// redirect_header( "javascript:history.go(-1)", 1, _MD_IMGLOSSARY_NOTERMSINLETTER );
 		// exit();
-		$xoopsTpl -> assign( 'pageinitial', _MD_WB_OTHER );
+		$xoopsTpl -> assign( 'pageinitial', _MD_IMGLOSSARY_OTHER );
 		$eachentry['init'] = '';
 	} 
 
-	if ( $init == _MD_WB_OTHER ) {
+	if ( $init == _MD_IMGLOSSARY_OTHER ) {
 		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
 	} else {
 		$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='$init' AND init!='#' AND submit=0 AND offline=0 ORDER BY term ASC" );
@@ -188,7 +188,7 @@ if ( $init == _MD_WB_ALL ) {
 	$xoopsTpl -> assign( 'entriesarray2', $entriesarray2 );
 	$xoopsTpl -> assign( 'pagetype', '1' );
 	if ($eachentry['init'] == '#') {
-		$xoopsTpl -> assign( 'pageinitial', _MD_WB_OTHER );
+		$xoopsTpl -> assign( 'pageinitial', _MD_IMGLOSSARY_OTHER );
 	} else {
 		$xoopsTpl -> assign( 'pageinitial', ucfirst( $eachentry['init'] ) );
 	}

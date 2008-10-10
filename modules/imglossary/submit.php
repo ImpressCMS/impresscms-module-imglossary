@@ -17,7 +17,7 @@ global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
 
 $result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
 if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1' ) {
-	redirect_header( "index.php", 1, _AM_WB_NOCOLEXISTS );
+	redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOCOLEXISTS );
 	exit();
 } 
 
@@ -112,7 +112,7 @@ switch ( $op ) {
 
 		if ( $result ) {
 			if ( !is_object( $xoopsUser ) ) {
-				$username = _MD_WB_GUEST;
+				$username = _MD_IMGLOSSARY_GUEST;
 				$usermail = '';
 			} else {
 				$username = $xoopsUser -> getVar( "uname", "E" );
@@ -121,17 +121,17 @@ switch ( $op ) {
 			}
 
 			if ( $xoopsModuleConfig['mailtoadmin'] == 1 ) {
-				$adminMessage = sprintf( _MD_WB_WHOSUBMITTED, $username );
+				$adminMessage = sprintf( _MD_IMGLOSSARY_WHOSUBMITTED, $username );
 				$adminMessage .= "<b>" . $term . "</b>\n";
-				$adminMessage .= "" . _MD_WB_EMAILLEFT . " $usermail\n";
+				$adminMessage .= "" . _MD_IMGLOSSARY_EMAILLEFT . " $usermail\n";
 				$adminMessage .= "\n";
 				
 				if ($notifypub == '1') {
-					$adminMessage .= _MD_WB_NOTIFYONPUB;
+					$adminMessage .= _MD_IMGLOSSARY_NOTIFYONPUB;
 				}
 				
 				$adminMessage .= "\n" . $_SERVER['HTTP_USER_AGENT'] . "\n";
-				$subject = $xoopsConfig['sitename'] . " - " . _MD_WB_DEFINITIONSUB;
+				$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONSUB;
 				$xoopsMailer =& getMailer();
 				$xoopsMailer -> useMail();
 				$xoopsMailer -> setToEmails( $xoopsConfig['adminmail'] );
@@ -140,16 +140,16 @@ switch ( $op ) {
 				$xoopsMailer -> setSubject( $subject );
 				$xoopsMailer -> setBody( $adminMessage );
 				$xoopsMailer -> send();
-				$messagesent = sprintf( _MD_WB_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_WB_THANKS1 . "";
+				$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_IMGLOSSARY_THANKS1 . "";
 			}
 
 			if ( $xoopsModuleConfig['autoapprove'] == 1 ) {
-				redirect_header( "index.php", 2, _MD_WB_RECEIVEDANDAPPROVED );
+				redirect_header( "index.php", 2, _MD_IMGLOSSARY_RECEIVEDANDAPPROVED );
 			} else {
-				redirect_header( "index.php", 2, _MD_WB_RECEIVED );
+				redirect_header( "index.php", 2, _MD_IMGLOSSARY_RECEIVED );
 			} 
 		} else {
-			redirect_header( "submit.php", 2, _MD_WB_ERRORSAVINGDB );
+			redirect_header( "submit.php", 2, _MD_IMGLOSSARY_ERRORSAVINGDB );
 		} 
 		exit();
 		break;
@@ -159,16 +159,16 @@ switch ( $op ) {
 		global $xoopsUser, $_SERVER;
 		
         if ( !is_object( $xoopsUser ) ) {
-			$name = _MD_WB_GUEST;
+			$name = _MD_IMGLOSSARY_GUEST;
         } else {
 			$name = ucfirst( $xoopsUser -> getVar( 'uname' ) );
         }
 
-		$xoopsOption['template_main'] = 'imglossary_submit.html';
-		include ICMS_ROOT_PATH . '/header.php';
+		//$xoopsOption['template_main'] = 'imglossary_submit.html';
+		//include ICMS_ROOT_PATH . '/header.php';
 		
-		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
-		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
+		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
+		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'wb_user_name', $name );
 
 		$block = 1;
@@ -194,7 +194,7 @@ switch ( $op ) {
 		
 		$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
-		include ICMS_ROOT_PATH . '/footer.php';
+		//include ICMS_ROOT_PATH . '/footer.php';
 		
 		break;
 } 

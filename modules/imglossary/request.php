@@ -46,7 +46,7 @@ if ( empty($_POST['submit']) ) {
 	if ( $xoopsUser ) {
 		$user = $xoopsUser -> getVar("uid");
 	} else {
-		$user = _MD_WB_ANONYMOUS;
+		$user = _MD_IMGLOSSARY_ANONYMOUS;
 	}
 	$submit = 1;
 	$date = time();
@@ -74,15 +74,15 @@ if ( empty($_POST['submit']) ) {
 	}
 
 	if ( $xoopsModuleConfig['mailtoadmin'] == 1 )	{
-		$adminMessage = sprintf( _MD_WB_WHOASKED, $logname );
+		$adminMessage = sprintf( _MD_IMGLOSSARY_WHOASKED, $logname );
 		$adminMessage .= "<b>" . $reqterm . "</b>\n";
-		$adminMessage .= "" . _MD_WB_EMAILLEFT . " $address\n";
+		$adminMessage .= "" . _MD_IMGLOSSARY_EMAILLEFT . " $address\n";
 		$adminMessage .= "\n";
 		if ( $notifypub == '1' ) {
-			$adminMessage .= _MD_WB_NOTIFYONPUB;
+			$adminMessage .= _MD_IMGLOSSARY_NOTIFYONPUB;
 		}
 		$adminMessage .= "\n" . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . "\n";
-		$subject = $xoopsConfig['sitename'] . " - " . _MD_WB_DEFINITIONREQ;
+		$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONREQ;
 		$xoopsMailer =& getMailer();
 		$xoopsMailer -> useMail();
 		$xoopsMailer -> setToEmails( $xoopsConfig['adminmail'] );
@@ -91,18 +91,18 @@ if ( empty($_POST['submit']) ) {
 		$xoopsMailer -> setSubject( $subject );
 		$xoopsMailer -> setBody( $adminMessage );
 		$xoopsMailer -> send();
-		$messagesent = sprintf( _MD_WB_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_WB_THANKS1 . "";
+		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_IMGLOSSARY_THANKS1 . "";
 		}
 
-	$conf_subject = _MD_WB_THANKS2;
-	$userMessage = sprintf( _MD_WB_GOODDAY2, $logname );
+	$conf_subject = _MD_IMGLOSSARY_THANKS2;
+	$userMessage = sprintf( _MD_IMGLOSSARY_GOODDAY2, $logname );
 	$userMessage .= "\n\n";
-	$userMessage .= sprintf( _MD_WB_THANKYOU, $xoopsConfig['sitename'] );
+	$userMessage .= sprintf( _MD_IMGLOSSARY_THANKYOU, $xoopsConfig['sitename'] );
 	$userMessage .= "\n";
-	$userMessage .= sprintf( _MD_WB_REQUESTSENT, $xoopsConfig['sitename'] );
+	$userMessage .= sprintf( _MD_IMGLOSSARY_REQUESTSENT, $xoopsConfig['sitename'] );
 	$userMessage .= "\n";
 	$userMessage .= "--------------\n";
-	$userMessage .= "" . $xoopsConfig['sitename'] . " " . _MD_WB_WEBMASTER . "\n"; 
+	$userMessage .= "" . $xoopsConfig['sitename'] . " " . _MD_IMGLOSSARY_WEBMASTER . "\n"; 
 	$userMessage .= "" . $xoopsConfig['adminmail'] . "";
 	$xoopsMailer =& getMailer();
 	$xoopsMailer -> useMail();
@@ -114,9 +114,9 @@ if ( empty($_POST['submit']) ) {
 	$xoopsMailer -> send();
 	
 	if ( $xoopsModuleConfig['mailtoadmin'] == 1 ) {
-		$messagesent .= sprintf( _MD_WB_SENTCONFIRMMAIL, $address );
+		$messagesent .= sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );
 	} else {
-		$messagesent = sprintf( _MD_WB_SENTCONFIRMMAIL, $address );
+		$messagesent = sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );
 	}
 	redirect_header( "index.php", 2, $messagesent );
 }

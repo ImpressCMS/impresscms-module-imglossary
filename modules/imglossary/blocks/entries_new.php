@@ -47,29 +47,29 @@ function b_entries_new_show( $options )	{
 } 
 
 function b_entries_new_edit( $options )	{
-	$form = "" . _MB_WB_ORDER . "&nbsp;<select name='options[]'>";
+	$form = "" . _MB_IMGLOSSARY_ORDER . "&nbsp;<select name='options[]'>";
 
 	$form .= "<option value='datesub'";
 	if ( $options[0] == "datesub" )	{
 		$form .= " selected='selected'";
 	} 
 	
-	$form .= ">" . _MB_WB_DATE . "</option>\n";
+	$form .= ">" . _MB_IMGLOSSARY_DATE . "</option>\n";
 	$form .= "<option value='counter'";
 	
 	if ( $options[0] == "counter" )	{
 		$form .= " selected='selected'";
 	} 
 	
-	$form .= ">" . _MB_WB_HITS . "</option>\n";
+	$form .= ">" . _MB_IMGLOSSARY_HITS . "</option>\n";
 	$form .= "<option value='weight'";
 	if ( $options[0] == "weight" ) {
 		$form .= " selected='selected'";
 	} 
 	
-	$form .= ">" . _MB_WB_WEIGHT . "</option>\n";
+	$form .= ">" . _MB_IMGLOSSARY_WEIGHT . "</option>\n";
 	$form .= "</select>\n";
-	$form .= "&nbsp;<br />" . _MB_WB_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_WB_TERMS . "";
+	$form .= "&nbsp;<br />" . _MB_IMGLOSSARY_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_IMGLOSSARY_TERMS . "";
 	$form .= "&nbsp;<br />" . _MB_IMGLOSSARY_DATEFORMAT . "&nbsp;<input type='text' name='options[]' value='" . $options[2] . "' />&nbsp;" . _MB_IMGLOSSARY_DATEFORMATMANUAL;
 
 	return $form;

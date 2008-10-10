@@ -10,14 +10,14 @@ function DefinitionImport($delete) {
 	$sqlquery = $xoopsDB -> query( "SELECT count(id) AS count FROM " . $xoopsDB -> prefix( 'dictionary' ) );
 	list( $count ) = $xoopsDB -> fetchRow( $sqlquery ) ;
 	if( $count < 1 ) {
-		redirect_header( "index.php", 1, _AM_WB_IMPDICT_01 );
+		redirect_header( "index.php", 1, _AM_IMGLOSSARY_IMPDICT_01 );
 		exit();
 	}
 
 	xoops_cp_header();
-	echo "<b>" . _AM_WB_IMPDICT_02 . "</b><p>";
+	echo "<b>" . _AM_IMGLOSSARY_IMPDICT_02 . "</b><p>";
 	OpenTable();
-	echo "<br /><b>" . _AM_WB_IMPDICT_03 . "</b><p>";
+	echo "<br /><b>" . _AM_IMGLOSSARY_IMPDICT_03 . "</b><p>";
 	
 	$glocounter = 0;
 	$errorcounter = 0;
@@ -60,37 +60,37 @@ function DefinitionImport($delete) {
 		$insert = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url, submit, datesub, offline, comments) VALUES ('','" . $glo['letter'] . "','" . $glo['name'] . "','" . $glo['definition'] . "','','" . $glo['submit'] . "','" . $glo['datesub'] . "','" . $glo['state'] . "','" . $glo['comments'] . "')" );
 		if (!$insert) {
 			$errorcounter = $errorcounter + 1;
-			echo "<font color='red'>" . _AM_WB_IMPDICT_04 . $glo['id'] . "</font><br>" . $glo['nom'] . "<br>";
+			echo "<font color='red'>" . _AM_IMGLOSSARY_IMPDICT_04 . $glo['id'] . "</font><br>" . $glo['nom'] . "<br>";
 			echo $glo['definition'] . "<br><br>";
 		}
 	}
 	
 	$sqlquery = $xoopsDB -> query( "SELECT mid FROM " . $xoopsDB -> prefix( 'modules' ) . " WHERE dirname='dictionary'" );
 	list( $dicID ) = $xoopsDB -> fetchRow( $sqlquery );
-	echo "<p>" . _AM_WB_IMPDICT_05 . $dicID . "</p>";
-	echo "<p>" . _AM_WB_IMPDICT_06 . $xoopsModule -> getVar('mid') . "</p>";
+	echo "<p>" . _AM_IMGLOSSARY_IMPDICT_05 . $dicID . "</p>";
+	echo "<p>" . _AM_IMGLOSSARY_IMPDICT_06 . $xoopsModule -> getVar('mid') . "</p>";
 
 	$comentario = $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'xoopscomments' ) . " SET com_modid='" . $xoopsModule -> getVar('mid') . "' WHERE com_modid='" . $dicID . "'" );
 	if (!$comentario) {
-		echo "<font color='red'>" . _AM_WB_IMPDICT_07 . "<br><br>";
+		echo "<font color='red'>" . _AM_IMGLOSSARY_IMPDICT_07 . "<br><br>";
 	} else { 
-		echo "<p>" . _AM_WB_IMPDICT_08 . "</p>"; 
+		echo "<p>" . _AM_IMGLOSSARY_IMPDICT_08 . "</p>"; 
 	}
 
-	echo "<p><font color='red'>" . _AM_WB_IMPDICT_09 . $errorcounter . "</font></p>";
-	echo "<p>" . _AM_WB_IMPDICT_10 . $glocounter . "</p>";
+	echo "<p><font color='red'>" . _AM_IMGLOSSARY_IMPDICT_09 . $errorcounter . "</font></p>";
+	echo "<p>" . _AM_IMGLOSSARY_IMPDICT_10 . $glocounter . "</p>";
 	CloseTable();
-	echo "<br /><b><a href='index.php'>" . _AM_WB_IMPDICT_11 . "</a></b><p>";
+	echo "<br /><b><a href='index.php'>" . _AM_IMGLOSSARY_IMPDICT_11 . "</a></b><p>";
 	xoops_cp_footer();
 }
 
 function FormImport() {
 	global $xoopsConfig, $xoopsDB;
 	xoops_cp_header();
-	echo "<b>" . _AM_WB_IMPDICT_02 . "</b><p>";
+	echo "<b>" . _AM_IMGLOSSARY_IMPDICT_02 . "</b><p>";
 	OpenTable();
-	echo "<b>" . _AM_WB_IMPDICT_03 . "</b><p>";
-	echo "<br /><b><font color='red'>" . _AM_WB_IMPORTWARN . "</font></b><b>";
+	echo "<b>" . _AM_IMGLOSSARY_IMPDICT_03 . "</b><p>";
+	echo "<br /><b><font color='red'>" . _AM_IMGLOSSARY_IMPORTWARN . "</font></b><b>";
 	echo "<form action='importdictionary091.php?op=import' method=post>
 	<table border=0 cellpadding=2 cellspacing=3>";
 	/*<TR>
@@ -99,7 +99,7 @@ function FormImport() {
 	</TR>*/
 	echo "
 	<tr>
-	  <td width='100%' colspan='2' align='center'><br /><input type='submit' name='button' id='import' value='" . _AM_WB_IMPORT . "'>&nbsp;<input type='button' name='cancel' value='" . _CANCEL . "' onclick='javascript:history.go(-1);'></td>
+	  <td width='100%' colspan='2' align='center'><br /><input type='submit' name='button' id='import' value='" . _AM_IMGLOSSARY_IMPORT . "'>&nbsp;<input type='button' name='cancel' value='" . _CANCEL . "' onclick='javascript:history.go(-1);'></td>
 	<tr> 
 	</table>";
 	CloseTable();

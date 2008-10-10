@@ -1,37 +1,37 @@
 <table id="moduleheader">
 <tr>
-<td width="100%"><span class="leftheader"><a href="<{$xoops_url}>"><{$smarty.const._MD_WB_HOME}></a> > <{$lang_modulename}></span></td>
+<td width="100%"><span class="leftheader"><a href="<{$xoops_url}>"><{$smarty.const._MD_IMGLOSSARY_HOME}></a> > <{$lang_modulename}></span></td>
 <td width="100"><span class="rightheader"><{$lang_modulename}></span></td>
 </tr>
 </table>
 
-<{if $empty == 1}><div class="empty"><{$smarty.const._MD_WB_STILLNOTHINGHERE}></div><{/if}>
+<{if $empty == 1}><div class="empty"><{$smarty.const._MD_IMGLOSSARY_STILLNOTHINGHERE}></div><{/if}>
 <!--
 <div class="toprow">
 <div id="search">
 <fieldset>
-<legend><{$smarty.const._MD_WB_SEARCHENTRY}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
 <{$searchform}>
 </fieldset>
 </div>
 <div class="inventory">
-<{$smarty.const._MD_WB_WEHAVE}><br />
-<{$smarty.const._MD_WB_DEFS}><{$publishedwords}><br />
+<{$smarty.const._MD_IMGLOSSARY_WEHAVE}><br />
+<{$smarty.const._MD_IMGLOSSARY_DEFS}><{$publishedwords}><br />
 
-<{if $multicats == 1}><{$smarty.const._MD_WB_CATS}><{$totalcats}><br /><{/if}>
+<{if $multicats == 1}><{$smarty.const._MD_IMGLOSSARY_CATS}><{$totalcats}><br /><{/if}>
 
-<input class="btnDefault" type="button" value="<{$smarty.const._MD_WB_SUBMITENTRY}>" onclick="location.href = 'submit.php'" /><br />
-<input class="btnDefault" type="button" value="<{$smarty.const._MD_WB_REQUESTDEF}>" onclick="location.href = 'request.php' " />
+<input class="btnDefault" type="button" value="<{$smarty.const._MD_IMGLOSSARY_SUBMITENTRY}>" onclick="location.href = 'submit.php'" /><br />
+<input class="btnDefault" type="button" value="<{$smarty.const._MD_IMGLOSSARY_REQUESTDEF}>" onclick="location.href = 'request.php' " />
 </div>
 </div>
 -->
 
 <div class="clearer">
 <fieldset>
-<legend><{$smarty.const._MD_WB_BROWSELETTER}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
 <div class="letters">
 <{foreach item=letterlinks from=$alpha.initial}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.linktext}>" ><{$letterlinks.linktext}></a> |
-<{/foreach}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_OTHER}>" title="<{$smarty.const._MD_WB_OTHER}>"><{$smarty.const._MD_WB_OTHER}></a> | <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_WB_ALL}>" title="<{$smarty.const._MD_WB_ALL}>"><{$smarty.const._MD_WB_ALL}></a>
+<{/foreach}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$smarty.const._MD_IMGLOSSARY_OTHER}>"><{$smarty.const._MD_IMGLOSSARY_OTHER}></a> | <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$smarty.const._MD_IMGLOSSARY_ALL}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
 </div>
 </fieldset>
 </div>
@@ -39,12 +39,12 @@
 <{if $multicats == 1}>
 <div class="clearer">
 <fieldset>
-<legend><{$smarty.const._MD_WB_BROWSECAT}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
 <div class="letters">
 <{foreach item=catlinks from=$block0.categories}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
 <{if $catlinks.total > 0}><{/if}>
 </a> [<{$catlinks.total}>] |
-<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php"><{$smarty.const._MD_WB_ALLCATS}></a> [<{$publishedwords}>]
+<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 </div>
 </fieldset>
 </div>
@@ -52,7 +52,7 @@
 
 <div class="float30">
 <fieldset>
-<legend><{$smarty.const._MD_WB_RECENTENT}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_RECENTENT}></legend>
 <ul>
 <{foreach item=newentries from=$block.newstuff}>
 <li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$newentries.date}>)</span></li>
@@ -63,7 +63,7 @@
 
 <div class="float30">
 <fieldset>
-<legend><{$smarty.const._MD_WB_POPULARENT}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_POPULARENT}></legend>
 <ul>
 <{foreach item=popentries from=$block2.popstuff}>
 <li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$popentries.counter}>)</span></li>
@@ -74,17 +74,17 @@
 
 <div class="search">
 <fieldset>
-<legend><{$smarty.const._MD_WB_SEARCHENTRY}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
 <{$searchform}>
 </fieldset>
 </div>
 
 <div style="width: 100%;">
 <fieldset>
-<legend><{$smarty.const._MD_WB_RANDOMTERM}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_RANDOMTERM}></legend>
 <{if $multicats == 1}>
 <{if $empty != 1}>
-<div class="catname"><{$smarty.const._MD_WB_ENTRYCATEGORY}><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a></div>
+<div class="catname"><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a></div>
 <{/if}>
 <{/if}>
 <div class="pad4">
@@ -98,19 +98,19 @@
 <{if $userisadmin == 1}>
 <div class="clearer2">
 <fieldset>
-<legend><{$smarty.const._MD_WB_SUBANDREQ}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_SUBANDREQ}></legend>
 
 <div class="submission">
-<b><{$smarty.const._MD_WB_SUB}></b>
-<{if $wehavesubs == '0'}><{$smarty.const._MD_WB_NOSUB}><{/if}>
+<b><{$smarty.const._MD_IMGLOSSARY_SUB}></b>
+<{if $wehavesubs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOSUB}><{/if}>
 <{foreach item=subentries from=$blockS.substuff}>
 <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/admin/entry.php?op=mod&entryID=<{$subentries.id}>"><{$subentries.linktext}></a>&nbsp;
 <{/foreach}>
 </div>
 
 <div class="request">
-<b><{$smarty.const._MD_WB_REQ}></b>
-<{if $wehavereqs == '0'}><{$smarty.const._MD_WB_NOREQ}><{/if}>
+<b><{$smarty.const._MD_IMGLOSSARY_REQ}></b>
+<{if $wehavereqs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOREQ}><{/if}>
 <{foreach item=reqentries from=$blockR.reqstuff}>
 <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/admin/entry.php?op=mod&entryID=<{$reqentries.id}>"><{$reqentries.linktext}></a>&nbsp;
 <{/foreach}>
@@ -120,13 +120,13 @@
 <{else}>
 <div class="clearer2">
 <fieldset>
-<legend><{$smarty.const._MD_WB_REQ}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_REQ}></legend>
 
 <div class="request">
-<b><{$smarty.const._MD_WB_REQ}></b>
-<{if $wehavereqs == '0'}><{$smarty.const._MD_WB_NOREQ}>
+<b><{$smarty.const._MD_IMGLOSSARY_REQ}></b>
+<{if $wehavereqs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOREQ}>
 <{else}>
-<br /><span style="font-size:80%"><{$smarty.const._MD_WB_REQUESTSUGGEST}></span><br />
+<br /><span style="font-size:80%"><{$smarty.const._MD_IMGLOSSARY_REQUESTSUGGEST}></span><br />
 <{/if}>
 <{foreach item=reqentries from=$blockR.reqstuff}>
 <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/submit.php?suggest=<{$reqentries.id}>"><{$reqentries.linktext}></a>&nbsp;
@@ -138,7 +138,7 @@
 
 <div id="search">
 <fieldset>
-<legend><{$smarty.const._MD_WB_SEARCHENTRY}></legend>
+<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
 <{$searchform}>
 </fieldset>
 </div>
