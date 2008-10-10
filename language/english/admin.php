@@ -128,4 +128,7 @@ define("_AM_WB_IMPDICT_11","Back to Admin");
 
 define("_AM_WB_NOCOLEXISTS", "Sorry, there are no categories defined as of yet.<br />Please contact the site administrator and tell him about this."); // This was originally in the main.php file
 
+// imGlossary v1.00
+define("_AM_WB_SHOWOFFLINE", "Offline");
+
 ?>

@@ -81,5 +81,6 @@ define("_MI_IMGLOSSARY_SORTCATS", "Ordenar categorías por:");
 define("_MI_IMGLOSSARY_SORTCATSDSC", "Seleccione la forma en la que las categorías son ordenadas.");
 define("_MI_IMGLOSSARY_TITLE", "Título");
 define("_MI_IMGLOSSARY_WEIGHT", "Importancia");
+define("_MI_IMGLOSSARY_ADMENU7", "Submissions");
 
 ?>
