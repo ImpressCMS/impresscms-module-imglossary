@@ -36,8 +36,8 @@
 
 	<{foreach item=eachcat from=$catsarray.single}>
 <!--	<h3 class="cat"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></h3> -->
-	<fieldset style="border: #000 1px solid;">
-	<legend style="display: inline; font-weight: bold;"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
+	<fieldset>
+	<legend><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
 	<div style="text-align: left; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
 	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div></fieldset><br />
 	<{/foreach}>
@@ -47,8 +47,8 @@
 
 <{elseif $pagetype == '1'}>
 <!--	<h2 class="cat"><{$singlecat.name}></h2> -->
-	<fieldset style="border: #000 1px solid; padding: 4px;">
-	<legend style="display: inline; font-weight: bold;"><{$singlecat.name}></legend>
+	<fieldset style="padding: 4px;">
+	<legend><{$singlecat.name}></legend>
 	<div style="text-align: left; padding: 8px; font-size: small;"><{$singlecat.description}></div>
 	<div class="letters"><{$smarty.const._MD_WB_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_WB_ENTRIESINCAT}></div><br />
 
