@@ -37,7 +37,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 }
 
 // To display the linked letter list
-$alpha = alphaArray();
+$alpha = imglossary_alphaArray();
 $xoopsTpl -> assign( 'alpha', $alpha );
 
 $sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE init='#'" );
@@ -100,7 +100,7 @@ if ( $init == _MD_WB_ALL ) {
 		}
 
 		// Functional links
-		$microlinks = serviceLinks( $eachentry );
+		$microlinks = imglossary_serviceLinks( $eachentry );
 		$eachentry['microlinks'] = $microlinks;
 
 		$entriesarray['single'][] = $eachentry;
@@ -176,7 +176,7 @@ if ( $init == _MD_WB_ALL ) {
 		}
 
 		// Functional links
-		$microlinks = serviceLinks( $eachentry );
+		$microlinks = imglossary_serviceLinks( $eachentry );
 		$eachentry['microlinks'] = $microlinks;
 
 		$entriesarray2['single'][] = $eachentry;

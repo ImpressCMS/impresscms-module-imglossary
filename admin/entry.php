@@ -9,7 +9,7 @@
  */
 
 // -- General Stuff -- //
-include "admin_header.php";
+include 'admin_header.php';
 
 $op = '';
 
@@ -47,7 +47,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_WB_NOENTRYTOEDIT );
 			exit();
 		}
-		adminMenu( 2, _AM_WB_ENTRIES );
+		imglossary_adminMenu( 2, _AM_WB_ENTRIES );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_WB_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
@@ -60,7 +60,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_WB_NEEDONECOLUMN );
 			exit();
 		}
-		adminMenu( 2, _AM_WB_ENTRIES );
+		imglossary_adminMenu( 2, _AM_WB_ENTRIES );
 		$uid = $xoopsUser -> getVar('uid');
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_WB_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_WB_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
@@ -74,14 +74,14 @@ function entryEdit( $entryID = '' ) {
 
 		ob_start();
 			//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
-			$mytree -> makeMySelBox( 'name', 'name', $categoryID );
+			$mytree -> makeMySelBox( 'name', 'name', 0, 0 );
 			$sform -> addElement( new XoopsFormLabel( _AM_WB_CATNAME, ob_get_contents() ) );
 		ob_end_clean();
 	}
 
 	// Author selector
 	ob_start();
-		getuserForm( intval($uid) );
+		imglossary_getuserForm( intval($uid) );
 		$sform -> addElement( new XoopsFormLabel( _AM_WB_AUTHOR, ob_get_contents() ) );
 	ob_end_clean();
 
@@ -149,12 +149,12 @@ function entryEdit( $entryID = '' ) {
 		
 		// else, we're editing an existing entry
 		$butt_create = new XoopsFormButton( '', '', _AM_WB_MODIFY, 'submit' );
-		$butt_create->setExtra('onclick="this.form.elements.op.value=\'addentry\'"');
-		$button_tray->addElement( $butt_create );
+		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addentry\'"' );
+		$button_tray -> addElement( $butt_create );
 
 		$butt_cancel = new XoopsFormButton( '', '', _AM_WB_CANCEL, 'button' );
-		$butt_cancel->setExtra('onclick="history.go(-1)"');
-		$button_tray->addElement( $butt_cancel );
+		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
+		$button_tray -> addElement( $butt_cancel );
 		
 	}
 
@@ -163,7 +163,7 @@ function entryEdit( $entryID = '' ) {
 	unset( $hidden );
 } 
 
-function entrySave($entryID = '')	{
+function entrySave( $entryID = '' )	{
 	global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsDB, $myts;
 	$entryID = isset($_POST['entryID']) ? intval($_POST['entryID']) : intval($_GET['entryID']);
 	if ($xoopsModuleConfig['multicats'] == 1) {
@@ -203,11 +203,10 @@ function entrySave($entryID = '')	{
 	$request = 0;
 	$uid = isset( $_POST['author'] ) ? intval( $_POST['author'] ) : $xoopsUser -> uid();
 	
-
 // Save to database
 	if ( !$entryID ) {
 		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )" ) ) {
-			calculateTotals();
+			imglossary_calculateTotals();
 			redirect_header( "index.php", 1, _AM_WB_ENTRYCREATEDOK );
 		} else {
 			redirect_header( "index.php", 1, _AM_WB_ENTRYNOTCREATED );
@@ -216,7 +215,7 @@ function entrySave($entryID = '')	{
 		// That is, $entryID exists, thus we're editing an entry
 		
 		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
-			calculateTotals();
+			imglossary_calculateTotals();
 			redirect_header( "index.php", 1, _AM_WB_ENTRYMODIFIED );
 		} else {
 			redirect_header( "index.php", 1, _AM_WB_ENTRYNOTUPDATED );

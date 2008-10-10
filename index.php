@@ -30,15 +30,15 @@ switch ( $op ) {
 		$xoopsOption['template_main'] = 'imglossary_index.html';
 		include  ICMS_ROOT_PATH . '/header.php';
 		
-		calculateTotals();
+		imglossary_calculateTotals();
 		$xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
 
 		// Counts
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-			$totalcats = countCats();
+			$totalcats = imglossary_countCats();
 			$xoopsTpl -> assign( 'totalcats', $totalcats );
 		}
-		$publishedwords = countWords();
+		$publishedwords = imglossary_countWords();
 		$xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
@@ -62,7 +62,7 @@ switch ( $op ) {
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			$searchform .= '<tr><td style="text-align: right; line-height: 200%">' . _MD_WB_CATEGORY . '</td>';
 			$searchform .= '<td>&nbsp;</td><td style="text-align: left;">';
-			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
+			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY categoryID" );
 			$searchform .= '<select name="categoryID">';
 			$searchform .= '<option value="0">' . _MD_WB_ALLOFTHEM . '</option>';
 			while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultcat ) ) {
@@ -78,7 +78,7 @@ switch ( $op ) {
 		$xoopsTpl -> assign( 'searchform', $searchform );
 
 		// To display the linked letter list
-		$alpha = alphaArray();
+		$alpha = imglossary_alphaArray();
 		$xoopsTpl -> assign( 'alpha', $alpha );
 
 		$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='#'" );
@@ -88,7 +88,7 @@ switch ( $op ) {
 		if ( $xoopsModuleConfig['multicats'] == 1 )	{
 			// To display the list of categories
 			$block0 = array();
-			$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY name ASC" );
+			$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC" );
 			while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 				$catlinks = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -173,7 +173,7 @@ switch ( $op ) {
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
 				}
-			$microlinks = serviceLinks( $random['entryID'] );
+			$microlinks = imglossary_serviceLinks( $random['entryID'] );
 
 			$xoopsTpl -> assign( 'random', $random );
 			}

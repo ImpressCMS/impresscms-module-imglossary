@@ -15,7 +15,7 @@
  * @param integer $name:  0 Use Usenamer 1 Use realname 
  * @return 
  **/
-function wb_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
+function imglossary_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
 		if ( !is_numeric( $userid ) ) {
 		 	return $userid;
 		}
@@ -44,7 +44,7 @@ function wb_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
         return $GLOBALS['xoopsConfig']['anonymous'];
 }
 
-function getuserForm( $user ) {
+function imglossary_getuserForm( $user ) {
 	global $xoopsDB, $xoopsConfig;
 
 	echo "<select name='author'>";
@@ -62,17 +62,17 @@ function getuserForm( $user ) {
 	echo "</select></div>";
 }
 
-function calculateTotals() {
+function imglossary_calculateTotals() {
 	global $xoopsUser, $xoopsDB, $xoopsModule;
 	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 	list( $totalcategories ) = $xoopsDB -> getRowsNum( $result01 );
-	while (list ( $categoryID, $total ) = $xoopsDB -> fetchRow ( $result01 ) ) {
-		$newcount = countByCategory ( $categoryID );
+	while (list ( $categoryID, $total ) = $xoopsDB -> fetchRow( $result01 ) ) {
+		$newcount = imglossary_countByCategory ( $categoryID );
 		$xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_cats' ) . " SET total='$newcount' WHERE categoryID='$categoryID'" );
 	}
 }
 
-function countByCategory( $c ) {
+function imglossary_countByCategory( $c ) {
     global $xoopsUser, $xoopsDB, $xoopsModule;
     $count = 0;
     $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 and offline=0 AND categoryID='$c'" );
@@ -82,21 +82,21 @@ function countByCategory( $c ) {
 	return $count;
 } 
 
-function countCats() {
+function imglossary_countCats() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
-	$cats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( "imglossary_cats" ) . "" );
+	$cats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
 	$totalcats = $xoopsDB -> getRowsNum( $cats );
 	return $totalcats;
 }
 
-function countWords() {
+function imglossary_countWords() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
 	$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND request=0" );
 	$publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
 	return $publishedwords;
 }
 
-function alphaArray() {
+function imglossary_alphaArray() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
 	$alpha = array();
 	for ($a = 65; $a < (65+26); $a++ ) {
@@ -113,7 +113,7 @@ function alphaArray() {
 	return $alpha;
 }
 
-function serviceLinks( $variable ) {
+function imglossary_serviceLinks( $variable ) {
     global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 	// Functional links
 	$srvlinks = "";
@@ -126,7 +126,7 @@ function serviceLinks( $variable ) {
 	return $srvlinks;
 }
 
-function showSearchForm() {
+function imglossary_showSearchForm() {
     global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 	$searchform = "<table width=\"100%\">";
 	$searchform .= "<form name=\"op\" id=\"op\" action=\"search.php\" method=\"post\">";
@@ -156,7 +156,7 @@ function showSearchForm() {
 	return $searchform;
 }
 
-function getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
+function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 	$parts = explode( ">", $haystack );
 	foreach ( $parts as $key=>$part ) {
 		$pL = "";
@@ -174,10 +174,10 @@ function getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 	return ( implode( ">", $parts ) );
 }
 
-function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
+function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	global $xoopsModule, $xoopsConfig, $xoopsModuleConfig;
 	$tblColors = array();
-	$tblColors[0]=$tblColors[1]=$tblColors[2]=$tblColors[3]=$tblColors[4]=$tblColors[5]=$tblColors[6]=$tblColors[7]=$tblColors[8]='#DDE';
+	$tblColors[0]=$tblColors[1]=$tblColors[2]=$tblColors[3]=$tblColors[4]=$tblColors[5]=$tblColors[6]=$tblColors[7]=$tblColors[8]='#F1F4FB';
     $tblColors[$currentoption] = '#FFF';
     if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar( 'dirname' ) . '/language/' . $xoopsConfig['language'] . '/modinfo.php' ) ) {
 		include_once '../language/' . $xoopsConfig['language'] . '/modinfo.php';
@@ -193,14 +193,15 @@ function adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	}
 	
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_CREATEENTRY . '</a></li>';
-//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_SUBMITS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_BLOCKS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_OPTS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_GOMOD . '</a></li>';
 	//mondarse
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_IMPORT . '</a></li>';
+//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_WB_IMPORT . '</a></li>';
 	//mondarse
 //	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_WB_HELP . "</a></li></ul></div>";
+
 }
 	
 

@@ -22,7 +22,8 @@ include_once ICMS_ROOT_PATH . '/class/pagenav.php';
 $config_handler =& xoops_gethandler('config');
 $xoopsConfigSearch =& $config_handler -> getConfigsByCat( XOOPS_CONF_SEARCH );
 if ( $xoopsConfigSearch['enable_search'] != 1 ) {
-	header( 'Location: ' . ICMS_URL . '/index.php' );
+	//header( 'Location: ' . ICMS_URL . '/index.php' );
+	include ICMS_ROOT_PATH . '/include/searchform.php';
 	exit();
 }
 
@@ -48,7 +49,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 // Configure search parameters according to selector
 $query = stripslashes($query);
 if ( $type == "1" ) { 
-	$searchtype = "w.term LIKE '%$query%' "; 
+	$searchtype = "term LIKE '%$query%' "; 
 }
 if ( $type == "2" ) { 
 	$searchtype = "definition LIKE '%$query%' "; 
@@ -69,8 +70,8 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 }
 
 // Counter
-$totalcats = countCats();
-$publishedwords = countWords();
+$totalcats = imglossary_countCats();
+$publishedwords = imglossary_countWords();
 $xoopsTpl -> assign( 'totalcats', $totalcats );
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
@@ -80,7 +81,7 @@ if ( !$query ) {
 
 	$xoopsTpl -> assign( 'intro', _MD_WB_NOSEARCHTERM );
 	// Display search form
-	$searchform = showSearchForm();
+	$searchform = imglossary_showSearchForm();
 	$xoopsTpl -> assign( 'searchform', $searchform );
 } else {
 	// IF there IS term, count number of results
@@ -93,7 +94,7 @@ if ( !$query ) {
 		// There's been no correspondences with the searched terms
 		$xoopsTpl -> assign( 'intro', _MD_WB_NORESULTS );
 		// Display search form
-		$searchform = showSearchForm();
+		$searchform = imglossary_showSearchForm();
 		$xoopsTpl -> assign( 'searchform', $searchform );
 	} else {	
 		// $results > 0 -> there were search results
@@ -102,7 +103,7 @@ if ( !$query ) {
 		$resultset = array();
 
 		// How many results will we show in this page?
-		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' )." c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 		
 		//while (list( $entryID, $categoryID, $term, $init, $definition ) = $xoopsDB->fetchRow($resultA))
@@ -115,7 +116,7 @@ if ( !$query ) {
 			$eachresult['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 			$eachresult['catname'] = $myts -> makeTboxData4Show( $catname );
 			$tempdef = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
-			$eachresult['definition'] = getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
+			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
 
 			// Functional links
 			$microlinks = serviceLinks( $eachresult['entryID'] );
@@ -132,7 +133,7 @@ if ( !$query ) {
 		$xoopsTpl -> assign('resultset', $resultset );
 
 		// Display search form
-		$searchform = showSearchForm();
+		$searchform = imglossary_showSearchForm();
 		$xoopsTpl -> assign( 'searchform', $searchform );
 	}
 }
@@ -143,6 +144,6 @@ $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
-include ICMS_ROOT_PATH . "/footer.php";
+include ICMS_ROOT_PATH . '/footer.php';
 
 ?>

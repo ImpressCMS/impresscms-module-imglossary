@@ -8,15 +8,15 @@
  * Licence: GNU
  */
 
-include "../../mainfile.php";
-include ICMS_ROOT_PATH . "/header.php";
+include '../../mainfile.php';
 
-include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
+include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
+include ICMS_ROOT_PATH . '/header.php';
 
 global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
 
 $result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
-if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1') {
+if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1' ) {
 	redirect_header( "index.php", 1, _AM_WB_NOCOLEXISTS );
 	exit();
 } 
@@ -42,7 +42,7 @@ if ( isset( $_POST['post'] ) ) {
 if( !isset( $HTTP_POST_VARS['suggest'] ) ) {
 	$suggest = isset( $HTTP_GET_VARS['suggest'] ) ? intval( $HTTP_GET_VARS['suggest'] ) : 0;
 } else {
-	$suggest = intval($HTTP_POST_VARS['suggest']);
+	$suggest = intval( $HTTP_POST_VARS['suggest'] );
 }
 
 if ( $suggest > 0 ) {
@@ -93,7 +93,7 @@ switch ( $op ) {
 		$url = $myts -> addSlashes( $_POST['url'] );
 
 		if ( empty($url) ) {
-			$url = ""; 
+			$url = ''; 
 		}
 
 		$datesub = time();
@@ -161,10 +161,12 @@ switch ( $op ) {
         if ( !is_object( $xoopsUser ) ) {
 			$name = _MD_WB_GUEST;
         } else {
-			$name = ucfirst( $xoopsUser -> getVar( "uname" ) );
+			$name = ucfirst( $xoopsUser -> getVar( 'uname' ) );
         }
 
 		$xoopsOption['template_main'] = 'imglossary_submit.html';
+		include ICMS_ROOT_PATH . '/header.php';
+		
 		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_WB_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
 		$xoopsTpl -> assign( 'wb_user_name', $name );

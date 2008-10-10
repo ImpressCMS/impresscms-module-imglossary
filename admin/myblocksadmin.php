@@ -300,7 +300,7 @@ function list_blocks() {
 
     include ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar( 'dirname' ) . '/include/functions.php';
     xoops_cp_header() ;
-    adminMenu(4, _AM_WB_BLOCKS);
+    imglossary_adminMenu(4, _AM_WB_BLOCKS);
 
     if ( file_exists( './mymenu.php' ) ) include( './mymenu.php' ) ;
 
