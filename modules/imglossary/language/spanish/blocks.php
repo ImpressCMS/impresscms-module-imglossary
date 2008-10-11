@@ -28,4 +28,5 @@ define("_MB_IMGLOSSARY_WEIGHT", "Ordenar por posición");
 define( '_MB_IMGLOSSARY_DATEFORMAT', 'Formato de fecha: ' );
 define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'Lea <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP manual</a>' );
 define( '_MB_IMGLOSSARY_CATEGORY', 'Categoría: ' );
+define( '_MB_IMGLOSSARY_ADMININDEX', 'Administration' );
 ?>

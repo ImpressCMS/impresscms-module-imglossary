@@ -57,7 +57,9 @@ function b_entries_random_show() {
 		// Functional links
 		if ( $xoopsUser ) {
 			if ( $xoopsUser -> isAdmin() ) {
-				$adminlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png' border='0' alt='" . _MB_IMGLOSSARY_EDITTERM . "' /></a>&nbsp;<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png' border='0' alt='" . _MB_IMGLOSSARY_DELTERM . "' /></a>&nbsp;";
+				$adminlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MB_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
+				$adminlinks .= "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png' border='0' alt='" . _MB_IMGLOSSARY_EDITTERM . "' /></a>&nbsp;";
+				$adminlinks .= "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png' border='0' alt='" . _MB_IMGLOSSARY_DELTERM . "' /></a>&nbsp;";
 			}
 		}
 		$userlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/print.png' border='0' alt='" . _MB_IMGLOSSARY_PRINTTERM . "' /></a>&nbsp;<a href='mailto:?subject=" . sprintf( _MB_IMGLOSSARY_INTENTRY, $xoopsConfig['sitename'] ) . "&amp;body=" . sprintf( _MB_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/email.png' border='0' alt='" . _MB_IMGLOSSARY_SENDTOFRIEND . "' /></a>&nbsp;";

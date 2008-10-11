@@ -119,7 +119,9 @@ function imglossary_serviceLinks( $variable ) {
 	$srvlinks = "";
 	if ( $xoopsUser ) {
 		if ( $xoopsUser->isAdmin() ) {
-			$srvlinks .= "<a href=\"admin/entry.php?op=mod&entryID=" . $variable['id'] . "\" ><img src=\"images/icon/edit.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_EDITTERM . "\" ></a>&nbsp;<a href=\"admin/entry.php?op=del&entryID=" . $variable['id'] . "\" target=\"_self\"><img src=\"images/icon/delete.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_DELTERM . "\" ></a>&nbsp;";
+			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entry.php?op=mod&entryID=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entry.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
 		}
 	}
 	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/icon/print.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_PRINTTERM . "\" ></a>&nbsp;<a href=\"mailto:?subject=" . sprintf(_MD_IMGLOSSARY_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/icon/email.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_SENDTOFRIEND . "\" ></a>&nbsp;";
