@@ -28,4 +28,5 @@ define("_MB_IMGLOSSARY_WEIGHT", "List by weight");
 define( '_MB_IMGLOSSARY_DATEFORMAT', 'Date format: ' );
 define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'See <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP manual</a>' );
 define( '_MB_IMGLOSSARY_CATEGORY', 'Category: ' );
+define( '_MB_IMGLOSSARY_ADMININDEX', 'Administration' );
 ?>

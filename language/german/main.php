@@ -132,4 +132,6 @@ define("_MD_IMGLOSSARY_GUEST","Gast");
 define("_MD_IMGLOSSARY_NOCATSINSYSTEM","Keine kategorien im system");
 define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Klicken Sie die folgenden Wörter an, um eine Definition für die Bezeichnung vorzuschlagen)");
 
+// imGlossary v1.00
+define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 ?>
