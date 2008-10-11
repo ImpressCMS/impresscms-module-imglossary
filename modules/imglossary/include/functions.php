@@ -187,24 +187,24 @@ function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	echo '<div style="font-size: 10px; text-align: right; color: #2F5376; margin: 0 0 8px 0; padding: 2px 6px; line-height: 18px; border: 1px solid #e7e7e7; "><b>' . $xoopsModule -> name() . _AM_IMGLOSSARY_MODADMIN . '</b> ' . $breadcrumb . '</div>';	
 	echo '<div id="navcontainer"><ul style="padding: 3px 0; margin-left: 0;">';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="index.php" style="padding: 3px 0.5em; margin-left: 0; border: 1px solid #778; background:' . $tblColors[0] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_INDEX . '</a></li>';
-
-	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_CREATECAT . '</a></li>';
-	}
 	
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="entry.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[2] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_CREATEENTRY . '</a></li>';
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_SUBMITS . '</a></li>';
+	if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		echo '<li style="list-style: none; margin: 0; display: inline; "><a href="category.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[1] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_CREATECAT . '</a></li>';
+	}	
+//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="submissions.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[3] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_SUBMITS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="myblocksadmin.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[4] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_BLOCKS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_OPTS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_GOMOD . '</a></li>';
-	//mondarse
-//	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . '</a></li>';
+//Show import from Dictionary module button if installed	
+if (imglossary_dict_module_included()) {
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . '</a></li>';
+}
 	//mondarse
 //	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_IMGLOSSARY_HELP . "</a></li></ul></div>";
 
 }
 	
-
 function imglossary_linkterms( $definition, $term, $glossaryterm ) {
 
 	global $xoopsModule, $xoopsDB;
@@ -242,5 +242,20 @@ function imglossary_linkterms( $definition, $term, $glossaryterm ) {
 	$definition = implode( "¤", $parts );
 	
 	return $definition;
-}		
+}	
+
+// Check if Dictionary module is installed
+function imglossary_dict_module_included() {
+  static $imglossary_dict_module_included;
+  if ( !isset( $imglossary_dict_module_included ) ) {
+    $modules_handler = xoops_gethandler( 'module' );
+    $dict_mod = $modules_handler -> getByDirName( 'dictionary' );
+    if ( !$dict_mod ) {
+      $dict_mod = false;
+    } else {
+      $imglossary_dict_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
+    }
+  }
+  return $imglossary_dict_module_included;
+}	
 ?>

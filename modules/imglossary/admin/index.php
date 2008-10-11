@@ -77,7 +77,7 @@ switch ( $op ) {
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
 		}
 		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
-		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+		echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
 		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
 		echo "<td width='30' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_STATUS . "</b></td>";
 		echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
@@ -106,6 +106,9 @@ switch ( $op ) {
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
+					if ( $catname == '' ) {
+						$catname = '&nbsp;';
+					}
 					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
 				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
@@ -192,7 +195,7 @@ switch ( $op ) {
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
 		}
 		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
-		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+		echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
 		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
 		echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
 		echo "</tr>";
@@ -208,12 +211,15 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
-				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
+				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
+					if ( $catname == '' ) {
+						$catname = '&nbsp;';
+					}
 					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
 				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
@@ -245,11 +251,11 @@ switch ( $op ) {
 		echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
 		echo "<tr>";
 		echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
-		}
+		// if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		//	echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
+		// }
 		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
-		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+		echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
 		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
 		echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
 		echo "</tr>";
@@ -266,14 +272,14 @@ switch ( $op ) {
 				$catname = $myts -> htmlSpecialChars( $name );
 				$term = $myts -> htmlSpecialChars( $term );
 				$created = formatTimestamp( $created, 's' );
-				$modify = "<a href='submissions.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
-				$delete = "<a href='submissions.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
+				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
-				if ( $xoopsModuleConfig['multicats'] == 1 ) {
-					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
-				}
+				// if ( $xoopsModuleConfig['multicats'] == 1 ) {
+				//	echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
+				// }
 				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
@@ -291,6 +297,77 @@ switch ( $op ) {
 		echo "<div style='text-align:right;'>" . $pagenav -> renderNav() . "</div>";
 		echo "</fieldset>";
 		echo "<br />\n";
+		
+	/**
+       * Code to show offline entries
+     **/
+    echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWOFFLINE . "</legend>";
+	echo "<div>&nbsp;</div>";
+    echo "	<div style='float:left; width:100%;'><table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
+
+    $resultS2 = $xoopsDB -> query( "SELECT COUNT(*)
+                                   FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "
+                                   WHERE offline=1" );
+    list( $numrowsX ) = $xoopsDB -> fetchRow( $resultS2 );
+
+    $sql4 = "SELECT entryID, categoryID, term, uid, datesub
+            FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "
+            WHERE offline=1
+            ORDER BY datesub DESC";
+    $resultS4 = $xoopsDB -> query( $sql4, $xoopsModuleConfig['perpage'], $startsub );
+
+    echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
+    if ( $xoopsModuleConfig['multicats'] == 1 ) {
+        echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
+    }
+    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
+    echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
+    echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
+    echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
+    echo "</tr>";
+
+    if ( $numrowsX > 0 ) // That is, if there ARE unauthorized articles in the system
+    {
+        while ( list( $entryID, $categoryID, $term, $uid, $created ) = $xoopsDB -> fetchrow( $resultS4 ) ) {
+            $resultS3 = $xoopsDB -> query( "SELECT name
+                                           FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "
+                                           WHERE categoryID='$categoryID'" );
+            list( $name ) = $xoopsDB -> fetchrow( $resultS3 );
+
+            $sentby = xoops_getLinkedUnameFromId( $uid );
+
+            $catname = $myts -> htmlSpecialChars( $name );
+            $term = $myts -> htmlSpecialChars( $term );
+            $created = formatTimestamp( $created, 's' );
+            $modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png alt='" . _AM_IMGLOSSARY_EDITSUBM . "'></a>";
+            $delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src=" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png alt='" . _AM_IMGLOSSARY_DELETESUBM . "'></a>";
+
+            echo "<tr>";
+            echo "<td class='odd' align='center'>" . $entryID . "</td>";
+            if ( $xoopsModuleConfig['multicats'] == 1 ) {
+				if ( $catname == '' ) {
+					$catname = '&nbsp;';
+				}
+                echo "<td class='even' align='left'>" . $catname . "</td>";
+            }
+            echo "<td class='even' align='left'>" . $term . "</td>";
+            echo "<td class='even' align='center'>" . $sentby . "</td>";
+            echo "<td class='even' align='center'>" . $created . "</td>";
+            echo "<td class='even' align='center'> $modify $delete </td>";
+            echo "</tr></div>";
+        }
+    }
+    else // that is, $numrows = 0, there's no columns yet
+    {
+        echo "<tr>
+        <td class='odd' align='center' colspan= '7'>" . _AM_IMGLOSSARY_NOREQSYET . "</td>
+        </tr></div>";
+    }
+    echo "</table>\n";
+    $pagenav = new XoopsPageNav( $numrowsX, $xoopsModuleConfig['perpage'], $startsub, 'startsub', 'entryID=' . $entryID );
+    echo '<div style="text-align:right;">' . $pagenav -> renderNav(8) . '</div>';
+    echo "<br /></fieldset>\n";
+    echo "</div>";
 		
 		break;
 	} 
