@@ -50,6 +50,7 @@ switch ( $op ) {
 		// If there are no entries yet in the system...
 		if ( $publishedwords == 0 ) {
 			$xoopsTpl -> assign ( 'empty', '1' );
+			$microlinks = '';
 		}
 
 		// To display the search form
@@ -196,7 +197,7 @@ switch ( $op ) {
 						$subentries['id'] = $entryID;
 
 						$blockS['substuff'][] = $subentries;
-					} 
+					}
 					$xoopsTpl -> assign( 'blockS', $blockS );
 					$xoopsTpl -> assign( 'wehavesubs', 1 );
 				} else {
