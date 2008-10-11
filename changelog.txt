@@ -1,10 +1,11 @@
 ===================================
-imGlossary v1.00
+imGlossary v1.00 RC-1
 ===================================
 First version of imGlossary
 - Add prefix to module functions
 - Add option to hide author of an entry
 - Add comments button in administration
+- Add Social Bookmarks
 - Restyled index page
 - Integrated admin/submissions.php in admin/index.php
 - Replaced icons

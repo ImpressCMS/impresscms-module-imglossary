@@ -85,5 +85,7 @@ define("_MI_IMGLOSSARY_WEIGHT", "Weight");
 define("_MI_IMGLOSSARY_ADMENU7", "Submissions");
 define("_MI_IMGLOSSARY_SHOWSUBMITTER", "Show submitter in every entry?");
 define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Select <em>Yes</em> to display the submitter of the entry.");
+define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Show Social Bookmarks in every entry?");
+define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Select <em>Yes</em> to have Social Bookmark icons visible in every entry.");
 
 ?>

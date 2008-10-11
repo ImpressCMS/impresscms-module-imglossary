@@ -1,9 +1,7 @@
 #moduleheader
 	{
-	width: 100%;
-	 
-	margin: 0; 
-	
+	width: 100%;	 
+	margin: 0; 	
 	}
 h1, h2, h3, h4, h5
 	{
@@ -178,7 +176,7 @@ p
 .small
 	{
 	padding-left: 18px; 
-	color: #234; 
+ 
 	line-height: 130%;
 	margin: 0 0 6px 0;
 	font-size: small;
@@ -224,3 +222,20 @@ p
 	{
 	margin: 2px 0;
 	}
+/* Bookmark tags */
+.socbookmark {
+	border-top: #e8e8e8 1px solid;
+	padding: 2px 0 2px 0;
+	text-align: center;
+	}
+div.socbookmark a img {
+	opacity: .4;
+	-moz-opacity: .4;
+	filter: alpha(opacity=40);
+	}
+div.socbookmark a:hover img {
+	opacity: 1;
+	-moz-opacity: 1;
+	filter: alpha(opacity=100);
+	}
+/* end bd */

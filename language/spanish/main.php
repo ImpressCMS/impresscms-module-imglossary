@@ -134,5 +134,6 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Haga clic sobre alguna de las siguiente
 // imGlossary v1.00
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
+define("_MD_IMGLOSSARY_ADDTO", "Add to ");
 
 ?>
