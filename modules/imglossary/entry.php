@@ -11,6 +11,7 @@
 include 'header.php';
 
 include_once ICMS_ROOT_PATH . "/class/module.textsanitizer.php"; 
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/sbookmarks.php';
 
 global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule; 
 $myts =& MyTextSanitizer::getInstance();
@@ -84,11 +85,11 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	}
 
 	$glossaryterm = $myts -> makeTboxData4Show( $term );
-	$thisterm['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
+	$thisterm['term'] = $myts -> makeTboxData4Show( $term );
 	if ( $init == '#' ) {
 		$thisterm['init'] = _MD_IMGLOSSARY_OTHER;
 	} else {
-		$thisterm['init'] = ucfirst($init);
+		$thisterm['init'] = $init;
 	}
 
 	if ( $xoopsModuleConfig['linkterms'] == 1 ) {
@@ -119,12 +120,14 @@ $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( 'entryID', $entryID );
 $xoopsTpl -> assign( 'xoops_pagetitle', $thisterm['term'] );
-$xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags($thisterm['definition']), 0, 250, '' ) );
+$xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags( $thisterm['definition'] ), 0, 250, '' ) );
 if ( $xoopsModuleConfig['showsubmitter'] ) {
 	$xoopsTpl -> assign( 'submitter', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'] ) );
-	}
+}
 $xoopsTpl -> assign( 'submitdate', sprintf( _MD_IMGLOSSARY_SUBMITDATE, $thisterm['datesub'] ) );
 $xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counter'] ) );
+$xoopsTpl -> assign( 'showsbookmarks', $xoopsModuleConfig['showsbookmarks'] );
+$xoopsTpl -> assign( 'sbookmarks', imglossary_sbmarks( $entryID, $thisterm['term'] ) );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
