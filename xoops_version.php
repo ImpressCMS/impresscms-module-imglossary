@@ -235,7 +235,14 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_LINKTERMSDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
-
+$i++;
+$modversion['config'][$i]['name'] = 'showsubmitter';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_SHOWSUBMITTER';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SHOWSUBMITTERDSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
+$i = 0;
 //Comments
 $modversion['hasComments'] = 1;
 $modversion['comments']['itemName'] = 'entryID';

@@ -96,7 +96,7 @@ define("_MD_IMGLOSSARY_SUB_SNEWNAMEDESC", "por favor complete el formulario sigu
 define("_MD_IMGLOSSARY_SUBMIT", "Enviar petición");
 define("_MD_IMGLOSSARY_SUBMITART", "Enviar definición");
 define("_MD_IMGLOSSARY_SUBMITENTRY", "Enviar definición");
-define("_MD_IMGLOSSARY_SUBMITTED", "Enviada por %s, el %s.");
+define("_MD_IMGLOSSARY_SUBMITTED", "Enviada por %s.");
 define("_MD_IMGLOSSARY_SUBMITTER", "Remitente: ");
 define("_MD_IMGLOSSARY_TERM", "Término(s) a buscar");
 define("_MD_IMGLOSSARY_TERMS", "Términos");
@@ -133,5 +133,6 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Haga clic sobre alguna de las siguiente
 
 // imGlossary v1.00
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
+define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
 
 ?>

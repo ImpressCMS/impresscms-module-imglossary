@@ -83,4 +83,7 @@ define("_MI_IMGLOSSARY_SORTCATSDSC", "Select how categories are sorted.");
 define("_MI_IMGLOSSARY_TITLE", "Title");
 define("_MI_IMGLOSSARY_WEIGHT", "Weight");
 define("_MI_IMGLOSSARY_ADMENU7", "Submissions");
+define("_MI_IMGLOSSARY_SHOWSUBMITTER", "Show submitter in every entry?");
+define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Select <em>Yes</em> to display the submitter of the entry.");
+
 ?>

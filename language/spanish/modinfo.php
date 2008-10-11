@@ -82,5 +82,7 @@ define("_MI_IMGLOSSARY_SORTCATSDSC", "Seleccione la forma en la que las categorí
 define("_MI_IMGLOSSARY_TITLE", "Título");
 define("_MI_IMGLOSSARY_WEIGHT", "Importancia");
 define("_MI_IMGLOSSARY_ADMENU7", "Envíos");
+define("_MI_IMGLOSSARY_SHOWSUBMITTER", "Show submitter in every entry?");
+define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Select <em>Yes</em> to display the submitter of the entry.");
 
 ?>

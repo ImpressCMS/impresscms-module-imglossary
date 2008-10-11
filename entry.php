@@ -120,7 +120,10 @@ $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 $xoopsTpl -> assign( 'entryID', $entryID );
 $xoopsTpl -> assign( 'xoops_pagetitle', $thisterm['term'] );
 $xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags($thisterm['definition']), 0, 250, '' ) );
-$xoopsTpl -> assign( 'submitted', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'], $thisterm['datesub'] ) );
+if ( $xoopsModuleConfig['showsubmitter'] ) {
+	$xoopsTpl -> assign( 'submitter', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'] ) );
+	}
+$xoopsTpl -> assign( 'submitdate', sprintf( _MD_IMGLOSSARY_SUBMITDATE, $thisterm['datesub'] ) );
 $xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counter'] ) );
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
