@@ -93,9 +93,11 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
-			//$deftemp = cleanTags( $definition );
-			//$deftemp = $myts -> displayTarea( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
+			if ( $xoopsModuleConfig['linkterms'] == 1 ) {
+					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
+			}
 			$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
+			$deftemp = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 			$eachentry['definition'] = $deftemp;
 		}
 
@@ -130,8 +132,6 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 
 	$entrieshere = $xoopsDB -> getRowsNum( $resultB );
 	if ( $entrieshere == 0 ) {
-		// redirect_header( "javascript:history.go(-1)", 1, _MD_IMGLOSSARY_NOTERMSINLETTER );
-		// exit();
 		$xoopsTpl -> assign( 'pageinitial', _MD_IMGLOSSARY_OTHER );
 		$eachentry['init'] = '';
 	} 
@@ -169,9 +169,11 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
-		//	$deftemp = cleanTags($definition);
-		//	$deftemp = $myts -> displayTarea ( substr ( $deftemp, 0, ( $xoopsModuleConfig['rndlength'] -1 ) ) ) . "...";
+			if ( $xoopsModuleConfig['linkterms'] == 1 ) {
+					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
+			}
 			$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength'], '...' );
+			$deftemp = $myts -> displayTarea( $deftemp, $html, $smiley, $xcodes, 1, $breaks );
 			$eachentry['definition'] = $deftemp;
 		}
 
