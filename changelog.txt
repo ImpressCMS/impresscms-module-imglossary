@@ -2,6 +2,18 @@
 imGlossary v1.00
 ===================================
 First version of imGlossary
+- Add prefix to module functions
+- Add option to hide author of an entry
+- Add comments button in administration
+- Restyled index page
+- Integrated admin/submissions.php in admin/index.php
+- Replaced icons
+- Added administration icon
+- Module folder can be renamed
+- Fixed: search option
+- Fixed: submit form
+- Fixed: GIJOE's myblocksadmin, works with ICMS blocks
+- Fixed: vulnerability, used StopXSS
 
 ===================================
 Wordbook v1.16
