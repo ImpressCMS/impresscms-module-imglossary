@@ -129,5 +129,5 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Lo sentimos: no hay aún categorías definid
 
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Mostrar sin conexión");
-
+define("_AM_IMGLOSSARY_COMMENTS", "Comments");
 ?>
