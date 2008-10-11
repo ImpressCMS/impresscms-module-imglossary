@@ -17,7 +17,6 @@ $myts =& MyTextSanitizer::getInstance();
 $init = trim( StopXSS( $_GET['init'] ) );
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
-//include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 $start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
 $start = intval( $start );
