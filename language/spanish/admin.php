@@ -99,7 +99,7 @@ define("_AM_IMGLOSSARY_SINGLECAT", "El módulo está configurado para tener una so
 define("_AM_IMGLOSSARY_STATUS", "Estatus");
 define("_AM_IMGLOSSARY_SUBMITS", "Envíos");
 define("_AM_IMGLOSSARY_SUBMITTER", "Remitente");
-define("_AM_IMGLOSSARY_SWITCHOFFLINE", "¿Poner offline el término?");
+define("_AM_IMGLOSSARY_SWITCHOFFLINE", "¿No mostrar el término en la página (desactivar)?");
 define("_AM_IMGLOSSARY_TOTALCATS", "Categorías disponibles: ");
 define("_AM_IMGLOSSARY_TOTALENTRIES", "Definiciones publicadas: ");
 define("_AM_IMGLOSSARY_TOTALREQ", "Definiciones pedidas: ");
@@ -125,9 +125,9 @@ define("_AM_IMGLOSSARY_IMPDICT_09","Incorrectamente: ");
 define("_AM_IMGLOSSARY_IMPDICT_10","Procesado: ");
 define("_AM_IMGLOSSARY_IMPDICT_11","Volver a la administración");
 
-define("_AM_IMGLOSSARY_NOCOLEXISTS", "Lo sentimos: no hay aún categorías definidas.<br />Por favor, contacte con el administrador del sitio para comentarle esta circunstancia."); // This was originally in the main.php file
+define("_AM_IMGLOSSARY_NOCOLEXISTS", "Lo sentimos: no hay aun categorías definidas.<br />Por favor, contacte con el administrador del sitio para comentarle esta circunstancia."); // This was originally in the main.php file
 
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Mostrar sin conexión");
-define("_AM_IMGLOSSARY_COMMENTS", "Comments");
+define("_AM_IMGLOSSARY_COMMENTS", "Comentarios");
 ?>
