@@ -97,7 +97,7 @@ define("_MD_IMGLOSSARY_SUB_SNEWNAMEDESC", "Bitte f&uuml;llen Sie das folgende Fo
 define("_MD_IMGLOSSARY_SUBMIT", "Anfrage einschicken");
 define("_MD_IMGLOSSARY_SUBMITART", "Eintrag einschicken");
 define("_MD_IMGLOSSARY_SUBMITENTRY", "Eintrag einschicken");
-define("_MD_IMGLOSSARY_SUBMITTED", "Eingeschickt von %s, am %s.");
+define("_MD_IMGLOSSARY_SUBMITTED", "Eingeschickt von %s. | ");
 define("_MD_IMGLOSSARY_SUBMITTER", "Einsender: ");
 define("_MD_IMGLOSSARY_TERM", "Zu suchende(r) Begriff(e)");
 define("_MD_IMGLOSSARY_TERMS", "Begriffe");
@@ -134,4 +134,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Klicken Sie die folgenden Wörter an, um
 
 // imGlossary v1.00
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
+define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
 ?>

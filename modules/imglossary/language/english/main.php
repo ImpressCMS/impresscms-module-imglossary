@@ -96,7 +96,7 @@ define("_MD_IMGLOSSARY_SUB_SNEWNAMEDESC", "please fill the following form to sub
 define("_MD_IMGLOSSARY_SUBMIT", "Submit request");
 define("_MD_IMGLOSSARY_SUBMITART", "Submit an entry");
 define("_MD_IMGLOSSARY_SUBMITENTRY", "Submit an entry");
-define("_MD_IMGLOSSARY_SUBMITTED", "Submitted by %s, on %s.");
+define("_MD_IMGLOSSARY_SUBMITTED", "Submitted by %s. | ");
 define("_MD_IMGLOSSARY_SUBMITTER", "Submitter: ");
 define("_MD_IMGLOSSARY_TERM", "Search term");
 define("_MD_IMGLOSSARY_TERMS", "Terms");
@@ -133,4 +133,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Click the next words to suggest a defin
 
 // imGlossary v1.00
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
+define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
 ?>
