@@ -1,9 +1,9 @@
 #moduleheader
 	{
 	width: 100%;
-	padding: 0; 
+	 
 	margin: 0; 
-	border-bottom: 1px solid #2F5376;
+	
 	}
 h1, h2, h3, h4, h5
 	{
@@ -11,8 +11,8 @@ h1, h2, h3, h4, h5
 	}
 .leftheader
 	{
-	font-size: 10px; 
-	line-height: 18px;
+	float: left; 
+	font-size: smaller;
 	}
 .rightheader
 	{
