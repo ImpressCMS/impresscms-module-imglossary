@@ -91,8 +91,8 @@ switch ( $op ) {
 
 				$sentby = xoops_getLinkedUnameFromId( $uid );
 
-				$catname = $myts -> htmlSpecialChars( $name );
-				$term = $myts -> htmlSpecialChars( $term );
+				$catname = "<a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/category.php?categoryID=" . $categoryID . "'>" . $myts -> htmlSpecialChars( $name ) . "</a>";
+				$term = "<a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $entryID . "'>" . $myts -> htmlSpecialChars( $term ) . "</a>";
 				$created = formatTimestamp( $created, 's' );
 				$modify = "<a href='entry.php?op=mod&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITENTRY . "' /></a>";
 				$delete = "<a href='entry.php?op=del&entryID=" . $entryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETEENTRY . "' /></a>";
@@ -153,7 +153,7 @@ switch ( $op ) {
 			if ( $numrows > 0 ) {
 				// That is, if there ARE columns in the system
 				while ( list( $categoryID, $name, $description, $total ) = $xoopsDB -> fetchrow( $resultC2 ) ) {
-					$name = $myts -> htmlSpecialChars( $name );
+					$name = "<a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/category.php?categoryID=" . $categoryID . "'>" . $myts -> htmlSpecialChars( $name ) . "</a>";
 					$description = $myts -> htmlSpecialChars( $description );
 					$modify = "<a href='category.php?op=mod&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/edit.png' alt='" . _AM_IMGLOSSARY_EDITCAT . "'></a>";
 					$delete = "<a href='category.php?op=del&categoryID=" . $categoryID . "'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/images/icon/delete.png' alt='" . _AM_IMGLOSSARY_DELETECAT . "'></a>";
@@ -366,7 +366,7 @@ switch ( $op ) {
     echo "</table>\n";
     $pagenav = new XoopsPageNav( $numrowsX, $xoopsModuleConfig['perpage'], $startsub, 'startsub', 'entryID=' . $entryID );
     echo '<div style="text-align:right;">' . $pagenav -> renderNav(8) . '</div>';
-    echo "<br /></fieldset>\n";
+    echo "</fieldset>\n";
     echo "</div>";
 		
 		break;
