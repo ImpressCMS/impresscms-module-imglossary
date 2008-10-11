@@ -57,7 +57,7 @@ function b_entries_random_show() {
 		// Functional links
 		if ( $xoopsUser ) {
 			if ( $xoopsUser -> isAdmin() ) {
-				$adminlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MB_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
+				$adminlinks = '<a href="admin/index.php" ><img src="' . ICMS_URL . '/modules/' . $glossdirname . '/images/icon/computer.png" border="0" alt="' . _MB_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
 				$adminlinks .= "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=mod&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/edit.png' border='0' alt='" . _MB_IMGLOSSARY_EDITTERM . "' /></a>&nbsp;";
 				$adminlinks .= "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/admin/entry.php?op=del&entryID=" . $entryID . "' target='_self'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/delete.png' border='0' alt='" . _MB_IMGLOSSARY_DELTERM . "' /></a>&nbsp;";
 			}
