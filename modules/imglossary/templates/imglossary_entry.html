@@ -31,25 +31,25 @@
 <{/if}>
 
 <{if $multicats == 1}>
-<div class="catname"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}></b>
-<a href="<{$xoops_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
-</div>
+	<div class="catname"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}></b>
+	<a href="<{$xoops_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
+	</div>
 <{/if}>
 
 <h4 class="term"><{$thisterm.term}></h4>
-
 <div class="definition" style="clear: both;"><{$thisterm.definition}></div>
 <div style="margin-left: 8px;padding: 5px;"><{$microlinks}></div>
-<{if $showsbookmarks}>
-	<div class="socbookmark"><{$sbookmarks}></div>
-<{/if}>
 
 <{if $thisterm.ref}>
-<div class="small"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYREFERENCE}></b><{$thisterm.ref}></div>
+	<div class="small"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYREFERENCE}></b><{$thisterm.ref}></div>
 <{/if}>
 
 <{if $thisterm.url}>
-<div style="padding: 4px; border: thin solid #CCCCC; background: #EFEFEF; font-size: smaller;"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYRELATEDURL}></b><{$thisterm.url}></div>
+	<div style="padding: 4px; border: thin solid #CCCCC; background: #EFEFEF; font-size: smaller;"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYRELATEDURL}></b><{$thisterm.url}></div>
+<{/if}>
+
+<{if $showsbookmarks}>
+	<div class="socbookmark"><{$sbookmarks}></div>
 <{/if}>
 
 <div style="text-align: center; font-size: xx-small; border-top: #e8e8e8 1px solid;"><{$submitter}><{$submitdate}><{$counter}></div>
