@@ -79,6 +79,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			$eachentry['catname'] = $myts -> makeTboxData4Show( $catname );
+			$eachentry['catid'] = $catlinks['id'];
 
 		}
 

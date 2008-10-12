@@ -37,7 +37,11 @@
 <br />
 
 <{foreach item=eachentry from=$entriesarray.single}>
-<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a> <{if $multicats == 1}>[<{$eachentry.catname}>]<{/if}></h4>
+<div class="catname"><{if $multicats == 1}>
+	<{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
+	<a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/category.php?categoryID=<{$eachentry.catid}>"><{$eachentry.catname}></a>
+<{/if}></div>
+<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a> </h4>
 <div class="definition"><{$eachentry.definition}></div>
 <div style="padding: 5px;">
 	<div style="float: left; margin-left: 8px;"><{$eachentry.microlinks}></div>
@@ -56,7 +60,11 @@
 <br />
 
 <{foreach item=eachentry from=$entriesarray2.single}>
-<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a> <{if $multicats == 1}>[<{$eachentry.catname}>]<{/if}></h4>
+<div class="catname"><{if $multicats == 1}>
+	<{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
+	<a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/category.php?categoryID=<{$eachentry.catid}>"><{$eachentry.catname}></a>
+<{/if}></div>
+<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
 <div class="definition"><{$eachentry.definition}></div>
 <div style="padding: 5px;">
 <div style="float: left; margin-left: 8px;"><{$eachentry.microlinks}></div>
