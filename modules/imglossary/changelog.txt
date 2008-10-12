@@ -17,6 +17,8 @@ First version of imGlossary
 - Fixed: submit form
 - Fixed: GIJOE's myblocksadmin, works with ICMS blocks
 - Fixed: vulnerability, used StopXSS
+- Fixed: linking to offline terms
+
 
 ===================================
 Wordbook v1.16
@@ -28,6 +30,7 @@ Fix: Missing data in results produced by search.php. Not only was the category m
 Modified: funtion getLinkedUnameFromId() in include/functions.php renamed to wb_getLinkedUnameFromId() to avoid possible duplicated function name error.
 Add: submit.php page uses now templates and css formating as the other pages do.
 Add: Submit option in main menu is shown only if user/anon-user is allowed to submit new words. (users and anonimous users privileges set in config section)
+
 
 ===================================
 Wordbook v1.15 Beta 2
