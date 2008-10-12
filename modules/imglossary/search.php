@@ -119,7 +119,7 @@ if ( !$query ) {
 			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
 
 			// Functional links
-			$microlinks = serviceLinks( $eachresult['entryID'] );
+			$microlinks = imglossary_serviceLinks( $eachresult['entryID'] );
 			$eachresult['microlinks'] = $microlinks;
 			$resultset['match'][] = $eachresult;
 			}
