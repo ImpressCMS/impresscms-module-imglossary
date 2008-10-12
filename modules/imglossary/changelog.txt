@@ -1,4 +1,12 @@
 ===================================
+imGlossary v1.00 RC-2
+===================================
+- Added: option to set background colour searched terms
+
+Fixed: problem search option, unknown function
+
+
+===================================
 imGlossary v1.00 RC-1
 ===================================
 First version of imGlossary
