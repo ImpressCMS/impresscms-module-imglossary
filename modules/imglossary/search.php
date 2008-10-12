@@ -113,10 +113,10 @@ if ( !$query ) {
 			$eachresult['dir'] = $glossdirname;
 			$eachresult['entryID'] = $entryID;
 			$eachresult['categoryID'] = $categoryID;
-			$eachresult['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
+			$eachresult['term'] = $myts -> makeTboxData4Show( $term );
 			$eachresult['catname'] = $myts -> makeTboxData4Show( $catname );
 			$tempdef = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
-			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: yellow; ">', '</b>' );
+			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: ' . $xoopsModuleConfig['searchcolor'] . '; ">', '</b>' );
 
 			// Functional links
 			$microlinks = imglossary_serviceLinks( $eachresult['entryID'] );
