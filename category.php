@@ -124,7 +124,7 @@ if ( !$categoryID )	{
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 			$eachentry['dir'] = $glossdirname;
 			$eachentry['id'] = $entryID;
-			$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
+			$eachentry['term'] = $myts -> makeTboxData4Show( $term );
 			if ( !XOOPS_USE_MULTIBYTES ) {
 				if ( $xoopsModuleConfig['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );

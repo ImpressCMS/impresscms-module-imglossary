@@ -34,7 +34,7 @@ function b_entries_new_show( $options )	{
 		while ( list( $entryID, $term, $datesub ) = $xoopsDB -> fetchRow( $result ) ) {
 			$newentries = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-			$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+			$linktext = $myts -> makeTboxData4Show( $term );
 			$newentries['dir'] = $xoopsModule -> dirname();
 			$newentries['linktext'] = $linktext;
 			$newentries['id'] = $entryID;
