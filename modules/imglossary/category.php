@@ -116,10 +116,10 @@ if ( !$categoryID )	{
 		$entriesarray = array();
 		
 		// Now we retrieve a specific number of entries according to start variable	
-		$queryB = "SELECT entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
+		$queryB = "SELECT entryID, term, definition, html, smiley, xcodes,breaks, comments FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 
-		while (list( $entryID, $term, $definition ) = $xoopsDB -> fetchRow( $resultB ) ) {
+		while (list( $entryID, $term, $definition, $html, $smiley, $xcodes, $breaks, $comments ) = $xoopsDB -> fetchRow( $resultB ) ) {
 			$eachentry = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 			$eachentry['dir'] = $glossdirname;
@@ -130,11 +130,18 @@ if ( !$categoryID )	{
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 				}	
 				$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
+				$deftemp = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 				$eachentry['definition'] = $deftemp;
 			}
 
+		if ($comments != 0) {
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
+		} else {
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
+		}			
+
 			// Functional links
-			$microlinks = imglossary_serviceLinks( $eachentry );
+			$microlinks = imglossary_serviceLinks( $eachentry ) . $eachentry['comments'];
 			$eachentry['microlinks'] = $microlinks;
 			$entriesarray['single'][] = $eachentry;
 		}
