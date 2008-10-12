@@ -217,7 +217,7 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 		$parts = explode( "¤", $definition );
 
 		// First, retrieve all terms from the glossary...
-		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) );
+		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 		while ( list( $entryID, $term ) = $xoopsDB -> fetchrow( $allterms ) ) {
 			foreach( $parts as $key => $part ) {
 				if ( $term != $glossaryterm ) {
