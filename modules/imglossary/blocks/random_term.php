@@ -12,7 +12,7 @@ function b_entries_random_show() {
 
 	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 
-	global $xoopsDB, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $xoopsUser;
+	global $xoopsDB, $xoopsConfig, $xoopsUser;
 	$myts =& MyTextSanitizer::getInstance();
 
 	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/functions.php";
@@ -44,8 +44,6 @@ function b_entries_random_show() {
 		$term = $myrow['term'];
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
-		//	$deftemp = cleanTags( $myrow['definition'] );
-		//	$definition = $myts -> displayTarea( substr( $myrow['definition'], 0, ( $wbConfig['rndlength'] -1 ) ) ) . "...";
 			$definition = icms_substr( $myrow['definition'], 0, $wbConfig['rndlength'] -1, '...' );
 		}
 
