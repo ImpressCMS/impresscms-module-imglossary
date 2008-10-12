@@ -128,6 +128,7 @@ $modversion['templates'][6]['description'] = 'Request a definition';
 //$modversion['templates'][7]['file'] = 'imglossary_submit.html';
 //$modversion['templates'][7]['description'] = 'Submit a definition';
 
+global $xoopsmoduleConfig;
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
 $i++;
@@ -249,6 +250,13 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
+$i++;
+$modversion['config'][$i]['name'] = 'searchcolor';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_SEARCHCOLOR';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SEARCHCOLORDSC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = '#FFFF00';
 $i = 0;
 //Comments
 $modversion['hasComments'] = 1;
