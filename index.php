@@ -150,7 +150,7 @@ switch ( $op ) {
 			$entrynumber = 0;
 		}
 
-		$resultZ = $xoopsDB -> query( "SELECT categoryID, entryID, term, definition FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
+		$resultZ = $xoopsDB -> query( "SELECT categoryID, entryID, term, definition, html, smiley, xcodes, breaks, comments FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
 
 		$zerotest = $xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
@@ -161,9 +161,8 @@ switch ( $op ) {
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$deftemp = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
-					//$deftemp = $myts -> displayTarea ( $deftemp, 1, 1, 1, 1) . "...";
-				//	$deftemp = cleanTags( $deftemp );
-					$random['definition'] = $deftemp;
+					$deftemp1 = $myts -> displayTarea( $deftemp, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] );
+					$random['definition'] = $deftemp1;
 					}
 
 				if ( $xoopsModuleConfig['multicats'] == 1 )	{

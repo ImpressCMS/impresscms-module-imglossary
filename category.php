@@ -116,7 +116,7 @@ if ( !$categoryID )	{
 		$entriesarray = array();
 		
 		// Now we retrieve a specific number of entries according to start variable	
-		$queryB = "SELECT entryID, term, definition, html, smiley, xcodes,breaks, comments FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
+		$queryB = "SELECT entryID, term, definition, html, smiley, xcodes, breaks, comments FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
 		$resultB = $xoopsDB -> query( $queryB, $xoopsModuleConfig['indexperpage'], $start );
 
 		while (list( $entryID, $term, $definition, $html, $smiley, $xcodes, $breaks, $comments ) = $xoopsDB -> fetchRow( $resultB ) ) {
@@ -130,7 +130,7 @@ if ( !$categoryID )	{
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 				}	
 				$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
-				$deftemp = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+				$deftemp = $myts -> displayTarea( $deftemp, $html, $smiley, $xcodes, 1, $breaks );
 				$eachentry['definition'] = $deftemp;
 			}
 
