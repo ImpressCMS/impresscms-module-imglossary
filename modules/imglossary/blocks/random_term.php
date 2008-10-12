@@ -14,7 +14,7 @@ function b_entries_random_show() {
 
 	global $xoopsDB, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $xoopsUser;
 	$myts =& MyTextSanitizer::getInstance();
-//	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
+
 	include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/functions.php";
 
 	$adminlinks = '';
@@ -65,7 +65,7 @@ function b_entries_random_show() {
 		$userlinks = "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/print.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/print.png' border='0' alt='" . _MB_IMGLOSSARY_PRINTTERM . "' /></a>&nbsp;<a href='mailto:?subject=" . sprintf( _MB_IMGLOSSARY_INTENTRY, $xoopsConfig['sitename'] ) . "&amp;body=" . sprintf( _MB_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename'] ) . ":  " . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "' target='_blank'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/icon/email.png' border='0' alt='" . _MB_IMGLOSSARY_SENDTOFRIEND . "' /></a>&nbsp;";
 
 		if ( $wbConfig['multicats'] == 1 ) {
-			$block['content'] = "<div style='font-size: x-small; font-weight: bold; padding: 4px; margin: 0;'><a href'" . ICMS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=" . $categoryID . "'>" . _MB_IMGLOSSARY_CATEGORY . $categoryname . "</a></div>";
+			$block['content'] = "<div style='font-size: x-small; font-weight: normal; padding: 4px; margin: 0;'>" . _MB_IMGLOSSARY_CATEGORY . "<a href='" . ICMS_URL . "/modules/" . $glossdirname . "/category.php?categoryID=" . $categoryID . "'>" . $categoryname . "</a></div>";
 			$block['content'] .= "<div style='padding: 4px; color: #456; background-color: #E8E6E2;'><h5 style='margin: 0;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/entry.php?entryID=" . $entryID . "'>" . $term . "</a></h5></div><div style='padding: 4px;'>" . $definition . "</div>";
 			$block['content'] .= "<div><div style='float: left; padding: 4px;'>" . $adminlinks . $userlinks . "</div><div style='float: right; font-size: x-small; padding: 4px;'><a href='" . ICMS_URL . "/modules/" . $glossdirname . "/index.php'>" . _MB_IMGLOSSARY_SEEMORE . "</a></div>&nbsp;</div>";
 		} else {
