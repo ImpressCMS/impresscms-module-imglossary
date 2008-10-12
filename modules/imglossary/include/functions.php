@@ -36,7 +36,7 @@ function imglossary_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
 				if ( !empty($usernameu)) {
 					$linkeduser = "$usernameu [<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . $ts -> htmlSpecialChars($username) . "</a>]";
 				} else {
-					$linkeduser = "<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . ucfirst( $ts -> htmlSpecialChars($username) ) ."</a>";
+					$linkeduser = "<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . $ts -> htmlSpecialChars($username) ."</a>";
 				}
 				return $linkeduser;
             }
@@ -124,39 +124,39 @@ function imglossary_serviceLinks( $variable ) {
 			$srvlinks .= '<a href="admin/entry.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
 		}
 	}
-	$srvlinks .= "<a href=\"print.php?entryID=" . $variable['id'] . "\" target=\"_blank\"><img src=\"images/icon/print.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_PRINTTERM . "\" ></a>&nbsp;";
-	$srvlinks .= "<a href=\"mailto:?subject=" . sprintf(_MD_IMGLOSSARY_INTENTRY,$xoopsConfig["sitename"]) . "&amp;body=" . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename']) . ":  " . ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . $variable['id'] . " \" target=\"_blank\"><img src=\"images/icon/email.png\" border=\"0\" alt=\"" . _MD_IMGLOSSARY_SENDTOFRIEND . "\" ></a>&nbsp;";
+	$srvlinks .= '<a href="print.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/print.png" border="0" alt="' . _MD_IMGLOSSARY_PRINTTERM . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="mailto:?subject=' . sprintf(_MD_IMGLOSSARY_INTENTRY,$xoopsConfig["sitename"]) . '&amp;body=' . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $xoopsConfig['sitename']) . ':  ' . ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/entry.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/email.png" border="0" alt="' . _MD_IMGLOSSARY_SENDTOFRIEND . '" ></a>&nbsp;';
 //	$srvlinks .= "<a href='entry.php?entryID=" . $variable['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>&nbsp;";
 	return $srvlinks;
 }
 
 function imglossary_showSearchForm() {
     global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
-	$searchform = "<table width=\"100%\">";
-	$searchform .= "<form name=\"op\" id=\"op\" action=\"search.php\" method=\"post\">";
-	$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\" width=\"150\">";
-	$searchform .= _MD_IMGLOSSARY_LOOKON . "</td><td width=\"10\">&nbsp;</td><td style=\"text-align: left;\">";
-	$searchform .= "<select name=\"type\"><option value=\"1\">" . _MD_IMGLOSSARY_TERMS . "</option><option value=\"2\">" . _MD_IMGLOSSARY_DEFINS . "</option>";
-	$searchform .= "<option value=\"3\">" . _MD_IMGLOSSARY_TERMSDEFS . "</option></select></td></tr>";
+	$searchform = '<table width="100%">';
+	$searchform .= '<form name="op" id="op" action="search.php" method="post">';
+	$searchform .= '<tr><td style="text-align: right; line-height: 200%" width="150">';
+	$searchform .= _MD_IMGLOSSARY_LOOKON . '</td><td width="10">&nbsp;</td><td style="text-align: left;">';
+	$searchform .= '<select name="type"><option value="1">' . _MD_IMGLOSSARY_TERMS . '</option><option value="2">' . _MD_IMGLOSSARY_DEFINS . '</option>';
+	$searchform .= '<option value="3">' . _MD_IMGLOSSARY_TERMSDEFS . '</option></select></td></tr>';
 
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
-		$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">" . _MD_IMGLOSSARY_CATEGORY . "</td>";
-		$searchform .= "<td>&nbsp;</td><td style=\"text-align: left;\">";
+		$searchform .= '<tr><td style="text-align: right; line-height: 200%">' . _MD_IMGLOSSARY_CATEGORY . '</td>';
+		$searchform .= '<td>&nbsp;</td><td style="text-align: left;">';
 		$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
-		$searchform .= "<select name=\"categoryID\">";
-		$searchform .= "<option value=\"0\">" . _MD_IMGLOSSARY_ALLOFTHEM . "</option>";
+		$searchform .= '<select name="categoryID">';
+		$searchform .= '<option value="0">' . _MD_IMGLOSSARY_ALLOFTHEM . '</option>';
 
 		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultcat ) ) {
-			$searchform .= "<option value=\"$categoryID\">$categoryID : $name</option>";
+			$searchform .= '<option value="$categoryID">$categoryID : $name</option>';
 		}
-		$searchform .= "</select></td></tr>";
+		$searchform .= '</select></td></tr>';
 	}
 
-	$searchform .= "<tr><td style=\"text-align: right; line-height: 200%\">";
-	$searchform .= _MD_IMGLOSSARY_TERM . "</td><td>&nbsp;</td><td style=\"text-align: left;\">";
-	$searchform .= "<input type=\"text\" name=\"term\" /></td></tr><tr>";
-	$searchform .= "<td>&nbsp;</td><td>&nbsp;</td><td><input type=\"submit\" value=\"" . _MD_IMGLOSSARY_SEARCH . "\" />";
-	$searchform .= "</td></tr></form></table>";
+	$searchform .= '<tr><td style="text-align: right; line-height: 200%">';
+	$searchform .= _MD_IMGLOSSARY_TERM . '</td><td>&nbsp;</td><td style="text-align: left;">';
+	$searchform .= '<input type="text" name="term" /></td></tr><tr>';
+	$searchform .= '<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="' . _MD_IMGLOSSARY_SEARCH . '" />';
+	$searchform .= '</td></tr></form></table>';
 	return $searchform;
 }
 
@@ -210,7 +210,7 @@ if (imglossary_dict_module_included()) {
 
 }
 	
-function imglossary_linkterms( $definition, $term, $glossaryterm ) {
+function imglossary_linkterms( $definition, $glossaryterm ) {
 
 	global $xoopsModule, $xoopsDB;
 	// Code to make links out of glossary terms

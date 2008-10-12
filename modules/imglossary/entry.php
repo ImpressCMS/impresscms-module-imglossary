@@ -93,9 +93,8 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	}
 
 	if ( $xoopsModuleConfig['linkterms'] == 1 ) {
-		$definition = imglossary_linkterms( $definition, $term, $glossaryterm );		
+		$definition = imglossary_linkterms( $definition, $glossaryterm );		
 	}
-
 	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	$thisterm['ref'] = $myts -> makeTboxData4Show( $ref );

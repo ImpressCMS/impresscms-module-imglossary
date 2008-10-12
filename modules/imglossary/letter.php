@@ -83,7 +83,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		$eachentry['id'] = intval( $entryID );
-		$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
+		$eachentry['term'] = $myts -> makeTboxData4Show( $term );
 		
 		if ($comments != 0) {
 			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
@@ -158,7 +158,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		$eachentry['id'] = intval( $entryID );
-		$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
+		$eachentry['term'] = $myts -> makeTboxData4Show( $term );
 		$eachentry['init'] = $init;
 		
 		if ($comments != 0) {
@@ -191,7 +191,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	if ($eachentry['init'] == '#') {
 		$xoopsTpl -> assign( 'pageinitial', _MD_IMGLOSSARY_OTHER );
 	} else {
-		$xoopsTpl -> assign( 'pageinitial', ucfirst( $eachentry['init'] ) );
+		$xoopsTpl -> assign( 'pageinitial', $eachentry['init'] );
 	}
 }
 

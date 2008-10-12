@@ -111,7 +111,7 @@ switch ( $op ) {
 			while ( list( $entryID, $term, $datesub ) = $xoopsDB -> fetchRow( $result05 ) ) {
 				$newentries = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-				$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+				$linktext = $myts -> makeTboxData4Show( $term );
 				$newentries['linktext'] = $linktext;
 				$newentries['id'] = $entryID;
 				$newentries['date'] = formatTimestamp( $datesub, "s" );
@@ -130,7 +130,7 @@ switch ( $op ) {
 			while ( list( $entryID, $term, $counter ) = $xoopsDB -> fetchRow($result06)) {
 				$popentries = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-				$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+				$linktext = $myts -> makeTboxData4Show( $term );
 				$popentries['linktext'] = $linktext;
 				$popentries['id'] = $entryID;
 				$popentries['counter'] = intval( $counter );
@@ -157,7 +157,7 @@ switch ( $op ) {
 			while( $myrow = $xoopsDB -> fetchArray( $resultZ ) )	{
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
-				$random['term'] = ucfirst( $myrow['term'] );
+				$random['term'] = $myrow['term'];
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$deftemp = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
@@ -191,7 +191,7 @@ switch ( $op ) {
 					while ( list( $entryID, $term ) = $xoopsDB -> fetchRow( $resultS ) ) {
 						$subentries = array();
 						$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-						$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+						$linktext = $myts -> makeTboxData4Show( $term );
 						$subentries['linktext'] = $linktext;
 						$subentries['id'] = $entryID;
 
@@ -212,7 +212,7 @@ switch ( $op ) {
 					while ( list( $entryID, $term ) = $xoopsDB -> fetchRow( $resultR ) ) {
 						$reqentries = array();
 						$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-						$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+						$linktext = $myts -> makeTboxData4Show( $term );
 						$reqentries['linktext'] = $linktext;
 						$reqentries['id'] = $entryID;
 
@@ -235,7 +235,7 @@ switch ( $op ) {
 				while ( list( $entryID, $term ) = $xoopsDB -> fetchRow( $resultR ) ) {
 					$reqentries = array();
 					$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-					$linktext = ucfirst( $myts -> makeTboxData4Show( $term ) );
+					$linktext = $myts -> makeTboxData4Show( $term );
 					$reqentries['linktext'] = $linktext;
 					$reqentries['id'] = $entryID;
                         	
