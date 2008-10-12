@@ -86,9 +86,9 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		$eachentry['term'] = ucfirst( $myts -> makeTboxData4Show( $term ) );
 		
 		if ($comments != 0) {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'>" . $comments . "&nbsp;" . _COMMENTS . "</a>";
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
 		} else {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'>" . _COMMENTS . "&nbsp;?</a>";
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
 		}
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
@@ -101,7 +101,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		// Functional links
-		$microlinks = imglossary_serviceLinks( $eachentry );
+		$microlinks = imglossary_serviceLinks( $eachentry ) . $eachentry['comments'];
 		$eachentry['microlinks'] = $microlinks;
 
 		$entriesarray['single'][] = $eachentry;
@@ -162,9 +162,9 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		$eachentry['init'] = $init;
 		
 		if ($comments != 0) {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'>" . $comments . "&nbsp;" . _COMMENTS . "</a>";
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
 		} else {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'>" . _COMMENTS . "&nbsp;?</a>";
+			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
 		}
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
@@ -177,7 +177,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		// Functional links
-		$microlinks = imglossary_serviceLinks( $eachentry );
+		$microlinks = imglossary_serviceLinks( $eachentry ) . $eachentry['comments'];
 		$eachentry['microlinks'] = $microlinks;
 
 		$entriesarray2['single'][] = $eachentry;
