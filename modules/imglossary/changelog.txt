@@ -2,8 +2,13 @@
 imGlossary v1.00 RC-2
 ===================================
 - Added: option to set background colour searched terms
+- Added: import script Wordbook
 
-Fixed: problem search option, unknown function
+- Replaced: import script Dictionary
+
+- Fixed: problem search option, unknown function
+- Fixed: letter-bar, only those letters containing terms have url assigned
+- Fixed: pagination for listing 'All'
 
 
 ===================================

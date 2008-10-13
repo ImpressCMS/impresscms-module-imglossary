@@ -201,12 +201,16 @@ function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' ) . '" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[5] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_OPTS . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../index.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_GOMOD . '</a></li>';
 	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="../../system/admin.php?module=' . $xoopsModule -> getVar( 'mid' ) . '&status=0&limit=100&fct=comments&selsubmit=Go" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_COMMENTS . '</a></li>';
-//Show import from Dictionary module button if installed	
-if (imglossary_dict_module_included()) {
-	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary091.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . '</a></li>';
+
+	//Show import from Dictionary module button if installed	
+if (imglossary_dictionary_module_included()) {
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importdictionary.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . ' Dictionary</a></li>';
 }
-	//mondarse
-//	echo "<li style=\"list-style: none; margin: 0; display: inline; \"><a href=\"../help/index.html\" target=\"_blank\" style=\"padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: " . $tblColors[7] . "; text-decoration: none; white-space: nowrap; \">" . _AM_IMGLOSSARY_HELP . "</a></li></ul></div>";
+
+//Show import from Wordbook module button if installed	
+if (imglossary_wordbook_module_included()) {
+	echo '<li style="list-style: none; margin: 0; display: inline; "><a href="importwordbook.php" style="padding: 3px 0.5em; margin-left: 3px; border: 1px solid #778; background: ' . $tblColors[6] . '; text-decoration: none; white-space: nowrap; ">' . _AM_IMGLOSSARY_IMPORT . ' Wordbook</a></li>';
+}
 
 }
 	
@@ -250,17 +254,33 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 }	
 
 // Check if Dictionary module is installed
-function imglossary_dict_module_included() {
-  static $imglossary_dict_module_included;
-  if ( !isset( $imglossary_dict_module_included ) ) {
+function imglossary_dictionary_module_included() {
+  static $imglossary_dictionary_module_included;
+  if ( !isset( $imglossary_dictionary_module_included ) ) {
     $modules_handler = xoops_gethandler( 'module' );
     $dict_mod = $modules_handler -> getByDirName( 'dictionary' );
     if ( !$dict_mod ) {
       $dict_mod = false;
     } else {
-      $imglossary_dict_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
+      $imglossary_dictionary_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
     }
   }
-  return $imglossary_dict_module_included;
-}	
+  return $imglossary_dictionary_module_included;
+}
+
+// Check if Wordbook module is installed
+function imglossary_wordbook_module_included() {
+  static $imglossary_wordbook_module_included;
+  if ( !isset( $imglossary_wordbook_module_included ) ) {
+    $modules_handler = xoops_gethandler( 'module' );
+    $dict_mod = $modules_handler -> getByDirName( 'wordbook' );
+    if ( !$dict_mod ) {
+      $dict_mod = false;
+    } else {
+      $imglossary_wordbook_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
+    }
+  }
+  return $imglossary_wordbook_module_included;
+}
+
 ?>
