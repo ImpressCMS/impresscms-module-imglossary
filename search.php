@@ -79,7 +79,7 @@ if ( !$query ) {
 
 	$xoopsTpl -> assign( 'intro', _MD_IMGLOSSARY_NOSEARCHTERM );
 	// Display search form
-	$searchform = imglossary_showSearchForm();
+	$searchform = imglossary_showSearchForm( 150 );
 	$xoopsTpl -> assign( 'searchform', $searchform );
 } else {
 	// IF there IS term, count number of results
@@ -128,10 +128,10 @@ if ( !$query ) {
 		$pagenav = new XoopsPageNav( $results, $xoopsModuleConfig['indexperpage'], $start, $linkstring );
 		$resultset['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
 
-		$xoopsTpl -> assign('resultset', $resultset );
+		$xoopsTpl -> assign( 'resultset', $resultset );
 
 		// Display search form
-		$searchform = imglossary_showSearchForm();
+		$searchform = imglossary_showSearchForm( 150 );
 		$xoopsTpl -> assign( 'searchform', $searchform );
 	}
 }
