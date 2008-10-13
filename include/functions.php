@@ -224,7 +224,7 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = "<span><b><a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
