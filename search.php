@@ -12,18 +12,19 @@ $xoopsOption['pagetype'] = "search";
 
 include 'header.php';
 
-global $xoopsDB, $xoopsModule, $xoopsModuleConfig, $searchtype;
+$xoopsOption['template_main'] = 'imglossary_search.html';
+include ICMS_ROOT_PATH . '/header.php';
+
+global $xoopsDB, $xoopsModule, $xoopsModuleConfig, $searchtype, $xoopsTpl;
 $myts =& MyTextSanitizer::getInstance();
 
 include_once ICMS_ROOT_PATH . '/class/pagenav.php';
-//include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/cleantags.php";
 
 // Check if search is enabled site-wide
 $config_handler =& xoops_gethandler('config');
 $xoopsConfigSearch =& $config_handler -> getConfigsByCat( XOOPS_CONF_SEARCH );
 if ( $xoopsConfigSearch['enable_search'] != 1 ) {
-	//header( 'Location: ' . ICMS_URL . '/index.php' );
-	include ICMS_ROOT_PATH . '/include/searchform.php';
+	header( 'Location: ' . ICMS_URL . '/index.php' );
 	exit();
 }
 
@@ -37,9 +38,6 @@ $categoryID = isset( $categoryID ) ? intval( $categoryID ) : 0;
 $type = isset( $type ) ? intval( $type ) : 3;
 $queries = array();
 
-$xoopsOption['template_main'] = 'imglossary_search.html';
-include ICMS_ROOT_PATH . '/header.php';
-
 if ( $xoopsModuleConfig['multicats'] == 1 ) {
 	$xoopsTpl -> assign( 'multicats', 1 );
 } else {
@@ -47,9 +45,9 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 }
 
 // Configure search parameters according to selector
-$query = stripslashes($query);
+$query = stripslashes( $query );
 if ( $type == "1" ) { 
-	$searchtype = "term LIKE '%$query%' "; 
+	$searchtype = "w.term LIKE '%$query%' "; 
 }
 if ( $type == "2" ) { 
 	$searchtype = "definition LIKE '%$query%' "; 
@@ -116,7 +114,7 @@ if ( !$query ) {
 			$eachresult['term'] = $myts -> makeTboxData4Show( $term );
 			$eachresult['catname'] = $myts -> makeTboxData4Show( $catname );
 			$tempdef = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
-			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: ' . $xoopsModuleConfig['searchcolor'] . '; ">', '</b>' );
+			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: ' . $xoopsModuleConfig['searchcolor'] . ';">', '</b>' );
 
 			// Functional links
 			$microlinks = imglossary_serviceLinks( $eachresult['entryID'] );
