@@ -8,17 +8,17 @@
 <div class="letters">
 	<{foreach item=letterlinks from=$alpha.initial}>
 	  <{if $letterlinks.total > 0}> 
-		<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="[ <{$letterlinks.total}> ]" >	
+		<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
 	  <{/if}>
 	  <{$letterlinks.linktext}>
 	  <{if $letterlinks.total > 0}></a><{/if}> |
 	<{/foreach}>
 	<{if $totalother > 0}>
-	  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="[ <{$totalother}> ]">
+	  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
 	<{/if}>
 	<{$smarty.const._MD_IMGLOSSARY_OTHER}> |
 	<{if $totalother > 0}></a><{/if}>
-	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php" title="[ <{$publishedwords}> ]"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
+	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
 </div>
 </fieldset>
 </div>
