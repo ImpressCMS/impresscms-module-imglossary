@@ -80,7 +80,13 @@ legend
 .letters
 	{
 	text-align: center; 
-	font-size: smaller; 
+	font-size: 90%;
+	padding: 10px 0;
+	}
+.letterssmall
+	{
+	text-align: center; 
+	font-size: small;
 	padding: 10px 0;
 	}
 .introcen
@@ -133,7 +139,7 @@ h3.cat
 	}
 h4.term, h5.term
 	{
-	color: #456;
+ color: #456;
 	background-color: #E8E6E2;
 	padding: 4px;
 	}
@@ -175,7 +181,7 @@ p
 	}
 .small
 	{
-	padding-left: 14px; 
+	padding-left: 14px;
  
 	line-height: 130%;
 	margin: 0 0 6px 0;
