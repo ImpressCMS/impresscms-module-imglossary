@@ -102,7 +102,7 @@ function imglossary_alphaArray() {
 	for ($a = 65; $a < (65+26); $a++ ) {
 		$letterlinks = array();
 		$initial = chr($a);
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE init='$initial'" );
+		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='$initial'" );
 		$howmany = $xoopsDB -> getRowsNum( $sql );
 		$letterlinks['total'] = $howmany;
 		$letterlinks['id'] = chr($a);
