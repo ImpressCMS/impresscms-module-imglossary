@@ -111,7 +111,7 @@ define("_AM_IMGLOSSARY_WRITEHERE", "Schreiben Sie hier die Definition.");
 define("_AM_IMGLOSSARY_YES", "Ja");
 //mondarse
 define("_AM_IMGLOSSARY_IMPORT", "Import");
-define("_AM_IMGLOSSARY_IMPORTWARN", "Warnung!!:<br />Zuerst Datenbank-Backup durchführen. Das Importscript ist noch in der Testphase und kann zu Datenverlust führen.");
+define("_AM_IMGLOSSARY_IMPORTWARN", "Warnung!! Zuerst Datenbank-Backup durchführen.<br />Das Importscript ist noch in der Testphase und kann zu Datenverlust führen.");
 
 // Taken from importdictionary091.php (McDonald)
 define("_AM_IMGLOSSARY_IMPDICT_01","Datenbank für Import fehlt oder ist leer!");
@@ -125,10 +125,23 @@ define("_AM_IMGLOSSARY_IMPDICT_08","Kommentare erfolgreich von Dictionary nach G
 define("_AM_IMGLOSSARY_IMPDICT_09","Fehlerhaft: ");
 define("_AM_IMGLOSSARY_IMPDICT_10","Erfolgreich: ");
 define("_AM_IMGLOSSARY_IMPDICT_11","Zurück zur Administration");
+define("_AM_IMGLOSSARY_IMPDICT_12","Module Dictionary not found on this site.");
 
 define("_AM_IMGLOSSARY_NOCOLEXISTS", "Es sind noch keine Kategorien angelegt.<br />Bitte kontaktieren Sie den Administrator und teilen Sie ihm diese Nachricht mit."); // This was originally in the main.php file
 
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Kommentare");
+
+// Import 
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "XWords &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Wiwimod &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Database missing or empty!");
+define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlossary");
+define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
+define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
+define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
 ?>
