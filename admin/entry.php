@@ -97,11 +97,11 @@ function entryEdit( $entryID = '' ) {
 	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url ), false );
 
 	// Code to take entry offline, for maintenance purposes
-	$offline_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_SWITCHOFFLINE, 'offline', $offline, ' ' . _AM_IMGLOSSARY_YES . '', ' ' ._AM_IMGLOSSARY_NO . '' );
+	$offline_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_SWITCHOFFLINE, 'offline', $offline, ' ' . _YES . '', ' ' ._NO . '' );
 	$sform -> addElement( $offline_radio );
 
 	// Code to put entry in block
-	$block_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_BLOCK, 'block', $block, ' ' . _AM_IMGLOSSARY_YES . '', ' ' . _AM_IMGLOSSARY_NO . '' );
+	$block_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_BLOCK, 'block', $block, ' ' . _YES . '', ' ' . _NO . '' );
 	$sform -> addElement( $block_radio );
 
 	// VARIOUS OPTIONS
