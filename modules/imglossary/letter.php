@@ -60,7 +60,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 )	{
 }
 
 // No initial: we need to see all letters
-if ( $init == _MD_IMGLOSSARY_ALL ) {
+if ( $init == '' ) {
 	$entriesarray = array();
 	$pagetype = 0;
 
