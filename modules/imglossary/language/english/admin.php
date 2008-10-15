@@ -132,6 +132,8 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Sorry, there are no categories defined as 
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Comments");
+define("_AM_IMGLOSSARY_ABOUT", "About");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Update module");
 
 // Import 
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");

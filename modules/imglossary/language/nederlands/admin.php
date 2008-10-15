@@ -131,6 +131,7 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Sorry, er zijn nog geen categorieën gedef
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Commentaar");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Update module");
 
 // Import 
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary importeer script");
