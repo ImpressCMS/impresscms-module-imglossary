@@ -1,9 +1,17 @@
+[mlimg][xlang:en]
 - myblocksadmin -
 
 
 SUMMARY:
 
 This files add blocks admin into your module.
+
+
+SUPPORT CORES:
+ - XOOPS 2.0.x
+ - Oreteki XOOPS
+ - XOOPS 2.1/2.2 (from www.xoopr.org)
+ - XOOPS Cube 2.0.x (from jp.xoops.org)
 
 
 BACKGROUND:
@@ -17,8 +25,9 @@ I will recommend it to the module developers by all means.
 
 HOW TO USE:
 
-1) copy 5 files of
+1) copy 6 files of
      myblocksadmin.php
+     myblocksadmin2.php
      myblockform.php
      mygroupperm.php
      mygrouppermform.php
@@ -68,50 +77,14 @@ That's all !
 
 
 
-CHANGELOG:
-
-2005-02-22 0.27 modified blocks is ordered by visible,side,weight (thx dclinf)
-2005-02-21 0.26 modified some compatibilities against FireFox
-2005-02-06 0.25 disabled checking IP
-2005-01-13 0.24 modified ticket system (limit stubs max 10)
-                added blocks and groups admin for the other modules
-                added implementation about custom blocks -clone&edit&preview-
-2005-01-08 0.23 fixed losing template of cloned blocks (thx domifara)
-2004-12-30 0.22 modified using $_SERVER instead of $_ENV (thx Marijuana)
-                fixed bug with specifying cloneable block
-2004-12-23 0.21 fixed compatibility with 2.0.9RC and PHP5 (thx domifara)
-2004-12-22 0.20 cloning block supported
-                fixed for modules which has no blocks
-                added updateblock.inc.php (special thx! nobunobu)
-2004-12-16 0.12 eliminated unsed codes from blocksadmin.inc.php for the security
-2004-12-10 0.11 modified ticket system
-2004-12-06 0.10 modified ticket system
-2004-12-05 0.09 modified ticket system
-2004-12-03 0.08 modified to use $_GET or $_POST instead of $HTTP_*_VARS (mari)
-                added admin_refcheck() for security (mari)
-                added ticket system for security (mari)
-                eliminated foreach() extraction from $_POST (mari)
-                fixed a place to include language files (thx marcan)
-2004-07-19 0.07 modified redirection after edit into myblocksadmin
-                added a feature for modifying target modules & cachetime
-2004-06-15 0.06 added a feature for modifying orders
-                added coloring like admin_r (thx Ryuji)
-2004-03-09 0.05 modified all button's code of JavaScript
-2004-02-29 0.04 security patch
-2003-12-18 0.03 for XOOPS <= 2.0.3 patch
-                (gperm_handler->deleteByModule() has only 1 parameter)
-2003-12-12 0.02 'module_read' and 'module_admin' to be able to change
-2003-12-4  0.01 first release
-
-
 
 COPYRIGHT:
 
 I do not insist on the right of these codes, and don't guarantee.
 
 
--------------------------------------------------------------
-(for Japanese)
+[/xlang:en]
+[xlang:ja]
 
 ●要旨
 
@@ -119,25 +92,26 @@ I do not insist on the right of these codes, and don't guarantee.
 管理画面を追加するためのファイル群です。
 
 
+●対応コア
+ - XOOPS 2.0.x
+ - Oreteki XOOPS
+ - XOOPS 2.1/2.2 （本家版）
+ - XOOPS Cube 2.0.x （JP版）
+
+
 ●背景
 
 XOOPSのブロック管理・グループ管理はあまりにも使いづらいと思います。
-グループを追加した時ならともかく、モジュールを追加した時なんて最悪で
-す。
+グループを追加した時ならともかく、モジュールを追加した時なんて最悪です。
 
 そんな苦痛から逃れようと、作ったのがこのmyblocksadminです。
 
-モジュール毎に、ブロック管理・グループ管理が出来るので、非常に使いや
-すくなっていると自負しています。
+モジュール毎に、ブロック管理・グループ管理が出来るので、非常に使いやすくなっていると自負しています。
 
-しかも、今では、ワンタイムチケットの導入・スーパーグローバルの
-foreach展開の廃止という２つの大きな変更により、コアよりもはるかに
-セキュアなコーディングとなっています。
+しかも、今では、ワンタイムチケットの導入・スーパーグローバルのforeach展開の廃止という２つの大きな変更により、コアよりもはるかにセキュアなコーディングとなっています。
 
 また、0.2 の目玉機能がブロックの複製機能です。
-カテゴリー絞り込み機能の持ったブロックが複製できれば、非常に強力な機
-能となるはずです。
-
+カテゴリー絞り込み機能の持ったブロックが複製できれば、非常に強力な機能となるはずです。
 
 管理画面を持つモジュールすべてに、これが入ると本当に助かるのですが。
 
@@ -148,17 +122,18 @@ foreach展開の廃止という２つの大きな変更により、コアよりもはるかに
 1) まずは解凍して下さい。
 
 
-2) 以下の５ファイルを modules/(dirname)/admin にコピーしてください。
+2) 以下の6ファイルを modules/(dirname)/admin にコピーしてください。
    admin.php というファイルは、mymenu にも含まれていますが、コンパチです。
 
      myblocksadmin.php
+     myblocksadmin2.php
      myblockform.php
      mygroupperm.php
      mygrouppermform.php
      admin.php
 
 
-3) 以下の３ファイルを modules/(dirname)include にコピーしてください。
+3) 以下の3ファイルを modules/(dirname)include にコピーしてください。
    gtickets.php というファイルは、mymenu にも含まれますが、コンパチです。
 
      blocksadmin.inc.php
@@ -203,3 +178,54 @@ $modversion['blocks'][(block_number)]['can_clone'] = true ;
 すべてのモジュール作者の方へ:
 
 「ぜひお試し下さい!!」
+
+[/xlang:ja]
+
+
+
+CHANGELOG:
+
+2006-05-03 0.43 updated gticket2
+2006-02-10 0.42 modified cloning function as a module (thx nobunobu)
+2005-11-13 0.41 modified the compatibility with PHP 5.0.5
+                modified some files from CR+LF into LF
+2005-08-09 0.40 added supporting XOOPS 2.2 provisionally
+2005-06-09 0.30 fixed 'area' of GTicket in myblocksadmin
+2005-05-25 0.29 modified supporting nobunobu's SPAW based on 1.10RC
+                modified XoopsGTicket supports 'area' and 'referer'
+                fixed 'clone' action does not reflect content&c_type
+2005-04-06 0.28 added SPAW mode for editing custom blocks (use TinyD's spaw)
+2005-02-22 0.27 modified blocks is ordered by visible,side,weight (thx dclinf)
+2005-02-21 0.26 modified some compatibilities against FireFox
+2005-02-06 0.25 disabled checking IP
+2005-01-13 0.24 modified ticket system (limit stubs max 10)
+                added blocks and groups admin for the other modules
+                added implementation about custom blocks -clone&edit&preview-
+2005-01-08 0.23 fixed losing template of cloned blocks (thx domifara)
+2004-12-30 0.22 modified using $_SERVER instead of $_ENV (thx Marijuana)
+                fixed bug with specifying cloneable block
+2004-12-23 0.21 fixed compatibility with 2.0.9RC and PHP5 (thx domifara)
+2004-12-22 0.20 cloning block supported
+                fixed for modules which has no blocks
+                added updateblock.inc.php (special thx! nobunobu)
+2004-12-16 0.12 eliminated unsed codes from blocksadmin.inc.php for the security
+2004-12-10 0.11 modified ticket system
+2004-12-06 0.10 modified ticket system
+2004-12-05 0.09 modified ticket system
+2004-12-03 0.08 modified to use $_GET or $_POST instead of $HTTP_*_VARS (mari)
+                added admin_refcheck() for security (mari)
+                added ticket system for security (mari)
+                eliminated foreach() extraction from $_POST (mari)
+                fixed a place to include language files (thx marcan)
+2004-07-19 0.07 modified redirection after edit into myblocksadmin
+                added a feature for modifying target modules & cachetime
+2004-06-15 0.06 added a feature for modifying orders
+                added coloring like admin_r (thx Ryuji)
+2004-03-09 0.05 modified all button's code of JavaScript
+2004-02-29 0.04 security patch
+2003-12-18 0.03 for XOOPS <= 2.0.3 patch
+                (gperm_handler->deleteByModule() has only 1 parameter)
+2003-12-12 0.02 'module_read' and 'module_admin' to be able to change
+2003-12-4  0.01 first release
+
+
