@@ -12,7 +12,7 @@ function b_entries_top_show( $options )	{
 
 	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 
-	global $xoopsDB, $xoopsModule, $xoopsUser;
+	global $xoopsDB;
 	$myts = & MyTextSanitizer :: getInstance();
  
  	$words = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
