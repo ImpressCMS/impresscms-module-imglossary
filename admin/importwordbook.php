@@ -37,7 +37,7 @@ case "default":
     xoops_cp_header();
     global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule;
     $myts =& MyTextSanitizer::getInstance();
-    imglossary_adminMenu( 7, _AM_IMGLOSSARY_IMPORT );
+    imglossary_adminMenu( _AM_IMGLOSSARY_IMPORT );
 }
 
 /****
