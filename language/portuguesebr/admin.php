@@ -131,4 +131,17 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Infelizmente, não há categorias definida
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Comentários");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Update module");
+
+// Import 
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "XWords &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Wiwimod &mdash;&gt; imGlossary import script");
+define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Database missing or empty!");
+define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlossary");
+define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
+define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
+define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
 ?>

@@ -15,23 +15,45 @@
  
 $glossdirname = basename( dirname( __FILE__ ) );
 
-$modversion['name'] = _MI_IMGLOSSARY_MD_NAME;
-$modversion['version'] = "1.00";
-$modversion['status'] = "RC-1";
-$modversion['releasedate'] = "12 October 2008";
-$modversion['description'] = _MI_IMGLOSSARY_MD_DESC;
-$modversion['author'] = "McDonald";
-$modversion['credits'] = "hsalazar, Catzwolf";
-$modversion['support_site_url'] = "http://community.impresscms.org/modules/newbb/viewforum.php?forum=9";
-$modversion['support_site_name'] = "ImpressCMS Community - Modules Support Forum";
-$modversion['license'] = "GNU General Public License (GPL)";
-$modversion['official'] = 0;
-$modversion['image'] = "images/imglossary_logo.png";
-$modversion['iconbig'] = "images/imglossary_iconsbig.png";
-$modversion['iconsmall'] = "images/imglossary_iconsmall.png";
-$modversion['dirname'] = $glossdirname;
+//	** General information
+$modversion = array(
+	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
+	'version' 			=> "1.00",
+	'status' 			=> "RC-1",
+	'status_version'	=> "RC-1",
+	'date'				=> "12 October 2008",
+	'releasedate' 		=> "12 October 2008",
+	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
+	'author' 			=> "McDonald",
+	'credits' 			=> "hsalazar, Catzwolf",
+	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/viewforum.php?forum=9",
+	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
+	'license' 			=> "GNU General Public License (GPL)",
+	'official' 			=> 0,
+	'image' 			=> "images/imglossary_logo.png",		// Module logo
+	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
+	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
+	'dirname' 			=> $glossdirname 
+	);
 
-// Admin things
+// 	** Contributors **
+$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
+//$modversion['people']['testers'][] = "";
+//$modversion['people']['testers'][] = "";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url] (German)";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
+//$modversion['people']['other'][] = "";
+
+//	** If Release Candidate **
+$modversion['warning'] = _MODABOUT_WARNING_RC;
+
+//	** If Final  **
+//$modversion['warning'] = _MODABOUT_WARNING_FINAL;
+
+// 	** Admin things **
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = "admin/index.php";
 $modversion['adminmenu'] = "admin/menu.php";
