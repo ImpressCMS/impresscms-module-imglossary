@@ -26,8 +26,8 @@ $modversion = array(
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
 	'credits' 			=> "hsalazar, Catzwolf",
-	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/viewforum.php?forum=9",
-	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
+//	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/",
+//	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
 	'license' 			=> "GNU General Public License (GPL)",
 	'official' 			=> 0,
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
