@@ -16,7 +16,7 @@ $op = '';
 if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
 if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
-function categoryEdit( $categoryID = '' ){
+function categoryEdit( $categoryID = '' ) {
 	$weight = 1;
 	$name = '';
 	$description = '';
@@ -34,13 +34,13 @@ function categoryEdit( $categoryID = '' ){
 		} 
 		
 		xoops_cp_header();
-		adminMenu( 1, _AM_IMGLOSSARY_CATS );
+		imglossary_adminMenu( _AM_IMGLOSSARY_CATS );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		xoops_cp_header();
-		imglossary_adminMenu(1, _AM_IMGLOSSARY_CATS);
+		imglossary_adminMenu( _AM_IMGLOSSARY_CATS );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );

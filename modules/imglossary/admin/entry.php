@@ -47,7 +47,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
 			exit();
 		}
-		imglossary_adminMenu( 2, _AM_IMGLOSSARY_ENTRIES );
+		imglossary_adminMenu( _AM_IMGLOSSARY_ENTRIES );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
@@ -60,7 +60,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
 			exit();
 		}
-		imglossary_adminMenu( 2, _AM_IMGLOSSARY_ENTRIES );
+		imglossary_adminMenu( _AM_IMGLOSSARY_ENTRIES );
 		$uid = $xoopsUser -> getVar('uid');
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );

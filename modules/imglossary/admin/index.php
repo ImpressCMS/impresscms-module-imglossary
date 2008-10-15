@@ -33,7 +33,8 @@ switch ( $op ) {
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $entryID;
 
 		$myts =& MyTextSanitizer::getInstance();
-		imglossary_adminMenu( 0, _AM_IMGLOSSARY_INDEX );
+		imglossary_adminMenu( _AM_IMGLOSSARY_INDEX );
+//		$xoopsModule->displayAdminMenu(-1, 'imGlossary' . " | " . _AM_IMGLOSSARY_INDEX);
         $result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $totalcategories ) = $xoopsDB -> fetchRow( $result01 );
         $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
