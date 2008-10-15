@@ -80,7 +80,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 */
 	function MyXoopsGroupPermForm($title, $modid, $permname, $permdesc)
 	{
-//		$this->XoopsForm($title, 'groupperm_form', ICMS_ROOT_PATH.'/modules/system/admin/groupperm.php', 'post'); GIJ
+//		$this->XoopsForm($title, 'groupperm_form', ICMS_URL.'/modules/system/admin/groupperm.php', 'post'); GIJ
 		$this->XoopsForm($title, 'groupperm_form', '' , 'post');
 		$this->_modid = intval($modid);
 		$this->_permName = $permname;
@@ -154,7 +154,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 		}
 		$gperm_handler =& xoops_gethandler('groupperm');
 		$member_handler =& xoops_gethandler('member');
-		$glist =& $member_handler->getGroupList();
+		$glist = $member_handler->getGroupList();
 		foreach (array_keys($glist) as $i) {
 			// get selected item id(s) for each group
 			$selected = $gperm_handler->getItemIds($this->_permName, $i, $this->_modid);
@@ -192,7 +192,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 			if (!is_object($elements[$i])) {
 				$ret .= $elements[$i];
 			} elseif (!$elements[$i]->isHidden()) {
-				$ret .= "<tr valign='top' style='text-align: left;'><td class='head'>".$elements[$i]->getCaption();
+				$ret .= "<tr valign='top' align='left'><td class='head'>".$elements[$i]->getCaption();
 				if ($elements[$i]->getDescription() != '') {
 					$ret .= '<br /><br /><span style="font-weight: normal;">'.$elements[$i]->getDescription().'</span>';
 				}
@@ -201,7 +201,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 				$ret .= $elements[$i]->render();
 			}
 		}
-		$ret .= "</table>".$xoopsGTicket->getTicketHtml(__LINE__)."</form>";
+		$ret .= "</table>".$xoopsGTicket->getTicketHtml(__LINE__ , 1800 , 'myblocksadmin' )."</form>";
 		return $ret;
 	}
 }

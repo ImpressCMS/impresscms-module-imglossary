@@ -182,7 +182,7 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 
 function imglossary_adminMenu( $breadcrumb = '' ) {
 	global $xoopsModule;
-	$xoopsModule -> displayAdminMenu( -1, $xoopsModule -> name() . " | " . $breadcrumb);
+	$xoopsModule -> displayAdminMenu( -1, $xoopsModule -> name() . " | " . $breadcrumb );
 }
 	
 function imglossary_linkterms( $definition, $glossaryterm ) {

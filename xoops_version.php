@@ -5,6 +5,7 @@
  * Version: v 1.00
  * Author: McDonald
  * ----------------------------------------------
+ * Based on
  * Module: Wordbook v 1.16
  * Release Date: 8 May 2004
  * Author: hsalazar
@@ -13,9 +14,13 @@
  * Licence: GNU
  */
  
- if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+if ( !defined( "ICMS_ROOT_PATH" ) ) die( "ICMS root path not defined" );
  
 $glossdirname = basename( dirname( __FILE__ ) );
+
+global $xoopsConfig;
+
+include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
 
 //	** General information
 $modversion = array(
@@ -38,19 +43,12 @@ $modversion = array(
 	);
 
 // 	** Contributors **
-$modversion['people']['developers'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
-//$modversion['people']['testers'][] = "";
-//$modversion['people']['testers'][] = "";
+$modversion['people']['developers'][]  = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
-//$modversion['people']['other'][] = "";
-
-global $xoopsConfig;
-
-include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
 
 //	** If Release Candidate **
 $modversion['warning'] = _MODABOUT_WARNING_RC;
