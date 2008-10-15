@@ -13,6 +13,8 @@
  * Licence: GNU
  */
  
+ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+ 
 $glossdirname = basename( dirname( __FILE__ ) );
 
 //	** General information
@@ -22,12 +24,11 @@ $modversion = array(
 	'status' 			=> "RC-1",
 	'status_version'	=> "RC-1",
 	'date'				=> "12 October 2008",
-	'releasedate' 		=> "12 October 2008",
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
 	'credits' 			=> "hsalazar, Catzwolf",
-//	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/",
-//	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
+	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/",
+	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
 	'license' 			=> "GNU General Public License (GPL)",
 	'official' 			=> 0,
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
@@ -46,6 +47,10 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
 //$modversion['people']['other'][] = "";
+
+global $xoopsConfig;
+
+include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
 
 //	** If Release Candidate **
 $modversion['warning'] = _MODABOUT_WARNING_RC;
