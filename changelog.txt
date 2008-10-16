@@ -5,6 +5,7 @@ imGlossary v1.00 RC-2
 - Added: import script Wordbook
 - Added: About page
 - Added: link to module update
+- Added: pdf support
 
 - Replaced: import script Dictionary
 - Replaced: admin menu

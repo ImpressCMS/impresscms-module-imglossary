@@ -29,4 +29,5 @@ define( '_MB_IMGLOSSARY_DATEFORMAT', 'Datumsformat: ' );
 define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'Siehe <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP Anleitung</a>' );
 define( '_MB_IMGLOSSARY_CATEGORY', 'Kategorie: ' );
 define( '_MB_IMGLOSSARY_ADMININDEX', 'Administration' );
+define( '_MB_IMGLOSSARY_PDFTERM', 'Create PDF');
 ?>

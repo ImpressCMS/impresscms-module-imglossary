@@ -135,4 +135,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Click the next words to suggest a defin
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Add to ");
+define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
 ?>
