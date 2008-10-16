@@ -93,7 +93,7 @@ $modversion['sub'][3]['url'] = "search.php";
 
 
 $sql = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
-$i = 3;
+$i = 4;
 $hModConfig =& xoops_gethandler( 'config' );
 $hModule =& xoops_gethandler( 'module' );
 if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
