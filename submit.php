@@ -54,7 +54,19 @@ if ( $suggest > 0 ) {
 	
 switch ( $op ) {
 	case 'post':
+		
 		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
+		
+		// Captcha Hack
+		if ( @include_once ICMS_ROOT_PATH . "/class/captcha/captcha.php" ) {
+			if ( $xoopsConfig['use_captchaf'] == 1 ) {
+				$xoopsCaptcha = XoopsCaptcha::instance();
+					if ( ! $xoopsCaptcha -> verify( true ) ) {
+						redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() );
+					}
+				}
+			}			
+		// Captcha Hack
 
 		include_once ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
 		$myts = & MyTextSanitizer :: getInstance();
