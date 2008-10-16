@@ -33,7 +33,11 @@ global $xoopsModule, $xoopsConfig;
 
 if ( isset( $xoopsModule ) ) {
 
-	include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php';
+	if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php' ) ) {
+		include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php';
+	} else {
+		include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/english/admin.php';
+	}
 
 	$i = -1;
 
@@ -43,15 +47,15 @@ if ( isset( $xoopsModule ) ) {
 
 	$i++;
 	$headermenu[$i]['title'] = _AM_IMGLOSSARY_GOMOD;
-	$headermenu[$i]['link']  = ICMS_URL . '/modules/' . $xoopsModule -> getVar( 'dirname' );
+	$headermenu[$i]['link']  = ICMS_URL . '/modules/' . $glossdirname;
 
 	$i++;
 	$headermenu[$i]['title'] = _AM_IMGLOSSARY_UPDATEMOD;
-	$headermenu[$i]['link']  = ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . $xoopsModule->getVar('dirname');
+	$headermenu[$i]['link']  = ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . $glossdirname;
 
 	$i++;
 	$headermenu[$i]['title'] = _AM_IMGLOSSARY_ABOUT;
-	$headermenu[$i]['link']  = ICMS_URL . '/modules/' . $xoopsModule -> getVar( 'dirname' ) . '/admin/about.php';
+	$headermenu[$i]['link']  = ICMS_URL . '/modules/' . $glossdirname . '/admin/about.php';
 }
 
 ?>
