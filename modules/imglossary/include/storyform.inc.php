@@ -54,7 +54,13 @@ if ( is_object( $xoopsUser ) ) {
 	$notify_checkbox = new XoopsFormCheckBox( '', 'notifypub', $notifypub );
 	$notify_checkbox -> addOption( 1, _MD_IMGLOSSARY_NOTIFY );
 	$sform -> addElement( $notify_checkbox );
-} 
+}
+
+// Captcha Hack
+if ( $xoopsConfig['use_captchaf'] == 1 ) {
+	$sform -> addElement( new XoopsFormCaptcha() );
+}
+// Captcha Hack 
 
 $button_tray = new XoopsFormElementTray( '', '' );
 $hidden = new XoopsFormHidden( 'op', 'post' );
