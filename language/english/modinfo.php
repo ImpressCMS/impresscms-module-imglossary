@@ -14,7 +14,7 @@ global $xoopsModule;
 define("_MI_IMGLOSSARY_MD_NAME", "imGlossary");
 
 // A brief description of this module
-define("_MI_IMGLOSSARY_MD_DESC", "A multicategory glossary");
+define("_MI_IMGLOSSARY_MD_DESC", "A multi-category glossary");
 
 // Sub menus in main menu block
 define("_MI_IMGLOSSARY_SUB_SMNAME1", "Submit an entry");
@@ -31,7 +31,7 @@ define("_MI_IMGLOSSARY_ANONSUBMIT", "Can guests submit entries?");
 define("_MI_IMGLOSSARY_ANONSUBMITDSC", "If set to <em>Yes</em>, guests will have access to a submission form");
 
 define("_MI_IMGLOSSARY_DATEFORMAT", "In what format should the date appear?");
-define("_MI_IMGLOSSARY_DATEFORMATDSC", "Use the final part of language/english/global.php to select a display style.<br />See <a href='http://jp.php.net/manual/en/function.date.php' target='_blank'>PHP manual</a>");
+define("_MI_IMGLOSSARY_DATEFORMATDSC", "Use the part <em>TIME FORMAT SETTINGS</em> of language/english/global.php to select a display style.<br />See <a href='http://jp.php.net/manual/en/function.date.php' target='_blank'>PHP manual</a>");
 
 define("_MI_IMGLOSSARY_PERPAGE", "Number of entries per page (Admin side)?");
 define("_MI_IMGLOSSARY_PERPAGEDSC", "Number of entries that will be shown at once in the table that displays active entries in the admin side.");
