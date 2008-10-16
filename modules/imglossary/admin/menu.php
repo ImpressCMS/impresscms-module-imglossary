@@ -18,17 +18,15 @@ $adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
 $adminmenu[2]['link']  = "admin/category.php";
 $adminmenu[3]['title'] = _MI_IMGLOSSARY_ADMENU4;
 $adminmenu[3]['link']  = "admin/myblocksadmin.php";
-$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU5;
-$adminmenu[4]['link']  = "index.php";
 
 if ( imglossary_dictionary_module_included() ) {
-	$adminmenu[5]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
-	$adminmenu[5]['link']  = "admin/importdictionary.php";
+	$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
+	$adminmenu[4]['link']  = "admin/importdictionary.php";
 }
 
 if ( imglossary_wordbook_module_included() ) {
-	$adminmenu[6]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wordbook';
-	$adminmenu[6]['link']  = "admin/importwordbook.php";
+	$adminmenu[5]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wordbook';
+	$adminmenu[5]['link']  = "admin/importwordbook.php";
 }
 
 global $xoopsModule;
