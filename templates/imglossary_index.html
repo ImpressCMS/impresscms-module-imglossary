@@ -63,7 +63,7 @@
 <legend><{$smarty.const._MD_IMGLOSSARY_RECENTENT}></legend>
 <ul>
 <{foreach item=newentries from=$block.newstuff}>
-<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$newentries.date}>)</span></li>
+<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small;">(<{$newentries.date}>)</span></li>
 <{/foreach}>
 </ul>
 </fieldset>
@@ -74,7 +74,7 @@
 <legend><{$smarty.const._MD_IMGLOSSARY_POPULARENT}></legend>
 <ul>
 <{foreach item=popentries from=$block2.popstuff}>
-<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small; color: #456;">(<{$popentries.counter}>)</span></li>
+<li><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small;">(<{$popentries.counter}>)</span></li>
 <{/foreach}>
 </ul>
 </fieldset>
@@ -83,7 +83,7 @@
 <div class="search">
 <fieldset>
 <legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
-<{$searchform}>
+<div style="padding: 5px;"><{$searchform}></div>
 </fieldset>
 </div>
 
@@ -92,11 +92,13 @@
 <legend><{$smarty.const._MD_IMGLOSSARY_RANDOMTERM}></legend>
 <{if $multicats == 1}>
 <{if $empty != 1}>
-<div class="catname"><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a></div>
+	<div class="catname">&nbsp;<{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
+		<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a>
+	</div>
 <{/if}>
 <{/if}>
 <div class="pad4">
-	<h5 class="term"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h5>
+	<h4 class="term"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h4>
 	<div style="padding: 0 4px;"><{$random.definition}></div>
 	<div style="padding-top: 5px; margin-left: 8px;"><{$microlinks}></div>
 </div>

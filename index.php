@@ -78,7 +78,7 @@ switch ( $op ) {
 				$block0['categories'][] = $catlinks;
 			}
 			$xoopsTpl -> assign( 'block0', $block0 );
-			}
+		}
 
 		// To display the recent entries block
 		$block1 = array();
