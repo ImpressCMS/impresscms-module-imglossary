@@ -3,8 +3,10 @@
 <div class="rightheader"><{$lang_modulename}></div>
 <hr>
 
-<h3 class="cat"><{$smarty.const._MD_IMGLOSSARY_ASKFORDEF}></h3>
-<div class="intro"><{$smarty.const._MD_IMGLOSSARY_INTROREQUEST}></div>
+<fieldset>
+<legend><{$smarty.const._MD_IMGLOSSARY_ASKFORDEF}></legend>
+<div style="padding: 8px;"><{$smarty.const._MD_IMGLOSSARY_INTROREQUEST}></div></fieldset>
+
 <{$requestform.javascript}>
 <form name="<{$requestform.name}>" action="<{$requestform.action}>" method="<{$requestform.method}>" <{$requestform.extra}>>
 <fieldset>
@@ -14,7 +16,7 @@
 <{if $element.hidden != true}>
 <tr>
 <td width="160" style="text-align: right; line-height: 200%"><{$element.caption}></td><td width="10">&nbsp;</td>
-<td style="text-align: left;"><{$element.body}></td>
+<td style="text-align: left; padding: 5px;";"><{$element.body}></td>
 </tr>
 <{else}>
 <{$element.body}>
