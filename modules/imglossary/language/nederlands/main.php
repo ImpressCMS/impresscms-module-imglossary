@@ -135,4 +135,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Klik op de woorden om een defintie voor
 define("_MD_IMGLOSSARY_ADMININDEX", "Administratie");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Ingezonden op %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Toevoegen aan ");
+define("_MD_IMGLOSSARY_PDFTERM", "Maak PDF");
 ?>

@@ -135,5 +135,6 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Haga clic sobre alguna de las siguiente
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Enviada el on %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Añadir a ");
+define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
 
 ?>

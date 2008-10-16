@@ -136,4 +136,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Klicken Sie die folgenden Wörter an, u
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Übermittelt am %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Erstellt in ");
+define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
 ?>
