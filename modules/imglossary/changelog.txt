@@ -12,6 +12,7 @@ imGlossary v1.00 RC-2
 - Fixed: problem search option, unknown function
 - Fixed: letter-bar, only those letters containing terms have url assigned
 - Fixed: pagination for listing 'All'
+- Fixed: url administration icon in random block
 
 
 ===================================

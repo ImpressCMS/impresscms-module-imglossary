@@ -11,9 +11,13 @@ if ( !defined( "ICMS_ROOT_PATH" ) ) die( "ICMS root path not defined" );
  
 $glossdirname = basename( dirname( __FILE__ ) );
 
-global $xoopsConfig;
+global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsConfig;
 
-include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
+if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php') ) {
+	include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
+} else {
+	include_once ICMS_ROOT_PATH . '/language/english/moduleabout.php';
+}
 
 //	** General information
 $modversion = array(
@@ -42,6 +46,7 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
+$modversion['people']['other'][] = "Icons by <a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a>";
 
 //	** If Release Candidate **
 $modversion['warning'] = _MODABOUT_WARNING_RC;
@@ -68,8 +73,6 @@ $modversion['search']['file'] = "include/search.inc.php";
 $modversion['search']['func'] = "imglossary_search";
 
 // Menu
-global $xoopsUser, $xoopsDB, $xoopsModule;
-
 $modversion['hasMain'] = 1;
 $hModConfig =& xoops_gethandler('config');
 $hModule =& xoops_gethandler('module');
