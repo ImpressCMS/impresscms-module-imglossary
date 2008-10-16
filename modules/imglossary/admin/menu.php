@@ -29,9 +29,11 @@ if ( imglossary_wordbook_module_included() ) {
 	$adminmenu[5]['link']  = "admin/importwordbook.php";
 }
 
-global $xoopsModule;
+global $xoopsModule, $xoopsConfig;
 
 if ( isset( $xoopsModule ) ) {
+
+	include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php';
 
 	$i = -1;
 
