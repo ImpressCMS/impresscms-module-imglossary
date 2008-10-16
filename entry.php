@@ -13,7 +13,7 @@ include 'header.php';
 include_once ICMS_ROOT_PATH . "/class/module.textsanitizer.php"; 
 include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/sbookmarks.php';
 
-global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule; 
+global $xoopsUser, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $xoTheme; 
 $myts =& MyTextSanitizer::getInstance();
 
 $entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
@@ -118,8 +118,15 @@ $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 $xoopsTpl -> assign( 'entryID', $entryID );
+
 $xoopsTpl -> assign( 'xoops_pagetitle', $thisterm['term'] );
-$xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags( $thisterm['definition'] ), 0, 250, '' ) );
+
+if ( is_object( $xoTheme ) ) {
+	$xoTheme -> addMeta( 'meta', 'description', icms_substr( strip_tags( $thisterm['definition'] ), 0, 250, '' ) );
+} else {
+	$xoopsTpl -> assign( 'xoops_meta_description', icms_substr( strip_tags( $thisterm['definition'] ), 0, 250, '' ) );
+}
+	
 if ( $xoopsModuleConfig['showsubmitter'] ) {
 	$xoopsTpl -> assign( 'submitter', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'] ) );
 }
