@@ -65,7 +65,7 @@ define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referentie<span style='font-size: xx-sm
 define("_AM_IMGLOSSARY_ENTRYTERM", "Term");
 define("_AM_IMGLOSSARY_ENTRYURL", "Gerelateerde website<span style='font-size: xx-small; font-weight: normal; display: block;'>(Geef een geldige URL met of zonder het HTTP voorvoegsel.)</span>");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Een bestand met die naam bestaat al op de server. Kies een andere naam aub!");
-define("_AM_IMGLOSSARY_GOMOD", "Ga naar module");
+define("_AM_IMGLOSSARY_GOMOD", "Naar module");
 define("_AM_IMGLOSSARY_HELP", "Help");
 define("_AM_IMGLOSSARY_ID", "Id");
 define("_AM_IMGLOSSARY_INDEX", "Index");
@@ -105,7 +105,7 @@ define("_AM_IMGLOSSARY_TOTALENTRIES", "Gepubliceerde termen: ");
 define("_AM_IMGLOSSARY_TOTALREQ", "Aangevraagde termen: ");
 define("_AM_IMGLOSSARY_TOTALSUBM", "Ingezonden termen: ");
 define("_AM_IMGLOSSARY_UNIQUE", "Unieke categorie");
-define("_AM_IMGLOSSARY_WEIGHT", "Gewicht");
+define("_AM_IMGLOSSARY_WEIGHT", "Categorie gewicht");
 define("_AM_IMGLOSSARY_WRITEHERE", "Schrijf hier een omschrijving van de definitie.");
 define("_AM_IMGLOSSARY_YES", "Ja");
 //mondarse
