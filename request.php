@@ -35,7 +35,7 @@ if ( empty( $_POST['submit'] ) ) {
 } else {
 	// Captcha Hack
 	if ( @include_once ICMS_ROOT_PATH . "/class/captcha/captcha.php" ) {
-		if ( $xoopsConfig['use_captchaf'] == 1 ) {
+		if ( $xoopsModuleConfig['captcha'] == 1 ) {
 			$xoopsCaptcha = XoopsCaptcha::instance();
 				if ( ! $xoopsCaptcha -> verify( true ) ) {
 						redirect_header( 'request.php', 2, $xoopsCaptcha -> getMessage() );

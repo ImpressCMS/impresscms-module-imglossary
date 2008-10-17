@@ -89,4 +89,6 @@ define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Mostrar um BookMark Social em cada termo
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Escolha <em><b>Sim</b></em> para ter um ícone de BookMark Social visível em cada termo.");
 define("_MI_IMGLOSSARY_SEARCHCOLOR", "Cor de fundo para os termos da pesquisa:");
 define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Introduza a cor de fundo para usar como termos de pesquisa. Padrão: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Use captcha in submit and request forms?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
 ?>
