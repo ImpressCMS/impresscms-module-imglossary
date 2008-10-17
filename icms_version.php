@@ -144,10 +144,6 @@ $modversion['templates'][4]['file'] = 'imglossary_letter.html';
 $modversion['templates'][4]['description'] = 'Display letter';
 $modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
-$modversion['templates'][6]['file'] = 'imglossary_request.html';
-$modversion['templates'][6]['description'] = 'Request a definition';
-//$modversion['templates'][7]['file'] = 'imglossary_submit.html';
-//$modversion['templates'][7]['description'] = 'Submit a definition';
 
 global $xoopsmoduleConfig;
 // Config Settings (only for modules that need config settings generated automatically)

@@ -3,7 +3,7 @@ imGlossary v1.00 RC-2
 ===================================
 - Added: option to set background colour searched terms
 - Added: import script Wordbook
-- Added: About page
+- Added: About page (IcmsModuleAbout)
 - Added: link to module update
 - Added: pdf support
 - Added: captcha to submit form
@@ -11,7 +11,10 @@ imGlossary v1.00 RC-2
 - Added: captcha can be turned on/off in Preferences
 
 - Replaced: import script Dictionary
-- Replaced: admin menu
+- Replaced: admin menu (displayAdminMenu)
+
+- Removed: imglossary/templates/imglossary_request.html
+- Removed: imglossary/templates/imglossary_submit.html
 
 - Fixed: problem search option, unknown function
 - Fixed: letter-bar, only those letters containing terms have url assigned
