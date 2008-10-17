@@ -221,7 +221,7 @@ function FormImport() {
 
         echo "<tr>";
  //       echo "<td class='head' width = '200' align='center'><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> getVar('dirname') . "/images/icon/exclamation.png"."' alt='' hspace='0' vspace='0' align='middle' style='margin-right: 10px; '></td>";
-		echo "<td class='odd'>&nbsp;</td>";
+		echo "<td class='odd' align='center'><img src='" . ICMS_URL . "/modules/wordbook/images/wb_slogo.png' alt='' title='' /></td>";
         echo "<td class='even' style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
         echo "</tr>";
 
