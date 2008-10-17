@@ -74,7 +74,7 @@ define("_MD_IMGLOSSARY_RECENTENT", "Recent entries");
 define("_MD_IMGLOSSARY_REFERENCE", "Reference<span style='font-size: xx-small; font-weight: normal; display: block;'>(Optionally, you may give the source of your definition here.)</span>");
 define("_MD_IMGLOSSARY_REQRCVD", "Your request has been received. We'll look at it as soon as possible.");
 define("_MD_IMGLOSSARY_REQSEND", "Request sent");
-define("_MD_IMGLOSSARY_REQTERM", "[*] Term to define");
+define("_MD_IMGLOSSARY_REQTERM", "Term to define");
 define("_MD_IMGLOSSARY_REQUESTDEF", "Request a definition");
 define("_MD_IMGLOSSARY_REQUESTFORM", "Request a definition");
 define("_MD_IMGLOSSARY_REQUESTSENT", "Your request has been forwarded to the webmaster of %s.");

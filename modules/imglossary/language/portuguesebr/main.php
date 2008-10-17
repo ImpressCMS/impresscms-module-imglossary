@@ -75,7 +75,7 @@ define("_MD_IMGLOSSARY_RECENTENT", "Termos recentes");
 define("_MD_IMGLOSSARY_REFERENCE", "Referência<span style='font-size: xx-small; font-weight: normal; display: block;'>(Opcionalmente, você pode conferir a origem de sua definição aqui.)</span>");
 define("_MD_IMGLOSSARY_REQRCVD", "Sua solicitação foi recebida. Iremos analisá-la o mais rápido possível.");
 define("_MD_IMGLOSSARY_REQSEND", "Solicitações enviadas");
-define("_MD_IMGLOSSARY_REQTERM", "[*] Termo para definir");
+define("_MD_IMGLOSSARY_REQTERM", "Termo para definir");
 define("_MD_IMGLOSSARY_REQUESTDEF", "Solicitar uma definição");
 define("_MD_IMGLOSSARY_REQUESTFORM", "Solicitar uma definição");
 define("_MD_IMGLOSSARY_REQUESTSENT", "Sua solicitação foi enviada ao webmaster da %s.");
