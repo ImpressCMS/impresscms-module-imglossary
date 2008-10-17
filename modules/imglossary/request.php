@@ -14,22 +14,11 @@ global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 
 if ( empty( $_POST['submit'] ) ) {
 
-	$xoopsOption['template_main'] = 'imglossary_request.html';
 	include ICMS_ROOT_PATH . "/header.php";
-	include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
+
 	
-	$username_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "uname", "E" ) : "";
-	$usermail_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "email", "E" ) : "";
-	$notifypub = '1';
+
 	include "include/requestform.php";
-	$xoopsTpl -> assign ( 'modulename', $glossdirname );
-
-	$rform -> assign( $xoopsTpl );
-
-	$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-	$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
-
-	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
 	include ICMS_ROOT_PATH . "/footer.php";
 } else {
