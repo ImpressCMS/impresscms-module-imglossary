@@ -90,4 +90,6 @@ define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Laat Social Bookmarks zien bij iedere te
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Kies <em>Ja</em> om de Social Bookmark iconen weer te geven bij iedere term.");
 define("_MI_IMGLOSSARY_SEARCHCOLOR", "Achtergrond kleur voor zoektermen:");
 define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Voer de kleur in die als achtergroind dient voor zoektermen.<br />Standaard: <span style='background-color: #FFFF00; font-style: italic;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Gebruik captcha in inzend- en aanvraagformulier?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "Kies <em>Ja</em> om captcha te gebruiken in het inzend- en aanvraagformulier.<br />Standaard: <em>Ja</em>");
 ?>

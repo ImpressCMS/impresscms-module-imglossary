@@ -87,5 +87,7 @@ define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Seleccione <em>Sí</em> para mostrar e
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","¿Mostrar Marcadores Sociales en cada elemento?");
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Seleccione <em>Sí</em> para mostrar los iconos de los Marcadores sociales en cada uno de los elementos.");
 define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Enter the colour to use as background for search terms. Default: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Use captcha in submit and request forms?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
 
 ?>

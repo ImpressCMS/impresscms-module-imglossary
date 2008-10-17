@@ -23,9 +23,9 @@ if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/mo
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
 	'version' 			=> "1.00",
-	'status' 			=> "RC-1",
-	'status_version'	=> "RC-1",
-	'date'				=> "12 October 2008",
+	'status' 			=> "RC-2",
+	'status_version'	=> "RC-2",
+	'date'				=> "18 October 2008",
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
 	'credits' 			=> "hsalazar, Catzwolf",
@@ -166,6 +166,13 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_ANONSUBMITDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
+$i++;
+$modversion['config'][$i]['name'] = 'captcha';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_CAPTCHA';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_CAPTCHADSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
 $i++;
 $modversion['config'][$i]['name'] = 'dateformat';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_DATEFORMAT';

@@ -88,4 +88,6 @@ define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Bei <em>Ja</em> wird der Übermittler
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Zeige Social Bookmarks bei jedem Eintrag?");
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Bei <em>Ja</em> werden die Social Bookmark Icons in jedem Eintrag angezeigt.");
 define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Enter the colour to use as background for search terms. Default: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Use captcha in submit and request forms?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
 ?>

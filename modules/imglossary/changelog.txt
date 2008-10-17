@@ -8,6 +8,7 @@ imGlossary v1.00 RC-2
 - Added: pdf support
 - Added: captcha to submit form
 - Added: captcha to request form
+- Added: captcha can be turned on/off in Preferences
 
 - Replaced: import script Dictionary
 - Replaced: admin menu

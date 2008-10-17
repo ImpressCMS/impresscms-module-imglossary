@@ -57,7 +57,7 @@ if ( is_object( $xoopsUser ) ) {
 }
 
 // Captcha Hack
-if ( $xoopsConfig['use_captchaf'] == 1 ) {
+if ( $xoopsModuleConfig['captcha'] == 1 ) {
 	$sform -> addElement( new XoopsFormCaptcha() );
 }
 // Captcha Hack 
