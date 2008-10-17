@@ -12,14 +12,14 @@ include 'header.php';
 
 global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 
-if ( empty($_POST['submit']) ) {
+if ( empty( $_POST['submit'] ) ) {
 
 	$xoopsOption['template_main'] = 'imglossary_request.html';
 	include ICMS_ROOT_PATH . "/header.php";
 	include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
 	
-	$username_v = !empty($xoopsUser) ? $xoopsUser -> getVar( "uname", "E" ) : "";
-	$usermail_v = !empty($xoopsUser) ? $xoopsUser -> getVar( "email", "E" ) : "";
+	$username_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "uname", "E" ) : "";
+	$usermail_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "email", "E" ) : "";
 	$notifypub = '1';
 	include "include/requestform.php";
 	$xoopsTpl -> assign ( 'modulename', $glossdirname );
@@ -33,18 +33,28 @@ if ( empty($_POST['submit']) ) {
 
 	include ICMS_ROOT_PATH . "/footer.php";
 } else {
-	extract($_POST);
+	// Captcha Hack
+	if ( @include_once ICMS_ROOT_PATH . "/class/captcha/captcha.php" ) {
+		if ( $xoopsConfig['use_captchaf'] == 1 ) {
+			$xoopsCaptcha = XoopsCaptcha::instance();
+				if ( ! $xoopsCaptcha -> verify( true ) ) {
+						redirect_header( 'request.php', 2, $xoopsCaptcha -> getMessage() );
+				}
+			}
+		}			
+	// Captcha Hack
+	extract( $_POST );
 	$display = "D";
 	$myts =& MyTextSanitizer::getInstance();
-	$usermail = (isset($_POST['usermail'])) ? $myts -> stripSlashesGPC($_POST['usermail']) : '';
-	$username = (isset($_POST['username'])) ? $myts -> stripSlashesGPC($_POST['username']) : '';
-	$reqterm = (isset($_POST['reqterm'])) ? $myts -> makeTboxData4Save($_POST['reqterm']) : '';
+	$usermail = ( isset( $_POST['usermail'] ) ) ? $myts -> stripSlashesGPC( $_POST['usermail'] ) : '';
+	$username = ( isset( $_POST['username'] ) ) ? $myts -> stripSlashesGPC( $_POST['username'] ) : '';
+	$reqterm  = ( isset( $_POST['reqterm'] ) ) ? $myts -> makeTboxData4Save( $_POST['reqterm'] ) : '';
 	$notifypub = (isset($_POST['notifypub'])) ? intval($_POST['notifypub']) : 1;
-	$html = (isset($_POST['html'])) ? intval($_POST['html']) : 1;
-	$smiley = (isset($_POST['smiley'])) ? intval($_POST['smiley']) : 1;
-	$xcodes = (isset($_POST['xcodes'])) ? intval($_POST['xcodes']) : 1;
+	$html   = ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
+	$smiley = ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
+	$xcodes = ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
 	if ( $xoopsUser ) {
-		$user = $xoopsUser -> getVar("uid");
+		$user = $xoopsUser -> getVar( 'uid' );
 	} else {
 		$user = _MD_IMGLOSSARY_ANONYMOUS;
 	}
@@ -61,13 +71,13 @@ if ( empty($_POST['submit']) ) {
 	$adminmail = $xoopsConfig['adminmail'];
 
 	if ( $xoopsUser ) {
-		$logname = $xoopsUser -> getVar( "uname", "E");
+		$logname = $xoopsUser -> getVar( 'uname', 'E');
 	} else {
 		$logname = $xoopsConfig['anonymous'];
 	}
 
 	if ( $xoopsUser ) {
-		$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=$logname" );
+		$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=" . $logname );
 		list($address) = $xoopsDB -> fetchRow( $result );
 	} else {
 		$address = $xoopsConfig['adminmail'];
