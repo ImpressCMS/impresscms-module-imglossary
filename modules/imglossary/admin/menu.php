@@ -29,6 +29,11 @@ if ( imglossary_wordbook_module_included() ) {
 	$adminmenu[5]['link']  = "admin/importwordbook.php";
 }
 
+if ( imglossary_wiwimod_module_included() ) {
+	$adminmenu[6]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wiwimod';
+	$adminmenu[6]['link']  = "admin/importwiwimod.php";
+}
+
 global $xoopsModule, $xoopsConfig;
 
 if ( isset( $xoopsModule ) ) {
