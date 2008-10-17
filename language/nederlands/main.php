@@ -74,7 +74,7 @@ define("_MD_IMGLOSSARY_RECENTENT", "Recente termen");
 define("_MD_IMGLOSSARY_REFERENCE", "Referentie<span style='font-size: xx-small; font-weight: normal; display: block;'>(Optioneel, u kunt hier de bron van uw definitie opgeven.)</span>");
 define("_MD_IMGLOSSARY_REQRCVD", "Uw aanvraag is ontvangen. We zullen het zo snel mogelijk in behandeling nemen.");
 define("_MD_IMGLOSSARY_REQSEND", "Aanvraag verzonden");
-define("_MD_IMGLOSSARY_REQTERM", "[*] Te definieëren term");
+define("_MD_IMGLOSSARY_REQTERM", "Te definieëren term");
 define("_MD_IMGLOSSARY_REQUESTDEF", "Aanvragen definitie");
 define("_MD_IMGLOSSARY_REQUESTFORM", "Vraag een definitie aan");
 define("_MD_IMGLOSSARY_REQUESTSENT", "Uw aanvraag is doorgestuurd naar de webmaster van %s.");
