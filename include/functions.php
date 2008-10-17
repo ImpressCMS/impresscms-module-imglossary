@@ -260,7 +260,7 @@ function imglossary_wiwimod_module_included() {
   static $imglossary_wiwimod_module_included;
   if ( !isset( $imglossary_wiwimod_module_included ) ) {
     $modules_handler = xoops_gethandler( 'module' );
-    $dict_mod = $modules_handler -> getByDirName( 'wordbook' );
+    $dict_mod = $modules_handler -> getByDirName( 'wiwimod' );
     if ( !$dict_mod ) {
       $dict_mod = false;
     } else {
