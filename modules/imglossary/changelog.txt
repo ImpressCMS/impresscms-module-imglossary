@@ -7,6 +7,7 @@ imGlossary v1.00 RC-2
 - Added: link to module update
 - Added: pdf support
 - Added: captcha to submit form
+- Added: captcha to request form
 
 - Replaced: import script Dictionary
 - Replaced: admin menu

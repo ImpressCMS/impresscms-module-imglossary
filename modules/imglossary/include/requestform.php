@@ -17,7 +17,7 @@ if ( !$xoopsUser ) {
 $name_text = new XoopsFormText( _MD_IMGLOSSARY_USERNAME, 'username', 35, 100, $username_v );
 $rform -> addElement( $name_text, false );
 
-$email_text = new XoopsFormText( _MD_IMGLOSSARY_USERMAIL, "usermail", 40, 100, $usermail_v );
+$email_text = new XoopsFormText( _MD_IMGLOSSARY_USERMAIL, 'usermail', 40, 100, $usermail_v );
 $rform -> addElement( $email_text, false );
 
 $reqterm_text = new XoopsFormText( _MD_IMGLOSSARY_REQTERM, 'reqterm', 30, 150 );
@@ -28,6 +28,12 @@ if ( is_object( $xoopsUser ) ) {
 	$notify_checkbox -> addOption( 1, _MD_IMGLOSSARY_NOTIFY );
 	$rform -> addElement( $notify_checkbox );
 } 
+
+// Captcha Hack
+if ( $xoopsConfig['use_captchaf'] == 1 ) {
+	$rform -> addElement( new XoopsFormCaptcha() );
+}
+// Captcha Hack
 
 $submit_button = new XoopsFormButton( "", "submit", _MD_IMGLOSSARY_SUBMIT, "submit" );
 $rform -> addElement( $submit_button );
