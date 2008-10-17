@@ -127,13 +127,14 @@ function FormImport() {
     $wiwimodModule = $module_handler -> getByDirname( "wiwimod" );
     $got_options = false;
     if ( is_object( $wiwimodModule ) ) {
+		echo "<br /><br /><br />";
         echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
         echo "<tr>";
         echo "<td colspan='2' class='bg3' align='left'><font size='2'><b>" . _AM_IMGLOSSARY_MODULEHEADIMPORTWW . "</b></font></td>";
         echo "</tr>";
 
         echo "<tr>";
-		echo "<td class='odd'>&nbsp;</td>";
+		echo "<td class='odd' align='center'><img src='" . ICMS_URL . "/modules/wiwimod/images/wiwilogo.gif' alt='' title='' /></td>";
         echo "<td class='even' style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
         echo "</tr>";
 
