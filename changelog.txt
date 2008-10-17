@@ -2,6 +2,7 @@
 imGlossary v1.00 RC-2
 ===================================
 - Added: option to set background colour searched terms
+- Added: import script Wiwimod
 - Added: import script Wordbook
 - Added: About page (IcmsModuleAbout)
 - Added: link to module update
