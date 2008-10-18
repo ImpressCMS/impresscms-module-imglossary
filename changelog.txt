@@ -1,7 +1,10 @@
 ===================================
 imGlossary v1.00 xxxx
 ===================================
-Fixed: pagination for listing 'All' (again)
+- Added: option to display 3 center blocks on index page or not
+- Added: option to display random term block on index or not
+
+- Fixed: pagination for listing 'All' (again)
 
 
 ===================================
