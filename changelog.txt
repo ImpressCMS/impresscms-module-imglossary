@@ -1,4 +1,10 @@
 ===================================
+imGlossary v1.00 xxxx
+===================================
+Fixed: pagination for listing 'All' (again)
+
+
+===================================
 imGlossary v1.00 RC-2
 ===================================
 - Added: option to set background colour searched terms
