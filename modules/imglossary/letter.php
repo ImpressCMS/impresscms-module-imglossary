@@ -60,7 +60,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 )	{
 }
 
 // No initial: we need to see all letters
-if ( $init == '' ) {
+if ( $init == _MD_IMGLOSSARY_ALL ) {
 	$entriesarray = array();
 	$pagetype = 0;
 
@@ -85,6 +85,7 @@ if ( $init == '' ) {
 
 		$eachentry['id'] = intval( $entryID );
 		$eachentry['term'] = $myts -> makeTboxData4Show( $term );
+		$eachentry['init'] = _MD_IMGLOSSARY_ALL;
 		
 		if ($comments != 0) {
 			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
@@ -108,12 +109,12 @@ if ( $init == '' ) {
 		$entriesarray['single'][] = $eachentry;
 	}
 	
-	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'start' );
+	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'init=' . $eachentry['init'] . '&start' );
 	$entriesarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign ( 'entriesarray', $entriesarray );
 	$xoopsTpl -> assign ( 'pagetype', '0' );
-	$xoopsTpl -> assign ( 'pageinitial', _MD_IMGLOSSARY_ALL );
+	$xoopsTpl -> assign ( 'pageinitial', $eachentry['init'] );
 } else {
 	// $init does exist
 	$pagetype = 1;
