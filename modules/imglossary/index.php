@@ -231,6 +231,8 @@ switch ( $op ) {
 		$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 		$xoopsTpl -> assign( 'microlinks', $microlinks );
 		$xoopsTpl -> assign( 'alpha', $alpha );
+		$xoopsTpl -> assign( 'showcenter', $xoopsModuleConfig['showcenter'] );
+		$xoopsTpl -> assign( 'showrandom', $xoopsModuleConfig['showrandom'] );
 		} 
 
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
