@@ -1,11 +1,21 @@
 <?php
 /**
- * $Id: main.php
- * Module: imGlossary - a multicategory glossary
- * Author: McDonald
- * Language: Dutch (Nederlands)
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/nederlands/main.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
  
 define("_MD_IMGLOSSARY_NOCOLEXISTS", "Sorry, er zijn nog geen categorieën gedefinieërd.<br />Neemt u alstublieft kontakt op met de administrator om hem/haar hierover te informeren.");
 define("_MD_IMGLOSSARY_ALL", "Alles");

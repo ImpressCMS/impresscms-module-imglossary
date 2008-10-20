@@ -1,27 +1,30 @@
 <?php
 /**
- * $Id: admin_header.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: admin/admin_header.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
 
 include '../../../mainfile.php';
 include '../../../include/cp_header.php';
 
 $glossdirname = basename( dirname( dirname( __FILE__ ) ) );
-
-// Commented this part out because I think it's not needed here (McDonald)
-//if ( file_exists("../language/".$xoopsConfig['language']."/main.php") ) 
-//	{
-//	include "../language/".$xoopsConfig['language']."/main.php";
-//	}
-//else 
-//	{
-//	include "../language/english/main.php";
-//	}
 
 include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
 include_once ICMS_ROOT_PATH . '/class/xoopstree.php';

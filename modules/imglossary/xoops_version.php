@@ -1,18 +1,25 @@
 <?php
 /**
- * $Id: xoops_version.php
- * Module: imGlossary - a multicategory glossary 
- * Version: v 1.00
- * Author: McDonald
- * ----------------------------------------------
- * Based on
- * Module: Wordbook v 1.16
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Additions: Dario Garcia
- * ----------------------------------------------
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: xoops_version.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
  
 if ( !defined( "ICMS_ROOT_PATH" ) ) die( "ICMS root path not defined" );
 
