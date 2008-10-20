@@ -93,7 +93,7 @@ define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Voer de kleur in die als achtergroind d
 define("_MI_IMGLOSSARY_CAPTCHA", "Gebruik captcha in inzend- en aanvraagformulier?");
 define("_MI_IMGLOSSARY_CAPTCHADSC", "Kies <em>Ja</em> om captcha te gebruiken in het inzend- en aanvraagformulier.<br />Standaard: <em>Ja</em>");
 define("_MI_IMGLOSSARY_SHOWCENTER", "Laat center blokken zien?");
-define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Kies <em>Ja</em> om de drie blokken Recente termen, Populaire termen en Zoek in de index pagina te laten zien.");
+define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Kies <em>Ja</em> om de drie blokken Recente termen, Populaire termen en Zoek in de index pagina te laten zien.<br />Kies <em>Nee</em> om in plaats van de drie blokken alleen een Zoek blok te laten zien.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Laat Willekeurige term blok zien?");
 define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Kies <em>Ja</em> om het Willekeurige blok in de index pagina te laten zien.");
 ?>
