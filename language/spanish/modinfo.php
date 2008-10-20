@@ -90,7 +90,7 @@ define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Enter the colour to use as background f
 define("_MI_IMGLOSSARY_CAPTCHA", "Use captcha in submit and request forms?");
 define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
 define("_MI_IMGLOSSARY_SHOWCENTER", "Display center blocks?");
-define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Select <em>Yes</em> to display the three center blocks Recent entries, Popular entries and Search on the index page.");
+define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Select <em>Yes</em> to display the three center blocks Recent entries, Popular entries and Search on the index page.<br />Select <em>No</em> to replace these 3 blocks by a Search block.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Display Random term block?");
 define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Select <em>Yes</em> to display the Random term block on the index page.");
 ?>
