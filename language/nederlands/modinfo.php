@@ -13,7 +13,7 @@
 * ----------------------------------------------------------------------------------------------------------
 * @package		imGlossary - a multicategory glossary
 * @since			1.00
-* @author		modified by McDonald
+* @author		McDonald
 * @version		$Id$
 */
  
