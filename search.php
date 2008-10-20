@@ -47,7 +47,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 // Configure search parameters according to selector
 $query = stripslashes( $query );
 if ( $type == "1" ) { 
-	$searchtype = "w.term LIKE '%$query%' "; 
+	$searchtype = "term LIKE '%$query%' "; 
 }
 if ( $type == "2" ) { 
 	$searchtype = "definition LIKE '%$query%' "; 
