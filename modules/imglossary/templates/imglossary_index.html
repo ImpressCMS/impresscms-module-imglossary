@@ -3,25 +3,6 @@
 <hr>
 
 <{if $empty == 1}><div class="empty"><{$smarty.const._MD_IMGLOSSARY_STILLNOTHINGHERE}></div><{/if}>
-<!--
-<div class="toprow">
-<div id="search">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
-<{$searchform}>
-</fieldset>
-</div>
-<div class="inventory">
-<{$smarty.const._MD_IMGLOSSARY_WEHAVE}><br />
-<{$smarty.const._MD_IMGLOSSARY_DEFS}><{$publishedwords}><br />
-
-<{if $multicats == 1}><{$smarty.const._MD_IMGLOSSARY_CATS}><{$totalcats}><br /><{/if}>
-
-<input class="btnDefault" type="button" value="<{$smarty.const._MD_IMGLOSSARY_SUBMITENTRY}>" onclick="location.href = 'submit.php'" /><br />
-<input class="btnDefault" type="button" value="<{$smarty.const._MD_IMGLOSSARY_REQUESTDEF}>" onclick="location.href = 'request.php' " />
-</div>
-</div>
--->
 
 <div class="clearer">
 <fieldset>
@@ -59,6 +40,7 @@
 <{/if}>
 
 <{if $showcenter}>
+
 <div class="float30">
 <fieldset>
 <legend><{$smarty.const._MD_IMGLOSSARY_RECENTENT}></legend>
@@ -87,6 +69,16 @@
 <div style="padding: 5px;"><{$searchform}></div>
 </fieldset>
 </div>
+
+<{else}>
+
+<div>
+<fieldset>
+<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
+<div style="padding: 5px;"><{$searchform}></div>
+</fieldset>
+</div>
+
 <{/if}>
 
 <{if $showrandom}>
@@ -108,52 +100,3 @@
 </fieldset>
 </div>
 <{/if}>
-<!-- 
-<{if $userisadmin == 1}>
-<div class="clearer2">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_SUBANDREQ}></legend>
-
-<div class="submission">
-<b><{$smarty.const._MD_IMGLOSSARY_SUB}></b>
-<{if $wehavesubs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOSUB}><{/if}>
-<{foreach item=subentries from=$blockS.substuff}>
-<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/admin/entry.php?op=mod&entryID=<{$subentries.id}>"><{$subentries.linktext}></a>&nbsp;
-<{/foreach}>
-</div>
-
-<div class="request">
-<b><{$smarty.const._MD_IMGLOSSARY_REQ}></b>
-<{if $wehavereqs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOREQ}><{/if}>
-<{foreach item=reqentries from=$blockR.reqstuff}>
-<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/admin/entry.php?op=mod&entryID=<{$reqentries.id}>"><{$reqentries.linktext}></a>&nbsp;
-<{/foreach}>
-</div>
-</fieldset>
-<div>
-<{else}>
-<div class="clearer2">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_REQ}></legend>
-
-<div class="request">
-<b><{$smarty.const._MD_IMGLOSSARY_REQ}></b>
-<{if $wehavereqs == '0'}><{$smarty.const._MD_IMGLOSSARY_NOREQ}>
-<{else}>
-<br /><span style="font-size:80%"><{$smarty.const._MD_IMGLOSSARY_REQUESTSUGGEST}></span><br />
-<{/if}>
-<{foreach item=reqentries from=$blockR.reqstuff}>
-<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/submit.php?suggest=<{$reqentries.id}>"><{$reqentries.linktext}></a>&nbsp;
-<{/foreach}>
-</div>
-</fieldset>
-<div>
-<{/if}>
-
-<div id="search">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
-<{$searchform}>
-</fieldset>
-</div>
--->
