@@ -36,17 +36,18 @@ $modversion = array(
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
 	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
 	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
-	'dirname' 			=> $glossdirname 
+	'dirname' 			=> basename( dirname( __FILE__ )),      //Module DirName 
 	);
 
 // 	** Contributors **
-$modversion['people']['developers'][]  = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
+$modversion['people']['developers'] [] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
+$modversion['people']['testers']    [] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
-$modversion['people']['other'][] = "Icons by <a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a>";
+$modversion['people']['other']      [] = "Icons by <a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a>";
 
 //	** If Release Candidate **
 $modversion['warning'] = _MODABOUT_WARNING_RC;
