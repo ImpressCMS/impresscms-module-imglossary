@@ -28,7 +28,7 @@ $modversion = array(
 	'date'				=> "18 October 2008",
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
-	'credits' 			=> "hsalazar, Catzwolf",
+	'credits' 			=> "hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf",
 	'support_site_url' 	=> "http://community.impresscms.org/modules/newbb/",
 	'support_site_name' => "ImpressCMS Community - Modules Support Forum",
 	'license' 			=> "GNU General Public License (GPL)",
@@ -145,7 +145,6 @@ $modversion['templates'][4]['description'] = 'Display letter';
 $modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
 
-global $xoopsmoduleConfig;
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
 $i++;
@@ -296,6 +295,7 @@ $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = '#FFFF00';
 $i = 0;
+
 //Comments
 $modversion['hasComments'] = 1;
 $modversion['comments']['itemName'] = 'entryID';
