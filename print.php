@@ -1,12 +1,25 @@
 <?php
 /**
- * $Id: print.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: print.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
  
 include 'header.php';
 
@@ -37,7 +50,7 @@ function printPage( $entryID ) {
 	$result3 = $xoopsDB -> query( "SELECT name, uname FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uid=$uid" );
 	list( $authorname, $username ) = $xoopsDB -> fetchRow( $result3 );
 
-	$datetime = formatTimestamp( $datesub, "D, d-M-Y, H:i" );
+	$datetime = formatTimestamp( $datesub, $xoopsModuleConfig['dateformat'] );
 	$categoryname = $myts -> makeTboxData4Show( $name );
 	$term = $myts -> makeTboxData4Show( $term );
 	$definition = str_replace( "[pagebreak]", "<br style=\"page-break-after:always;\">", $definition );
@@ -55,7 +68,7 @@ function printPage( $entryID ) {
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=" . _CHARSET . "' />\n";
 	echo "<meta name='ROBOTS' content='noindex,nofollow' />\n";
 	echo "<meta name='AUTHOR' content='" . $xoopsConfig['sitename'] . "' />\n";
-	echo "<meta name='COPYRIGHT' content='Copyright (c) 2004 by " . $xoopsConfig['sitename'] . "' />\n";
+	echo "<meta name='COPYRIGHT' content='Copyright (c) " . formatTimestamp( time(), "Y" ) . " by " . $xoopsConfig['sitename'] . "' />\n";
 	echo "<meta name='DESCRIPTION' content='" . $xoopsConfig['slogan'] . "' />\n";
 	echo "<meta name='GENERATOR' content='" . XOOPS_VERSION . "' />\n\n\n";
 

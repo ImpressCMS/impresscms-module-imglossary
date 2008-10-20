@@ -1,11 +1,25 @@
 <?php
 /**
- * $Id: icms_version.php
- * Module: imGlossary - a multicategory glossary 
- * Version: 1.00
- * Author: McDonald
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: icms_version.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
  
 if ( !defined( "ICMS_ROOT_PATH" ) ) die( "ICMS root path not defined" );
  
@@ -36,7 +50,7 @@ $modversion = array(
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
 	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
 	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
-	'dirname' 			=> basename( dirname( __FILE__ )),      //Module DirName 
+	'dirname' 			=> basename( dirname( __FILE__ ) ),      //Module DirName 
 	);
 
 // 	** Contributors **
