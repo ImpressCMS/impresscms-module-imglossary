@@ -1,12 +1,25 @@
 ﻿<?php
 /**
- * $Id: main.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */ 
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/english/main.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
 
 define("_MD_IMGLOSSARY_NOCOLEXISTS", "Verzeihung, aber es ist bis jetzt noch keine Kategorie angelegt worden.<br />Bitte teilen Sie dies dem Webmaster mit.");
 define("_MD_IMGLOSSARY_ALL", "Alle");
@@ -45,8 +58,8 @@ define("_MD_IMGLOSSARY_ENTRYRELATEDURL", "Verknüpfte Site: ");
 define("_MD_IMGLOSSARY_ERRORSAVINGDB", "FEHLER: Datenbank wurde nicht aktualisiert aufgrund eines Fehlers!");
 define("_MD_IMGLOSSARY_GOODDAY", "Guten Tag, ");
 define("_MD_IMGLOSSARY_GOODDAY2", "Guten Tag, %s.");
-define("_MD_IMGLOSSARY_HOME", "Homepage");
-define("_MD_IMGLOSSARY_INALLGLOSSARIES", "Einträge in all Ihren Glossaren.");
+define("_MD_IMGLOSSARY_HOME", "Startseite");
+define("_MD_IMGLOSSARY_INALLGLOSSARIES", "Einträge in allen Ihren Glossaren.");
 define("_MD_IMGLOSSARY_INTENTRY", "Sehen Sie sich diesen Eintrag auf %s an");
 define("_MD_IMGLOSSARY_INTENTRYFOUND", "Hier ist ein interessanter Eintrag den ich auf %s gefunden habe");
 define("_MD_IMGLOSSARY_INTROREQUEST", "Haben Sie in unserem Lexikon nicht die Definition gefunden nach der Sie gesucht haben? Füllen Sie dieses Formular aus und senden uns den Begriff. Wir suchen nach der Definition und fügen sie hinzu.");
@@ -136,5 +149,5 @@ define("_MD_IMGLOSSARY_REQUESTSUGGEST","(Klicken Sie die folgenden Wörter an, u
 define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Übermittelt am %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Erstellt in ");
-define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
+define("_MD_IMGLOSSARY_PDFTERM", "PDF erstellen");
 ?>

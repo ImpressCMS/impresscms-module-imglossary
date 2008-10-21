@@ -1,12 +1,26 @@
 ﻿<?php
 /**
- * $Id: blocks.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/english/blocks.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
+
 // Blocks
 define("_MB_IMGLOSSARY_DATE", "Veröffentlichungsdatum");
 define("_MB_IMGLOSSARY_DELTERM", "Diesen Begriff löschen");
@@ -29,5 +43,5 @@ define( '_MB_IMGLOSSARY_DATEFORMAT', 'Datumsformat: ' );
 define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'Siehe <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP Anleitung</a>' );
 define( '_MB_IMGLOSSARY_CATEGORY', 'Kategorie: ' );
 define( '_MB_IMGLOSSARY_ADMININDEX', 'Administration' );
-define( '_MB_IMGLOSSARY_PDFTERM', 'Create PDF');
+define( '_MB_IMGLOSSARY_PDFTERM', 'PDF erstellen');
 ?>

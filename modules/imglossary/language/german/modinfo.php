@@ -1,14 +1,26 @@
 ﻿<?php
 /**
- * $Id: main.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/english/modinfo.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
 
-// Module Info
 // The name of this module
 global $xoopsModule;
 define("_MI_IMGLOSSARY_MD_NAME", "Glossar");
@@ -75,7 +87,6 @@ define("_MI_IMGLOSSARY_ADMENU6", "Importieren");
 //Names of Blocks and Block information
 define("_MI_IMGLOSSARY_ENTRIESNEW", "Neueste Begriffe");
 define("_MI_IMGLOSSARY_ENTRIESTOP", "Meistgelesene Begriffe");
-define("_MD_WB_NOCATSINSYSTEM","Keine Kategorien gefunden");
 
 // imGlossary - version 1.00
 define("_MI_IMGLOSSARY_SORTCATS", "Sortiert Kategorien nach:");
@@ -87,9 +98,10 @@ define("_MI_IMGLOSSARY_SHOWSUBMITTER", "Zeige Übermittler bei jedem Eintrag?");
 define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Bei <em>Ja</em> wird der Übermittler in jedem Eintrag angezeigt.");
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Zeige Social Bookmarks bei jedem Eintrag?");
 define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Bei <em>Ja</em> werden die Social Bookmark Icons in jedem Eintrag angezeigt.");
-define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Enter the colour to use as background for search terms. Default: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
-define("_MI_IMGLOSSARY_CAPTCHA", "Use captcha in submit and request forms?");
-define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
+define("_MI_IMGLOSSARY_SEARCHCOLOR", "Hintergrundfarbe für ein Suchergebnis:");
+define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Eintragen einer Farbe welche als Hintegrundfarbe für die Suchergebnisse genutzt werden soll. Stnadard ist: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Visuelle Verifizierung beim Hinzufügen benutzen?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "<em>Ja</em> es wird ein Captcha beim Hinzufügen eines Artikels verwendet.<br />Standard ist: <em>Ja</em>");
 define("_MI_IMGLOSSARY_SHOWCENTER", "Display center blocks?");
 define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Select <em>Yes</em> to display the three center blocks Recent entries, Popular entries and Search on the index page.<br />Select <em>No</em> to replace these 3 blocks by a Search block.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Display Random term block?");
