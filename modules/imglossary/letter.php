@@ -100,11 +100,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		$eachentry['term'] = $myts -> makeTboxData4Show( $term );
 		$eachentry['init'] = _MD_IMGLOSSARY_ALL;
 		
-		if ($comments != 0) {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		} else {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		}
+		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
 			if ( $xoopsModuleConfig['linkterms'] == 1 ) {
@@ -176,11 +172,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		$eachentry['term'] = $myts -> makeTboxData4Show( $term );
 		$eachentry['init'] = $init;
 		
-		if ($comments != 0) {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		} else {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		}
+		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
 			if ( $xoopsModuleConfig['linkterms'] == 1 ) {
