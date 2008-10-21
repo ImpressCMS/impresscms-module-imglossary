@@ -74,7 +74,7 @@ if ( $xoopsModuleConfig['multicats'] == 1 ) {
 }
 
 // No ID of category: we need to see all categories descriptions
-if ( !$categoryID )	{
+if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 	// How many categories are there?
 	$resultcats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . $xoopsModuleConfig['sortcats'] . "" );
 	$totalcats = $xoopsDB -> getRowsNum( $resultcats );
@@ -103,7 +103,7 @@ if ( !$categoryID )	{
 
 		$catsarray['single'][] = $eachcat;
 	}
-	$pagenav = new XoopsPageNav( $totalcats, $xoopsModuleConfig['indexperpage'], $start, 'start' );
+	$pagenav = new XoopsPageNav( $totalcats, $xoopsModuleConfig['indexperpage'], $start, 'categoryID=' . $eachcat['id'] . '&start' );
 	$catsarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign( 'catsarray', $catsarray );
@@ -148,11 +148,7 @@ if ( !$categoryID )	{
 				$eachentry['definition'] = $deftemp;
 			}
 
-		if ($comments != 0) {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		} else {
-			$eachentry['comments'] = "<a href='entry.php?entryID=" . $eachentry['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>";
-		}			
+		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';			
 
 			// Functional links
 			$microlinks = imglossary_serviceLinks( $eachentry ) . $eachentry['comments'];

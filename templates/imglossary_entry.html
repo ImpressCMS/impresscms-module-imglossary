@@ -34,7 +34,7 @@
 <{foreach item=catlinks from=$block0.categories}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
 <{if $catlinks.total > 0}><{/if}>
 </a> [<{$catlinks.total}>] |
-<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 </div>
 </fieldset>
 </div>
