@@ -133,7 +133,7 @@ define("_MD_IMGLOSSARY_YES", "Yes");
 define("_MD_IMGLOSSARY_OPTIONS", "Options");
 define("_MD_IMGLOSSARY_DOHTML", "Allow HTML?");
 define("_MD_IMGLOSSARY_DOSMILEY", "Allow smilies?");
-define("_MD_IMGLOSSARY_DOXCODE", "Allow ImpressCMS Codes?");
+define("_MD_IMGLOSSARY_DOXCODE", "Allow BBCode?");
 define("_MD_IMGLOSSARY_BREAKS", "Allow linebreaks?");
 define("_MD_IMGLOSSARY_SUBANDREQ", "Submitted and requested terms");
 define("_MD_IMGLOSSARY_SUB", "Submitted terms: ");
