@@ -149,6 +149,7 @@ switch ( $op ) {
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
 				$random['term'] = $myrow['term'];
+				$random['comments'] = '<a href="entry.php?entryID=' . $myrow['entryID'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $myrow['comments'] . ')" title="' . _COMMENTS .' (' . $myrow['comments'] . ')" /></a>';
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$deftemp = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
@@ -164,7 +165,7 @@ switch ( $op ) {
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
 				}
-			$microlinks = imglossary_serviceLinks( $random['entryID'] );
+			$microlinks = imglossary_serviceLinks( $random['entryID'] ) . $random['comments'];
 
 			$xoopsTpl -> assign( 'random', $random );
 			}
