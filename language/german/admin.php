@@ -1,12 +1,25 @@
 ﻿<?php
 /**
- * $Id: admin.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/english/admin.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* @package		imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
  
 define("_AM_IMGLOSSARY_ACTION", "Aktion");
 define("_AM_IMGLOSSARY_ADMINCATMNGMT", "Kategoriemanagement");
@@ -45,7 +58,7 @@ define("_AM_IMGLOSSARY_DELETETHISENTRY", "Diesen Eintrag löschen?");
 define("_AM_IMGLOSSARY_DESCRIP", "Kategoriebeschreibung");
 define("_AM_IMGLOSSARY_DOHTML", " HTML-Tags erlauben");
 define("_AM_IMGLOSSARY_DOSMILEY", " Smilies erlauben");
-define("_AM_IMGLOSSARY_DOXCODE", " XOOPS-Codes erlauben");
+define("_AM_IMGLOSSARY_DOXCODE", " ImpressCMS-Codes erlauben");
 define("_AM_IMGLOSSARY_EDITCAT", "Kategorie bearbeiten");
 define("_AM_IMGLOSSARY_EDITENTRY", "Eintrag bearbeiten");
 define("_AM_IMGLOSSARY_EDITSUBM", "Einsendung bearbeiten");
@@ -132,18 +145,18 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Es sind noch keine Kategorien angelegt.<br
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Kommentare");
-define("_AM_IMGLOSSARY_ABOUT", "About");
-define("_AM_IMGLOSSARY_UPDATEMOD", "Update module");
+define("_AM_IMGLOSSARY_ABOUT", "Über");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Modul aktualisieren");
 
 // Import 
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "XWords &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Wiwimod &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Database missing or empty!");
-define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlossary");
-define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
-define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
-define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; Glossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; Glossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; Glossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "XWords &mdash;&gt; Glossary import script");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Wiwimod &mdash;&gt; Glossary import script");
+define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Datenbank nicht gefunden oder leer!");
+define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Die Kommentare wurden erfolgreich nach Glossary verschoben");
+define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Fehler beim verschieben der Kommentare zu Glossary");
+define("_AM_IMGLOSSARY_IMPORTDELWB","Vor dem Importieren die Einträge löschen? ");
+define("_AM_IMGLOSSARY_NOOTHERMODS", "Kein entsprechendes Modul gefunden!");
 ?>
