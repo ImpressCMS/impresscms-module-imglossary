@@ -129,7 +129,7 @@ define("_MD_IMGLOSSARY_YES", "Ja");
 define("_MD_IMGLOSSARY_OPTIONS", "Opties");
 define("_MD_IMGLOSSARY_DOHTML", "Gebruik HTML?");
 define("_MD_IMGLOSSARY_DOSMILEY", "Gebruik smilies?");
-define("_MD_IMGLOSSARY_DOXCODE", "Gebruik ImpressCMS codes?");
+define("_MD_IMGLOSSARY_DOXCODE", "Gebruik BBCode?");
 define("_MD_IMGLOSSARY_BREAKS", "Gebruik linebreak conversie?");
 define("_MD_IMGLOSSARY_SUBANDREQ", "Ingezonden en aangevraagde termen");
 define("_MD_IMGLOSSARY_SUB", "Ingezonden termen: ");
