@@ -1,91 +1,92 @@
 <?php
 /**
- * Block admin for wiwimod
+ * Block admin for imGlossary
  *  
- * @package Wiwimod
+ * @package imGlossary
  * @author Kazumi Ono (AKA onokazu) <http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/>
  * @author skenow <skenow@impresscms.org>
+ * @author McDonald
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @version $Id$  
  */
-if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($xoopsModule->mid()) ) {
-	exit('Access Denied');
+if ( !is_object( $xoopsUser ) || !is_object( $xoopsModule ) || !$xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) {
+	exit( 'Access Denied' );
 }
-include_once XOOPS_ROOT_PATH.'/class/xoopsblock.php';
-include XOOPS_ROOT_PATH.'/modules/system/admin/blocksadmin/blocksadmin.php';
+include_once ICMS_ROOT_PATH . '/class/xoopsblock.php';
+include ICMS_ROOT_PATH . '/modules/system/admin/blocksadmin/blocksadmin.php';
 
 $op = 'list';
-$adv_pages = @file_exists(XOOPS_ROOT_PATH.'/kernel/page.php'); // test to see if ImpressCMS 1.1+
-if ( isset($_POST) ) {
+$adv_pages = @file_exists( ICMS_ROOT_PATH . '/kernel/page.php'); // test to see if ImpressCMS 1.1+
+if ( isset( $_POST ) ) {
 	foreach ( $_POST as $k => $v ) {
 		$$k = $v;
   	}
 }
 
-if ( isset($_GET['op']) ) {
-	if ($_GET['op'] == 'edit' || $_GET['op'] == 'delete' || $_GET['op'] == 'delete_ok' || $_GET['op'] == 'clone' || $_GET['op'] == 'previewpopup') {
+if ( isset( $_GET['op'] ) ) {
+	if ( $_GET['op'] == 'edit' || $_GET['op'] == 'delete' || $_GET['op'] == 'delete_ok' || $_GET['op'] == 'clone' || $_GET['op'] == 'previewpopup' ) {
 		$op = $_GET['op'];
-		$bid = isset($_GET['bid']) ? intval($_GET['bid']) : 0;
+		$bid = isset( $_GET['bid'] ) ? intval( $_GET['bid'] ) : 0;
 	}
 }
 
-if (isset($previewblock)) {
+if ( isset( $previewblock ) ) {
 	xoops_cp_header();
-	include_once XOOPS_ROOT_PATH.'/class/template.php';
+	include_once ICMS_ROOT_PATH . '/class/template.php';
 	$xoopsTpl = new XoopsTpl();
-	$xoopsTpl->xoops_setCaching(0);
-	if (isset($bid)) {
+	$xoopsTpl -> xoops_setCaching(0);
+	if ( isset( $bid ) ) {
 		$block['bid'] = $bid;
 		$block['form_title'] = _AM_EDITBLOCK;
-		$myblock = new XoopsBlock($bid);
-		$block['name'] = $myblock->getVar('name');
+		$myblock = new XoopsBlock( $bid );
+		$block['name'] = $myblock -> getVar( 'name' );
 	} else {
-		if ($op == 'save') {
+		if ( $op == 'save' ) {
 			$block['form_title'] = _AM_ADDBLOCK;
 		} else {
 			$block['form_title'] = _AM_CLONEBLOCK;
 		}
 		$myblock = new XoopsBlock();
-		$myblock->setVar('block_type', 'C');
+		$myblock -> setVar( 'block_type', 'C' );
 	}
 	$myts =& MyTextSanitizer::getInstance();
-	$myblock->setVar('title', $myts->stripSlashesGPC($btitle));
-	$myblock->setVar('content', $myts->stripSlashesGPC($bcontent));
-	$dummyhtml = '<html><head><meta http-equiv="content-type" content="text/html; charset='._CHARSET.'" /><meta http-equiv="content-language" content="'._LANGCODE.'" /><title>'.$xoopsConfig['sitename'].'</title><link rel="stylesheet" type="text/css" media="all" href="'.getcss($xoopsConfig['theme_set']).'" /></head><body><table><tr><th>'.$myblock->getVar('title').'</th></tr><tr><td>'.$myblock->getContent('S', $bctype).'</td></tr></table></body></html>';
+	$myblock -> setVar( 'title', $myts -> stripSlashesGPC( $btitle ) );
+	$myblock -> setVar( 'content', $myts -> stripSlashesGPC( $bcontent ) );
+	$dummyhtml = '<html><head><meta http-equiv="content-type" content="text/html; charset=' . _CHARSET . '" /><meta http-equiv="content-language" content="' . _LANGCODE . '" /><title>' . $xoopsConfig['sitename'] . '</title><link rel="stylesheet" type="text/css" media="all" href="' . getcss( $xoopsConfig['theme_set'] ) . '" /></head><body><table><tr><th>' . $myblock -> getVar( 'title' ) . '</th></tr><tr><td>' . $myblock -> getContent( 'S', $bctype ) . '</td></tr></table></body></html>';
 
-	$dummyfile = '_dummyfile_'.time().'.html';
-	$fp = fopen(XOOPS_CACHE_PATH.'/'.$dummyfile, 'w');
-	fwrite($fp, $dummyhtml);
-	fclose($fp);
+	$dummyfile = '_dummyfile_' . time() . '.html';
+	$fp = fopen( XOOPS_CACHE_PATH . '/' . $dummyfile, 'w' );
+	fwrite( $fp, $dummyhtml );
+	fclose( $fp );
 	$block['edit_form'] = false;
 	$block['template'] = '';
 	$block['op'] = $op;
 	$block['side'] = $bside;
 	$block['weight'] = $bweight;
 	$block['visible'] = $bvisible;
-	$block['title'] = $myblock->getVar('title', 'E');
-	$block['content'] = $myblock->getVar('content', 'E');
+	$block['title'] = $myblock -> getVar( 'title', 'E' );
+	$block['content'] = $myblock -> getVar( 'content', 'E' );
 	$block['modules'] =& $bmodule;
-	$block['ctype'] = isset($bctype) ? $bctype : $myblock->getVar('c_type');
+	$block['ctype'] = isset( $bctype ) ? $bctype : $myblock -> getVar( 'c_type' );
 	$block['is_custom'] = true;
-	$block['cachetime'] = intval($bcachetime);
-	echo '<a href="admin.php?fct=blocksadmin">'. _AM_BADMIN .'</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;'.$block['form_title'].'<br /><br />';
-	include XOOPS_ROOT_PATH.'/modules/system/admin/blocksadmin/blockform.php';
-	$form->display();
+	$block['cachetime'] = intval( $bcachetime );
+	echo '<a href="admin.php?fct=blocksadmin">' . _AM_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . $block['form_title'] . '<br /><br />';
+	include ICMS_ROOT_PATH . '/modules/system/admin/blocksadmin/blockform.php';
+	$form -> display();
 	xoops_cp_footer();
 	echo '<script type="text/javascript">
 	<!--//
-	preview_window = openWithSelfMain("'.XOOPS_URL.'/modules/system/admin.php?fct=blocksadmin&op=previewpopup&file='.$dummyfile.'", "popup", 250, 200);
+	preview_window = openWithSelfMain("' . ICMS_URL . '/modules/system/admin.php?fct=blocksadmin&op=previewpopup&file=' . $dummyfile . '", "popup", 250, 200);
 	//-->
 	</script>';
 	exit();
 }
 
-if ($op == 'previewpopup') {
-	$file = str_replace('..', '', XOOPS_CACHE_PATH.'/'.trim($_GET['file']));
-	if (file_exists($file)) {
+if ( $op == 'previewpopup' ) {
+	$file = str_replace( '..', '', XOOPS_CACHE_PATH . '/' . trim( $_GET['file'] ) );
+	if ( file_exists( $file ) ) {
 		include $file;
-		@unlink($file);
+		@unlink( $file );
 	}
 	exit();
 }
@@ -98,26 +99,26 @@ if ( $op == 'list' ) {
 }
 
 if ( $op == 'order' ) {
-	foreach (array_keys($bid) as $i) {
-		if( $side[$i] < 0 ) {
+	foreach ( array_keys( $bid ) as $i ) {
+		if ( $side[$i] < 0 ) {
 			$visible[$i] = 0;
 			$side[$i] = -1;
 		} else {
 		//	$visible[$i] = 1 ; // -- removed this because of changes in myblocksadmin (skenow)
 		}
 
-		$bmodule[$i] = (isset($bmodule[$i]) && is_array($bmodule[$i])) ? $bmodule[$i] : array(-1);
+		$bmodule[$i] = ( isset( $bmodule[$i] ) && is_array( $bmodule[$i] ) ) ? $bmodule[$i] : array(-1);
 
-     if (!$adv_pages) { // -- XOOPS 2.0.x, 2.3.x and ImpressCMS 1.0.x
-		myblocksadmin_update_block($i, $side[$i], $weight[$i], $visible[$i], $title[$i], '', '', $bcachetime[$i], $bmodule[$i], array());
+     if ( !$adv_pages ) { // -- XOOPS 2.0.x, 2.3.x and ImpressCMS 1.0.x
+		myblocksadmin_update_block( $i, $side[$i], $weight[$i], $visible[$i], $title[$i], '', '', $bcachetime[$i], $bmodule[$i], array() );
      } else { // -- ImpressCMS 1.1+
-		icms_update_block($i, $side[$i], $weight[$i], $visible[$i], $title[$i], '', '', $bcachetime[$i], $bmodule[$i], array());
+		icms_update_block( $i, $side[$i], $weight[$i], $visible[$i], $title[$i], '', '', $bcachetime[$i], $bmodule[$i], array() );
      }
 //		if ( $oldweight[$i] != $weight[$i] || $oldvisible[$i] != $visible[$i] || $oldside[$i] != $side[$i] )
 //		order_block($bid[$i], $weight[$i], $visible[$i], $side[$i]); GIJ
 	}
 //	redirect_header("admin.php?fct=blocksadmin",1,_AM_DBUPDATED); GIJ
-	redirect_header('myblocksadmin.php',1,_AM_DBUPDATED);
+	redirect_header( 'myblocksadmin.php', 1, _AM_DBUPDATED );
 	exit();
 }
 
@@ -170,7 +171,7 @@ if ($op == 'clone_ok') {
 */
 
 	// import from modules/system/admin/blocksadmin/blocksadmin.php
-	function myblocksadmin_update_block( $bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $bcachetime, $bmodule, $options=array() ) {
+	function myblocksadmin_update_block( $bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $bcachetime, $bmodule, $options = array() ) {
 		global $xoopsConfig;
 		if ( empty( $bmodule ) ) {
 			xoops_cp_header();
@@ -305,7 +306,7 @@ if ($op == 'clone_ok') {
             	$sql = "INSERT INTO " . $db -> prefix( 'block_module_link' ) . " (block_id, module_id, page_id) VALUES ('" . intval( $bid ) . "', '" . intval( $mid ) . "', '" . intval( $pageid ) . "' )";
             	$db -> query( $sql );
             }
-            include_once XOOPS_ROOT_PATH . '/class/template.php';
+            include_once ICMS_ROOT_PATH . '/class/template.php';
             $xoopsTpl = new XoopsTpl();
             $xoopsTpl -> xoops_setCaching(2);
             if ( $myblock -> getVar( 'template' ) != '' ) {
