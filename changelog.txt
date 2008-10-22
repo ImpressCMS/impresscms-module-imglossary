@@ -3,8 +3,13 @@ imGlossary v1.00 xxxx
 ===================================
 - Added: option to display 3 center blocks on index page or Search block
 - Added: option to display random term block on index or not
+- Added: comment total in alt- and title tag of icon
+
+- Replaced: some icons
+- Replaced: 'Xoops code' with 'BBCode'
 
 - Fixed: pagination for listing 'All' (again)
+- Fixed: pagination for listing 'All Categories'
 - Fixed: searching terms
 
 
