@@ -11,6 +11,7 @@ imGlossary v1.00 xxxx
 - Fixed: pagination for listing 'All' (again)
 - Fixed: pagination for listing 'All Categories'
 - Fixed: searching terms
+- Fixed: block settings [skenow]
 
 
 ===================================
