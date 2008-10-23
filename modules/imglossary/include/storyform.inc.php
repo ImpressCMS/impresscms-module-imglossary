@@ -50,7 +50,7 @@ if ( $xoopsModuleConfig['multicats'] == '1' ) {
 // This part is common to edit/add
 $sform -> addElement( new XoopsFormText( _MD_IMGLOSSARY_ENTRY, 'term', 50, 80, $term ), true );
 
-$def_block = new XoopsFormDhtmlTextArea( _MD_IMGLOSSARY_DEFINITION, 'definition', _MD_IMGLOSSARY_WRITEHERE, 15, 50 );
+$def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', _MD_IMGLOSSARY_WRITEHERE, 15, 50 );
 $def_block -> setExtra( 'onfocus="this.select()"' );
 $sform -> addElement( $def_block, true );
 

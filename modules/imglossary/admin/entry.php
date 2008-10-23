@@ -101,7 +101,7 @@ function entryEdit( $entryID = '' ) {
 	// Term, definition, reference and related URL
 	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYTERM, 'term', 80, 80, $term ), true );
 
-	$def_block = new XoopsFormDhtmlTextArea( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition, 15, 60 );
+	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition, 15, 60 );
 	if ( $definition == ' . _MD_WB_WRITEHERE . ' ) {
 		$def_block -> setExtra( 'onfocus="this.select()"' );
 	}

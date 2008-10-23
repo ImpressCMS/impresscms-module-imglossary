@@ -95,4 +95,17 @@ define("_MI_IMGLOSSARY_SHOWCENTER", "Display center blocks?");
 define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Select <em>Yes</em> to display the three center blocks Recent entries, Popular entries and Search on the index page.<br />Select <em>No</em> to replace these 3 blocks by a Search block.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Display Random term block?");
 define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Select <em>Yes</em> to display the Random term block on the index page.");
+define('_MI_IMGLOSSARY_EDITORADMIN', "Editor to use (Admin side):");
+define('_MI_IMGLOSSARY_EDITORADMINDSC', "Select the editor to use for admin side.<br />In Preferences -> General Settings set 'Default Editor' to <em>dhtmltextarea</em>.");
+define('_MI_IMGLOSSARY_EDITORUSER', "Editor to use (User side):");
+define('_MI_IMGLOSSARY_EDITORUSERDSC', "Select the editor to use for user side.<br />In Preferences -> General Settings set 'Default Editor' to <em>dhtmltextarea</em>.");
+define("_MI_IMGLOSSARY_FORM_DHTML", "DHTML");
+define("_MI_IMGLOSSARY_FORM_COMPACT", "Compact");
+define("_MI_IMGLOSSARY_FORM_HTMLAREA", "HtmlArea Editor");
+define("_MI_IMGLOSSARY_FORM_FCK", "FCK Editor");
+define("_MI_IMGLOSSARY_FORM_KOIVI", "Koivi Editor");
+define("_MI_IMGLOSSARY_FORM_INBETWEEN", "Inbetween");
+define("_MI_IMGLOSSARY_FORM_TINYEDITOR", "TinyEditor");
+define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
+define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
 ?>
