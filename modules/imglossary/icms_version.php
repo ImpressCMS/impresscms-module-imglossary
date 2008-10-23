@@ -27,7 +27,7 @@ $glossdirname = basename( dirname( __FILE__ ) );
 
 global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsConfig;
 
-if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php') ) {
+if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php' ) ) {
 	include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
 } else {
 	include_once ICMS_ROOT_PATH . '/language/english/moduleabout.php';
@@ -50,7 +50,7 @@ $modversion = array(
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
 	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
 	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
-	'dirname' 			=> basename( dirname( __FILE__ ) )      //Module DirName 
+	'dirname' 			=> basename( dirname( __FILE__ ) )      // Module DirName 
 	);
 
 // 	** Contributors **
@@ -90,21 +90,16 @@ $modversion['search']['func'] = "imglossary_search";
 
 // Menu
 $modversion['hasMain'] = 1;
-$hModConfig =& xoops_gethandler('config');
-$hModule =& xoops_gethandler('module');
+$hModConfig =& xoops_gethandler( 'config' );
+$hModule =& xoops_gethandler( 'module' );
 if ( $imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
-	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar('mid') );
-	//if ( isset($wimglossaryConfig['catsinmenu']) && $imglossaryConfig['anonpost'] == 1 )
+	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
 	if ( ( $xoopsUser && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
 		$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
 		$modversion['sub'][1]['url'] = "submit.php";	
 	}
 }
-//if ($xoopsUser)
-//	{
-//	$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
-//	$modversion['sub'][1]['url'] = "submit.php";
-//	}
+
 $modversion['sub'][2]['name'] = _MI_IMGLOSSARY_SUB_SMNAME2;
 $modversion['sub'][2]['url'] = "request.php";
 $modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
@@ -116,7 +111,7 @@ $i = 4;
 $hModConfig =& xoops_gethandler( 'config' );
 $hModule =& xoops_gethandler( 'module' );
 if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
-	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar('mid') );
+	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
 	if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
 		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
 			$modversion['sub'][$i]['name'] = $name;
@@ -242,15 +237,6 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_CATSINMENUDSC';
 $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 0;
-/* $i++;
-* $modversion['config'][$i]['name'] = 'catsperindex';
-* $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_CATSPERINDEX';
-* $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_CATSPERINDEXDSC';
-* $modversion['config'][$i]['formtype'] = 'select';
-* $modversion['config'][$i]['valuetype'] = 'int';
-* $modversion['config'][$i]['default'] = 3;
-* $modversion['config'][$i]['options'] = array( '1' => 1, '3' => 3, '5' => 5, '10' => 10, '15' => 15, '20' => 20, '25' => 25, '30' => 30, '50' => 50 );
-*/
 $i++;
 $modversion['config'][$i]['name'] = 'sortcats';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_SORTCATS';
