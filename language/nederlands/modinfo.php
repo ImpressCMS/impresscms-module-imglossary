@@ -106,4 +106,17 @@ define("_MI_IMGLOSSARY_SHOWCENTER", "Laat center blokken zien?");
 define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Kies <em>Ja</em> om de drie blokken Recente termen, Populaire termen en Zoek in de index pagina te laten zien.<br />Kies <em>Nee</em> om in plaats van de drie blokken alleen een Zoek blok te laten zien.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Laat Willekeurige term blok zien?");
 define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Kies <em>Ja</em> om het Willekeurige blok in de index pagina te laten zien.");
+define('_MI_IMGLOSSARY_EDITORADMIN', "Kies een editor (Admin zijde):");
+define('_MI_IMGLOSSARY_EDITORADMINDSC', "Kies een editor voor de admin zijde.<br />Zet in Instellingen -> Algemeen de optie Standaard Editor op <em>dhtmltextarea</em>.");
+define('_MI_IMGLOSSARY_EDITORUSER', "Kies een editor (Gebruikers zijde):");
+define('_MI_IMGLOSSARY_EDITORUSERDSC', "Kies een editor voor de gebruikers zijde.<br />Zet in Instellingen -> Algemeen de optie Standaard Editor op <em>dhtmltextarea</em>.");
+define("_MI_IMGLOSSARY_FORM_DHTML", "DHTML");
+define("_MI_IMGLOSSARY_FORM_COMPACT", "Compact");
+define("_MI_IMGLOSSARY_FORM_HTMLAREA", "HtmlArea Editor");
+define("_MI_IMGLOSSARY_FORM_FCK", "FCK Editor");
+define("_MI_IMGLOSSARY_FORM_KOIVI", "Koivi Editor");
+define("_MI_IMGLOSSARY_FORM_INBETWEEN", "Inbetween");
+define("_MI_IMGLOSSARY_FORM_TINYEDITOR", "TinyEditor");
+define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
+define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
 ?>

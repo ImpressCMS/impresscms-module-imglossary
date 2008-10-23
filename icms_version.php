@@ -194,6 +194,34 @@ $modversion['config'][$i]['formtype'] = 'yesno';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
 $i++;
+$modversion['config'][$i]['name'] = 'form_options';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORADMIN';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORADMINDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 'dhtml';
+$modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
+                                                _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
+												_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
+												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
+												_MI_IMGLOSSARY_FORM_FCK => 'fck',
+												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
+												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
+$i++;
+$modversion['config'][$i]['name'] = 'form_optionsuser';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORUSER';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORUSERDSC';
+$modversion['config'][$i]['formtype'] = 'select';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 'dhtml';
+$modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
+                                                _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
+												_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
+												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
+												_MI_IMGLOSSARY_FORM_FCK => 'fck',
+												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
+												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
+$i++;
 $modversion['config'][$i]['name'] = 'dateformat';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_DATEFORMAT';
 $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_DATEFORMATDSC';
