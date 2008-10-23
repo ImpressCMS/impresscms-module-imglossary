@@ -39,7 +39,7 @@ $modversion = array(
 	'version' 			=> "1.00",
 	'status' 			=> "RC-2",
 	'status_version'	=> "RC-2",
-	'date'				=> "18 October 2008",
+	'date'				=> "October 18, 2008",
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
 	'credits' 			=> "hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf",
@@ -50,7 +50,7 @@ $modversion = array(
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
 	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
 	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
-	'dirname' 			=> basename( dirname( __FILE__ ) ),      //Module DirName 
+	'dirname' 			=> basename( dirname( __FILE__ ) )      //Module DirName 
 	);
 
 // 	** Contributors **
