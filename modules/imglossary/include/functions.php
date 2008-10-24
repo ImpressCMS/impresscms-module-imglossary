@@ -77,7 +77,7 @@ function imglossary_getuserForm( $user ) {
 
 function imglossary_calculateTotals() {
 	global $xoopsUser, $xoopsDB, $xoopsModule;
-	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
+	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
 	list( $totalcategories ) = $xoopsDB -> getRowsNum( $result01 );
 	while (list ( $categoryID, $total ) = $xoopsDB -> fetchRow( $result01 ) ) {
 		$newcount = imglossary_countByCategory ( $categoryID );
@@ -105,7 +105,7 @@ function imglossary_countCats() {
 function imglossary_countWords() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
 	$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND request=0" );
-	$publishedwords = $xoopsDB -> getRowsNum ( $pubwords );
+	$publishedwords = $xoopsDB -> getRowsNum( $pubwords );
 	return $publishedwords;
 }
 
@@ -114,12 +114,12 @@ function imglossary_alphaArray() {
 	$alpha = array();
 	for ($a = 65; $a < (65+26); $a++ ) {
 		$letterlinks = array();
-		$initial = chr($a);
-		$sql = $xoopsDB -> query ( "SELECT * FROM " . $xoopsDB -> prefix ( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='$initial'" );
+		$initial = chr( $a );
+		$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND init='$initial'" );
 		$howmany = $xoopsDB -> getRowsNum( $sql );
 		$letterlinks['total'] = $howmany;
-		$letterlinks['id'] = chr($a);
-		$letterlinks['linktext'] = chr($a);
+		$letterlinks['id'] = chr( $a );
+		$letterlinks['linktext'] = chr( $a );
 		$letterlinks['title'] = ' ' . strtolower( _MD_IMGLOSSARY_TERMS );
 
 		$alpha['initial'][] = $letterlinks;
@@ -130,7 +130,7 @@ function imglossary_alphaArray() {
 function imglossary_serviceLinks( $variable ) {
     global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 	// Functional links
-	$srvlinks = "";
+	$srvlinks = '';
 	if ( $xoopsUser ) {
 		if ( $xoopsUser->isAdmin() ) {
 			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
