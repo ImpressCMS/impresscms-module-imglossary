@@ -21,7 +21,7 @@
 * @version		$Id$
 */
  
-include_once ICMS_ROOT_PATH . "/class/xoopsformloader.php";
+include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 
 echo "<div>";
 echo "<div style='float: left; font-size: smaller;'><a href='" . ICMS_URL . "'>" . _MD_IMGLOSSARY_HOME . "</a> >	<a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/index.php'>".$xoopsModule -> name()."</a> > "._MD_IMGLOSSARY_SUBMITART."</div>";
@@ -31,11 +31,11 @@ echo "</div><hr>";
 echo "<br /><fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; font-size: 105%;'>" . sprintf( _MD_IMGLOSSARY_ASKFORDEF, ucfirst( $xoopsModule -> name() ) ) . "</legend>";
 echo "<div style='padding: 8px;'>". _MD_IMGLOSSARY_INTROREQUEST . "</div></fieldset>";
 
-$username_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "uname", "E" ) : "";
-$usermail_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( "email", "E" ) : "";
+$username_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( 'uname', 'E' ) : '';
+$usermail_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( 'email', 'E' ) : '';
 $notifypub = '1';
 
-$rform = new XoopsThemeForm( _MD_IMGLOSSARY_REQUESTFORM, "requestform", "request.php" );
+$rform = new XoopsThemeForm( _MD_IMGLOSSARY_REQUESTFORM, 'requestform', 'request.php' );
 $rform -> setExtra( 'enctype="multipart/form-data"' );
 
 if ( !$xoopsUser ) {
@@ -63,7 +63,7 @@ if ( $xoopsModuleConfig['captcha'] == 1 ) {
 }
 // Captcha Hack
 
-$submit_button = new XoopsFormButton( "", "submit", _MD_IMGLOSSARY_SUBMIT, "submit" );
+$submit_button = new XoopsFormButton( '', 'submit', _MD_IMGLOSSARY_SUBMIT, 'submit' );
 $rform -> addElement( $submit_button );
 $rform -> display();
 

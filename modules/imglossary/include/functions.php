@@ -22,7 +22,7 @@
 */
 
 /**
- * wb_getLinkedUnameFromId()
+ * imglossary_getLinkedUnameFromId()
  * 
  * @param integer $userid Userid of author etc
  * @param integer $name:  0 Use Usenamer 1 Use realname 
@@ -132,7 +132,7 @@ function imglossary_serviceLinks( $variable ) {
 	// Functional links
 	$srvlinks = '';
 	if ( $xoopsUser ) {
-		if ( $xoopsUser->isAdmin() ) {
+		if ( $xoopsUser -> isAdmin() ) {
 			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
 			$srvlinks .= '<a href="admin/entry.php?op=mod&entryID=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
 			$srvlinks .= '<a href="admin/entry.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
@@ -177,10 +177,10 @@ function imglossary_showSearchForm( $width ) {
 }
 
 function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
-	$parts = explode( ">", $haystack );
+	$parts = explode( '>', $haystack );
 	foreach ( $parts as $key=>$part ) {
-		$pL = "";
-		$pR = "";
+		$pL = '';
+		$pR = '';
 
 		if( ( $pos = strpos( $part, "<" ) ) === false )
 			$pL = $part;
@@ -196,7 +196,7 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 
 function imglossary_adminMenu( $breadcrumb = '' ) {
 	global $xoopsModule;
-	$xoopsModule -> displayAdminMenu( -1, $xoopsModule -> name() . " | " . $breadcrumb );
+	$xoopsModule -> displayAdminMenu( -1, $xoopsModule -> name() . ' | ' . $breadcrumb );
 }
 	
 function imglossary_linkterms( $definition, $glossaryterm ) {
@@ -289,13 +289,13 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 
 	$editor = false;
 	$editor_configs = array();
-	$editor_configs["caption"] = $caption;
-	$editor_configs["name"] = $name;
-	$editor_configs["value"] = $value;
-	$editor_configs["rows"] = 35;
-	$editor_configs["cols"] = 60;
-	$editor_configs["width"] = "100%";
-	$editor_configs["height"] = "500px";
+	$editor_configs['caption'] = $caption;
+	$editor_configs['name'] = $name;
+	$editor_configs['value'] = $value;
+	$editor_configs['rows'] = 35;
+	$editor_configs['cols'] = 60;
+	$editor_configs['width'] = "100%";
+	$editor_configs['height'] = "500px";
 
 	$isadmin = ( ( is_object( $xoopsUser ) && !empty( $xoopsUser ) ) && $xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) ? true : false;
         if ( $isadmin == true ) {
@@ -324,11 +324,11 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 		break;
 
 	case "dhtml":
-		if ( is_readable( ICMS_ROOT_PATH . "/editors/dhtmltextarea.php" ) )	{
-			include_once( ICMS_ROOT_PATH . "/editors/dhtmltextarea.php" );
+		if ( is_readable( ICMS_ROOT_PATH . "/editors/dhtmltextarea/dhtmltextarea.php" ) )	{
+			include_once( ICMS_ROOT_PATH . "/editors/dhtmltextarea/dhtmltextarea.php" );
 			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, 20, 60 );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "dhtmltextarea", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -348,7 +348,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 	case "tinyeditor":
 		if ( is_readable( ICMS_ROOT_PATH . "/class/xoopseditor/tinyeditor/formtinyeditortextarea.php" ) ) {
 			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/tinyeditor/formtinyeditortextarea.php" );
-			$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ) );
+			$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => $editor_configs['width'], 'height' => $editor_configs['height'] ) );
 		} else {
 			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
@@ -366,7 +366,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 	case 'tinymce' :
         if ( is_readable( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" ) ) {
 			include_once( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" );
-			$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ) );
+			$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => $editor_configs['width'], 'height' => $editor_configs['height'] ) );
 		} else {
 			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
         }
