@@ -1,4 +1,4 @@
-<?php
+$_POST<?php
 //////////////////////////////////////////////////////////////////////////////
 // $Id: importdictionary.php,v 1.1 18/03/2007 17:21:00 Yerres Exp $         //
 // ------------------------------------------------------------------------ //
@@ -207,15 +207,15 @@ function FormImport() {
 }
 
 if (!isset($HTTP_POST_VARS['op'])) {
-    $op = isset($HTTP_GET_VARS['op']) ? $HTTP_GET_VARS['op'] : 'main';
+    $op = isset($HTTP_GET_VARS['op']) ? $_GET['op'] : 'main';
 } else {
-    $op = $HTTP_POST_VARS['op'];
+    $op = ['op'];
 }
 
-if (!isset($HTTP_POST_VARS['delete'])) {
-    $delete = isset($HTTP_GET_VARS['delete']) ? $HTTP_GET_VARS['delete'] : 'main';
+if (!isset($_POST['delete'])) {
+    $delete = isset($HTTP_GET_VARS['delete']) ? $_GET['delete'] : 'main';
 } else {
-    $delete = $HTTP_POST_VARS['delete'];
+    $delete = $_POST['delete'];
 }
 
 switch ($op) {
