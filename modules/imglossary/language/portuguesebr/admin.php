@@ -131,18 +131,18 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Infelizmente, não há categorias definida
 // imGlossary v1.00
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Offline");
 define("_AM_IMGLOSSARY_COMMENTS", "Comentários");
-define("_AM_IMGLOSSARY_ABOUT", "About");
-define("_AM_IMGLOSSARY_UPDATEMOD", "Update module");
+define("_AM_IMGLOSSARY_ABOUT", "Sobre");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Atualizar Módulo");
 
 // Import 
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "XWords &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Wiwimod &mdash;&gt; imGlossary import script");
-define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Database missing or empty!");
-define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlossary");
-define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
-define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
-define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Importar do Script Wordbook para o imGlossary");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Importar o Dicionário 0.91 para o imGlossary");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Importar o Glossaire para o imGlossary");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTXWO", "Importar o XWords para o imGlossary");
+define("_AM_IMGLOSSARY_MODULEHEADIMPORTWW", "Importar definições do Wiwimod");
+define("_AM_IMGLOSSARY_MODULEIMPORTEMPTY10", "Banco de dados não existe ou está vazio!");
+define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comentários foram movidos com sucesso para o imGlossary");
+define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Erro ao transferir para os Comentários do imGlossary");
+define("_AM_IMGLOSSARY_IMPORTDELWB","Apagar termos antes de importar? ");
+define("_AM_IMGLOSSARY_NOOTHERMODS", "Não conseguimos encontrar os módulos correspondentes!");
 ?>
