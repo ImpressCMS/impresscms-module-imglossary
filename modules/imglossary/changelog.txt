@@ -5,6 +5,7 @@ imGlossary v1.00 xxxx
 - Added: option to display random term block on index or not
 - Added: options to select editor for admin and user side
 - Added: comment total in alt- and title tag of icon
+- Added: GPL license incl. translations
 
 - Replaced: some icons
 - Replaced: 'Xoops code' with 'BBCode'
