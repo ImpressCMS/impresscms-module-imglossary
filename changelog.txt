@@ -1,9 +1,6 @@
 ===================================
 imGlossary v1.00 xxxx
 ===================================
-- Replaced: $HTTP_POST_VARS with $_POST 
-- Replaced: $HTTP_GET_VARS  with $_GET
-
 - Added: option to display 3 center blocks on index page or Search block
 - Added: option to display random term block on index or not
 - Added: options to select editor for admin and user side
@@ -11,6 +8,8 @@ imGlossary v1.00 xxxx
 
 - Replaced: some icons
 - Replaced: 'Xoops code' with 'BBCode'
+- Replaced: $HTTP_POST_VARS with $_POST 
+- Replaced: $HTTP_GET_VARS  with $_GET
 
 - Fixed: pagination for listing 'All' (again)
 - Fixed: pagination for listing 'All Categories'

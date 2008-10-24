@@ -30,17 +30,17 @@ global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
 
 $result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
 if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1' ) {
-	redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOCOLEXISTS );
+	redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOCOLEXISTS );
 	exit();
 } 
 
 if ( !is_object( $xoopsUser ) && $xoopsModuleConfig['anonpost'] == 0 ) {
-	redirect_header( "index.php", 1, _NOPERM );
+	redirect_header( 'index.php', 1, _NOPERM );
 	exit();
 } 
 
 if ( is_object( $xoopsUser ) && $xoopsModuleConfig['allowsubmit'] == 0 ) {
-	redirect_header( "index.php", 1, _NOPERM );
+	redirect_header( 'index.php', 1, _NOPERM );
 	exit();
 }
 
@@ -140,7 +140,7 @@ switch ( $op ) {
 				$username = _MD_IMGLOSSARY_GUEST;
 				$usermail = '';
 			} else {
-				$username = $xoopsUser -> getVar( "uname", "E" );
+				$username = $xoopsUser -> getVar( 'uname', 'E' );
 				$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=$username" );
 				list( $usermail ) = $xoopsDB -> fetchRow( $result );
 			}
@@ -169,12 +169,12 @@ switch ( $op ) {
 			}
 
 			if ( $xoopsModuleConfig['autoapprove'] == 1 ) {
-				redirect_header( "index.php", 2, _MD_IMGLOSSARY_RECEIVEDANDAPPROVED );
+				redirect_header( 'index.php', 2, _MD_IMGLOSSARY_RECEIVEDANDAPPROVED );
 			} else {
-				redirect_header( "index.php", 2, _MD_IMGLOSSARY_RECEIVED );
+				redirect_header( 'index.php', 2, _MD_IMGLOSSARY_RECEIVED );
 			} 
 		} else {
-			redirect_header( "submit.php", 2, _MD_IMGLOSSARY_ERRORSAVINGDB );
+			redirect_header( 'submit.php', 2, _MD_IMGLOSSARY_ERRORSAVINGDB );
 		} 
 		exit();
 		break;
@@ -192,9 +192,9 @@ switch ( $op ) {
 		//$xoopsOption['template_main'] = 'imglossary_submit.html';
 		//include ICMS_ROOT_PATH . '/header.php';
 		
-		$xoopsTpl -> assign( 'send_def_to', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
-		$xoopsTpl -> assign( 'send_def_g', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
-		$xoopsTpl -> assign( 'wb_user_name', $name );
+		// $xoopsTpl -> assign( 'send_def_to', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
+		// $xoopsTpl -> assign( 'send_def_g', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
+		// $xoopsTpl -> assign( 'wb_user_name', $name );
 
 		$block = 1;
 		$html = 1;
@@ -210,14 +210,14 @@ switch ( $op ) {
 
 		include_once 'include/storyform.inc.php';
 		
-		$xoopsTpl -> assign( 'modulename', $xoopsModule -> dirname() );
+		// $xoopsTpl -> assign( 'modulename', $xoopsModule -> dirname() );
 
 		$sform -> assign( $xoopsTpl );
 
-		$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-		$xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );		
+		// $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
+		// $xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );		
 		
-		$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
+		// $xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
 
 		//include ICMS_ROOT_PATH . '/footer.php';
 		
