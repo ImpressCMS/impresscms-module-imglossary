@@ -310,7 +310,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/fckeditor/formfckeditor.php" );
 			$editor = new XoopsFormFckeditor( $editor_configs,true );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "fckeditor", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -319,7 +319,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 			include_once( ICMS_ROOT_PATH . "/class/htmlarea/formhtmlarea.php" );
 			$editor = new XoopsFormHtmlarea( $caption, $name, $value );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "htmlarea", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -341,7 +341,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/koivi/formwysiwygtextarea.php" );
 			$editor = new XoopsFormWysiwygTextArea( $caption, $name, $value, '100%', '500px' );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "koivi", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -350,7 +350,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/tinyeditor/formtinyeditortextarea.php" );
 			$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ) );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "tinyeditor", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -359,7 +359,7 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/dhtmlext/dhtmlext.php" );
 			$editor = new XoopsFormDhtmlTextAreaExtended( $caption, $name, $value, 10, 50 );
 		} else {
-			$editor = new XoopsFormEditor( $caption, "dhtmlext", $editor_configs );
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
 		}
 		break;
 
@@ -367,6 +367,8 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
         if ( is_readable( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" ) ) {
 			include_once( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" );
 			$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ) );
+		} else {
+			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
         }
         break;
 	}
