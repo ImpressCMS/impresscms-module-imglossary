@@ -105,7 +105,8 @@ function entryEdit( $entryID = '' ) {
 	if ( $definition == ' . _MD_WB_WRITEHERE . ' ) {
 		$def_block -> setExtra( 'onfocus="this.select()"' );
 	}
-	$sform -> addElement( $def_block );
+	$sform -> addElement( $def_block, true );
+	
 	$sform -> addElement( new XoopsFormTextArea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 ), false );
 	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url ), false );
 
