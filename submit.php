@@ -52,10 +52,10 @@ if ( isset( $_POST['post'] ) ) {
 	$op = trim( 'edit' );
 } 
 	
-if( !isset( $HTTP_POST_VARS['suggest'] ) ) {
-	$suggest = isset( $HTTP_GET_VARS['suggest'] ) ? intval( $HTTP_GET_VARS['suggest'] ) : 0;
+if( !isset( $_POST['suggest'] ) ) {
+	$suggest = isset( $_GET['suggest'] ) ? intval( $_GET['suggest'] ) : 0;
 } else {
-	$suggest = intval( $HTTP_POST_VARS['suggest'] );
+	$suggest = intval( $_POST['suggest'] );
 }
 
 if ( $suggest > 0 ) {
