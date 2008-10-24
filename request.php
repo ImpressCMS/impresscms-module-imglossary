@@ -27,16 +27,16 @@ global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
 
 if ( empty( $_POST['submit'] ) ) {
 
-	include ICMS_ROOT_PATH . "/header.php";
+	include ICMS_ROOT_PATH . '/header.php';
 
 	
 
-	include "include/requestform.php";
+	include 'include/requestform.php';
 
-	include ICMS_ROOT_PATH . "/footer.php";
+	include ICMS_ROOT_PATH . '/footer.php';
 } else {
 	// Captcha Hack
-	if ( @include_once ICMS_ROOT_PATH . "/class/captcha/captcha.php" ) {
+	if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
 		if ( $xoopsModuleConfig['captcha'] == 1 ) {
 			$xoopsCaptcha = XoopsCaptcha::instance();
 				if ( ! $xoopsCaptcha -> verify( true ) ) {
@@ -46,7 +46,7 @@ if ( empty( $_POST['submit'] ) ) {
 		}			
 	// Captcha Hack
 	extract( $_POST );
-	$display = "D";
+	$display = 'D';
 	$myts =& MyTextSanitizer::getInstance();
 	$usermail = ( isset( $_POST['usermail'] ) ) ? $myts -> stripSlashesGPC( $_POST['usermail'] ) : '';
 	$username = ( isset( $_POST['username'] ) ) ? $myts -> stripSlashesGPC( $_POST['username'] ) : '';
@@ -130,6 +130,6 @@ if ( empty( $_POST['submit'] ) ) {
 	} else {
 		$messagesent = sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );
 	}
-	redirect_header( "index.php", 2, $messagesent );
+	redirect_header( 'index.php', 2, $messagesent );
 }
 ?>

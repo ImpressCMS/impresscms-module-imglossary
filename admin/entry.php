@@ -267,21 +267,21 @@ function entryDefault()	{
 
 /* -- Available operations -- */
 switch ( $op ) {
-    case "mod":
+    case 'mod':
 		xoops_cp_header();
 		$entryID = ( isset( $_GET['entryID'] ) ) ? intval( $_GET['entryID'] ) : intval( $_POST['entryID'] );
 		entryEdit($entryID);
 		break;
 
-	case "addentry":
+	case 'addentry':
 		entrySave();
 		exit();
 		break;
 
-	case "del":
+	case 'del':
 		entryDelete();
 
-	case "default":
+	case 'default':
 	default:
 		entryDefault();
 		break;

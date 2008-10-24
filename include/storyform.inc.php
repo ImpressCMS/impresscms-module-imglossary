@@ -27,7 +27,7 @@ include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/includ
 include_once ICMS_ROOT_PATH . '/class/xoopstree.php';
 include ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 
-$mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), "categoryID", "0" );
+$mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID', '0' );
 
 echo "<div>";
 echo "<div style='float: left; font-size: smaller;'><a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/index.php'>" . $xoopsModule -> name() . "</a> | " . _MD_IMGLOSSARY_SUBMITART . "</div>";
