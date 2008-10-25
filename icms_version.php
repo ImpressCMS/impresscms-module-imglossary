@@ -29,17 +29,15 @@ global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsConfig;
 
 if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php' ) ) {
 	include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
-} else {
-	include_once ICMS_ROOT_PATH . '/language/english/moduleabout.php';
-}
+} else { include_once ICMS_ROOT_PATH . '/language/english/moduleabout.php'; }
 
 //	** General information
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
 	'version' 			=> "1.00",
-	'status' 			=> "RC-2",
-	'status_version'	=> "RC-2",
-	'date'				=> "October 18, 2008",
+	'status' 			=> "Final",
+	'status_version'	=> "Final",
+	'date'				=> "October 25, 2008",
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> "McDonald",
 	'credits' 			=> "hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf",
@@ -50,11 +48,11 @@ $modversion = array(
 	'image' 			=> "images/imglossary_logo.png",		// Module logo
 	'iconbig' 			=> "images/imglossary_iconsbig.png",	// Control Panel icon
 	'iconsmall' 		=> "images/imglossary_iconsmall.png",	// Module menu icon
-	'dirname' 			=> basename( dirname( __FILE__ ) )      // Module DirName 
+	'dirname' 			=> $glossdirname      					// Module DirName 
 	);
 
 // 	** Contributors **
-$modversion['people']['developers'] [] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]";
+$modversion['people']['developers'] [] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]&nbsp;&nbsp;<span style='font-size: smaller;'>( pietjebell31 [at] hotmail [dot] com )</span>";
 $modversion['people']['testers']    [] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
@@ -65,10 +63,10 @@ $modversion['people']['other']      [] = "Icons by <a href='http://www.famfamfam
 $modversion['people']['other']      [] = "Icons by <a href='http://materia.infinitiv.it' target='_blank'>Materia</a>";
 
 //	** If Release Candidate **
-$modversion['warning'] = _MODABOUT_WARNING_RC;
+//$modversion['warning'] = _MODABOUT_WARNING_RC;
 
 //	** If Final  **
-//$modversion['warning'] = _MODABOUT_WARNING_FINAL;
+$modversion['warning'] = _MODABOUT_WARNING_FINAL;
 
 // 	** Admin things **
 $modversion['hasAdmin'] = 1;
