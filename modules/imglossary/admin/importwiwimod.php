@@ -1,4 +1,4 @@
-$_POST<?php
+<?php
 include 'admin_header.php';
 $op = '';
 
@@ -156,16 +156,16 @@ function FormImport() {
 
 }
 
-if ( !isset( ['op'] ) ) {
-    $op = isset( $_GET['op'] ) ? $_GET['op'] : 'main';
+if ( !isset( $HTTP_POST_VARS['op'] ) ) {
+    $op = isset( $HTTP_GET_VARS['op'] ) ? $HTTP_GET_VARS['op'] : 'main';
 } else {
-    $op = $_POST['op'];
+    $op = $HTTP_POST_VARS['op'];
 }
 
-if ( !isset( $_POST['delete'] ) ) {
-    $delete = isset( $_GET['delete'] ) ? $_GET['delete'] : 'main';
+if ( !isset( $HTTP_POST_VARS['delete'] ) ) {
+    $delete = isset( $HTTP_GET_VARS['delete'] ) ? $HTTP_GET_VARS['delete'] : 'main';
 } else {
-    $delete = $_POST['delete'];
+    $delete = $HTTP_POST_VARS['delete'];
 }
 
 switch ( $op ) {
@@ -178,4 +178,3 @@ default:
     break;
 }
 ?>
-
