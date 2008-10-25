@@ -55,7 +55,7 @@ define("_MI_IMGLOSSARY_AUTOAPPROVE", "Approve entries automatically?");
 define("_MI_IMGLOSSARY_AUTOAPPROVEDSC", "If set to <em>Yes</em>, ImpressCMS will publish submitted entries without admin intervention.");
 
 define("_MI_IMGLOSSARY_MULTICATS", "Do you want to have glossary categories?");
-define("_MI_IMGLOSSARY_MULTICATSDSC", "If set to <em>Yes</em>, will allow you to have glossary categories. If set to no, will have a single automatic category.");
+define("_MI_IMGLOSSARY_MULTICATSDSC", "If set to <em>Yes</em>, will allow you to have glossary categories. If set to <em>No</em>, will have a single automatic category.");
 
 define("_MI_IMGLOSSARY_CATSINMENU","Should the categories be shown in the menu?"); 
 define("_MI_IMGLOSSARY_CATSINMENUDSC","If set to <em>Yes</em> if you want links to categories in the main menu."); 
