@@ -1,4 +1,11 @@
 ===================================
+imGlossary v1.0x xxxx
+===================================
+- Replaced: $HTTP_POST_VARS with $_POST [gibaphp]
+- Replaced: $HTTP_GET_VARS  with $_GET [gibaphp]
+
+
+===================================
 imGlossary v1.00 Final
 ===================================
 - Added: option to display 3 center blocks on index page or Search block
