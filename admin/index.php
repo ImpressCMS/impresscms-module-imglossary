@@ -47,8 +47,8 @@ switch ( $op ) {
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $entryID;
 
 		$myts =& MyTextSanitizer::getInstance();
-		imglossary_adminMenu( _AM_IMGLOSSARY_INDEX );
-//		$xoopsModule->displayAdminMenu(-1, 'imGlossary' . " | " . _AM_IMGLOSSARY_INDEX);
+		imglossary_adminMenu( 0, _AM_IMGLOSSARY_INDEX );
+		
         $result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $totalcategories ) = $xoopsDB -> fetchRow( $result01 );
         $result02 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
@@ -58,11 +58,6 @@ switch ( $op ) {
         $result04 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 			list( $totalrequested ) = $xoopsDB -> fetchRow( $result04 );
 		
-//		if ( $xoopsModuleConfig['multicats'] == 1 ) {
-//			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_IMGLOSSARY_MODULEHEADMULTI . "</h3>";
-//		} else {
-//			echo "<h3 style='color: #2F5376; margin-top: 6px;'>" . _AM_IMGLOSSARY_MODULEHEADSINGLE . "</h3>";
-//		}
 		echo "<div>&nbsp;</div>";
 		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_INVENTORY . "</legend>";
         echo "<div style='padding: 12px;'>" . _AM_IMGLOSSARY_TOTALENTRIES . " <b>$totalpublished</b> | ";

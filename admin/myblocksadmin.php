@@ -235,7 +235,7 @@ include ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> getVar( 'dirname' ) . '/i
 
 xoops_cp_header() ;
 
-imglossary_adminMenu( _AM_IMGLOSSARY_BLOCKS );
+imglossary_adminMenu( 3, _AM_IMGLOSSARY_BLOCKS );
 
 if ( file_exists( './mymenu.php' ) ) include( './mymenu.php' ) ;
 

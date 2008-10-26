@@ -48,13 +48,13 @@ function categoryEdit( $categoryID = '' ) {
 		} 
 		
 		xoops_cp_header();
-		imglossary_adminMenu( _AM_IMGLOSSARY_CATS );
+		imglossary_adminMenu( 2, _AM_IMGLOSSARY_CATS );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		xoops_cp_header();
-		imglossary_adminMenu( _AM_IMGLOSSARY_CATS );
+		imglossary_adminMenu( 2, _AM_IMGLOSSARY_CATS );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );
@@ -115,7 +115,7 @@ function categoryDelete( $categoryID = '' ) {
 			}		
 		$result = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
 		$result2 = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
-		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_CATISDELETED, $name ) );
+		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_CATISDELETED, $name ) );
 	} else {
 		xoops_cp_header();
 		xoops_confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_IMGLOSSARY_DELETETHISCAT . "<br /><br>" . $name, _AM_IMGLOSSARY_DELETE );
@@ -134,40 +134,40 @@ function categorySave ( $categoryID = '' ) {
 	// Run the query and update the data
 	if ( !$_POST['categoryID'] ) {
 		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_cats' ) . " (categoryID, name, description, weight) VALUES ('', '$name', '$description', '$weight')" ) ) {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_CATCREATED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_CATCREATED );
 		} else {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOTUPDATED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOTUPDATED );
 		} 
 	} else {
 		if ( $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'imglossary_cats' ) . " SET name='$name', description='$description', weight='$weight' WHERE categoryID='$categoryID'" ) ) {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_CATMODIFIED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_CATMODIFIED );
 		} else {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOTUPDATED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOTUPDATED );
 		} 
 	} 
 }
 
 switch ( $op ) {
-	case "mod":
+	case 'mod':
 		$categoryID = isset( $_POST['categoryID'] ) ? intval( $_POST['categoryID'] ) : intval( $_GET['categoryID'] );
 		categoryEdit( $categoryID );
 		break;
 
-	case "addcat":
+	case 'addcat':
 		categorySave();
 		exit();
 		break;
 
-	case "del":
+	case 'del':
 		categoryDelete();
 		exit();
 		break;
 
-	case "cancel":
+	case 'cancel':
 		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_BACK2IDX, '' ) );
 		exit();
 
-    case "default":
+    case 'default':
     default:
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig;
 		if ( $xoopsModuleConfig['multicats'] != 1 ) {

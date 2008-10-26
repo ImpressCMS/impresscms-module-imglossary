@@ -60,8 +60,8 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
-$modversion['people']['other']      [] = "Icons by <a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a>";
-$modversion['people']['other']      [] = "Icons by <a href='http://materia.infinitiv.it' target='_blank'>Materia</a>";
+$modversion['people']['other']      [] = "<a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a> (icons)";
+$modversion['people']['other']      [] = "<a href='http://materia.infinitiv.it' target='_blank'>Materia</a> (icons)";
 
 //	** If Release Candidate **
 //$modversion['warning'] = _MODABOUT_WARNING_RC;
