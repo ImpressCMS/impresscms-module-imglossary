@@ -9,7 +9,8 @@
 * @copyright		http://www.xoops.org/ The XOOPS Project
 * @copyright		XOOPS_copyrights.txt
 * @copyright		http://www.impresscms.org/ The ImpressCMS Project
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* @license		GNU General Public License (GPL)
+*				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		imGlossary - a multicategory glossary
 * @since			1.00
@@ -22,7 +23,7 @@ function imglossary_sbmarks( $entryID, $term ) {
 
 	$sbmark_arr = array();
     $sbmark_arr['term'] = $term;
-    $sbmark_arr['link'] = ICMS_URL . "/modules/" . $xoopsModule -> getvar( 'dirname' ) . "/entry.php?entryID=" . intval( $entryID );
+    $sbmark_arr['link'] = ICMS_URL . '/modules/' . $xoopsModule -> getvar( 'dirname' ) . '/entry.php?entryID=' . intval( $entryID );
 
 //Definitions for social bookmarks
 
