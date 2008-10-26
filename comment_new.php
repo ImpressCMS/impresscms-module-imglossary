@@ -27,7 +27,7 @@
 
 include '../../mainfile.php';
 
-$com_itemid = isset( $HTTP_GET_VARS['com_itemid'] ) ? intval( $HTTP_GET_VARS['com_itemid'] ) : 0;
+$com_itemid = isset( $_GET['com_itemid'] ) ? intval( $_GET['com_itemid'] ) : 0;
 if ( $com_itemid > 0 ) {
 	// Get link title
 	$sql = "SELECT term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=" . $com_itemid . "";
