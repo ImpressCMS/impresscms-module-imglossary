@@ -1,0 +1,38 @@
+<div class="leftheader">
+	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | <{$smarty.const._MD_IMGLOSSARY_SEARCHHEAD}>
+</div>
+<div class="rightheader"><{$lang_modulename}></div>
+<hr>
+
+<h2 class="catsearch"><{$smarty.const._MD_IMGLOSSARY_SEARCHHEAD}></h2>
+<p class="intro"><{$intro}></p>
+
+<div id="search2">
+<fieldset>
+<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
+<{$searchform}>
+</fieldset>
+</div>
+
+<fieldset>
+	<legend><{$smarty.const._MD_IMGLOSSARY_WEHAVE}></legend>
+		<div style="padding: 8px;">
+			<{$smarty.const._MD_IMGLOSSARY_DEFS}><{$publishedwords}><br />
+			<{if $multicats == 1}>
+				<{$smarty.const._MD_IMGLOSSARY_CATS}>
+				<{$totalcats}>
+				<br />
+			<{/if}>
+		</div>
+</fieldset>
+
+
+<div class="clearer2">
+<{foreach item=eachresult from=$resultset.match}>
+<h4 class="term"><a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/entry.php?entryID=<{$eachresult.entryID}>"><{$eachresult.term}></a>
+<{if $multicats == 1}> <a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/category.php?categoryID=<{$eachresult.categoryID}>">[<{$eachresult.catname}>]</a><{/if}></h4>
+<div class="small"><{$eachresult.definition}></div>
+<div class="small"><{$eachresult.microlinks}></div>
+<{/foreach}>
+<div align = 'left'><{$resultset.navbar}></div>
+</div>

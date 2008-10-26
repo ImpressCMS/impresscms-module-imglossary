@@ -1,0 +1,83 @@
+===================================
+imGlossary v1.00 Final
+===================================
+- Added: option to display 3 center blocks on index page or Search block
+- Added: option to display random term block on index or not
+- Added: options to select editor for admin and user side
+- Added: comment total in alt- and title tag of icon
+- Added: GPL2 license incl. translations
+
+- Replaced: some icons
+- Replaced: 'Xoops code' with 'BBCode'
+
+- Fixed: pagination for listing 'All' (again)
+- Fixed: pagination for listing 'All Categories'
+- Fixed: searching terms
+- Fixed: block settings [skenow]
+
+
+===================================
+imGlossary v1.00 RC-2
+===================================
+- Added: option to set background colour searched terms
+- Added: import script Wiwimod
+- Added: import script Wordbook
+- Added: About page (IcmsModuleAbout)
+- Added: link to module update
+- Added: pdf support
+- Added: captcha to submit form
+- Added: captcha to request form
+- Added: captcha can be turned on/off in Preferences
+
+- Replaced: import script Dictionary
+- Replaced: admin menu (displayAdminMenu)
+
+- Removed: imglossary/templates/imglossary_request.html
+- Removed: imglossary/templates/imglossary_submit.html
+
+- Fixed: problem search option, unknown function
+- Fixed: letter-bar, only those letters containing terms have url assigned
+- Fixed: pagination for listing 'All'
+- Fixed: url administration icon in random block
+
+
+===================================
+imGlossary v1.00 RC-1
+===================================
+First version of imGlossary
+- Added: prefix to module functions
+- Added: option to hide author of an entry
+- Added: comments button in administration
+- Added: Social Bookmarks
+- Added: administration icon
+
+- Restyled index page
+- Integrated admin/submissions.php in admin/index.php
+- Replaced icons
+
+- Module folder can be renamed
+- Fixed: search option
+- Fixed: submit form
+- Fixed: GIJOE's myblocksadmin, works with ICMS blocks
+- Fixed: vulnerability, used StopXSS
+- Fixed: linking to offline terms
+
+
+===================================
+Wordbook v1.16
+===================================
+Fix: (by Alama) Grammatical and stylistic corrections to the English language interface to Wordbook 1.15 in main.php and modinfo.php
+Fix: Anonymous users can now see sub menu items if appropriated permissions are set.
+Fix: Fixed a bug in admin/entry.php. When an administrator modied an entry, became proprietary of entry and the combo box in which he could choose the author was ignored.
+Fix: Missing data in results produced by search.php. Not only was the category missing, but the entryID number of the term in the link is missing, making the first entry in the table come up for all word's links clicked.
+Modified: funtion getLinkedUnameFromId() in include/functions.php renamed to wb_getLinkedUnameFromId() to avoid possible duplicated function name error.
+Add: submit.php page uses now templates and css formating as the other pages do.
+Add: Submit option in main menu is shown only if user/anon-user is allowed to submit new words. (users and anonimous users privileges set in config section)
+
+
+===================================
+Wordbook v1.15 Beta 2
+===================================
+Fix: Fixed a bug in include/functions.php and block/random_term.php that caused browser cant go back if deletion of an entry is canceler (page del icon had a link with target="_blank" parameter instead "_self" or even nothing)
+New: Comments feature Added (modified files: moninfo.php entry.php admin/entry.php admin/category.php)
+New: Add an Import script from module Dictionary v0.9x (Import comments are made by moving them from Dictionary module to Wordbook module).

@@ -1,0 +1,84 @@
+<div class="leftheader">
+	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | 
+	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$thisterm.init}>"><{$thisterm.init}></a> | <{$thisterm.term}>
+</div>
+<div class="rightheader"><{$lang_modulename}></div>
+<hr>
+
+<div class="clearer">
+<fieldset>
+<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
+<div class="letters">
+	<{foreach item=letterlinks from=$alpha.initial}>
+	  <{if $letterlinks.total > 0}> 
+		<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
+	  <{/if}>
+	  <{$letterlinks.linktext}>
+	  <{if $letterlinks.total > 0}></a><{/if}> |
+	<{/foreach}>
+	<{if $totalother > 0}>
+	  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
+	<{/if}>
+	<{$smarty.const._MD_IMGLOSSARY_OTHER}> |
+	<{if $totalother > 0}></a><{/if}>
+	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
+</div>
+</fieldset>
+</div>
+
+<{if $multicats == 1}>
+<div class="clearer">
+<fieldset>
+<legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
+<div class="letterssmall">
+<{foreach item=catlinks from=$block0.categories}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
+<{if $catlinks.total > 0}><{/if}>
+</a> [<{$catlinks.total}>] |
+<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+</div>
+</fieldset>
+</div>
+<{/if}>
+
+<{if $multicats == 1}>
+	<div class="catname"><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
+	<a href="<{$xoops_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
+	</div>
+<{/if}>
+
+<h4 class="term"><{$thisterm.term}></h4>
+<div class="definition" style="clear: both;"><{$thisterm.definition}></div>
+<div style="margin-left: 8px;padding: 5px;"><{$microlinks}></div>
+
+<{if $thisterm.ref}>
+	<div class="small"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYREFERENCE}></b><{$thisterm.ref}></div>
+<{/if}>
+
+<{if $thisterm.url}>
+	<div style="padding: 4px; border: thin solid #CCCCC; background: #EFEFEF; font-size: smaller;"><b><{$smarty.const._MD_IMGLOSSARY_ENTRYRELATEDURL}></b><{$thisterm.url}></div>
+<{/if}>
+
+<{if $showsbookmarks}>
+	<div class="socbookmark"><{$sbookmarks}></div>
+<{/if}>
+
+<div style="text-align: center; font-size: xx-small; border-top: #e8e8e8 1px solid;"><{$submitter}><{$submitdate}><{$counter}></div>
+
+<!-- start comments -->
+<div style="text-align: center; padding: 3px; margin: 3px;">
+  <{$commentsnav}>
+  <{$lang_notice}>
+</div>
+
+<div style="margin: 3px; padding: 3px;">
+<!-- start comments loop -->
+<{if $comment_mode == "flat"}>
+  <{include file="db:system_comments_flat.html"}>
+<{elseif $comment_mode == "thread"}>
+  <{include file="db:system_comments_thread.html"}>
+<{elseif $comment_mode == "nest"}>
+  <{include file="db:system_comments_nest.html"}>
+<{/if}>
+<!-- end comments loop -->
+<!-- end comments -->
+</div>
