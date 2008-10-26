@@ -195,9 +195,9 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 	return ( implode( ">", $parts ) );
 }
 
-function imglossary_adminMenu( $breadcrumb = '' ) {
+function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	global $xoopsModule;
-	$xoopsModule -> displayAdminMenu( -1, $xoopsModule -> name() . ' | ' . $breadcrumb );
+	$xoopsModule -> displayAdminMenu( $currentoption, $xoopsModule -> name() . ' | ' . $breadcrumb );
 }
 	
 function imglossary_linkterms( $definition, $glossaryterm ) {

@@ -61,7 +61,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
 			exit();
 		}
-		imglossary_adminMenu( _AM_IMGLOSSARY_ENTRIES );
+		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
 
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
@@ -74,7 +74,7 @@ function entryEdit( $entryID = '' ) {
 			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
 			exit();
 		}
-		imglossary_adminMenu( _AM_IMGLOSSARY_ENTRIES );
+		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
 		$uid = $xoopsUser -> getVar('uid');
 		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
 		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
@@ -231,9 +231,9 @@ function entrySave( $entryID = '' )	{
 		
 		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
 			imglossary_calculateTotals();
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 		} else {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
 		}
 	}
 }
@@ -251,7 +251,7 @@ function entryDelete( $entryID = '' ) {
 		// delete comments (mondarse)
 		xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
 		// delete comments (mondarse)
-		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_ENTRYISDELETED, $term ) );
+		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_ENTRYISDELETED, $term ) );
 	} else {
 		xoops_cp_header();
 		xoops_confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entry.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );

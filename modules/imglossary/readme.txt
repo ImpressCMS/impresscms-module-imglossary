@@ -8,8 +8,8 @@ imGlossary
 /**
  * $Id: readme.txt 12 October 2008 McDonald Exp $
  * Module: imGlossary
- * Version: v 1.00 RC-1
- * Release Date: 13 October 2008
+ * Version: v 1.00
+ * Release Date: 24 October 2008
  * Author: McDOnald
  * Licence: GNU
  */
