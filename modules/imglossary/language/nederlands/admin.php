@@ -54,7 +54,7 @@ define("_AM_IMGLOSSARY_DELETETHISENTRY", "Verwijder deze term?");
 define("_AM_IMGLOSSARY_DESCRIP", "Categorie omschrijving");
 define("_AM_IMGLOSSARY_DOHTML", " Gebruik HTML");
 define("_AM_IMGLOSSARY_DOSMILEY", " Gebruik smilies");
-define("_AM_IMGLOSSARY_DOXCODE", " Gebruik BBCode");
+define("_AM_IMGLOSSARY_DOXCODE", " Gebruik iCMS codes");
 define("_AM_IMGLOSSARY_EDITCAT", "Wijzig categorie");
 define("_AM_IMGLOSSARY_EDITENTRY", "Wijzig term");
 define("_AM_IMGLOSSARY_EDITSUBM", "Wijzig inzending");

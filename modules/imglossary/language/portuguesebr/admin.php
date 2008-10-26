@@ -45,7 +45,7 @@ define("_AM_IMGLOSSARY_DELETETHISENTRY", "Apagar este Termo?");
 define("_AM_IMGLOSSARY_DESCRIP", "Descrição da Categoria");
 define("_AM_IMGLOSSARY_DOHTML", " Habilitar Tags HTML");
 define("_AM_IMGLOSSARY_DOSMILEY", " Habilitar emotions");
-define("_AM_IMGLOSSARY_DOXCODE", " Habilitar xCode");
+define("_AM_IMGLOSSARY_DOXCODE", " Habilitar iCMS codes");
 define("_AM_IMGLOSSARY_EDITCAT", "Editar categoria");
 define("_AM_IMGLOSSARY_EDITENTRY", "Editar termo");
 define("_AM_IMGLOSSARY_EDITSUBM", "Editar novo envio");

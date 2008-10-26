@@ -58,7 +58,7 @@ define("_AM_IMGLOSSARY_DELETETHISENTRY", "Delete this entry?");
 define("_AM_IMGLOSSARY_DESCRIP", "Category description");
 define("_AM_IMGLOSSARY_DOHTML", " Enable HTML tags");
 define("_AM_IMGLOSSARY_DOSMILEY", " Enable smiley icons");
-define("_AM_IMGLOSSARY_DOXCODE", " Enable BBCodes");
+define("_AM_IMGLOSSARY_DOXCODE", " Enable iCMS codes");
 define("_AM_IMGLOSSARY_EDITCAT", "Edit category");
 define("_AM_IMGLOSSARY_EDITENTRY", "Edit entry");
 define("_AM_IMGLOSSARY_EDITSUBM", "Edit submission");
