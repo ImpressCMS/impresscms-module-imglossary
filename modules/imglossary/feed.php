@@ -19,24 +19,27 @@
 include 'header.php';	
 include_once ICMS_ROOT_PATH . '/class/icmsfeed.php'; 
 
-$myFeed = new IcmsFeed ();
-
 global $xoopsModuleConfig;
+
+$myFeed = new IcmsFeed();
+
 $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND (submit=0) ORDER BY datesub DESC ", 10, 0 );
+
     while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	
 		
-		$date = formatTimestamp( $myrow['datesub'], "d F Y" );
+		$date = formatTimestamp( $myrow['datesub'], $xoopsModuleConfig['dateformat'] );
 		$text = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
 		$text = $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] );
 
-		$myFeed->feeds[] = array (
+		$myFeed -> feeds[] = array (
 			'title' => $myrow['term'],
-			'link' => ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval($myrow['entryID']),
-			'description' => $text,
+			'link' => ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] ),
+			'description' => $date . ' - ' . $text,
 			'date' => $date,
 			'guid' => '',
-);
-	}	
+			);
+	}
+	
 $myFeed->render(); 
 
 ?>
