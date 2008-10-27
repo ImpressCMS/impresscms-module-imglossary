@@ -137,4 +137,7 @@ define("_MD_IMGLOSSARY_ADMININDEX", "Administração");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Enviado em %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Incluir para ");
 define("_MD_IMGLOSSARY_PDFTERM", "Criar PDF");
+
+// imGlossary v1.01
+define("_MD_IMGLOSSARY_FEED", "RSS feed");
 ?>

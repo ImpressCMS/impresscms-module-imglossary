@@ -137,4 +137,7 @@ define("_MD_IMGLOSSARY_SUBMITDATE", "Enviada el on %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Añadir a ");
 define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
 
+// imGlossary v1.01
+define("_MD_IMGLOSSARY_FEED", "RSS feed");
+
 ?>
