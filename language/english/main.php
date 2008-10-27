@@ -151,4 +151,7 @@ define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Submitted on %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Add to ");
 define("_MD_IMGLOSSARY_PDFTERM", "Create PDF");
+
+// imGlossary v1.01
+define("_MD_IMGLOSSARY_FEED", "RSS feed");
 ?>

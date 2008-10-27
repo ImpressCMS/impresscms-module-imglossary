@@ -150,4 +150,7 @@ define("_MD_IMGLOSSARY_ADMININDEX", "Administration");
 define("_MD_IMGLOSSARY_SUBMITDATE", "Übermittelt am %s. | ");
 define("_MD_IMGLOSSARY_ADDTO", "Erstellt in ");
 define("_MD_IMGLOSSARY_PDFTERM", "PDF erstellen");
+
+// imGlossary v1.01
+define("_MD_IMGLOSSARY_FEED", "RSS feed");
 ?>
