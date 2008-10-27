@@ -4,6 +4,8 @@ imGlossary v1.0x xxxx
 - Replaced: $HTTP_POST_VARS with $_POST [gibaphp]
 - Replaced: $HTTP_GET_VARS  with $_GET [gibaphp]
 
+- Fixed: indication active tab in admin menu
+
 
 ===================================
 imGlossary v1.00 Final
