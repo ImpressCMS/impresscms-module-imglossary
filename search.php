@@ -145,7 +145,7 @@ if ( !$query ) {
 		$xoopsTpl -> assign( 'resultset', $resultset );
 
 		// Display search form
-		$searchform = imglossary_showSearchForm( 150 );
+		$searchform = imglossary_showSearchForm();
 		$xoopsTpl -> assign( 'searchform', $searchform );
 	}
 }
