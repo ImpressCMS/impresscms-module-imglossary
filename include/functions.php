@@ -146,11 +146,11 @@ function imglossary_serviceLinks( $variable ) {
 	return $srvlinks;
 }
 
-function imglossary_showSearchForm( $width ) {
+function imglossary_showSearchForm() {
     global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 	$searchform = '<table width="100%">';
 	$searchform .= '<form name="op" id="op" action="search.php" method="post">';
-	$searchform .= '<tr><td style="text-align: right; line-height: 200%" width="'.$width.'">';
+	$searchform .= '<tr><td style="text-align: right; line-height: 200%">';
 	$searchform .= _MD_IMGLOSSARY_LOOKON . '</td><td width="10">&nbsp;</td><td style="text-align: left;">';
 	$searchform .= '<select name="type"><option value="1">' . _MD_IMGLOSSARY_TERMS . '</option>';
 	$searchform .= '<option value="2">' . _MD_IMGLOSSARY_DEFINS . '</option>';

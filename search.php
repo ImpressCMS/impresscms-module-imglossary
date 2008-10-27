@@ -93,7 +93,7 @@ if ( !$query ) {
 
 	$xoopsTpl -> assign( 'intro', _MD_IMGLOSSARY_NOSEARCHTERM );
 	// Display search form
-	$searchform = imglossary_showSearchForm( 150 );
+	$searchform = imglossary_showSearchForm();
 	$xoopsTpl -> assign( 'searchform', $searchform );
 } else {
 	// IF there IS term, count number of results
