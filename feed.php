@@ -25,7 +25,7 @@ $myFeed = new IcmsFeed();
 
 $myFeed -> webMaster = '';  // Admin contact email as stated in general preferences.
 
-$sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND (submit=0) ORDER BY datesub DESC ", 10, 0 );
+$sql = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC ', 10, 0 );
 
     while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	
 		
@@ -37,7 +37,7 @@ $sql = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_ent
 			'title' 		=> $myrow['term'],
 			'link' 			=> ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] ),
 			'description' 	=> $text,
-			'date' 			=> $date,
+			'pubdate' 		=> $date,
 			'guid' 			=> $myrow['url']
 			);
 	}
