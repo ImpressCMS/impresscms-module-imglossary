@@ -28,12 +28,23 @@ include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.
 
 $adminmenu[0]['title'] = _MI_IMGLOSSARY_ADMENU1;
 $adminmenu[0]['link']  = "admin/index.php";
+$adminmenu[0]['icon']  = 'images/icon/main.png'; // 32x32 px for options bar (tabs) 
+$adminmenu[0]['small'] = 'images/icon/main_small.png'; // 16x16 px for drop down
+
 $adminmenu[1]['title'] = _MI_IMGLOSSARY_ADMENU3;
 $adminmenu[1]['link']  = "admin/entry.php";
+$adminmenu[1]['icon']	= 'images/icon/entry.png';
+$adminmenu[1]['small']	= 'images/icon/entry_small.png';
+
 $adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
 $adminmenu[2]['link']  = "admin/category.php";
+$adminmenu[2]['icon']	= 'images/icon/folder.png';
+$adminmenu[2]['small']	= 'images/icon/folder_small.png';
+
 $adminmenu[3]['title'] = _MI_IMGLOSSARY_ADMENU4;
 $adminmenu[3]['link']  = "admin/myblocksadmin.php";
+$adminmenu[3]['icon']  = 'images/icon/blocks.png';
+$adminmenu[3]['small'] = 'images/icon/blocks_small.png';
 
 if ( imglossary_dictionary_module_included() ) {
 	$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
