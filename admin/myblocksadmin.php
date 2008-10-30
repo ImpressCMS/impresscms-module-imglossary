@@ -21,7 +21,7 @@ $icms_system_path = ICMS_ROOT_PATH . '/modules/system';
 
 // language files
 $language = $xoopsConfig['language'] ;
-if ( ! file_exists( ICMS_ROOT_PATH . '/language/' . $language . '/admin/blocksadmin.php' ) ) $language = 'english';
+//if ( ! file_exists( ICMS_ROOT_PATH . '/language/' . $language . '/admin/blocksadmin.php' ) ) $language = 'english';
 
 // to prevent from notice that constants already defined
 $error_reporting_level = error_reporting( 0 );
