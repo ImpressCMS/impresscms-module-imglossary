@@ -24,6 +24,8 @@
  
 $glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 
+global $xoopsModule, $xoopsConfig;
+
 include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
 
 $adminmenu[0]['title'] = _MI_IMGLOSSARY_ADMENU1;
@@ -33,13 +35,13 @@ $adminmenu[0]['small'] = 'images/icon/main_small.png'; // 16x16 px for drop down
 
 $adminmenu[1]['title'] = _MI_IMGLOSSARY_ADMENU3;
 $adminmenu[1]['link']  = "admin/entry.php";
-$adminmenu[1]['icon']	= 'images/icon/entry.png';
-$adminmenu[1]['small']	= 'images/icon/entry_small.png';
+$adminmenu[1]['icon']  = 'images/icon/entry.png';
+$adminmenu[1]['small'] = 'images/icon/entry_small.png';
 
 $adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
 $adminmenu[2]['link']  = "admin/category.php";
-$adminmenu[2]['icon']	= 'images/icon/folder.png';
-$adminmenu[2]['small']	= 'images/icon/folder_small.png';
+$adminmenu[2]['icon']  = 'images/icon/folder.png';
+$adminmenu[2]['small'] = 'images/icon/folder_small.png';
 
 $adminmenu[3]['title'] = _MI_IMGLOSSARY_ADMENU4;
 $adminmenu[3]['link']  = "admin/myblocksadmin.php";
@@ -48,20 +50,18 @@ $adminmenu[3]['small'] = 'images/icon/blocks_small.png';
 
 if ( imglossary_dictionary_module_included() ) {
 	$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
-	$adminmenu[4]['link']  = "admin/importdictionary.php";
+	$adminmenu[4]['link']  = 'admin/importdictionary.php';
 }
 
 if ( imglossary_wordbook_module_included() ) {
 	$adminmenu[5]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wordbook';
-	$adminmenu[5]['link']  = "admin/importwordbook.php";
+	$adminmenu[5]['link']  = 'admin/importwordbook.php';
 }
 
 if ( imglossary_wiwimod_module_included() ) {
 	$adminmenu[6]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wiwimod';
-	$adminmenu[6]['link']  = "admin/importwiwimod.php";
+	$adminmenu[6]['link']  = 'admin/importwiwimod.php';
 }
-
-global $xoopsModule, $xoopsConfig;
 
 if ( isset( $xoopsModule ) ) {
 
