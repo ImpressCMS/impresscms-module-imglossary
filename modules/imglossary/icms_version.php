@@ -59,6 +59,7 @@ $modversion['people']['translators'][] = "[url=http://community.impresscms.org/u
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
+$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=480]algalochkin[/url] (Russian)";
 $modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
 $modversion['people']['other']      [] = "<a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a> (icons)";
 $modversion['people']['other']      [] = "<a href='http://materia.infinitiv.it' target='_blank'>Materia</a> (icons)";
