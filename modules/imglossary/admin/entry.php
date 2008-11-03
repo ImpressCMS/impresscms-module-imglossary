@@ -71,7 +71,7 @@ function entryEdit( $entryID = '' ) {
 		$result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
         list( $totalcats ) = $xoopsDB -> fetchRow( $result01 );
 		if ( $totalcats == 0 && $xoopsModuleConfig['multicats'] == 1 ) {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
 			exit();
 		}
 		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
@@ -88,7 +88,7 @@ function entryEdit( $entryID = '' ) {
 
 		ob_start();
 			//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
-			$mytree -> makeMySelBox( 'name', 'name', 0, 0 );
+			$mytree -> makeMySelBox( 'name', 'name', $categoryID, 0 );
 			$sform -> addElement( new XoopsFormLabel( _AM_IMGLOSSARY_CATNAME, ob_get_contents() ) );
 		ob_end_clean();
 	}

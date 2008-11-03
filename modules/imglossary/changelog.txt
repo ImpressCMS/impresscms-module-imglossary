@@ -9,6 +9,7 @@ imGlossary v1.0x xxxx
 
 - Fixed: indication active tab in admin menu
 - Fixed: multilanguage issue menu content in block settings
+- Fixed: category menu for modifying term
 
 
 ===================================
