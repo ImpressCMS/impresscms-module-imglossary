@@ -29,7 +29,7 @@ $sql = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_ent
 
     while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	
 		
-		$title = htmlspecialchar( $myrow['term'] );
+		$title = htmlspecialchars( $myrow['term'] );
 		$date  = date( 'D, d M Y H:i:s', $myrow['datesub'] );
 		$text  = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
 		$text  = htmlspecialchars( $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] ) );
