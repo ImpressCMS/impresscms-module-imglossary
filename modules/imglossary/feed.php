@@ -29,16 +29,18 @@ $sql = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_ent
 
     while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	
 		
-		$date = formatTimestamp( $myrow['datesub'], $xoopsModuleConfig['dateformat'] );
-		$text = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
-		$text = $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] );
+		$title = htmlspecialchar( $myrow['term'] );
+		$date  = date( 'D, d M Y H:i:s', $myrow['datesub'] );
+		$text  = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
+		$text  = htmlspecialchars( $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] ) );
+		$link  = ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] );
 
 		$myFeed -> feeds[] = array (
-			'title' 		=> $myrow['term'],
-			'link' 			=> ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] ),
+			'title' 		=> $title,
+			'link' 			=> $link,
 			'description' 	=> $text,
 			'pubdate' 		=> $date,
-			'guid' 			=> $myrow['url']
+			'guid' 			=> $link
 			);
 	}
 	
