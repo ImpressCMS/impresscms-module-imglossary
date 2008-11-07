@@ -46,11 +46,11 @@ function entryEdit( $entryID = '' ) {
 	if( !isset($submit) ) { $submit = 0; }
 	if( !isset($request) ) { $request = 0; }
 	if( !isset($notifypub) ) { $notifypub = 1; }
-	if( !isset($categoryID) ) { $categoryID = 1; }
+	if( !isset($categoryID) ) { $categoryID = 0; }
 	if( !isset($term) ) { $term = ""; }
-	if( !isset($definition) ) {	$definition = _AM_IMGLOSSARY_WRITEHERE;	}
-	if( !isset($ref) ) { $ref = ""; }
-	if( !isset($url) ) { $url = ""; }
+	if( !isset($definition) ) {	$definition = ''; }
+	if( !isset($ref) ) { $ref = ''; }
+	if( !isset($url) ) { $url = ''; }
 
 	// If there is a parameter, and the id exists, retrieve data: we're editing an entry
 	if ( $entryID )	{
@@ -58,7 +58,7 @@ function entryEdit( $entryID = '' ) {
 		list( $categoryID, $term, $definition, $ref, $url, $uid, $submit, $datesub, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request ) = $xoopsDB -> fetchrow( $result );
 
 		if ( !$xoopsDB -> getRowsNum( $result ) ) {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
 			exit();
 		}
 		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
@@ -103,13 +103,16 @@ function entryEdit( $entryID = '' ) {
 	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYTERM, 'term', 80, 80, $term ), true );
 
 	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition, 15, 60 );
-	if ( $definition == ' . _MD_WB_WRITEHERE . ' ) {
-		$def_block -> setExtra( 'onfocus="this.select()"' );
-	}
+	$def_block -> setDescription( _AM_IMGLOSSARY_WRITEHERE );
 	$sform -> addElement( $def_block, true );
 	
-	$sform -> addElement( new XoopsFormTextArea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 ), false );
-	$sform -> addElement( new XoopsFormText( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url ), false );
+	$reference = new XoopsFormTextArea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 );
+	$reference -> setDescription( _AM_IMGLOSSARY_ENTRYREFERENCEDSC );
+	$sform -> addElement( $reference, false );
+	
+	$ent_url = new XoopsFormText( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url );
+	$ent_url -> setDescription( _AM_IMGLOSSARY_ENTRYURLDSC );
+	$sform -> addElement( $ent_url, false );
 
 	// Code to take entry offline, for maintenance purposes
 	$offline_radio = new XoopsFormRadioYN( _AM_IMGLOSSARY_SWITCHOFFLINE, 'offline', $offline, ' ' . _YES . '', ' ' ._NO . '' );
@@ -179,7 +182,7 @@ function entryEdit( $entryID = '' ) {
 } 
 
 function entrySave( $entryID = '' )	{
-	global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsDB, $myts;
+	global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsDB, $myts, $xoopsModule;
 	$entryID = isset($_POST['entryID']) ? intval($_POST['entryID']) : intval($_GET['entryID']);
 	if ($xoopsModuleConfig['multicats'] == 1) {
 		$categoryID = isset($_POST['categoryID']) ? intval($_POST['categoryID']) : intval($_GET['categoryID']);
@@ -211,7 +214,7 @@ function entrySave( $entryID = '' )	{
 	$definition = $myts -> addslashes( trim( $_POST["definition"] ) );
 	$ref = isset( $_POST['ref'] ) ? $myts -> addSlashes( $_POST['ref'] ) : '';
 	$url = isset( $_POST['url'] ) ? $myts -> addSlashes( $_POST['url'] ) : '';
-
+	
 	$date = time();
 	$submit = 0;
 	$notifypub = 0;
@@ -220,22 +223,20 @@ function entrySave( $entryID = '' )	{
 	
 // Save to database
 	if ( !$entryID ) {
-		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )" ) ) {
-			imglossary_calculateTotals();
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYCREATEDOK );
-		} else {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTCREATED );
-		}
+		$sql = "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) "; 
+		$sql .= "VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )";
+		imglossary_calculateTotals();
 	} else { 
 		// That is, $entryID exists, thus we're editing an entry
+		$sql = "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'";
+		imglossary_calculateTotals();
 		
-		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
-			imglossary_calculateTotals();
-			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
-		} else {
-			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
-		}
 	}
+	if ( !$result = $xoopsDB -> queryF( $sql ) ) {
+          XoopsErrorHandler_HandleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
+          return false;
+        }
+	redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 }
 
 function entryDelete( $entryID = '' ) {
