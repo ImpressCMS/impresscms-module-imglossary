@@ -75,9 +75,9 @@ define("_AM_IMGLOSSARY_ENTRYISON", "Eintrag ist online");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "Der Eintrag wurde erfolgreich verändert!");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Verzeihung, es war nicht möglich, diesen Eintrag zu erstellen!");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Verzeihung, es war nicht möglich, diesen Eintrag zu aktualisieren!");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referenz<span style='font-size: xx-small; font-weight: normal; display: block;'>(Schreiben Sie die Quelle Ihrer<br />Definition, wie Buch,<br />Artikel oder Person.)</span>");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referenz");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Begriff");
-define("_AM_IMGLOSSARY_ENTRYURL", "Verknüpfte Site<span style='font-size: xx-small; font-weight: normal; display: block;'>(Bitte geben sie eine gültige URL<br />mit oder ohne HTTP-Präfix an)</span>");
+define("_AM_IMGLOSSARY_ENTRYURL", "Verknüpfte Site");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Eine Datei mit diesem Namen existiert bereits auf dem Server. Bitte wählen Sie eine andere Datei!");
 define("_AM_IMGLOSSARY_GOMOD", "Zum Modul");
 define("_AM_IMGLOSSARY_HELP", "Hilfe");
@@ -159,4 +159,8 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Die Kommentare wurden erfolgreich na
 define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Fehler beim verschieben der Kommentare zu Glossary");
 define("_AM_IMGLOSSARY_IMPORTDELWB","Vor dem Importieren die Einträge löschen? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "Kein entsprechendes Modul gefunden!");
+
+// imGlossary v1.01 RC-1
+define("_AM_IMGLOSSARY_ENTRYURLDSC", "Bitte geben sie eine gültige URL mit oder ohne HTTP-Präfix an.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Schreiben Sie die Quelle Ihrer Definition, wie Buch, Artikel oder Person.");
 ?>
