@@ -31,7 +31,7 @@ if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
 if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
 function categoryEdit( $categoryID = '' ) {
-	$weight = 1;
+	$weight = 0;
 	$name = '';
 	$description = '';
 
