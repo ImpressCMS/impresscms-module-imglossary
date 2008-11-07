@@ -71,9 +71,9 @@ define("_AM_IMGLOSSARY_ENTRYISON", "Term is online");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "De term is succesvol gewijzigt!");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Sorry. Het was niet mogelijk deze term aan te maken!");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Sorry. Het was niet mogelijk deze term te updaten!");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referentie<span style='font-size: xx-small; font-weight: normal; display: block;'>(Noteer hier de bron van de definitie, zoals boek, artikel of persoon.)</span>");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referentie");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Term");
-define("_AM_IMGLOSSARY_ENTRYURL", "Gerelateerde website<span style='font-size: xx-small; font-weight: normal; display: block;'>(Geef een geldige URL met of zonder het HTTP voorvoegsel.)</span>");
+define("_AM_IMGLOSSARY_ENTRYURL", "Gerelateerde website");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Een bestand met die naam bestaat al op de server. Kies een andere naam aub!");
 define("_AM_IMGLOSSARY_GOMOD", "Naar module");
 define("_AM_IMGLOSSARY_HELP", "Help");
@@ -155,4 +155,8 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Commentaren succesvol verplaatst naa
 define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Er is een fout opgetreden tijdens het verplaatsen van de Commentaren naar imGlossary");
 define("_AM_IMGLOSSARY_IMPORTDELWB","Verwijder termen voor importeren? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "Geen korresponderende modules aangetroffen!");
+
+// imGlossary v1.01 RC-1
+define("_AM_IMGLOSSARY_ENTRYURLDSC", "Geef een geldige URL met of zonder het HTTP voorvoegsel.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Noteer hier de bron van de definitie, zoals boek, artikel of persoon.");
 ?>

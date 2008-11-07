@@ -76,9 +76,9 @@ define("_AM_IMGLOSSARY_ENTRYISON", "Запись подключена");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "Запись отредактирована!");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Извините. It was not possible to create this entry!");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Извините. It was not possible to update the entry!");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference<span style='font-size: xx-small; font-weight: normal; display: block;'>(Write here the source of your<br />definition, such as a book,<br />article, or person.)</span>");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Термин");
-define("_AM_IMGLOSSARY_ENTRYURL", "Связанный сайт<span style='font-size: xx-small; font-weight: normal; display: block;'>(Please enter a valid URL with<br />or without the HTTP prefix.)</span>");
+define("_AM_IMGLOSSARY_ENTRYURL", "Связанный сайт");
 define("_AM_IMGLOSSARY_FILEEXISTS", "A file with that name already exists on server. Please choose another one!");
 define("_AM_IMGLOSSARY_GOMOD", "Перейти в модуль");
 define("_AM_IMGLOSSARY_HELP", "Помощь");
@@ -160,4 +160,8 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Комментарии переме�
 define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Ошибкаво время перемещения Комментариев в imGlossary");
 define("_AM_IMGLOSSARY_IMPORTDELWB","Удалить записи перед импортом? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
+
+// imGlossary v1.01 RC-1
+define("_AM_IMGLOSSARY_ENTRYURLDSC", "Please enter a valid URL with or without the HTTP prefix.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Write here the source of your definition, such as a book, article, or person.");
 ?>

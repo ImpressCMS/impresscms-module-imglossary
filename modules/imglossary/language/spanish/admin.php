@@ -61,9 +61,9 @@ define("_AM_IMGLOSSARY_ENTRYISON", "El término está en línea");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "El término fue modificado con éxito");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Lo sentimos. No fue posible crear el término");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Lo sentimos. No fue posible actualizar el término");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referencia<span style='font-size: xx-small; font-weight: normal; display: block;'>(Anote aquí la fuente de su <br />término, como un libro,<br />artículo o persona.)</span>");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Referencia");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Término");
-define("_AM_IMGLOSSARY_ENTRYURL", "Sitio relacionado<span style='font-size: xx-small; font-weight: normal; display: block;'>(Por favor anota un URL válido con<br />o sin el prefijo HTTP.)</span>");
+define("_AM_IMGLOSSARY_ENTRYURL", "Sitio relacionado");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Ya existe un archivo llamado así en el servidor. Elija otro nombre");
 define("_AM_IMGLOSSARY_GOMOD", "Ir al módulo");
 define("_AM_IMGLOSSARY_HELP", "Ayuda");
@@ -145,4 +145,8 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlo
 define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
 define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
+
+// imGlossary v1.01 RC-1
+define("_AM_IMGLOSSARY_ENTRYURLDSC", "Por favor anota un URL válido con o sin el prefijo HTTP.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Anote aquí la fuente de su término, como un libro, artículo o persona.");
 ?>

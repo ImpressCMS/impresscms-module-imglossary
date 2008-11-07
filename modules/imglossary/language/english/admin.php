@@ -76,9 +76,9 @@ define("_AM_IMGLOSSARY_ENTRYISON", "Entry is online");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "The article was modified successfully!");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Sorry. It was not possible to create this entry!");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Sorry. It was not possible to update the entry!");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference<span style='font-size: xx-small; font-weight: normal; display: block;'>(Write here the source of your<br />definition, such as a book,<br />article, or person.)</span>");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Term");
-define("_AM_IMGLOSSARY_ENTRYURL", "Related site<span style='font-size: xx-small; font-weight: normal; display: block;'>(Please enter a valid URL with<br />or without the HTTP prefix.)</span>");
+define("_AM_IMGLOSSARY_ENTRYURL", "Related site");
 define("_AM_IMGLOSSARY_FILEEXISTS", "A file with that name already exists on server. Please choose another one!");
 define("_AM_IMGLOSSARY_GOMOD", "Go to module");
 define("_AM_IMGLOSSARY_HELP", "Help");
@@ -160,4 +160,8 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERCOM", "Comments successfully moved to imGlo
 define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imGlossary");
 define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
+
+// imGlossary v1.01 RC-1
+define("_AM_IMGLOSSARY_ENTRYURLDSC", "Please enter a valid URL with or without the HTTP prefix.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Write here the source of your definition, such as a book, article, or person.");
 ?>
