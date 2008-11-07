@@ -67,19 +67,17 @@ if ( isset( $xoopsModule ) ) {
 
 	if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php' ) ) {
 		include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php';
-	} else {
-		include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/english/admin.php';
-	}
+	} else { include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/english/admin.php';	}
 
 	$i = -1;
 
 	$i++;
-	$headermenu[$i]['title'] = _PREFERENCES;
-	$headermenu[$i]['link']  = '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' );
-
-	$i++;
 	$headermenu[$i]['title'] = _AM_IMGLOSSARY_GOMOD;
 	$headermenu[$i]['link']  = ICMS_URL . '/modules/' . $glossdirname;
+
+	$i++;
+	$headermenu[$i]['title'] = _PREFERENCES;
+	$headermenu[$i]['link']  = '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule -> getVar( 'mid' );
 
 	$i++;
 	$headermenu[$i]['title'] = _AM_IMGLOSSARY_UPDATEMOD;
