@@ -249,8 +249,10 @@ switch ( $op ) {
 		$xoopsTpl -> assign( 'showcenter', $xoopsModuleConfig['showcenter'] );
 		$xoopsTpl -> assign( 'showrandom', $xoopsModuleConfig['showrandom'] );
 		
-		} 
-$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' );
+		}
+
+if ( $xoopsModuleConfig['rssfeed'] ) {
+$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); }
 $xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';

@@ -53,16 +53,16 @@ $modversion = array(
 	);
 
 // 	** Contributors **
-$modversion['people']['developers'] [] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url]&nbsp;&nbsp;<span style='font-size: smaller;'>( pietjebell31 [at] hotmail [dot] com )</span>";
-$modversion['people']['testers']    [] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url]";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=10]sato-san[/url] (German)";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=371]wuddel[/url] (German)";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=179]McDonald[/url] (Dutch)";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=14]GibaPhp[/url] (Portuguese-Brazil)";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=480]algalochkin[/url] (Russian)";
-$modversion['people']['translators'][] = "[url=http://community.impresscms.org/userinfo.php?uid=97]debianus[/url] (Spanish)";
-$modversion['people']['other']      [] = "<a href='http://www.famfamfam.com' target='_blank'>famfamfam.org</a> (icons)";
-$modversion['people']['other']      [] = "<a href='http://materia.infinitiv.it' target='_blank'>Materia</a> (icons)";
+$modversion['people']['developers'] [] = '<a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a>&nbsp;&nbsp;<span style="font-size: smaller;">( pietjebell31 [at] hotmail [dot] com )</span>';
+$modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a>';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=10" target="_blank">sato-san</a> (German)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a> (Portuguese-Brazil)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a> (Dutch)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a> (Russian)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=97" target="_blank">debianus</a> (Spanish)';
+$modversion['people']['other']      [] = '&middot; <a href="http://www.famfamfam.com" target="_blank">famfamfam.org</a> (icons)';
+$modversion['people']['other']      [] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
 //	** If Release Candidate **
 //$modversion['warning'] = _MODABOUT_WARNING_RC;
@@ -324,6 +324,20 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SEARCHCOLORDSC';
 $modversion['config'][$i]['formtype'] = 'textbox';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = '#FFFF00';
+$i++;
+$modversion['config'][$i]['name'] = 'rssfeed';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_SELECTFEED';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SELECTFEED_DSC';
+$modversion['config'][$i]['formtype'] = 'yesno';
+$modversion['config'][$i]['valuetype'] = 'int';
+$modversion['config'][$i]['default'] = 1;
+$i++;
+$modversion['config'][$i]['name'] = 'rssfeedtotal';
+$modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_FEEDSTOTAL';
+$modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_FEEDSTOTALDSC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = '15';
 $i = 0;
 
 //Comments
