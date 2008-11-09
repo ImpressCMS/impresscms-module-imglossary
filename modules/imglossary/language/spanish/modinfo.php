@@ -106,4 +106,10 @@ define("_MI_IMGLOSSARY_FORM_INBETWEEN", "Inbetween");
 define("_MI_IMGLOSSARY_FORM_TINYEDITOR", "TinyEditor");
 define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
 define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
+
+// version 1.01
+define( '_MI_IMGLOSSARY_SELECTFEED', 'Use RSS feed?' );
+define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'Default: <em>Yes</em>'  );
+define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'How many terms to display in RSS feed?' );
+define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'Default: <em>15</em>' );
 ?>
