@@ -4,7 +4,7 @@
 *
 * Based upon Wordbook 1.16
 *
-* File: language/english/modinfo.php
+* File: language/russian/modinfo.php
 *
 * @copyright		http://www.xoops.org/ The XOOPS Project
 * @copyright		XOOPS_copyrights.txt
@@ -122,8 +122,8 @@ define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
 define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
 
 // version 1.01
-define( '_MI_IMGLOSSARY_SELECTFEED', 'Use RSS feed?' );
-define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'Default: <em>Yes</em>'  );
-define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'How many terms to display in RSS feed?' );
-define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'Default: <em>15</em>' );
+define( '_MI_IMGLOSSARY_SELECTFEED', 'Использовать RSS канал?' );
+define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'По умолчанию: <em>Да</em>'  );
+define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'Сколько терминов отображать в RSS канале?' );
+define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'По умолчанию: <em>15</em>' );
 ?>
