@@ -80,7 +80,7 @@ define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Термин");
 define("_AM_IMGLOSSARY_ENTRYURL", "Связанный сайт");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Файл с таким именем уже имеетсы на сервере. Пожалуйста, выберите другое имя файла!");
-define("_AM_IMGLOSSARY_GOMOD", "Перейти в модуль");
+define("_AM_IMGLOSSARY_GOMOD", "В модуль");
 define("_AM_IMGLOSSARY_HELP", "Помощь");
 define("_AM_IMGLOSSARY_ID", "Id");
 define("_AM_IMGLOSSARY_INDEX", "Индекс");
@@ -147,7 +147,7 @@ define("_AM_IMGLOSSARY_NOCOLEXISTS", "Извините, категории зд�
 define("_AM_IMGLOSSARY_SHOWOFFLINE", "Автономный режим");
 define("_AM_IMGLOSSARY_COMMENTS", "Комментарии");
 define("_AM_IMGLOSSARY_ABOUT", "О модуле");
-define("_AM_IMGLOSSARY_UPDATEMOD", "Обновить модуль");
+define("_AM_IMGLOSSARY_UPDATEMOD", "Обновление");
 
 // Import 
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Скрипт импорта Wordbook &mdash;&gt; imGlossary");
