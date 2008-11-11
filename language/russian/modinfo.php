@@ -81,7 +81,7 @@ define("_MI_IMGLOSSARY_ADMENU1", "Индекс");
 define("_MI_IMGLOSSARY_ADMENU2", "Добавить категорию");
 define("_MI_IMGLOSSARY_ADMENU3", "Добавить запись");
 define("_MI_IMGLOSSARY_ADMENU4", "Блоки");
-define("_MI_IMGLOSSARY_ADMENU5", "Перейти в модуль");
+define("_MI_IMGLOSSARY_ADMENU5", "В модуль");
 //mondarse
 define("_MI_IMGLOSSARY_ADMENU6", "Импорт");
 
