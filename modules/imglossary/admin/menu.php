@@ -51,16 +51,19 @@ $adminmenu[3]['small'] = 'images/icon/blocks_small.png';
 if ( imglossary_dictionary_module_included() ) {
 	$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
 	$adminmenu[4]['link']  = 'admin/importdictionary.php';
+	$adminmenu[4]['icon']  = 'images/icon/dictionary.png';
 }
 
 if ( imglossary_wordbook_module_included() ) {
 	$adminmenu[5]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wordbook';
 	$adminmenu[5]['link']  = 'admin/importwordbook.php';
+	$adminmenu[5]['icon']  = 'images/icon/wordbook.png';
 }
 
 if ( imglossary_wiwimod_module_included() ) {
 	$adminmenu[6]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wiwimod';
 	$adminmenu[6]['link']  = 'admin/importwiwimod.php';
+	$adminmenu[6]['icon']  = 'images/icon/wiwimod.png';
 }
 
 if ( isset( $xoopsModule ) ) {
