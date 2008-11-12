@@ -30,28 +30,6 @@ imGlossary is installed as a regular ICMS module, which means you should copy th
 
 
 --------
-RSS Feed
---------
-To be able to use RSS feed with ImpressCMS 1.1 you have to apply to following fix to the file <your_url>/class/icmsfeed.php:
-
-Find this code in the file:
-         function render() {
-		//header ('Content-Type:text/xml; charset='._CHARSET);
-		$xoopsOption['template_main'] = "db:system_rss.html";
-		$tpl = new XoopsTpl();
-		
-Now add the line just before '//header .. ' as showed below:
-         function render() {
-		include_once ICMS_ROOT_PATH . '/class/template.php';
-		//header ('Content-Type:text/xml; charset='._CHARSET);
-		$xoopsOption['template_main'] = "db:system_rss.html";
-		$tpl = new XoopsTpl();
-		
-Save the file and upload the file to your server.
-The RSS feed doesn't work when your logged in with debug on.
-
-
---------
 Feedback
 --------
 As every other man, I'd like to know if this module is useful to you, if it has any bugs, if it can be in any way improved.
