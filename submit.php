@@ -72,14 +72,22 @@ switch ( $op ) {
 		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
 		
 		// Captcha Hack
-		if ( @include_once ICMS_ROOT_PATH . "/class/captcha/captcha.php" ) {
-			if ( $xoopsModuleConfig['captcha'] == 1 ) {
-				$xoopsCaptcha = XoopsCaptcha::instance();
-					if ( ! $xoopsCaptcha -> verify( true ) ) {
-						redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() );
-					}
-				}
-			}			
+		// Verify entered code 
+		if ( class_exists( 'XoopsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
+			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
+				$xoopsCaptcha = XoopsCaptcha::instance(); 
+				if ( ! $xoopsCaptcha -> verify( true ) ) { 
+					redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
+				} 
+			} 
+		} elseif ( class_exists( 'IcmsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
+			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
+				$icmsCaptcha = IcmsCaptcha::instance(); 
+				if ( ! $icmsCaptcha -> verify( true ) ) { 
+					redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+				} 
+			} 
+		}			
 		// Captcha Hack
 
 		include_once ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
