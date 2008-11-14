@@ -27,9 +27,9 @@ include '../../mainfile.php';
 include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 include ICMS_ROOT_PATH . '/header.php';
 
-global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule;
+global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule, $xoopsCaptcha;
 
-$result = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
+$result = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) );
 if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1' ) {
 	redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOCOLEXISTS );
 	exit();
@@ -60,7 +60,7 @@ if( !isset( $_POST['suggest'] ) ) {
 }
 
 if ( $suggest > 0 ) {
-	$terminosql = $xoopsDB -> query( "SELECT term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 AND entryID=" . $suggest . "" );
+	$terminosql = $xoopsDB -> query( 'SELECT term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 AND entryID=' . $suggest . '' );
 	list( $termino ) = $xoopsDB -> fetchRow( $terminosql );
 } else {
 	$termino = '';
@@ -71,26 +71,28 @@ switch ( $op ) {
 		
 		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
 		
-		// Captcha Hack
-		// Verify entered code 
-		if ( class_exists( 'XoopsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
-			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
-				$xoopsCaptcha = XoopsCaptcha::instance(); 
-				if ( ! $xoopsCaptcha -> verify( true ) ) { 
-					redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
+		if ( $xoopsModuleConfig['captcha'] ) {
+			// Captcha Hack
+			// Verify entered code 
+			if ( class_exists( 'XoopsCaptcha' ) ) { 
+				if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
+					$xoopsCaptcha = XoopsCaptcha::instance(); 
+					if ( ! $xoopsCaptcha -> verify( true ) ) { 
+						redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
+					} 
 				} 
-			} 
-		} elseif ( class_exists( 'IcmsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
-			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
-				$icmsCaptcha = IcmsCaptcha::instance(); 
-				if ( ! $icmsCaptcha -> verify( true ) ) { 
-					redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+			} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
+				if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
+					$icmsCaptcha = IcmsCaptcha::instance(); 
+					if ( ! $icmsCaptcha -> verify( true ) ) { 
+						redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+					} 
 				} 
-			} 
-		}			
-		// Captcha Hack
-
-		include_once ICMS_ROOT_PATH . "/modules/" . $xoopsModule -> dirname() . "/include/functions.php";
+			}
+			// Captcha Hack
+		}
+		
+		include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/functions.php';
 		$myts = & MyTextSanitizer :: getInstance();
 
 		$html = 1;
@@ -103,7 +105,7 @@ switch ( $op ) {
 			if ( $xoopsModuleConfig['anonpost'] == 1 ) {
 				$uid = 0;
 			} else {
-				redirect_header( "index.php", 3, _NOPERM );
+				redirect_header( 'index.php', 3, _NOPERM );
 				exit();
 			} 
 		} 
@@ -150,21 +152,21 @@ switch ( $op ) {
 				$usermail = '';
 			} else {
 				$username = $xoopsUser -> getVar( 'uname', 'E' );
-				$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=$username" );
+				$result = $xoopsDB -> query( 'SELECT email FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uname=$username' );
 				list( $usermail ) = $xoopsDB -> fetchRow( $result );
 			}
 
 			if ( $xoopsModuleConfig['mailtoadmin'] == 1 ) {
 				$adminMessage = sprintf( _MD_IMGLOSSARY_WHOSUBMITTED, $username );
-				$adminMessage .= "<b>" . $term . "</b>\n";
-				$adminMessage .= "" . _MD_IMGLOSSARY_EMAILLEFT . " $usermail\n";
-				$adminMessage .= "\n";
+				$adminMessage .= '<b>' . $term . '</b>\n';
+				$adminMessage .= _MD_IMGLOSSARY_EMAILLEFT . ' $usermail\n';
+				$adminMessage .= '\n';
 				
 				if ($notifypub == '1') {
 					$adminMessage .= _MD_IMGLOSSARY_NOTIFYONPUB;
 				}
 				
-				$adminMessage .= "\n" . $_SERVER['HTTP_USER_AGENT'] . "\n";
+				$adminMessage .= '\n' . $_SERVER['HTTP_USER_AGENT'] . '\n';
 				$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONSUB;
 				$xoopsMailer =& getMailer();
 				$xoopsMailer -> useMail();
@@ -174,7 +176,7 @@ switch ( $op ) {
 				$xoopsMailer -> setSubject( $subject );
 				$xoopsMailer -> setBody( $adminMessage );
 				$xoopsMailer -> send();
-				$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_IMGLOSSARY_THANKS1 . "";
+				$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
 			}
 
 			if ( $xoopsModuleConfig['autoapprove'] == 1 ) {
@@ -198,37 +200,21 @@ switch ( $op ) {
 			$name = ucfirst( $xoopsUser -> getVar( 'uname' ) );
         }
 
-		//$xoopsOption['template_main'] = 'imglossary_submit.html';
-		//include ICMS_ROOT_PATH . '/header.php';
-		
-		// $xoopsTpl -> assign( 'send_def_to', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
-		// $xoopsTpl -> assign( 'send_def_g', sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) );
-		// $xoopsTpl -> assign( 'wb_user_name', $name );
-
 		$block = 1;
 		$html = 1;
 		$smiley = 1;
 		$xcodes = 1;
 		$breaks = 1;
 		$categoryID = 0;
-		$notifypub = 1;
+		$notifypub = 0;
 		$term = $termino;
 		$definition = '';
 		$ref = '';
 		$url = '';
 
 		include_once 'include/storyform.inc.php';
-		
-		// $xoopsTpl -> assign( 'modulename', $xoopsModule -> dirname() );
 
 		$sform -> assign( $xoopsTpl );
-
-		// $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
-		// $xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );		
-		
-		// $xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
-
-		//include ICMS_ROOT_PATH . '/footer.php';
 		
 		break;
 } 

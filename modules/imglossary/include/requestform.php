@@ -24,13 +24,13 @@
  
 include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 
-echo "<div>";
-echo "<div style='float: left; font-size: smaller;'><a href='" . ICMS_URL . "'>" . _MD_IMGLOSSARY_HOME . "</a> >	<a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/index.php'>".$xoopsModule -> name()."</a> > "._MD_IMGLOSSARY_SUBMITART."</div>";
-echo "<div style='font-size: 18px; text-align: right; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;'>" . $xoopsModule -> name() . "</div>";
-echo "</div><hr>";
+echo '<div>';
+echo '<div style="float: left; font-size: smaller;"><a href="' . ICMS_URL . '">' . _MD_IMGLOSSARY_HOME . '</a> >	<a href="' . ICMS_URL . '/modules/' . $xoopsModule -> dirname() . '/index.php">' . $xoopsModule -> name() . '</a> > ' . _MD_IMGLOSSARY_SUBMITART . '</div>';
+echo '<div style="font-size: 18px; text-align: right; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;">' . $xoopsModule -> name() . '</div>';
+echo '</div><hr>';
 
-echo "<br /><fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; font-size: 105%;'>" . sprintf( _MD_IMGLOSSARY_ASKFORDEF, ucfirst( $xoopsModule -> name() ) ) . "</legend>";
-echo "<div style='padding: 8px;'>". _MD_IMGLOSSARY_INTROREQUEST . "</div></fieldset>";
+echo '<br /><fieldset style="border: #e8e8e8 1px solid;"><legend style="display: inline; font-weight: bold; font-size: 105%;">' . sprintf( _MD_IMGLOSSARY_ASKFORDEF, $xoopsModule -> name() ) . '</legend>';
+echo '<div style="padding: 8px;">' . _MD_IMGLOSSARY_INTROREQUEST . '</div></fieldset>';
 
 $username_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( 'uname', 'E' ) : '';
 $usermail_v = !empty( $xoopsUser ) ? $xoopsUser -> getVar( 'email', 'E' ) : '';
@@ -58,11 +58,15 @@ if ( is_object( $xoopsUser ) ) {
 	$rform -> addElement( $notify_checkbox );
 } 
 
-// Captcha Hack
-if ( $xoopsModuleConfig['captcha'] == 1 ) {
-	$rform -> addElement( new XoopsFormCaptcha() );
+if ( $xoopsModuleConfig['captcha'] ) {
+	// Captcha Hack
+	if ( class_exists( 'XoopsFormCaptcha' ) ) { 
+		$sform -> addElement( new XoopsFormCaptcha() ); 
+	} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
+		$sform -> addElement( new IcmsFormCaptcha() ); 
+	}
+	// Captcha Hack 
 }
-// Captcha Hack
 
 $submit_button = new XoopsFormButton( '', 'submit', _MD_IMGLOSSARY_SUBMIT, 'submit' );
 $rform -> addElement( $submit_button );

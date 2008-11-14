@@ -43,7 +43,6 @@ $sform -> setExtra( 'enctype="multipart/form-data"' );
 
 if ( $xoopsModuleConfig['multicats'] == '1' ) {
 	ob_start();
-		//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 		$mytree -> makeMySelBox( 'name', 'name', $categoryID );
 		$sform -> addElement( new XoopsFormLabel( _MD_IMGLOSSARY_CATEGORY, ob_get_contents() ) );
 	ob_end_clean();
@@ -52,8 +51,8 @@ if ( $xoopsModuleConfig['multicats'] == '1' ) {
 // This part is common to edit/add
 $sform -> addElement( new XoopsFormText( _MD_IMGLOSSARY_ENTRY, 'term', 50, 80, $term ), true );
 
-$def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', _MD_IMGLOSSARY_WRITEHERE, 15, 50 );
-// $def_block -> setExtra( 'onfocus="this.select()"' );
+$def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', '', 15, 50 );
+$def_block -> SetDescription( '<small>' . _MD_IMGLOSSARY_WRITEHERE . '</small>' );
 $sform -> addElement( $def_block, true );
 
 $sform -> addElement( new XoopsFormTextArea( _MD_IMGLOSSARY_REFERENCE, 'ref', $ref, 5, 50 ), false );
@@ -68,11 +67,15 @@ if ( is_object( $xoopsUser ) ) {
 	$sform -> addElement( $notify_checkbox );
 }
 
-// Captcha Hack
-if ( $xoopsModuleConfig['captcha'] == 1 ) {
-	$sform -> addElement( new XoopsFormCaptcha() );
+if ( $xoopsModuleConfig['captcha'] ) {
+	// Captcha Hack
+	if ( class_exists( 'XoopsFormCaptcha' ) ) { 
+		$sform -> addElement( new XoopsFormCaptcha() ); 
+	} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
+		$sform -> addElement( new IcmsFormCaptcha() ); 
+	}
+	// Captcha Hack 
 }
-// Captcha Hack 
 
 $button_tray = new XoopsFormElementTray( '', '' );
 $hidden = new XoopsFormHidden( 'op', 'post' );
@@ -82,5 +85,5 @@ $button_tray -> addElement( new XoopsFormButton( '', 'post', _MD_IMGLOSSARY_CREA
 $sform -> addElement( $button_tray );
 $sform -> display();
 
-include XOOPS_ROOT_PATH . '/footer.php';
+include ICMS_ROOT_PATH . '/footer.php';
 ?>
