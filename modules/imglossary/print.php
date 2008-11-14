@@ -33,7 +33,7 @@ foreach ( $_GET as $k => $v )	{
 }
 
 if ( empty( $entryID ) ) {
-	redirect_header( "index.php" );
+	redirect_header( 'index.php' );
 }
 
 function printPage( $entryID ) {
@@ -42,13 +42,13 @@ function printPage( $entryID ) {
 	
 	global $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $myts;
 	
-	$result1 = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID='$entryID' AND submit=0 ORDER BY datesub" );
+	$result1 = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
 	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow( $result1 );
 
-	$result2 = $xoopsDB -> query( "SELECT name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
+	$result2 = $xoopsDB -> query( 'SELECT name FROM ' . $xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
 	list ($name) = $xoopsDB -> fetchRow( $result2 );
 
-	$result3 = $xoopsDB -> query( "SELECT name, uname FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uid=$uid" );
+	$result3 = $xoopsDB -> query( 'SELECT name, uname FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uid=' . $uid );
 	list( $authorname, $username ) = $xoopsDB -> fetchRow( $result3 );
 
 	$datetime = formatTimestamp( $datesub, $xoopsModuleConfig['dateformat'] );
@@ -57,7 +57,7 @@ function printPage( $entryID ) {
 	$definition = str_replace( "[pagebreak]", "<br style=\"page-break-after:always;\">", $definition );
 	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
-	if ($authorname == '') {
+	if ( $authorname == '' ) {
 		$authorname = $myts -> makeTboxData4Show( $username );
 	} else {
 		$authorname = $myts -> makeTboxData4Show( $authorname );

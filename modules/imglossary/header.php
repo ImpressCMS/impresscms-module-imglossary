@@ -24,11 +24,11 @@
  
 global $xoopsModule;
 
-include "../../mainfile.php";
+include '../../mainfile.php';
 
 $glossdirname = basename( dirname( __FILE__ ) );
 
-include_once ICMS_ROOT_PATH . "/modules/" . $glossdirname . "/include/functions.php";
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
 $myts = &MyTextSanitizer::getInstance();
 
 ?>

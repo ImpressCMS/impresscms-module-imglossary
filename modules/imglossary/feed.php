@@ -38,7 +38,7 @@ while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {
 	$category = htmlspecialchars( $mycat['name'] );
 		
 	$title = htmlspecialchars( $myrow['term'] );
-	$date  = date( 'D, d M Y H:i:s', $myrow['datesub'] );
+	$date  = formatTimestamp( $myrow['datesub'], 'D, d M Y H:i:s' );
 	$text  = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
 	$text  = htmlspecialchars( $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] ) );
 	$link  = ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] );
@@ -65,5 +65,6 @@ while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {
 
 $myFeed -> render();
 
-	} else { echo 'RSS feed for ' . $xoopsModule -> getVar( 'name' ) . ' is turned off.'; }
+} else { echo 'RSS feed for ' . $xoopsModule -> getVar( 'name' ) . ' is turned off.'; }
+
 ?>

@@ -113,7 +113,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	
 	$thisterm['ref'] = $myts -> makeTboxData4Show( $ref );
 	$thisterm['url'] = $myts -> makeClickable( $url, $allowimage = 0 );
-	$thisterm['submitter'] = xoops_getLinkedUnameFromId( $uid );
+	$thisterm['submitter'] = icms_getLinkedUnameFromId( $uid );
 	$thisterm['submit'] = intval( $submit );
 	$thisterm['datesub'] = formatTimestamp( $datesub, $xoopsModuleConfig['dateformat'] );
 	$thisterm['counter'] = intval( $counter );
@@ -149,7 +149,7 @@ $xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counte
 $xoopsTpl -> assign( 'showsbookmarks', $xoopsModuleConfig['showsbookmarks'] );
 $xoopsTpl -> assign( 'sbookmarks', imglossary_sbmarks( $entryID, $thisterm['term'] ) );
 
-$xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
+$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 //Comments
 include ICMS_ROOT_PATH . '/include/comment_view.php';

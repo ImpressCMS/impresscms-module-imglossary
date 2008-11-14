@@ -53,7 +53,7 @@ $title = $myts -> makeTboxData4Show( $myrow['term'] );
 $submitter = strip_tags( xoops_getLinkedUnameFromId( $myrow['uid'] ) );
 $category = $mycat['name'];
 $whowhen = sprintf( '', $submitter, $date );
-$content = '<h1>' . $title . '</h1><br /><br />' . $myts -> displayTarea( $myrow['definition'], 1, 1, 1, 1, 1 );
+$content = '<h1>' . $title . '</h1><br /><br />' . $myts -> displayTarea( $myrow['definition'], $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] );
 
 $slogan = $xoopsConfig['sitename'] . ' - ' . $xoopsConfig['slogan'];
 $keywords = $title . ' ' . $category . ' ' . $submitter . ' ' . $slogan;

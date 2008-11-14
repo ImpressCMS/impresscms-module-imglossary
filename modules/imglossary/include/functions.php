@@ -29,23 +29,23 @@
  * @param integer $name:  0 Use Usenamer 1 Use realname 
  * @return 
  **/
-function imglossary_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
+function imglossary_getLinkedUnameFromId( $userid = 0, $name = 0 ) {
 		if ( !is_numeric( $userid ) ) {
 		 	return $userid;
 		}
 		
 		$userid = intval( $userid );
 		if ( $userid > 0 ) {
-            $member_handler =& xoops_gethandler('member');
-            $user =& $member_handler -> getUser($userid);
+            $member_handler =& xoops_gethandler( 'member' );
+            $user =& $member_handler -> getUser( $userid );
 
             if ( is_object($user) ) {
                 $ts =& MyTextSanitizer::getInstance();
 				$username = $user -> getVar('uname');
 				$usernameu = $user -> getVar('name'); 
 				
-				if ( ($name) && !empty($usernameu) ) {
-                 	$username = $user -> getVar('name');
+				if ( ($name) && !empty( $usernameu ) ) {
+                 	$username = $user -> getVar( 'name' );
                 }
 				if ( !empty($usernameu)) {
 					$linkeduser = "$usernameu [<a href='" . ICMS_ROOT_PATH . "/userinfo.php?uid=" . $userid . "'>" . $ts -> htmlSpecialChars($username) . "</a>]";
@@ -61,24 +61,24 @@ function imglossary_getLinkedUnameFromId( $userid = 0, $name= 0 ) {
 function imglossary_getuserForm( $user ) {
 	global $xoopsDB, $xoopsConfig;
 
-	echo "<select name='author'>";
-	echo "<option value='-1'>------</option>";
-	$result = $xoopsDB -> query( "SELECT uid, uname FROM " . $xoopsDB -> prefix( 'users' ) . " ORDER BY uname" );
+	echo '<select name="author">';
+	echo '<option value="-1">------</option>';
+	$result = $xoopsDB -> query( 'SELECT uid, uname FROM ' . $xoopsDB -> prefix( 'users' ) . ' ORDER BY uname' );
 
 	while( list( $uid, $uname ) = $xoopsDB -> fetchRow( $result ) ) {
 		if ( $uid == $user ) {
-			$opt_selected = "selected='selected'";
+			$opt_selected = 'selected="selected"';
 		} else {
-			$opt_selected = "";
+			$opt_selected = '';
 		}
-		echo "<option value='" . $uid . "' $opt_selected>" . $uname . "</option>";
+		echo '<option value="' . $uid . '" $opt_selected>' . $uname . '</option>';
 	}
-	echo "</select></div>";
+	echo '</select></div>';
 }
 
 function imglossary_calculateTotals() {
 	global $xoopsUser, $xoopsDB, $xoopsModule;
-	$result01 = $xoopsDB -> query( "SELECT categoryID, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
+	$result01 = $xoopsDB -> query( 'SELECT categoryID, total FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) );
 	list( $totalcategories ) = $xoopsDB -> getRowsNum( $result01 );
 	while (list ( $categoryID, $total ) = $xoopsDB -> fetchRow( $result01 ) ) {
 		$newcount = imglossary_countByCategory ( $categoryID );
@@ -98,14 +98,14 @@ function imglossary_countByCategory( $c ) {
 
 function imglossary_countCats() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
-	$cats = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . "" );
+	$cats = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) );
 	$totalcats = $xoopsDB -> getRowsNum( $cats );
 	return $totalcats;
 }
 
 function imglossary_countWords() {
     global $xoopsUser, $xoopsDB, $xoopsModule;
-	$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 AND request=0" );
+	$pubwords = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 AND request=0' );
 	$publishedwords = $xoopsDB -> getRowsNum( $pubwords );
 	return $publishedwords;
 }
@@ -183,16 +183,16 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 		$pL = '';
 		$pR = '';
 
-		if( ( $pos = strpos( $part, "<" ) ) === false )
+		if( ( $pos = strpos( $part, '<' ) ) === false )
 			$pL = $part;
 		elseif ( $pos > 0 ) {
 			$pL = substr( $part, 0, $pos );
 			$pR = substr( $part, $pos, strlen( $part ) );
 		}
-		if( $pL != "" )
+		if( $pL != '' )
 			$parts[$key] = preg_replace( '|(' . quotemeta($needle) . ')|iU', $hlS . '\\1' . $hlE, $pL ) . $pR;
 	}
-	return ( implode( ">", $parts ) );
+	return ( implode( '>', $parts ) );
 }
 
 function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
@@ -204,37 +204,37 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 
 	global $xoopsModule, $xoopsDB;
 	// Code to make links out of glossary terms
-		$parts = explode( "¤", $definition );
+		$parts = explode( '¤', $definition );
 
 		// First, retrieve all terms from the glossary...
-		$allterms = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
+		$allterms = $xoopsDB -> query( 'SELECT entryID, term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0' );
 		while ( list( $entryID, $term ) = $xoopsDB -> fetchrow( $allterms ) ) {
 			foreach( $parts as $key => $part ) {
 				if ( $term != $glossaryterm ) {
 					// singular
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = '<span><b><a href="' . ICMS_URL . '/modules/' . $xoopsModule -> dirname() . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural
-					$term = $term . "s";
+					$term = $term . 's';
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . $xoopsModule -> dirname() . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 					// plural with e
-					$term = $term . "es";
+					$term = $term . 'es';
 					$term_q = preg_quote( $term, '/' );
 					$search_term = "/\b$term_q\b/i";
-					$replace_term = "<span><b><a style='color: #2F5376;' href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/entry.php?entryID=" . intval( $entryID ) . "'>" . $term . "</a></b></span>";
+					$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . $xoopsModule -> dirname() . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
 					$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				}
 			}
 		}
-	$definition = implode( "¤", $parts );
+	$definition = implode( '¤', $parts );
 	
 	return $definition;
 }	
@@ -295,8 +295,8 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 	$editor_configs['value'] = $value;
 	$editor_configs['rows'] = 35;
 	$editor_configs['cols'] = 60;
-	$editor_configs['width'] = "100%";
-	$editor_configs['height'] = "500px";
+	$editor_configs['width'] = '100%';
+	$editor_configs['height'] = '500px';
 
 	$isadmin = ( ( is_object( $xoopsUser ) && !empty( $xoopsUser ) ) && $xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) ? true : false;
         if ( $isadmin == true ) {
@@ -306,70 +306,61 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
         }
 
 	switch($formuser) {
-	case "fck":
-		if ( is_readable( ICMS_ROOT_PATH . "/class/xoopseditor/fckeditor/formfckeditor.php" ) )	{
-			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/fckeditor/formfckeditor.php" );
+	case 'fck':
+		if ( is_readable( ICMS_ROOT_PATH . '/class/xoopseditor/fckeditor/formfckeditor.php' ) )	{
+			include_once( ICMS_ROOT_PATH . '/class/xoopseditor/fckeditor/formfckeditor.php' );
 			$editor = new XoopsFormFckeditor( $editor_configs,true );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		}
 		break;
 
-	case "htmlarea":
-		if ( is_readable( ICMS_ROOT_PATH . "/class/htmlarea/formhtmlarea.php" ) )	{
-			include_once( ICMS_ROOT_PATH . "/class/htmlarea/formhtmlarea.php" );
-			$editor = new XoopsFormHtmlarea( $caption, $name, $value );
+	case 'dhtml':
+		if ( is_readable( ICMS_ROOT_PATH . '/editors/dhtmltextarea/dhtmltextarea.php' ) )	{
+			include_once( ICMS_ROOT_PATH . '/editors/dhtmltextarea/dhtmltextarea.php' );
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		}
 		break;
 
-	case "dhtml":
-		if ( is_readable( ICMS_ROOT_PATH . "/editors/dhtmltextarea/dhtmltextarea.php" ) )	{
-			include_once( ICMS_ROOT_PATH . "/editors/dhtmltextarea/dhtmltextarea.php" );
-			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, 20, 60 );
-		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
-		}
-		break;
-
-	case "textarea":
+	case 'textarea':
 		$editor = new XoopsFormTextArea( $caption, $name, $value );
 		break;
 
-	case "koivi":
-		if ( is_readable( ICMS_ROOT_PATH . "/class/xoopseditor/koivi/formwysiwygtextarea.php" ) ) {
-			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/koivi/formwysiwygtextarea.php" );
+	case 'koivi':
+		if ( is_readable( ICMS_ROOT_PATH . '/class/xoopseditor/koivi/formwysiwygtextarea.php' ) ) {
+			include_once( ICMS_ROOT_PATH . '/class/xoopseditor/koivi/formwysiwygtextarea.php' );
 			$editor = new XoopsFormWysiwygTextArea( $caption, $name, $value, '100%', '500px' );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		}
 		break;
 
-	case "tinyeditor":
-		if ( is_readable( ICMS_ROOT_PATH . "/class/xoopseditor/tinyeditor/formtinyeditortextarea.php" ) ) {
-			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/tinyeditor/formtinyeditortextarea.php" );
+	case 'tinyeditor':
+		if ( is_readable( ICMS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php' ) ) {
+			include_once( ICMS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php' );
 			$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => $editor_configs['width'], 'height' => $editor_configs['height'] ) );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		}
 		break;
 
-	case "dhtmlext":
-		if ( is_readable( ICMS_ROOT_PATH . "/class/xoopseditor/dhtmlext/dhtmlext.php" ) )	{
-			include_once( ICMS_ROOT_PATH . "/class/xoopseditor/dhtmlext/dhtmlext.php" );
-			$editor = new XoopsFormDhtmlTextAreaExtended( $caption, $name, $value, 10, 50 );
+	case 'dhtmlext':
+		if ( is_readable( ICMS_ROOT_PATH . '/class/xoopseditor/dhtmlext/dhtmlext.php' ) )	{
+			include_once( ICMS_ROOT_PATH . '/class/xoopseditor/dhtmlext/dhtmlext.php' );
+			$editor = new XoopsFormDhtmlTextAreaExtended( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 		}
 		break;
 
 	case 'tinymce' :
-        if ( is_readable( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" ) ) {
-			include_once( ICMS_ROOT_PATH . "/editors/tinymce/formtinymce.php" );
+        if ( is_readable( ICMS_ROOT_PATH . '/editors/tinymce/formtinymce.php' ) ) {
+			include_once( ICMS_ROOT_PATH . '/editors/tinymce/formtinymce.php' );
 			$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => $editor_configs['width'], 'height' => $editor_configs['height'] ) );
 		} else {
-			$editor = new XoopsFormDhtmlTextArea($caption, $name, $value, 20, 60);
+			$editor = new XoopsFormDhtmlTextArea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
         }
         break;
 	}
