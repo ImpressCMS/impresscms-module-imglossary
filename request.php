@@ -31,24 +31,28 @@ if ( empty( $_POST['submit'] ) ) {
 	include 'include/requestform.php';
 	include ICMS_ROOT_PATH . '/footer.php';
 } else {
-	// Captcha Hack
-	// Verify entered code 
-	if ( class_exists( 'XoopsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
-		if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
-			$xoopsCaptcha = XoopsCaptcha::instance(); 
-			if ( ! $xoopsCaptcha -> verify( true ) ) { 
-				redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
+	
+	if ( $xoopsModuleConfig['captcha'] ) {
+		// Captcha Hack
+		// Verify entered code 
+		if ( class_exists( 'XoopsCaptcha' ) ) { 
+			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
+				$xoopsCaptcha = XoopsCaptcha::instance(); 
+				if ( ! $xoopsCaptcha -> verify( true ) ) { 
+					redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
+				} 
 			} 
-		} 
-	} elseif ( class_exists( 'IcmsCaptcha' ) || $xoopsModuleConfig['captcha'] == 1 ) { 
-		if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
-			$icmsCaptcha = IcmsCaptcha::instance(); 
-			if ( ! $icmsCaptcha -> verify( true ) ) { 
-				redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+		} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
+			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
+				$icmsCaptcha = IcmsCaptcha::instance(); 
+				if ( ! $icmsCaptcha -> verify( true ) ) { 
+					redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+				} 
 			} 
-		} 
-	}			
-	// Captcha Hack
+		}
+		// Captcha Hack
+	}
+		
 	extract( $_POST );
 	$display = 'D';
 	$myts =& MyTextSanitizer::getInstance();
@@ -83,7 +87,7 @@ if ( empty( $_POST['submit'] ) ) {
 	}
 
 	if ( $xoopsUser ) {
-		$result = $xoopsDB -> query( "SELECT email FROM " . $xoopsDB -> prefix( 'users' ) . " WHERE uname=" . $logname );
+		$result = $xoopsDB -> query( 'SELECT email FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uname=' . $logname );
 		list($address) = $xoopsDB -> fetchRow( $result );
 	} else {
 		$address = $xoopsConfig['adminmail'];
@@ -91,13 +95,13 @@ if ( empty( $_POST['submit'] ) ) {
 
 	if ( $xoopsModuleConfig['mailtoadmin'] == 1 )	{
 		$adminMessage = sprintf( _MD_IMGLOSSARY_WHOASKED, $logname );
-		$adminMessage .= "<b>" . $reqterm . "</b>\n";
-		$adminMessage .= "" . _MD_IMGLOSSARY_EMAILLEFT . " $address\n";
-		$adminMessage .= "\n";
+		$adminMessage .= '<b>' . $reqterm . '</b>\n';
+		$adminMessage .= _MD_IMGLOSSARY_EMAILLEFT . ' $address\n';
+		$adminMessage .= '\n';
 		if ( $notifypub == '1' ) {
 			$adminMessage .= _MD_IMGLOSSARY_NOTIFYONPUB;
 		}
-		$adminMessage .= "\n" . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . "\n";
+		$adminMessage .= '\n' . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . '\n';
 		$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONREQ;
 		$xoopsMailer =& getMailer();
 		$xoopsMailer -> useMail();
@@ -107,19 +111,19 @@ if ( empty( $_POST['submit'] ) ) {
 		$xoopsMailer -> setSubject( $subject );
 		$xoopsMailer -> setBody( $adminMessage );
 		$xoopsMailer -> send();
-		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . "<br />" . _MD_IMGLOSSARY_THANKS1 . "";
+		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
 		}
 
 	$conf_subject = _MD_IMGLOSSARY_THANKS2;
 	$userMessage = sprintf( _MD_IMGLOSSARY_GOODDAY2, $logname );
-	$userMessage .= "\n\n";
+	$userMessage .= '\n\n';
 	$userMessage .= sprintf( _MD_IMGLOSSARY_THANKYOU, $xoopsConfig['sitename'] );
-	$userMessage .= "\n";
+	$userMessage .= '\n';
 	$userMessage .= sprintf( _MD_IMGLOSSARY_REQUESTSENT, $xoopsConfig['sitename'] );
-	$userMessage .= "\n";
-	$userMessage .= "--------------\n";
-	$userMessage .= "" . $xoopsConfig['sitename'] . " " . _MD_IMGLOSSARY_WEBMASTER . "\n"; 
-	$userMessage .= "" . $xoopsConfig['adminmail'] . "";
+	$userMessage .= '\n';
+	$userMessage .= '--------------\n';
+	$userMessage .= $xoopsConfig['sitename'] . ' ' . _MD_IMGLOSSARY_WEBMASTER . '\n'; 
+	$userMessage .= $xoopsConfig['adminmail'];
 	$xoopsMailer =& getMailer();
 	$xoopsMailer -> useMail();
 	$xoopsMailer -> setToEmails( $address );
