@@ -52,18 +52,18 @@ $rform -> addElement( $email_text, false );
 $reqterm_text = new XoopsFormText( _MD_IMGLOSSARY_REQTERM, 'reqterm', 40, 150 );
 $rform -> addElement( $reqterm_text, true );
 
-if ( is_object( $xoopsUser ) ) {
-	$notify_checkbox = new XoopsFormCheckBox( '', 'notifypub', $notifypub );
-	$notify_checkbox -> addOption( 1, _MD_IMGLOSSARY_NOTIFY );
-	$rform -> addElement( $notify_checkbox );
-} 
+//if ( is_object( $xoopsUser ) ) {
+//	$notify_checkbox = new XoopsFormCheckBox( '', 'notifypub', $notifypub );
+//	$notify_checkbox -> addOption( 0, _MD_IMGLOSSARY_NOTIFY );
+//	$rform -> addElement( $notify_checkbox );
+//} 
 
 if ( $xoopsModuleConfig['captcha'] ) {
 	// Captcha Hack
 	if ( class_exists( 'XoopsFormCaptcha' ) ) { 
-		$sform -> addElement( new XoopsFormCaptcha() ); 
+		$rform -> addElement( new XoopsFormCaptcha() ); 
 	} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
-		$sform -> addElement( new IcmsFormCaptcha() ); 
+		$rform -> addElement( new IcmsFormCaptcha() ); 
 	}
 	// Captcha Hack 
 }

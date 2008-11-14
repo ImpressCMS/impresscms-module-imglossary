@@ -35,7 +35,7 @@ $columna = array ();
 
 // Options
 switch ( $op ) {
-	case "default":
+	case 'default':
 	default:
 
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule, $xoopsTpl;
@@ -81,7 +81,7 @@ switch ( $op ) {
 		if ( $xoopsModuleConfig['multicats'] == 1 )	{
 			// To display the list of categories
 			$block0 = array();
-			$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY name ASC" );
+			$resultcat = $xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' ORDER BY name ASC' );
 			while ( list( $catID, $name, $total) = $xoopsDB -> fetchRow( $resultcat ) ) {
 				$catlinks = array();
 				$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -96,7 +96,7 @@ switch ( $op ) {
 
 		// To display the recent entries block
 		$block1 = array();
-		$result05 = $xoopsDB -> query( "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC", $xoopsModuleConfig['indexperpage'], 0 );
+		$result05 = $xoopsDB -> query( 'SELECT entryID, term, datesub FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC', $xoopsModuleConfig['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
@@ -115,7 +115,7 @@ switch ( $op ) {
 
 		// To display the most read entries block
 		$block2 = array();
-		$result06 = $xoopsDB -> query( "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC", $xoopsModuleConfig['indexperpage'], 0 );
+		$result06 = $xoopsDB -> query( 'SELECT entryID, term, counter FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC', $xoopsModuleConfig['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
@@ -133,7 +133,7 @@ switch ( $op ) {
 		}
 
 		// To display the random term block
-		list($numrows) = $xoopsDB -> fetchRow( $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" ) );
+		list($numrows) = $xoopsDB -> fetchRow( $xoopsDB -> query( 'SELECT COUNT(*) FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0' ) );
 		if ( $numrows > 1 ) {
 			$numrows = $numrows-1;
 			mt_srand((double)microtime()*1000000);
@@ -142,7 +142,7 @@ switch ( $op ) {
 			$entrynumber = 0;
 		}
 
-		$resultZ = $xoopsDB -> query( "SELECT categoryID, entryID, term, definition, html, smiley, xcodes, breaks, comments FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 LIMIT $entrynumber, 1" );
+		$resultZ = $xoopsDB -> query( 'SELECT categoryID, entryID, term, definition, html, smiley, xcodes, breaks, comments FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1' );
 
 		$zerotest = $xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
@@ -161,7 +161,7 @@ switch ( $op ) {
 				if ( $xoopsModuleConfig['multicats'] == 1 )	{
 					$random['categoryID'] = $myrow['categoryID'];
 		
-					$resultY = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=" . $myrow['categoryID'] . " " );
+					$resultY = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $myrow['categoryID'] );
 					list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultY );
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
@@ -176,7 +176,7 @@ switch ( $op ) {
 				$xoopsTpl -> assign( 'userisadmin', 1 );
 
 				$blockS = array();
-				$resultS = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term" );
+				$resultS = $xoopsDB -> query( 'SELECT entryID, term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term' );
 				$totalSwords = $xoopsDB -> getRowsNum( $resultS );
 
 				// If there are definitions
@@ -197,7 +197,7 @@ switch ( $op ) {
 				}
 
 				$blockR = array();
-				$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
+				$resultR = $xoopsDB -> query( 'SELECT entryID, term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
 				$totalRwords = $xoopsDB -> getRowsNum( $resultR );
 
 				// If there are definitions
@@ -220,7 +220,7 @@ switch ( $op ) {
 			} else {
 			$xoopsTpl -> assign( 'userisadmin', 0 );
 			$blockR = array();
-			$resultR = $xoopsDB -> query( "SELECT entryID, term FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND request=1 ORDER BY term" );
+			$resultR = $xoopsDB -> query( 'SELECT entryID, term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
 			$totalRwords = $xoopsDB -> getRowsNum ( $resultR );
              
 			// If there are definitions
@@ -245,7 +245,7 @@ switch ( $op ) {
 		$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 		$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 		$xoopsTpl -> assign( 'microlinks', $microlinks );
-		$xoopsTpl -> assign( 'alpha', $alpha );
+	//	$xoopsTpl -> assign( 'alpha', $alpha );
 		$xoopsTpl -> assign( 'showcenter', $xoopsModuleConfig['showcenter'] );
 		$xoopsTpl -> assign( 'showrandom', $xoopsModuleConfig['showrandom'] );
 		
@@ -253,7 +253,7 @@ switch ( $op ) {
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
 $xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); }
-$xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
+$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
 ?>

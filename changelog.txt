@@ -2,7 +2,7 @@
 imGlossary v1.0x xxxx
 ===================================
 - Added: RSS feed
-- Added: menu icons
+- Added: button bar icons
 
 - Replaced: $HTTP_POST_VARS with $_POST [gibaphp]
 - Replaced: $HTTP_GET_VARS  with $_GET [gibaphp]
@@ -10,6 +10,7 @@ imGlossary v1.0x xxxx
 - Fixed: indication active tab in admin menu
 - Fixed: multilanguage issue menu content in block settings
 - Fixed: category menu for modifying term
+- Fixed: captcha compatibility between icms 1.1 and icms 1.1.1+
 
 
 ===================================

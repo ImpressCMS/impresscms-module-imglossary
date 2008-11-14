@@ -24,7 +24,7 @@
 
 include 'header.php';
 
-global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule, $ICMS_URL, $indexp; 
+global $xoopsUser, $xoopsTpl, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule; 
 $myts =& MyTextSanitizer::getInstance();
 
 //$init = isset($_GET['init']) ? $_GET['init'] : 0;
@@ -39,7 +39,7 @@ $xoopsOption['template_main'] = 'imglossary_letter.html';
 include_once ICMS_ROOT_PATH . '/header.php';
 
 $xoopsTpl -> assign( 'firstletter', $init );
-$pubwords = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
+$pubwords = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0' );
 $publishedwords = $xoopsDB -> getRowsNum( $pubwords );
 $xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
@@ -60,7 +60,7 @@ $xoopsTpl -> assign( 'totalother', $howmanyother );
 if ( $xoopsModuleConfig['multicats'] == 1 )	{
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = $xoopsDB -> query( "SELECT categoryID, name, total FROM " . $xoopsDB -> prefix ( 'imglossary_cats') . " ORDER BY name ASC" );
+	$resultcat = $xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . $xoopsDB -> prefix ( 'imglossary_cats') . ' ORDER BY name ASC' );
 	while ( list( $catID, $name, $total ) = $xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$xoopsModule = XoopsModule::getByDirname( $glossdirname );
@@ -79,10 +79,10 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	$pagetype = 0;
 
 	// How many entries will we show in this page?
-	$queryA = "SELECT w.*, c.name AS catname FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . $xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+	$queryA = 'SELECT w.*, c.name AS catname FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' w LEFT JOIN ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC';
 	$resultA = $xoopsDB -> query( $queryA, $xoopsModuleConfig['indexperpage'], $start );
 
-	$allentries = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0 ORDER BY term ASC" );
+	$allentries = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 ORDER BY term ASC' );
 	$totalentries = $xoopsDB -> getRowsNum( $allentries );
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 	
@@ -208,7 +208,7 @@ $xoopsTpl -> assign( 'lang_moduledirname', $xoopsModule -> dirname() );
 
 $xoopsTpl -> assign( 'alpha', $alpha );
 
-$xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
+$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
 
