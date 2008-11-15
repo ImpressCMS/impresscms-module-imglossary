@@ -149,9 +149,10 @@ switch ( $op ) {
 			while( $myrow = $xoopsDB -> fetchArray( $resultZ ) )	{
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
+				$random['id'] = $myrow['entryID'];
 				$random['term'] = $myrow['term'];
 				$random['comments'] = '<a href="entry.php?entryID=' . $myrow['entryID'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $myrow['comments'] . ')" title="' . _COMMENTS .' (' . $myrow['comments'] . ')" /></a>';
-
+								
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$deftemp = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
 					$deftemp1 = $myts -> displayTarea( $deftemp, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] );
@@ -165,10 +166,9 @@ switch ( $op ) {
 					list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultY );
 					$random['categoryname'] = $myts -> displayTarea( $name );
 					}
-				}
-			$microlinks = imglossary_serviceLinks( $random['entryID'] ) . $random['comments'];
-
-			$xoopsTpl -> assign( 'random', $random );
+				}					
+				$xoopsTpl -> assign( 'random', $random );
+				$microlinks = imglossary_serviceLinks( $random );	
 			}
 		if ( $xoopsUser && $xoopsUser -> isAdmin() ) {
 
@@ -244,7 +244,7 @@ switch ( $op ) {
 		// Various strings
 		$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 		$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
-		$xoopsTpl -> assign( 'microlinks', $microlinks );
+		$xoopsTpl -> assign( 'microlinks', $microlinks . $random['comments'] );
 	//	$xoopsTpl -> assign( 'alpha', $alpha );
 		$xoopsTpl -> assign( 'showcenter', $xoopsModuleConfig['showcenter'] );
 		$xoopsTpl -> assign( 'showrandom', $xoopsModuleConfig['showrandom'] );
