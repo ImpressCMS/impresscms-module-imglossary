@@ -19,7 +19,7 @@
 include 'header.php';	
 include_once ICMS_ROOT_PATH . '/class/icmsfeed.php'; 
 
-global $xoopsModuleConfig;
+global $xoopsModuleConfig, $xoopsModule;
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
 
@@ -46,7 +46,7 @@ while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {
 	// Get author of 
 	$member_handler =& xoops_gethandler( 'member' );
 	$user =& $member_handler -> getUser( $myrow['uid'] );
-	if ( $myrow['uid'] == 0 ) {
+	if ( $myrow['uid'] == -1 ) {
 		$author = _MD_IMGLOSSARY_ANONYMOUS;
 	} else {
 		$author = $user -> getVar( 'uname' );
