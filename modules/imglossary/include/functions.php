@@ -61,19 +61,19 @@ function imglossary_getLinkedUnameFromId( $userid = 0, $name = 0 ) {
 function imglossary_getuserForm( $user ) {
 	global $xoopsDB, $xoopsConfig;
 
-	echo '<select name="author">';
-	echo '<option value="-1">------</option>';
-	$result = $xoopsDB -> query( 'SELECT uid, uname FROM ' . $xoopsDB -> prefix( 'users' ) . ' ORDER BY uname' );
+	echo "<select name='author'>";
+	echo "<option value='-1'>------</option>";
+	$result = $xoopsDB -> query( "SELECT uid, uname FROM " . $xoopsDB -> prefix( 'users' ) . " ORDER BY uname" );
 
 	while( list( $uid, $uname ) = $xoopsDB -> fetchRow( $result ) ) {
 		if ( $uid == $user ) {
-			$opt_selected = 'selected="selected"';
+			$opt_selected = "selected='selected'";
 		} else {
-			$opt_selected = '';
+			$opt_selected = "";
 		}
-		echo '<option value="' . $uid . '" $opt_selected>' . $uname . '</option>';
+		echo "<option value='" . $uid . "' $opt_selected>" . $uname . "</option>";
 	}
-	echo '</select></div>';
+	echo "</select></div>";
 }
 
 function imglossary_calculateTotals() {
