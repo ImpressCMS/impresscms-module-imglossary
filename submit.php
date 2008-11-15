@@ -74,7 +74,7 @@ switch ( $op ) {
 		if ( $xoopsModuleConfig['captcha'] ) {
 			// Captcha Hack
 			// Verify entered code 
-			if ( class_exists( 'XoopsCaptcha' ) ) { 
+			if ( class_exists( 'XoopsFormCaptcha' ) ) { 
 				if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
 					$xoopsCaptcha = XoopsCaptcha::instance(); 
 					if ( ! $xoopsCaptcha -> verify( true ) ) { 
