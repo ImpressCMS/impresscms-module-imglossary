@@ -1,15 +1,27 @@
 <?php
 /**
- * $Id: main.php v 1.0 8 May 2004 hsalazar Exp $
- * Module: Wordbook - a multicategory glossary
- * Version: v 1.00
- * Release Date: 8 May 2004
- * Author: hsalazar
- * Licence: GNU
- * Translation: Language portuguesebr - GibaPhp - http://br.impresscms.org
- */
+* imGlossary - a multicategory glossary for ImpressCMS
+*
+* Based upon Wordbook 1.16
+*
+* File: language/portuguesebr/modinfo.php
+*
+* @copyright		http://www.xoops.org/ The XOOPS Project
+* @copyright		XOOPS_copyrights.txt
+* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @license		GNU General Public License (GPL)
+*				a copy of the GNU license is enclosed.
+* ----------------------------------------------------------------------------------------------------------
+* @package		Wordbook - a multicategory glossary
+* @since			1.16
+* @author		hsalazar
+* ----------------------------------------------------------------------------------------------------------
+* 				imGlossary - a multicategory glossary
+* @since			1.00
+* @author		modified by McDonald
+* @version		$Id$
+*/
 
-// Module Info
 // The name of this module
 global $xoopsModule;
 define("_MI_IMGLOSSARY_MD_NAME", "imGlossary");
@@ -110,8 +122,8 @@ define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
 define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extendido");
 
 // version 1.01
-define( '_MI_IMGLOSSARY_SELECTFEED', 'Use RSS feed?' );
-define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'Default: <em>Yes</em>'  );
-define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'How many terms to display in RSS feed?' );
-define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'Default: <em>15</em>' );
+define( '_MI_IMGLOSSARY_SELECTFEED', 'Usar RSS feed?' );
+define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'Padrão: <em>Sim</em>'  );
+define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'Quantos termos deverá exibir no feed RSS?' );
+define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'Padrão: <em>15</em>' );
 ?>
