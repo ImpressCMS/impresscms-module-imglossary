@@ -83,10 +83,10 @@ switch ( $op ) {
 		echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
 		echo "<tr>";
 		echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
+		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
 		if ( $xoopsModuleConfig['multicats'] == 1 ) {
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
-		}
-		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
+		}		
 		echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
 		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
 		echo "<td width='30' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_STATUS . "</b></td>";
@@ -115,13 +115,13 @@ switch ( $op ) {
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
+				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
 					if ( $catname == '' ) {
 						$catname = '&nbsp;';
 					}
 					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
-				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'>" . $status . "</td>";

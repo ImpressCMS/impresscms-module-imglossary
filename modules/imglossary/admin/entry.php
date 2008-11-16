@@ -31,61 +31,50 @@ if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
 if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
 // -- Edit function -- //
-function entryEdit( $entryID = '' ) {
-	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule; 
+function entryEdit( $entryID = 0 ) {
+	global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $imglmyts; 
 
-	/**
-	 * Clear all variables before we start
-	 */
-	if( !isset($block) ) { $block = 1; }
-	if( !isset($html) ) { $html = 1; }
-	if( !isset($smiley) ) { $smiley = 1; }
-	if( !isset($xcodes) ) { $xcodes = 1; }
-	if( !isset($breaks) ) { $breaks = 1; }
-	if( !isset($offline) ) { $offline = 0; }
-	if( !isset($submit) ) { $submit = 0; }
-	if( !isset($request) ) { $request = 0; }
-	if( !isset($notifypub) ) { $notifypub = 1; }
-	if( !isset($categoryID) ) { $categoryID = 0; }
-	if( !isset($term) ) { $term = ""; }
-	if( !isset($definition) ) {	$definition = ''; }
-	if( !isset($ref) ) { $ref = ''; }
-	if( !isset($url) ) { $url = ''; }
+	$sql = 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID;
+    if ( !$result = $xoopsDB -> query( $sql ) ) {
+        XoopsErrorHandler_HandleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
+        return false;
+    } 
+    $entry_array = $xoopsDB -> fetchArray( $xoopsDB -> query( $sql ) );
+	
+	$categoryID = $entry_array['categoryID'] ? $entry_array['categoryID'] : 0;
+	$term = $entry_array['term'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['term'] ) : '';
+	$definition = $entry_array['definition'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['definition'] ) : '';
+    $ref = $entry_array['ref'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['ref'] ) : '';
+    $url = $entry_array['url'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['url'] ) : '';
+	$uid = $entry_array['uid'] ? $entry_array['uid'] : 0;
+	$submit = $entry_array['submit'] ? $entry_array['submit'] : 0;
+    $datesub = $entry_array['datesub'] ? $entry_array['datesub'] : time();
+    $html = $entry_array['html'] ? $entry_array['html'] : 1;
+	$smiley = $entry_array['smiley'] ? $entry_array['smiley'] : 1;
+    $xcodes = $entry_array['xcodes'] ? $entry_array['xcodes'] : 1;
+	$breaks = $entry_array['breaks'] ? $entry_array['breaks'] : 1;
+	$block = $entry_array['block'] ? $entry_array['block'] : 1;
+	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
+    $notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
+    $request = $entry_array['request'] ? $entry_array['request'] : 0;
 
-	// If there is a parameter, and the id exists, retrieve data: we're editing an entry
-	if ( $entryID )	{
-		$result = $xoopsDB -> query( "SELECT categoryID, term, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
-		list( $categoryID, $term, $definition, $ref, $url, $uid, $submit, $datesub, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request ) = $xoopsDB -> fetchrow( $result );
-
-		if ( !$xoopsDB -> getRowsNum( $result ) ) {
-			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOENTRYTOEDIT );
-			exit();
-		}
-		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
-
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
-		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODENTRY . ": $term" , "op", xoops_getenv( 'PHP_SELF' ) );
-	} else {
-		// there's no parameter, so we're adding an entry
-
-		$result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
-        list( $totalcats ) = $xoopsDB -> fetchRow( $result01 );
-		if ( $totalcats == 0 && $xoopsModuleConfig['multicats'] == 1 ) {
-			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
-			exit();
-		}
-		imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
-		$uid = $xoopsUser -> getVar('uid');
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
-		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
-	} 
-
+	$result01 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
+	list( $totalcats ) = $xoopsDB -> fetchRow( $result01 );
+	
+	if ( $totalcats == 0 && $xoopsModuleConfig['multicats'] == 1 ) {
+		redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
+		exit();
+	}
+	
+	imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
+	$uid = $xoopsUser -> getVar('uid');
+	echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
+	$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWENTRY, "op", xoops_getenv( 'PHP_SELF' ) );
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
 
 	// Category selector
 	if ( $xoopsModuleConfig['multicats'] == 1 ) {
 		$mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID' , '0' );
-
 		ob_start();
 			//$sform -> addElement( new XoopsFormHidden( 'categoryID', $categoryID ) );
 			$mytree -> makeMySelBox( 'name', 'name', $categoryID, 0 );
@@ -104,7 +93,7 @@ function entryEdit( $entryID = '' ) {
 
 	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition, 15, 60 );
 	$def_block -> setDescription( _AM_IMGLOSSARY_WRITEHERE );
-	$sform -> addElement( $def_block, true );
+	$sform -> addElement( $def_block, false );
 	
 	$reference = new XoopsFormTextArea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 );
 	$reference -> setDescription( _AM_IMGLOSSARY_ENTRYREFERENCEDSC );
@@ -182,61 +171,58 @@ function entryEdit( $entryID = '' ) {
 } 
 
 function entrySave( $entryID = '' )	{
-	global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsDB, $myts, $xoopsModule;
-	$entryID = isset($_POST['entryID']) ? intval($_POST['entryID']) : intval($_GET['entryID']);
-	if ($xoopsModuleConfig['multicats'] == 1) {
-		$categoryID = isset($_POST['categoryID']) ? intval($_POST['categoryID']) : intval($_GET['categoryID']);
+	
+	global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsDB, $imglmyts, $xoopsModule, $myts;
+	
+	$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
+	if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		$categoryID = isset( $_POST['categoryID'] ) ? intval( $_POST['categoryID'] ) : intval( $_GET['categoryID'] );
 	} else { 
 		$categoryID = '';
 	}
-	$block = isset($_POST['block']) ? intval($_POST['block']) : intval($_GET['block']);
-//	$breaks = isset($_POST['breaks']) ? intval($_POST['breaks']) : intval($_GET['breaks']);
+	$definition = $imglmyts -> addslashes( trim( $_POST['definition'] ) );
+	$ref = isset( $_POST['ref'] ) ? $imglmyts -> addSlashes( $_POST['ref'] ) : '';
+	$url = isset( $_POST['url'] ) ? $imglmyts -> addSlashes( $_POST['url'] ) : '';
+	$uid = isset( $_POST['author'] ) ? intval( $_POST['author'] ) : $xoopsUser -> uid();
+	$block = isset( $_POST['block']) ? intval( $_POST['block'] ) : intval( $_GET['block'] );
+	$offline = isset( $_POST['offline']) ? intval( $_POST['offline'] ) : intval( $_GET['offline'] );
+	$html = ( isset( $_POST['html'] ) ) ? $_POST['html'] : 1;
+    $smiley = ( isset( $_POST['smiley'] ) ) ? $_POST['smiley'] : 1;
+    $xcodes = ( isset( $_POST['xcodes'] ) ) ? $_POST['xcodes'] : 1;
+    $breaks = isset( $_POST['breaks'] );
 
-//	$html = isset($_POST['html']) ? intval($_POST['html']) : intval($_GET['html']);
-//	$smiley = isset($_POST['smiley']) ? intval($_POST['smiley']) : intval($_GET['smiley']);
-//	$xcodes = isset($_POST['xcodes']) ? intval($_POST['xcodes']) : intval($_GET['xcodes']);
-	$offline = isset($_POST['offline']) ? intval($_POST['offline']) : intval($_GET['offline']);
-	
-	$html = ( isset( $_REQUEST["html"] ) ) ? $_REQUEST["html"] : 1;
-    $smiley = ( isset( $_REQUEST["smiley"] ) ) ? $_REQUEST["smiley"] : 1;
-    $xcodes = ( isset( $_REQUEST["xcodes"] ) ) ? $_REQUEST["xcodes"] : 1;
-    $breaks = isset( $_REQUEST['breaks'] );
-
-	$term = $myts -> addSlashes( $_POST['term'] );
+	$term = $imglmyts -> addSlashes( $_POST['term'] );
 	$init = substr( $term, 0, 1 );
 
 	if ( ereg( "[a-zA-Z]", $init ) ) {
-		$init = strtoupper($init);
+		$init = strtoupper( $init );
 	} else {
 		$init = '#';
 	}
 
-	$definition = $myts -> addslashes( trim( $_POST["definition"] ) );
-	$ref = isset( $_POST['ref'] ) ? $myts -> addSlashes( $_POST['ref'] ) : '';
-	$url = isset( $_POST['url'] ) ? $myts -> addSlashes( $_POST['url'] ) : '';
-	
 	$date = time();
 	$submit = 0;
 	$notifypub = 0;
 	$request = 0;
-	$uid = isset( $_POST['author'] ) ? intval( $_POST['author'] ) : $xoopsUser -> uid();
-	
+
 // Save to database
 	if ( !$entryID ) {
-		$sql = "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) "; 
-		$sql .= "VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )";
-		imglossary_calculateTotals();
+		if ( $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )" ) ) {
+			imglossary_calculateTotals();
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYCREATEDOK );
+		} else {
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYNOTCREATED );
+		}
 	} else { 
 		// That is, $entryID exists, thus we're editing an entry
-		$sql = "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'";
-		imglossary_calculateTotals();
 		
+		if ( $xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', datesub='$date', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
+			imglossary_calculateTotals();
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
+		} else {
+			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
+		}
 	}
-	if ( !$result = $xoopsDB -> queryF( $sql ) ) {
-          XoopsErrorHandler_HandleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
-          return false;
-        }
-	redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 }
 
 function entryDelete( $entryID = '' ) {
