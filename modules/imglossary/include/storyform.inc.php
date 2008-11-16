@@ -53,7 +53,7 @@ $sform -> addElement( new XoopsFormText( _MD_IMGLOSSARY_ENTRY, 'term', 50, 80, $
 
 $def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', '', 15, 50 );
 $def_block -> SetDescription( '<small>' . _MD_IMGLOSSARY_WRITEHERE . '</small>' );
-$sform -> addElement( $def_block, true );
+$sform -> addElement( $def_block, false );
 
 $sform -> addElement( new XoopsFormTextArea( _MD_IMGLOSSARY_REFERENCE, 'ref', $ref, 5, 50 ), false );
 $sform -> addElement( new XoopsFormText( _MD_IMGLOSSARY_URL, 'url', 50, 80, $url ), false );
@@ -66,6 +66,27 @@ if ( is_object( $xoopsUser ) ) {
 	$notify_checkbox -> addOption( 1, _MD_IMGLOSSARY_NOTIFY );
 	$sform -> addElement( $notify_checkbox );
 }
+
+// VARIOUS OPTIONS
+	$options_tray = new XoopsFormElementTray( _MD_IMGLOSSARY_OPTIONS, '<br />' );
+
+	$html_checkbox = new XoopsFormCheckBox( '', 'html', $html );
+	$html_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOHTML );
+	$options_tray -> addElement( $html_checkbox );
+
+	$smiley_checkbox = new XoopsFormCheckBox( '', 'smiley', $smiley );
+	$smiley_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOSMILEY );
+	$options_tray -> addElement( $smiley_checkbox );
+
+	$xcodes_checkbox = new XoopsFormCheckBox( '', 'xcodes', $xcodes );
+	$xcodes_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOXCODE );
+	$options_tray -> addElement( $xcodes_checkbox );
+
+	$breaks_checkbox = new XoopsFormCheckBox( '', 'breaks', $breaks );
+	$breaks_checkbox -> addOption( 1, _MD_IMGLOSSARY_BREAKS );
+	$options_tray -> addElement( $breaks_checkbox );
+
+	$sform -> addElement( $options_tray );
 
 if ( $xoopsModuleConfig['captcha'] ) {
 	// Captcha Hack
