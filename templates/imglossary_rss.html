@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<atom:link href="http://dallas.example.com/rss.xml" rel="self" type="application/rss+xml" />
+<rss version="2.0">
+
   <channel>
     <title><{$channel_title}></title>
     <link><{$channel_link}></link>
@@ -12,17 +12,19 @@
     <category><{$channel_category}></category>
     <managingEditor><{$channel_editor}></managingEditor>
     <webMaster><{$channel_webmaster}></webMaster>
-    <language><{$channel_language}></language>
 	<ttl><{$channel_ttl}></ttl>
+    <language><{$channel_language}></language>
+
     <{if $image_url != ""}>
-    <image>
+	<image>
       <title><{$channel_title}></title>
       <url><{$image_url}></url>
       <link><{$channel_link}></link>
       <width><{$channel_width}></width>
       <height><{$channel_height}></height>
-    </image>
+	</image>
     <{/if}>
+
     <{foreach item=item from=$items}>
     <item>
       <title><{$item.title}></title>
