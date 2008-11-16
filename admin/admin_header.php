@@ -32,7 +32,9 @@ include_once ICMS_ROOT_PATH . '/class/xoopstree.php';
 include_once ICMS_ROOT_PATH . '/class/xoopslists.php';
 include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 include_once ICMS_ROOT_PATH . '/kernel/module.php';
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/class/myts_extended.php';
 $myts =& MyTextSanitizer::getInstance();
+$imglmyts = new imglossaryTextSanitizer(); // MyTextSanitizer object
 
 if ( is_object( $xoopsUser) ) {
 	$xoopsModule = XoopsModule::getByDirname( $glossdirname );

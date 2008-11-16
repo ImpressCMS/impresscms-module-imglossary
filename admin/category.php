@@ -43,7 +43,7 @@ function categoryEdit( $categoryID = '' ) {
 		list( $categoryID, $name, $description, $total, $weight ) = $xoopsDB -> fetchrow( $result );
 
 		if ( $xoopsDB -> getRowsNum( $result ) == 0 ) {
-			redirect_header( "category.php", 1, _AM_IMGLOSSARY_NOCATTOEDIT );
+			redirect_header( 'category.php', 1, _AM_IMGLOSSARY_NOCATTOEDIT );
 			exit();
 		} 
 		
@@ -164,14 +164,14 @@ switch ( $op ) {
 		break;
 
 	case 'cancel':
-		redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_BACK2IDX, '' ) );
+		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_BACK2IDX, '' ) );
 		exit();
 
     case 'default':
     default:
 		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig;
 		if ( $xoopsModuleConfig['multicats'] != 1 ) {
-			redirect_header( "index.php", 1, sprintf( _AM_IMGLOSSARY_SINGLECAT, '' ) );
+			redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_SINGLECAT, '' ) );
 			exit();
 		}		
         categoryEdit();
