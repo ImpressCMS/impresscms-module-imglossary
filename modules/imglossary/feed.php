@@ -26,7 +26,10 @@ if ( $xoopsModuleConfig['rssfeed'] ) {
 $myFeed = new IcmsFeed();
 
 $myFeed -> webMaster = $xoopsConfig['adminmail'];  // Admin contact email as stated in general preferences.
+$myFeed -> editor = $xoopsConfig['adminmail'];
 $myFeed -> image = array( 'url' => ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/images/imglossary_iconsbig.png' );
+$myFeed -> width  = 32;
+$myFeed -> height = 32;
 $myFeed -> title = $xoopsConfig['sitename'];
 $myFeed -> generator = 'imGlossary ' . $xoopsModule -> getVar( 'version' )/100;
 $myFeed -> category = $xoopsModule -> getVar( 'name' );
