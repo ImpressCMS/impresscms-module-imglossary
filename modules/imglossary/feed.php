@@ -17,17 +17,21 @@
 */
 
 include 'header.php';	
-include_once ICMS_ROOT_PATH . '/class/icmsfeed.php'; 
+include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/class/icmsfeed.php'; 
 
-global $xoopsModuleConfig, $xoopsModule;
+global $xoopsConfig, $xoopsModule, $xoopsModuleConfig;
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
 
 $myFeed = new IcmsFeed();
 
-$myFeed -> webMaster = '';  // Admin contact email as stated in general preferences.
+$myFeed -> webMaster = $xoopsConfig['adminmail'];  // Admin contact email as stated in general preferences.
 $myFeed -> image = array( 'url' => ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/images/imglossary_iconsbig.png' );
-$myFeed -> title = $xoopsConfig['sitename'] . ' : ' . $xoopsModule -> getVar( 'name' );
+$myFeed -> title = $xoopsConfig['sitename'];
+$myFeed -> generator = 'imGlossary ' . $xoopsModule -> getVar( 'version' )/100;
+$myFeed -> category = $xoopsModule -> getVar( 'name' );
+$myFeed -> ttl = 120;
+$myFeed -> copyright = 'Copyright 2005-' . formatTimestamp(time(),'Y') . ' - ' . $xoopsConfig['sitename'];
 
 $sql = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC ', $xoopsModuleConfig['rssfeedtotal'], 0 );
 while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	

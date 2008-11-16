@@ -35,7 +35,7 @@ if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/mo
 //	** General information
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
-	'version' 			=> '1.00',
+	'version' 			=> '1.01',
 	'status' 			=> 'Final',
 	'status_version'	=> 'Final',
 	'date'				=> 'October 25, 2008',
@@ -156,6 +156,8 @@ $modversion['templates'][4]['file'] = 'imglossary_letter.html';
 $modversion['templates'][4]['description'] = 'Display letter';
 $modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
+$modversion['templates'][5]['file'] = 'imglossary_rss.html';
+$modversion['templates'][5]['description'] = 'rss feed';
 
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
