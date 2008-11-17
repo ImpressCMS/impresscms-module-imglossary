@@ -43,35 +43,35 @@ define("_MI_IMGLOSSARY_ALLOWSUBMITDSC", "Если установлено <em>Д�
 define("_MI_IMGLOSSARY_ANONSUBMIT", "Гости могут размещать записи?");
 define("_MI_IMGLOSSARY_ANONSUBMITDSC", "Если установлено <em>Да</em>, то гости будут иметь доступ к заполнению формы размещения");
 
-define("_MI_IMGLOSSARY_DATEFORMAT", "В каком формате должна быть представлена дата?");
-define("_MI_IMGLOSSARY_DATEFORMATDSC", "Use the part <em>TIME FORMAT SETTINGS</em> of language/english/global.php to select a display style.<br />See <a href='http://jp.php.net/manual/en/function.date.php' target='_blank'>PHP manual</a>");
+define("_MI_IMGLOSSARY_DATEFORMAT", "Формат даты:");
+define("_MI_IMGLOSSARY_DATEFORMATDSC", "Используйте фрагмент <em>TIME FORMAT SETTINGS</em> файла language/russian/global.php для выбора стиля отображения.<br />Смотрите <a href='http://jp.php.net/manual/en/function.date.php' target='_blank'>PHP руководство</a>");
 
-define("_MI_IMGLOSSARY_PERPAGE", "Кол-во записей на странице (для администратора)?");
-define("_MI_IMGLOSSARY_PERPAGEDSC", "Number of entries that will be shown at once in the table that displays active entries in the admin side.");
+define("_MI_IMGLOSSARY_PERPAGE", "Кол-во записей на странице (для администратора):");
+define("_MI_IMGLOSSARY_PERPAGEDSC", "Количество записей, которое будет показываться за один разадминистратору при отображении таблицы активных записей.");
 
-define("_MI_IMGLOSSARY_PERPAGEINDEX", "Кол-во записей на странице (для пользователя)?");
-define("_MI_IMGLOSSARY_PERPAGEINDEXDSC", "Number of entries that will be shown on each page in the user side of the module.");
+define("_MI_IMGLOSSARY_PERPAGEINDEX", "Кол-во записей на странице (для пользователя):");
+define("_MI_IMGLOSSARY_PERPAGEINDEXDSC", "Количество записей, которое будет показываться пользователям на каждой странице модуля.");
 
 define("_MI_IMGLOSSARY_AUTOAPPROVE", "Утверждать записи автоматически?");
-define("_MI_IMGLOSSARY_AUTOAPPROVEDSC", "Если установлено <em>Да</em>, ImpressCMS will publish submitted entries without admin intervention.");
+define("_MI_IMGLOSSARY_AUTOAPPROVEDSC", "Если установлено <em>Да</em>, то размещенные записи будут автоматически публиковаться без вмешательства администратора.");
 
-define("_MI_IMGLOSSARY_MULTICATS", "Do you want to have glossary categories?");
-define("_MI_IMGLOSSARY_MULTICATSDSC", "Если установлено <em>Да</em>, will allow you to have glossary categories. Если установлено <em>Нет</em>, will have a single automatic category.");
+define("_MI_IMGLOSSARY_MULTICATS", "Имеются ли категории?");
+define("_MI_IMGLOSSARY_MULTICATSDSC", "Если установлено <em>Да</em>, Вы получите возможность иметь категории в Вашем глоссарии. Если установлено <em>Нет</em>, Вы автоматически будете иметь одну категорию.");
 
-define("_MI_IMGLOSSARY_CATSINMENU","Should the categories be shown in the menu?"); 
-define("_MI_IMGLOSSARY_CATSINMENUDSC","Если установлено <em>Да</em> if you want links to categories in the main menu."); 
+define("_MI_IMGLOSSARY_CATSINMENU","Показывать категории в меню?"); 
+define("_MI_IMGLOSSARY_CATSINMENUDSC","Если установлено <em>Да</em>, то ссылки на категории появятся в главном меню."); 
 
-define("_MI_IMGLOSSARY_CATSPERINDEX","Кол-во категорий на странице (для пользователя)?"); 
-define("_MI_IMGLOSSARY_CATSPERINDEXDSC","This will define how many categories will be shown in the index page."); 
+define("_MI_IMGLOSSARY_CATSPERINDEX","Кол-во категорий на странице (для пользователя):"); 
+define("_MI_IMGLOSSARY_CATSPERINDEXDSC","Определяется какое количество категорий будет показываться на индексной странице."); 
 
-define("_MI_IMGLOSSARY_ALLOWADMINHITS", "Will the admin hits be included in the counter?");
-define("_MI_IMGLOSSARY_ALLOWADMINHITSDSC", "Если установлено <em>Да</em>, will increase counter for each entry on admin visits.");
+define("_MI_IMGLOSSARY_ALLOWADMINHITS", "Включать посещения администратора в счетчик?");
+define("_MI_IMGLOSSARY_ALLOWADMINHITSDSC", "Если установлено <em>Да</em>, счетчик посещаемости записи будет увеличиваться при каждом визите администратора.");
 
 define("_MI_IMGLOSSARY_MAILTOADMIN", "Отсылать email администратору о каждом новом размещении?");  
-define("_MI_IMGLOSSARY_MAILTOADMINDSC", "Если установлено <em>Да</em>, the manager will receive an e-mail for every submitted entry."); 
+define("_MI_IMGLOSSARY_MAILTOADMINDSC", "Если установлено <em>Да</em>, менеджер будет получать email с оповещением о каждой размещенной записи."); 
  
-define("_MI_IMGLOSSARY_RANDOMLENGTH", "Длина строки для показа в произвольных определениях?");  
-define("_MI_IMGLOSSARY_RANDOMLENGTHDSC", "Какое кол-во символов Вы желаете показывать в боксах случайных терминов, both in the main page and in the block? (По умолчанию: 500)");
+define("_MI_IMGLOSSARY_RANDOMLENGTH", "Длина строки в произвольных определениях:");  
+define("_MI_IMGLOSSARY_RANDOMLENGTHDSC", "Какое количество символов Вы желаете показывать в боксах случайных терминов, на индексной странице и в блоке? (По умолчанию: 500)");
 
 define("_MI_IMGLOSSARY_LINKTERMS", "Показывать ссылки на другие термины из глоссария в определениях?");  
 define("_MI_IMGLOSSARY_LINKTERMSDSC", "Если установлено <em>Да</em>, imGlossary будет автоматически ссылаться в Вашем определении на термины, которые уже имеются в глоссариях.");
@@ -91,26 +91,26 @@ define("_MI_IMGLOSSARY_ENTRIESTOP", "Часто читаемые термины"
 
 // imGlossary - version 1.00
 define("_MI_IMGLOSSARY_SORTCATS", "Сортировать категории по:");
-define("_MI_IMGLOSSARY_SORTCATSDSC", "Select how categories are sorted.");
+define("_MI_IMGLOSSARY_SORTCATSDSC", "Выбор порядка сортировки категорий.");
 define("_MI_IMGLOSSARY_TITLE", "Заголовок");
 define("_MI_IMGLOSSARY_WEIGHT", "Вес");
 define("_MI_IMGLOSSARY_ADMENU7", "Размещения");
 define("_MI_IMGLOSSARY_SHOWSUBMITTER", "Показывать разместившего в каждой записи?");
-define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Select <em>Yes</em> to display the submitter of the entry.");
-define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Show Social Bookmarks in every entry?");
-define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Select <em>Yes</em> to have Social Bookmark icons visible in every entry.");
+define("_MI_IMGLOSSARY_SHOWSUBMITTERDSC", "Выберите <em>Да</em> для показа разместившего запись.");
+define("_MI_IMGLOSSARY_SHOWSBOOKMARKS","Показывать социальные закладки в каждой записи?");
+define("_MI_IMGLOSSARY_SHOWSBOOKMARKSDSC", "Выберите <em>Да</em>, чтобы сдклать видимыми иконки социальных закладок в каждой записи .");
 define("_MI_IMGLOSSARY_SEARCHCOLOR", "Цвет фона терминов при поиске:");
-define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Enter the colour to use as background for search terms. Default: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
-define("_MI_IMGLOSSARY_CAPTCHA", "Использовать captcha в формах размщения и запроса?");
-define("_MI_IMGLOSSARY_CAPTCHADSC", "Select <em>Yes</em> to use captcha in the submit and request form.<br />Default: <em>Yes</em>");
+define("_MI_IMGLOSSARY_SEARCHCOLORDSC", "Выберите цвет фона, для выделения искомого термина. По умолчанию: <span style='background-color: #FFFF00;'>&nbsp;#FFFF00&nbsp;</span>");
+define("_MI_IMGLOSSARY_CAPTCHA", "Использовать captcha в формах?");
+define("_MI_IMGLOSSARY_CAPTCHADSC", "Выберите <em>Да</em> для использования captcha в формах запросов.<br />По умолчанию: <em>Да</em>");
 define("_MI_IMGLOSSARY_SHOWCENTER", "Показать центральные блоки?");
-define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Select <em>Yes</em> to display the three center blocks Recent entries, Popular entries and Search on the index page.<br />Select <em>No</em> to replace these 3 blocks by a Search block.");
+define("_MI_IMGLOSSARY_SHOWCENTERDSC", "Выберите <em>Да</em> для отображния тройки центральных блоков: Новейшие, Популярные, Поиск на индексной странице.<br />Выберите <em>Нет</em> для замещения этих трех блоков блоком поиска.");
 define("_MI_IMGLOSSARY_SHOWRANDOM", "Показать блок случайных терминов?");
-define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Select <em>Yes</em> to display the Random term block on the index page.");
-define('_MI_IMGLOSSARY_EDITORADMIN', "Использовать редактор (для администратора):");
-define('_MI_IMGLOSSARY_EDITORADMINDSC', "Select the editor to use for admin side.<br />In Preferences -> General Settings set 'Default Editor' to <em>dhtmltextarea</em>.");
-define('_MI_IMGLOSSARY_EDITORUSER', "Использовать редактор (для пользователя):");
-define('_MI_IMGLOSSARY_EDITORUSERDSC', "Select the editor to use for user side.<br />In Preferences -> General Settings set 'Default Editor' to <em>dhtmltextarea</em>.");
+define("_MI_IMGLOSSARY_SHOWRANDOMDSC", "Выберите <em>Да</em> для отображения блока произвольных терминов на индексной странице.");
+define('_MI_IMGLOSSARY_EDITORADMIN', "Редактор для администратора:");
+define('_MI_IMGLOSSARY_EDITORADMINDSC', "Выберите редактор, используемый администратором.<br />В меню Установки -> Установки основные выберите 'Редактор по умолчанию' <em>dhtmltextarea</em>.");
+define('_MI_IMGLOSSARY_EDITORUSER', "Редактор для пользователя:");
+define('_MI_IMGLOSSARY_EDITORUSERDSC', "Выберите редактор, коотрый будет доступен пользователям.<br />В меню Установки -> Установки основные выберите 'Редактор по умолчанию' <em>dhtmltextarea</em>.");
 define("_MI_IMGLOSSARY_FORM_DHTML", "DHTML");
 define("_MI_IMGLOSSARY_FORM_COMPACT", "Compact");
 define("_MI_IMGLOSSARY_FORM_HTMLAREA", "HtmlArea Editor");
@@ -124,6 +124,6 @@ define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
 // version 1.01
 define( '_MI_IMGLOSSARY_SELECTFEED', 'Использовать RSS канал?' );
 define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'По умолчанию: <em>Да</em>'  );
-define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'Сколько терминов отображать в RSS канале?' );
+define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'Количество терминов RSS канале:' );
 define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'По умолчанию: <em>15</em>' );
 ?>
