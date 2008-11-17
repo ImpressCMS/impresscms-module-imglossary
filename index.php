@@ -252,7 +252,11 @@ switch ( $op ) {
 		}
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
-$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); }
+	$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); // Displays feed icon on index page
+	$xoopsTpl -> assign( 'hasrss', '<link rel="alternate" type="application/rss+xml" title="RSS"
+href="feed.php">'); // Tells browser this page has rss, add <{$hasrss}> to header of theme.html
+}
+
 $xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
