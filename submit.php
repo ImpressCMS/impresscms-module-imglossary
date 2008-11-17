@@ -71,7 +71,7 @@ switch ( $op ) {
 		
 		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
 		
-		if ( $xoopsModuleConfig['captcha'] ) {
+		if ( $xoopsModuleConfig['captcha'] == 1 ) {
 			// Captcha Hack
 			// Verify entered code 
 			if ( class_exists( 'XoopsFormCaptcha' ) ) { 
