@@ -36,9 +36,9 @@ if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/mo
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
 	'version' 			=> '1.01',
-	'status' 			=> 'Final',
-	'status_version'	=> 'Final',
-	'date'				=> 'October 25, 2008',
+	'status' 			=> 'RC-1',
+	'status_version'	=> 'RC-1',
+	'date'				=> 'November 17, 2008',
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> 'McDonald',
 	'credits' 			=> 'hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf',
@@ -66,10 +66,10 @@ $modversion['people']['other']      [] = '&middot; <a href="http://www.famfamfam
 $modversion['people']['other']      [] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
 //	** If Release Candidate **
-//$modversion['warning'] = _MODABOUT_WARNING_RC;
+$modversion['warning'] = _MODABOUT_WARNING_RC;
 
 //	** If Final  **
-$modversion['warning'] = _MODABOUT_WARNING_FINAL;
+//$modversion['warning'] = _MODABOUT_WARNING_FINAL;
 
 // 	** Admin things **
 $modversion['hasAdmin'] = 1;

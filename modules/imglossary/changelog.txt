@@ -1,5 +1,5 @@
 ===================================
-imGlossary v1.0x xxxx
+imGlossary v1.01 RC-1
 ===================================
 - Added: RSS feed
 - Added: button bar icons
