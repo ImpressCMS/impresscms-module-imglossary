@@ -38,7 +38,7 @@ switch ( $op ) {
 	case 'default':
 	default:
 
-		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule, $xoopsTpl;
+		global $xoopsUser, $xoopsConfig, $xoopsDB, $myts, $xoopsModuleConfig, $xoopsModule, $xoopsTpl, $xoopsOption;
 
 		$xoopsOption['template_main'] = 'imglossary_index.html';
 		include  ICMS_ROOT_PATH . '/header.php';
@@ -252,12 +252,11 @@ switch ( $op ) {
 		}
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
+	$xoopsTpl -> assign( 'rssfeed', $xoopsModuleConfig['rssfeed'] );
 	$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); // Displays feed icon on index page
-	$xoopsTpl -> assign( 'hasrss', '<link rel="alternate" type="application/rss+xml" title="RSS"
-href="feed.php">'); // Tells browser this page has rss, add <{$hasrss}> to header of theme.html
+	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="alternate" type="application/rss+xml" title="RSS" href="feed.php" />' );
 }
 
-$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
 ?>
