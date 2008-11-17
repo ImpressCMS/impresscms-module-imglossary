@@ -253,8 +253,8 @@ switch ( $op ) {
 
 if ( $xoopsModuleConfig['rssfeed'] ) {
 	$xoopsTpl -> assign( 'rssfeed', $xoopsModuleConfig['rssfeed'] );
-	$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); // Displays feed icon on index page
-	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="alternate" type="application/rss+xml" title="RSS" href="feed.php" />' );
+	$xoopsTpl -> assign( 'feed', '<a href="feed.php" target="_blank"><img src="images/icon/feed.png" border="0" alt="' . _MD_IMGLOSSARY_FEED . '" title="' . _MD_IMGLOSSARY_FEED . '" /></a>' ); // Displays feed icon on index page
+	$xoopsTpl -> assign( 'xoops_module_header', '<link rel="alternate" type="application/rss+xml" title="' . _MD_IMGLOSSARY_FEED . '" href="feed.php" />' );
 }
 
 
