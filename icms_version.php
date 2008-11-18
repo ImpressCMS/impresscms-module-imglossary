@@ -156,8 +156,8 @@ $modversion['templates'][4]['file'] = 'imglossary_letter.html';
 $modversion['templates'][4]['description'] = 'Display letter';
 $modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
-$modversion['templates'][5]['file'] = 'imglossary_rss.html';
-$modversion['templates'][5]['description'] = 'rss feed';
+$modversion['templates'][6]['file'] = 'imglossary_rss.html';
+$modversion['templates'][6]['description'] = 'RSS feed';
 
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
