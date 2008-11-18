@@ -71,8 +71,8 @@ switch ( $op ) {
 		echo "</fieldset><br />";
 
 		/* -- Code to show existing terms -- */
-		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWENTRIES . "</legend><br />";
-		echo "<a style='border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_IMGLOSSARY_CREATEENTRY . "</a><br /><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWENTRIES . "</legend><br /><br />";
+		echo "<a style='float: left; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_IMGLOSSARY_CREATEENTRY . "</a><br /><br />";
 		// To create existing terms table
 		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
@@ -142,8 +142,8 @@ switch ( $op ) {
 
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			/* -- Code to show existing categories -- */
-			echo "<fieldset style='border: #E8E8E8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWCATS . "</legend><br />";
-			echo "<a style='border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_IMGLOSSARY_CREATECAT . "</a><br /><br />";
+			echo "<fieldset style='border: #E8E8E8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWCATS . "</legend><br /><br />";
+			echo "<a style='float: left; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_IMGLOSSARY_CREATECAT . "</a><br /><br />";
 			// To create existing columns table
 			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $numrows ) = $xoopsDB -> fetchRow( $resultC1 );
@@ -191,7 +191,7 @@ switch ( $op ) {
 		}
 
 		/* -- Code to show submitted entries -- */
-		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWSUBMISSIONS . "</legend><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWSUBMISSIONS . "</legend><br /><br />";
 		$resultS1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultS1 );
 
@@ -251,7 +251,7 @@ switch ( $op ) {
 		echo "<br />\n";
 
 		/* -- Code to show requested entries -- */
-		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWREQUESTS . "</legend><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWREQUESTS . "</legend><br /><br />";
 		$resultS2 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 		list( $numrowsX ) = $xoopsDB -> fetchRow( $resultS2 );
 
