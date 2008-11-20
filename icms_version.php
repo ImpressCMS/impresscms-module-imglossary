@@ -106,21 +106,50 @@ $modversion['sub'][2]['url'] = 'request.php';
 $modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
 $modversion['sub'][3]['url'] = 'search.php';
 
+##:######################################################
+##: Start: For analysis of McDonald - Giba 800211021124
+##:  Avoid error in query or perform query bellow.
+##:######################################################
+##:  SELECT categoryID, name FROM i1733936e_imglossary_cats
+##:  Number error: 1146
+##:  Message of Error: Table '111a.i1733936e_imglossary_cats' doesn't exist
+##:######################################################
+##:  Created variable for test installed and active module.
+##:  var $MyModIsActive
+##:  if $MyModIsActive == 0 
+##:  not execute query
+##:######################################################
+##: if approved, remove this comments...
+##:######################################################
 
-$sql = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . '' );
-$i = 4;
-$hModConfig =& xoops_gethandler( 'config' );
-$hModule =& xoops_gethandler( 'module' );
-if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
-	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
-	if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
-		while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
-			$modversion['sub'][$i]['name'] = $name;
-			$modversion['sub'][$i]['url'] = 'category.php?categoryID=' . $categoryID;
-			$i++;
-		} 
+if (!$imglossaryModule =& $hModule -> getByDirname( $glossdirname ) == false ){;
+	$MyModIsActive = $imglossaryModule -> getVar( 'isactive' ); //tested if installed and active
+} else {
+	$MyModIsActive = '0'; //not installed
+}
+
+##:######################################################
+##:  Started test 800211021124
+##:######################################################
+if ($MyModIsActive == '1'){
+	$sql = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . '' );
+	$i = 4;
+	$hModConfig =& xoops_gethandler( 'config' );
+	$hModule =& xoops_gethandler( 'module' );
+	if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
+		$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
+		if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
+			while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
+				$modversion['sub'][$i]['name'] = $name;
+				$modversion['sub'][$i]['url'] = 'category.php?categoryID=' . $categoryID;
+				$i++;
+			} 
+		}
 	}
 }
+##:######################################################
+##:  End test 800211021124
+##:######################################################
 
 // Blocks
 $modversion['blocks'][1]['file'] = 'entries_new.php';
