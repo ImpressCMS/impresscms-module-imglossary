@@ -55,6 +55,7 @@ $modversion = array(
 // 	** Contributors **
 $modversion['people']['developers'] [] = '<a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a>&nbsp;&nbsp;<span style="font-size: smaller;">( pietjebell31 [at] hotmail [dot] com )</span>';
 $modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a>';
+$modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a>';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=10" target="_blank">sato-san</a> (German)';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a> (Portuguese-Brazil)';
@@ -238,7 +239,8 @@ $modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dh
 												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
-												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
+												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce',
+												'TinyBBCode' => 'tinybbcode'	);
 $i++;
 $modversion['config'][$i]['name'] = 'form_optionsuser';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORUSER';
