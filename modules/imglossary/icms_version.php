@@ -36,9 +36,9 @@ if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/mo
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
 	'version' 			=> '1.01',
-	'status' 			=> 'RC-1',
-	'status_version'	=> 'RC-1',
-	'date'				=> 'November 17, 2008',
+	'status' 			=> 'Final',
+	'status_version'	=> 'Final',
+	'date'				=> 'November 23, 2008',
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> 'McDonald',
 	'credits' 			=> 'hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf',
@@ -67,10 +67,10 @@ $modversion['people']['other']      [] = '&middot; <a href="http://www.famfamfam
 $modversion['people']['other']      [] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
 //	** If Release Candidate **
-$modversion['warning'] = _MODABOUT_WARNING_RC;
+//$modversion['warning'] = _MODABOUT_WARNING_RC;
 
 //	** If Final  **
-//$modversion['warning'] = _MODABOUT_WARNING_FINAL;
+$modversion['warning'] = _MODABOUT_WARNING_FINAL;
 
 // 	** Admin things **
 $modversion['hasAdmin'] = 1;
@@ -107,32 +107,13 @@ $modversion['sub'][2]['url'] = 'request.php';
 $modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
 $modversion['sub'][3]['url'] = 'search.php';
 
-##:######################################################
-##: Start: For analysis of McDonald - Giba 800211021124
-##:  Avoid error in query or perform query bellow.
-##:######################################################
-##:  SELECT categoryID, name FROM i1733936e_imglossary_cats
-##:  Number error: 1146
-##:  Message of Error: Table '111a.i1733936e_imglossary_cats' doesn't exist
-##:######################################################
-##:  Created variable for test installed and active module.
-##:  var $MyModIsActive
-##:  if $MyModIsActive == 0 
-##:  not execute query
-##:######################################################
-##: if approved, remove this comments...
-##:######################################################
-
-if (!$imglossaryModule =& $hModule -> getByDirname( $glossdirname ) == false ){;
+if (!$imglossaryModule =& $hModule -> getByDirname( $glossdirname ) == false ) {
 	$MyModIsActive = $imglossaryModule -> getVar( 'isactive' ); //tested if installed and active
 } else {
 	$MyModIsActive = '0'; //not installed
 }
 
-##:######################################################
-##:  Started test 800211021124
-##:######################################################
-if ($MyModIsActive == '1'){
+if ($MyModIsActive == '1') {
 	$sql = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . '' );
 	$i = 4;
 	$hModConfig =& xoops_gethandler( 'config' );
@@ -148,9 +129,6 @@ if ($MyModIsActive == '1'){
 		}
 	}
 }
-##:######################################################
-##:  End test 800211021124
-##:######################################################
 
 // Blocks
 $modversion['blocks'][1]['file'] = 'entries_new.php';
@@ -239,8 +217,7 @@ $modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dh
 												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
-												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce',
-												'TinyBBCode' => 'tinybbcode'	);
+												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce'	);
 $i++;
 $modversion['config'][$i]['name'] = 'form_optionsuser';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORUSER';
