@@ -244,7 +244,9 @@ switch ( $op ) {
 		// Various strings
 		$xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 		$xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
-		$xoopsTpl -> assign( 'microlinks', $microlinks . $random['comments'] );
+		if ( $zerotest != 0 ) {
+			$xoopsTpl -> assign( 'microlinks', $microlinks . $random['comments'] );
+		}
 	//	$xoopsTpl -> assign( 'alpha', $alpha );
 		$xoopsTpl -> assign( 'showcenter', $xoopsModuleConfig['showcenter'] );
 		$xoopsTpl -> assign( 'showrandom', $xoopsModuleConfig['showrandom'] );
