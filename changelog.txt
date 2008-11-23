@@ -1,16 +1,24 @@
 ===================================
+imGlossary v1.01 Final
+===================================
+- Fixed: mysql error in modules admin when imglossary not installed [gibaphp]
+- Fixed: undefined variable random when no entries [mcdonald]
+- Fixed: RSS feed template array no. [mcdonald]
+
+
+===================================
 imGlossary v1.01 RC-1
 ===================================
-- Added: RSS feed
-- Added: button bar icons
+- Added: RSS feed [mcdonald]
+- Added: button bar icons [mcdonald]
 
 - Replaced: $HTTP_POST_VARS with $_POST [gibaphp]
 - Replaced: $HTTP_GET_VARS  with $_GET [gibaphp]
 
-- Fixed: indication active tab in admin menu
-- Fixed: multilanguage issue menu content in block settings
-- Fixed: category menu for modifying term
-- Fixed: captcha compatibility between icms 1.1 and icms 1.1.1+
+- Fixed: indication active tab in admin menu [mcdonald]
+- Fixed: multilanguage issue menu content in block settings [mcdonald]
+- Fixed: category menu for modifying term [mcdonald]
+- Fixed: captcha compatibility between icms 1.1 and icms 1.1.1+ [mcdonald]
 
 
 ===================================
