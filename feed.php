@@ -31,7 +31,7 @@ $myFeed -> image = array( 'url' => ICMS_ROOT_PATH . '/modules/' . $glossdirname 
 $myFeed -> width  = 32;  // max. width  = 144px
 $myFeed -> height = 32;  // max. height = 400px
 $myFeed -> title = $xoopsConfig['sitename'];
-$myFeed -> generator = 'imGlossary ' . $xoopsModule -> getVar( 'version' )/100;
+$myFeed -> generator = XOOPS_VERSION . '(module: imGlossary ' . number_format( $xoopsModule -> getVar( 'version' ) / 100 , 2, '.', '' ) . ')';
 $myFeed -> category = $xoopsModule -> getVar( 'name' );
 $myFeed -> ttl = 120;
 $myFeed -> copyright = 'Copyright ' . formatTimestamp( time(), 'Y' ) . ' - ' . $xoopsConfig['sitename'];
