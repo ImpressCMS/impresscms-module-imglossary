@@ -4,7 +4,7 @@
 *
 * Based upon Wordbook 1.16
 *
-* File: language/english/blocks.php
+* File: language/russian/blocks.php
 *
 * @copyright		http://www.xoops.org/ The XOOPS Project
 * @copyright		XOOPS_copyrights.txt
@@ -28,7 +28,7 @@ define("_MB_IMGLOSSARY_DELTERM", "Удалить");
 define("_MB_IMGLOSSARY_DISP", "Показать");
 define("_MB_IMGLOSSARY_EDITTERM", "Редактировать");
 define("_MB_IMGLOSSARY_HITS", "Кол-во обращений");
-define("_MB_IMGLOSSARY_INTENTRY", "Это ожно найти на %s");
+define("_MB_IMGLOSSARY_INTENTRY", "Это можно найти на %s");
 define("_MB_IMGLOSSARY_INTENTRYFOUND", "Занятная информация, которую я нашел на %s");
 define("_MB_IMGLOSSARY_ORDER", "Порядок отображения");
 define("_MB_IMGLOSSARY_PRINTTERM", "Печать");
