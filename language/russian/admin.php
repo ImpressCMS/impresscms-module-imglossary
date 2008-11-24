@@ -4,7 +4,7 @@
 *
 * Based upon Wordbook 1.16
 *
-* File: language/english/admin.php
+* File: language/russian/admin.php
 *
 * @copyright		http://www.xoops.org/ The XOOPS Project
 * @copyright		XOOPS_copyrights.txt
@@ -33,7 +33,7 @@ define("_AM_IMGLOSSARY_AUTHORIZE", "Разрешить");
 define("_AM_IMGLOSSARY_BACK2IDX", "Отменено. Возвращаемся обратно к списку");
 define("_AM_IMGLOSSARY_BLOCK", " Добавить в блок записей?");
 define("_AM_IMGLOSSARY_BLOCKS", "Блоки");
-define("_AM_IMGLOSSARY_BREAKS", " Использовать конверсию перевода строки?");
+define("_AM_IMGLOSSARY_BREAKS", " Использовать конверсию перевода строк");
 define("_AM_IMGLOSSARY_CANCEL", "Отменить");
 define("_AM_IMGLOSSARY_CATCREATED", "Новая категория создана и сохранена!");
 define("_AM_IMGLOSSARY_CATDESCRIPT", "Описание категории");
@@ -76,7 +76,7 @@ define("_AM_IMGLOSSARY_ENTRYISON", "Запись подключена");
 define("_AM_IMGLOSSARY_ENTRYMODIFIED", "Запись отредактирована!");
 define("_AM_IMGLOSSARY_ENTRYNOTCREATED", "Извините. Невозможно создать эту запись!");
 define("_AM_IMGLOSSARY_ENTRYNOTUPDATED", "Извините. Невозможно обновить эту запись!");
-define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Reference");
+define("_AM_IMGLOSSARY_ENTRYREFERENCE", "Ссылочный материал");
 define("_AM_IMGLOSSARY_ENTRYTERM", "Термин");
 define("_AM_IMGLOSSARY_ENTRYURL", "Связанный сайт");
 define("_AM_IMGLOSSARY_FILEEXISTS", "Файл с таким именем уже имеетсы на сервере. Пожалуйста, выберите другое имя файла!");
@@ -163,5 +163,5 @@ define("_AM_IMGLOSSARY_NOOTHERMODS", "Нет соответствующих мо
 
 // imGlossary v1.01 RC-1
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Пожалуйста, введите корректный URL с указанием или без указания HTTP префикса.");
-define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Напишите здесь исходный текст Вашего определения, такого как книга, статья или персона.");
+define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Пожалуйста, опишите здесь первоисточник Вашего определения, например книга, статья или персона.");
 ?>
