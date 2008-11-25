@@ -87,7 +87,7 @@ define("_MI_IMGLOSSARY_ADMENU6", "Импорт");
 
 //Names of Blocks and Block information
 define("_MI_IMGLOSSARY_ENTRIESNEW", "Новейшие термины");
-define("_MI_IMGLOSSARY_ENTRIESTOP", "Часто читаемые термины");
+define("_MI_IMGLOSSARY_ENTRIESTOP", "Популярные термины");
 
 // imGlossary - version 1.00
 define("_MI_IMGLOSSARY_SORTCATS", "Сортировать категории по:");
