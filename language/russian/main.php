@@ -94,7 +94,7 @@ define("_MD_IMGLOSSARY_REQUESTDEF", "Запрос определения");
 define("_MD_IMGLOSSARY_REQUESTFORM", "Запрос определения");
 define("_MD_IMGLOSSARY_REQUESTSENT", "Ваш запрос переправлен вэбмастеру %s.");
 define("_MD_IMGLOSSARY_RETURN", "Вернуться");
-define("_MD_IMGLOSSARY_RETURN2INDEX", "Перейти в индекс модуля");
+define("_MD_IMGLOSSARY_RETURN2INDEX", "В начало глоссария");
 define("_MD_IMGLOSSARY_SEARCH", "Поиск");
 define("_MD_IMGLOSSARY_SEARCHENTRY", "Поиск");
 define("_MD_IMGLOSSARY_SEARCHHEAD", "Результаты поиска");
