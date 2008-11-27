@@ -107,7 +107,8 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	}
 
 	if ( $xoopsModuleConfig['linkterms'] == 1 ) {
-		$definition = imglossary_linkterms( $definition, $glossaryterm );		
+		$definition = imglossary_linkterms( $definition, $glossaryterm );
+		$html = 1;
 	}
 	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
