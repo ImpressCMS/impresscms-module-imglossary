@@ -143,6 +143,7 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 			if ( !XOOPS_USE_MULTIBYTES ) {
 				if ( $xoopsModuleConfig['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
+					$html = 1;
 				}	
 				$deftemp = icms_substr( $definition, 0, $xoopsModuleConfig['rndlength']-1, '...' );
 				$deftemp = $myts -> displayTarea( $deftemp, $html, $smiley, $xcodes, 1, $breaks );
