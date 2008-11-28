@@ -68,10 +68,8 @@ if ( imglossary_wiwimod_module_included() ) {
 
 if ( isset( $xoopsModule ) ) {
 
-	if ( file_exists( ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php' ) ) {
-		include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/' . $xoopsConfig['language'] . '/admin.php';
-	} else { include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/english/admin.php';	}
-
+	icms_loadLanguageFile( $glossdirname, 'admin' );
+	
 	$i = -1;
 
 	$i++;
