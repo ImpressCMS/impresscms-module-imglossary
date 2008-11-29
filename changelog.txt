@@ -1,4 +1,10 @@
 ===================================
+imGlossary v1.0x xxx
+===================================
+- Fixed: html always set when linked terms selected [mcdonald]
+
+
+===================================
 imGlossary v1.01 Final
 ===================================
 - Fixed: mysql error in modules admin when imglossary not installed [gibaphp]
