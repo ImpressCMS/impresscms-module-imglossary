@@ -54,7 +54,7 @@ function printPage( $entryID ) {
 	$datetime = formatTimestamp( $datesub, $xoopsModuleConfig['dateformat'] );
 	$categoryname = $myts -> makeTboxData4Show( $name );
 	$term = $myts -> makeTboxData4Show( $term );
-	$definition = str_replace( "[pagebreak]", "<br style=\"page-break-after:always;\">", $definition );
+	$definition = str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition );
 	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	if ( $authorname == '' ) {
@@ -63,34 +63,41 @@ function printPage( $entryID ) {
 		$authorname = $myts -> makeTboxData4Show( $authorname );
 	}
 	
-	echo "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>\n";
-	echo "<html>\n<head>\n";
-	echo "<title>" . $xoopsConfig['sitename'] . "</title>\n";
-	echo "<meta http-equiv='Content-Type' content='text/html; charset=" . _CHARSET . "' />\n";
-	echo "<meta name='ROBOTS' content='noindex,nofollow' />\n";
-	echo "<meta name='AUTHOR' content='" . $xoopsConfig['sitename'] . "' />\n";
-	echo "<meta name='COPYRIGHT' content='Copyright (c) " . formatTimestamp( time(), "Y" ) . " by " . $xoopsConfig['sitename'] . "' />\n";
-	echo "<meta name='DESCRIPTION' content='" . $xoopsConfig['slogan'] . "' />\n";
-	echo "<meta name='GENERATOR' content='" . XOOPS_VERSION . "' />\n\n\n";
+	echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
+	echo '<html><head>';
+	echo '<title>' . $xoopsConfig['sitename'] . '</title>';
+	echo '<meta http-equiv="Content-Type" content="text/html; charset=' . _CHARSET . '" />';
+	echo '<meta name="robots" content="noindex,nofollow" />';
+	echo '<meta name="author" content="' . $xoopsConfig['sitename'] . '" />';
+	echo '<meta name="copyright" content="Copyright (c) ' . formatTimestamp( time(), 'Y' ) . ' by ' . $xoopsConfig['sitename'] . '" />';
+	echo '<meta name="description" content="' . $xoopsConfig['slogan'] . '" />';
+	echo '<meta name="generator" content="' . XOOPS_VERSION . '" />';
 
-	echo "<body bgcolor='#ffffff' text='#000000'>
-			<font face='Verdana, Arial, Helvetica, sans-serif'>
-			<div style='width: 650px; border: 1px solid #000; padding: 20px;'>
-			<div style='text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;'><img src='" . ICMS_URL . "/modules/" . $glossdirname . "/images/imglossary_logo.png' border='0' alt='' /><h2 style='margin: 0;'>" . $term . "</h2></div><div></div>";
+	echo '<body bgcolor="#ffffff" text="#000000">
+			<font face="Verdana, Arial, Helvetica, sans-serif">
+			<div style="width: 650px; border: 1px solid #000; padding: 20px;">
+			  <div style="text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;">
+			    <img src="' . ICMS_URL . '/modules/' . $glossdirname . '/images/imglossary_logo.png" border="0" alt="" />
+			    <h2 style="margin: 0;">' . $term . '</h2>
+			  </div>
+			  <div>
+			</div>';
+		
 	if ( $xoopsModuleConfig['multicats'] == 1 )	{
-		echo "<div>" . _MD_IMGLOSSARY_ENTRYCATEGORY . "<b>" . $categoryname . "</b></div>";
+		echo '<div>' . _MD_IMGLOSSARY_ENTRYCATEGORY . '<b>' . $categoryname . '</b></div>';
 	}
-	echo "<div style='padding-bottom: 6px; border-bottom: 1px solid #ccc;'>" . _MD_IMGLOSSARY_SUBMITTER . "<b>" . $authorname . "</b></div>
-			<h3 style='margin: 0;'>" . $term . "</h3>
-			<p>" . $definition . "</p>
-			<div style='padding-top: 12px; border-top: 2px solid #ccc;'><b>" . _MD_IMGLOSSARY_SENT . "</b>&nbsp;" . $datetime . "<br /></div>
+	echo '<div style="padding-bottom: 6px; border-bottom: 1px solid #ccc;">' . _MD_IMGLOSSARY_SUBMITTER . '<b>' . $authorname . '</b></div><br />
+			<h3 style="margin: 0;">' . $term . '</h3>
+			<p>' . $definition . '</p>
+			<div style="padding-top: 12px; border-top: 2px solid #ccc;">
+			 <b>' . _MD_IMGLOSSARY_SENT . '</b>' . $datetime . '<br />
+			</div>
 			</div>
 			<br />
 			</font>
 		  </body>
-		  </html>";
+		  </html>';
 }
 
-printPage( $entryID );
-
+printPage( intval( $entryID ) );
 ?>
