@@ -1,19 +1,18 @@
-#moduleheader
-	{
+#moduleheader {
 	width: 100%;	 
 	margin: 0; 	
 	}
-h1, h2, h3, h4, h5
-	{
+	
+h1, h2, h3, h4, h5  {
 	margin: 0;
 	}
-.leftheader
-	{
+	
+.leftheader	{
 	float: left; 
 	font-size: smaller;
 	}
-.rightheader
-	{
+	
+.rightheader {
 	font-size: 18px; 
 	text-align: right; 
 	font-weight: bold; 
@@ -22,214 +21,211 @@ h1, h2, h3, h4, h5
 	margin: 0; 
 	line-height: 18px;
 	}
-.empty
-	{
+	
+.empty {
 	border: 2px solid #ccc; 
 	padding: 24px; 
 	margin: 8px 0; 
 	text-align: center;
 	}
-.toprow
-	{
+	
+.toprow	{
 	margin-top: 12px;
 	}
-#search
-	{
+	
+#search	{
 	float: right; 
 	width: 30%;
 	margin-right: 10px;
 	}
-#search2
-	{
+	
+#search2 {
 	width: 100%;
 	margin-right: 10px;
 	}
-fieldset
-	{
-        border: #e8e8e8 1px solid;
+	
+fieldset {
+    border: #e8e8e8 1px solid;
 	margin-bottom: 10px;
 	}
-legend
-	{
-        font-size: 104%;
+	
+legend {
+	font-size: 104%;
 	font-weight: bold;
 	}
-.inventory
-	{
+	
+.inventory {
 	text-align: center;
 	line-height: 150%; 
 	padding: 12px 18px; 
 	text-align: center;
 	}
-.clearer
-	{
+	
+.clearer {
 	clear: both;
 	width: 99.9%;
 	}
-.clearer2
-	{
+	
+.clearer2 {
 	clear: both;
 	width: 99.9%;
 	margin-top: 8px;
 	}
-.letters
-	{
+	
+.letters {
 	text-align: center; 
 	font-size: 90%;
 	padding: 10px 0;
 	}
-.letterssmall
-	{
+	
+.letterssmall {
 	text-align: center; 
 	font-size: small;
 	padding: 10px 0;
 	}
-.introcen
-	{
+	
+.introcen {
 	text-align: center; 
 	font-size: small; 
 	padding: 4px 0 0 0;
 	}
-.float30
-	{
+	
+.float30 {
 	float: left; 
 	width: 30%; 
 	margin-right: 10px;
 	}
-.catname
-	{
+	
+.catname {
 	font-size: x-small; 
 	font-weight: normal; 
 	padding: 1px 4px; 
 	margin: 0px;
 	}
-.randterm
-	{
+	
+.randterm {
 	padding: 4px; 
 	color: #456;
 	}
-.submission
-	{
+	
+.submission {
 	padding: 12px; 
 	margin: 0; 
 	color: #234;
 	}
-.request
-	{
+	
+.request {
 	padding: 0 12px 12px 12px; 
 	margin: 0; 
 	color: #234;
 	}
-h2.cat
-	{
+	
+h2.cat {
 	text-align: center;
 	margin: 0;
 	}
-h3.cat
-	{
+	
+h3.cat {
 	text-align: center;
 	margin: 10px 0 0 0;
 	}
-h4.term, h5.term
-	{
+	
+h4.term, h5.term {
 	background-color: #E8E6E2;
 	padding: 4px;
 	}
-.catsearch
-	{
+	
+.catsearch {
 	text-align: left;
 	margin: 10px 0 0 0;
 	}
-.definition
-	{
+	
+.definition {
 	margin-left: 12px; 
 	line-height: 140%;
 	}
-.result
-	{
+	
+.result {
 	margin-left: 24px; 
 	color: #567; 
 	margin: 4px 0 12px 18px;
 	}
-.intro
-	{
+	
+.intro {
 	margin: 2px 0 8px 0; 
 	line-height: 160%;
 	}
-.catback
-	{
+	
+.catback {
 	background-color: #E8E6E2; 
 	padding: 4px; 
 	margin: 4px 0 12px 0;
 	}
-p
-	{
+	
+p {
 	padding: 0; 
-
 	line-height: 130%;
 	margin: 0;
 	}
-.small
-	{
+	
+.small {
 	padding-left: 14px;
- 
 	line-height: 130%;
 	margin: 0 0 6px 0;
 	font-size: small;
 	}
-.xsmall
-	{
+	
+.xsmall	{
 	padding-left: 18px; 
-
 	line-height: 130%;
 	margin: 0 0 6px 0;
 	font-size: x-small;
 	}
-.xxsmall
-	{
+	
+.xxsmall {
 	padding-left: 18px; 
-
 	line-height: 130%;
 	margin: 0 0 6px 0;
 	padding-left: 18px; 
 	font-size: xx-small;
 	}
-.blocksmall
-	{
+	
+.blocksmall	{
 	font-size: xx-small; 
 	display: block;
 	color: #456; 
 	margin-bottom: 4px;
 	}
-.nopadding
-	{
+	
+.nopadding {
 	padding: 0; 
 	color: #456; 
 	line-height: 110%;
 	margin: 0;
 	font-size: small;
 	}
-.pad4
-	{
+	
+.pad4 {
 	padding: 4px;
 	margin: 0;
 	}
-.btnDefault
-	{
+	
+.btnDefault	{
 	margin: 2px 0;
 	}
+	
 /* Bookmark tags */
-.socbookmark {
+.imglsocbookmark {
 	border-top: #e8e8e8 1px solid;
 	padding: 2px 0 2px 0;
 	text-align: center;
 	}
-div.socbookmark a img {
+div.imglsocbookmark a img {
 	opacity: .4;
 	-moz-opacity: .4;
 	filter: alpha(opacity=40);
 	}
-div.socbookmark a:hover img {
+div.imglsocbookmark a:hover img {
 	opacity: 1;
 	-moz-opacity: 1;
 	filter: alpha(opacity=100);
