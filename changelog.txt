@@ -2,6 +2,7 @@
 imGlossary v1.0x xxx
 ===================================
 - Fixed: html always set when linked terms selected [mcdonald]
+- Fixed: block settings were not saved [mcdonald]
 
 
 ===================================
