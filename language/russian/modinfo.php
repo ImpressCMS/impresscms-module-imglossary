@@ -47,7 +47,7 @@ define("_MI_IMGLOSSARY_DATEFORMAT", "Формат даты:");
 define("_MI_IMGLOSSARY_DATEFORMATDSC", "Используйте фрагмент <em>TIME FORMAT SETTINGS</em> файла language/russian/global.php для выбора стиля отображения.<br />Смотрите <a href='http://jp.php.net/manual/en/function.date.php' target='_blank'>PHP руководство</a>");
 
 define("_MI_IMGLOSSARY_PERPAGE", "Кол-во записей на странице (для администратора):");
-define("_MI_IMGLOSSARY_PERPAGEDSC", "Количество записей, которое будет показываться за один разадминистратору при отображении таблицы активных записей.");
+define("_MI_IMGLOSSARY_PERPAGEDSC", "Количество записей, которое будет показываться за один раз администратору при отображении таблицы активных записей.");
 
 define("_MI_IMGLOSSARY_PERPAGEINDEX", "Кол-во записей на странице (для пользователя):");
 define("_MI_IMGLOSSARY_PERPAGEINDEXDSC", "Количество записей, которое будет показываться пользователям на каждой странице модуля.");
