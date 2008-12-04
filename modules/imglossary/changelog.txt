@@ -3,6 +3,9 @@ imGlossary v1.0x xxx
 ===================================
 - Fixed: html always set when linked terms selected [mcdonald]
 - Fixed: block settings were not saved [mcdonald]
+- Fixed: unable to delete category [mcdonald]
+- Fixed: terms were deleted when category was deleted [mcdonald]
+- Fixed: preventing setting terms online and not visible in entries block [mcdonald]
 
 
 ===================================
