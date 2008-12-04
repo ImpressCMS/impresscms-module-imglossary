@@ -49,7 +49,7 @@ define("_AM_IMGLOSSARY_DELETE", "Verwijder");
 define("_AM_IMGLOSSARY_DELETECAT", "Verwijder categorie");
 define("_AM_IMGLOSSARY_DELETEENTRY", "Verwijder term");
 define("_AM_IMGLOSSARY_DELETESUBM", "Verwijder inzending");
-define("_AM_IMGLOSSARY_DELETETHISCAT", "Weet u zeker dat u deze categorie en alle termen hierin wilt verwijderen?");
+define("_AM_IMGLOSSARY_DELETETHISCAT", "Weet u zeker dat u deze categorie wilt verwijderen?");
 define("_AM_IMGLOSSARY_DELETETHISENTRY", "Verwijder deze term?");
 define("_AM_IMGLOSSARY_DESCRIP", "Categorie omschrijving");
 define("_AM_IMGLOSSARY_DOHTML", " Gebruik HTML");
