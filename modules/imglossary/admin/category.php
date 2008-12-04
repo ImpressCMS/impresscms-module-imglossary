@@ -99,7 +99,7 @@ function categoryEdit( $categoryID = '' ) {
 } 
 
 function categoryDelete( $categoryID = '' ) {
-	global $xoopsDB;
+	global $xoopsDB, $xoopsModule;
 	$categoryID = isset($_POST['categoryID']) ? intval($_POST['categoryID']) : intval($_GET['categoryID']);
 	$ok = isset($_POST['ok']) ? intval($_POST['ok']) : 0;
 	$result = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
