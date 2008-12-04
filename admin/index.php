@@ -32,7 +32,7 @@ if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
 /* -- Available operations -- */
 switch ( $op ) {
-	case "default":
+	case 'default':
 	default:
 		include_once ICMS_ROOT_PATH . '/class/xoopslists.php';
 		include_once ICMS_ROOT_PATH . '/class/pagenav.php';
@@ -77,7 +77,7 @@ switch ( $op ) {
 		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
 
-		$sql = "SELECT entryID, categoryID, term, uid, datesub, offline FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 ORDER BY entryID DESC";
+		$sql = "SELECT entryID, categoryID, term, uid, datesub, offline FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND block=1 ORDER BY entryID DESC";
 		$resultA2 = $xoopsDB -> query( $sql, $xoopsModuleConfig['perpage'], $startentry );
 
 		echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
@@ -191,7 +191,7 @@ switch ( $op ) {
 		}
 
 		/* -- Code to show submitted entries -- */
-		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWSUBMISSIONS . "</legend><br /><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWSUBMISSIONS . "</legend><br />";
 		$resultS1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultS1 );
 
@@ -201,10 +201,10 @@ switch ( $op ) {
 		echo "<table width='100%' cellspacing=1 cellpadding=3 border=0 class = outer>";
 		echo "<tr>";
 		echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
+		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
 		}
-		echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
 		echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
 		echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
 		echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
@@ -226,13 +226,13 @@ switch ( $op ) {
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
+				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
 					if ( $catname == '' ) {
 						$catname = '&nbsp;';
 					}
 					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
 				}
-				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'> $modify $delete </td>";
@@ -251,7 +251,7 @@ switch ( $op ) {
 		echo "<br />\n";
 
 		/* -- Code to show requested entries -- */
-		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWREQUESTS . "</legend><br /><br />";
+		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWREQUESTS . "</legend><br />";
 		$resultS2 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 		list( $numrowsX ) = $xoopsDB -> fetchRow( $resultS2 );
 
@@ -327,10 +327,10 @@ switch ( $op ) {
     $resultS4 = $xoopsDB -> query( $sql4, $xoopsModuleConfig['perpage'], $startsub );
 
     echo "<td width='40' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYID . "</b></td>";
+    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
     if ( $xoopsModuleConfig['multicats'] == 1 ) {
         echo "<td width='20%' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCATNAME . "</b></td>";
     }
-    echo "<td class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYTERM . "</b></td>";
     echo "<td width='150' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_SUBMITTER . "</b></td>";
     echo "<td width='90' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ENTRYCREATED . "</b></td>";
     echo "<td width='60' class='bg3' align='center'><b>" . _AM_IMGLOSSARY_ACTION . "</b></td>";
@@ -354,13 +354,13 @@ switch ( $op ) {
 
             echo "<tr>";
             echo "<td class='odd' align='center'>" . $entryID . "</td>";
+            echo "<td class='even' align='left'>" . $term . "</td>";
             if ( $xoopsModuleConfig['multicats'] == 1 ) {
 				if ( $catname == '' ) {
 					$catname = '&nbsp;';
 				}
                 echo "<td class='even' align='left'>" . $catname . "</td>";
             }
-            echo "<td class='even' align='left'>" . $term . "</td>";
             echo "<td class='even' align='center'>" . $sentby . "</td>";
             echo "<td class='even' align='center'>" . $created . "</td>";
             echo "<td class='even' align='center'> $modify $delete </td>";
