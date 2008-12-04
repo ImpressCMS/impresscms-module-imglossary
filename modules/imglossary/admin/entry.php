@@ -53,7 +53,7 @@ function entryEdit( $entryID = 0 ) {
 	$smiley = $entry_array['smiley'];
 	$xcodes = $entry_array['xcodes'];
 	$breaks = $entry_array['breaks'];
-	$block = $entry_array['block'] ? $entry_array['block'] : 1;
+	$block = $entry_array['block'];
 	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
     $notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
     $request = $entry_array['request'] ? $entry_array['request'] : 0;
@@ -184,8 +184,12 @@ function entrySave( $entryID = '' )	{
 	$ref = isset( $_POST['ref'] ) ? $imglmyts -> addSlashes( $_POST['ref'] ) : '';
 	$url = isset( $_POST['url'] ) ? $imglmyts -> addSlashes( $_POST['url'] ) : '';
 	$uid = isset( $_POST['author'] ) ? intval( $_POST['author'] ) : $xoopsUser -> uid();
-	$block = isset( $_POST['block']) ? intval( $_POST['block'] ) : intval( $_GET['block'] );
-	$offline = isset( $_POST['offline']) ? intval( $_POST['offline'] ) : intval( $_GET['offline'] );
+	$block = ( $_POST['block'] == 1 ) ? 1 : 0;
+	if ( $block == 0 ) {
+		$offline = 1;
+	} else {
+		$offline = ( $_POST['offline'] == 1 ) ? 1 : 0;
+	}
 	$html = isset( $_REQUEST['html'] ) ? 1 : 0;
     $smiley = isset( $_REQUEST['smiley'] ) ? 1 : 0;
     $xcodes = isset( $_REQUEST['xcodes'] ) ? 1 : 0;

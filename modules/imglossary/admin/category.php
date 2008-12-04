@@ -35,11 +35,11 @@ function categoryEdit( $categoryID = '' ) {
 	$name = '';
 	$description = '';
 
-	global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $xoopsModuleConfig, $xoopsModule; 
+	global $xoopsDB, $modify; 
 
 	// If there is a parameter, and the id exists, retrieve data: we're editing a column
 	if ( $categoryID ) {
-		$result = $xoopsDB -> query( "SELECT categoryID, name, description, total, weight FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID = '$categoryID'" );
+		$result = $xoopsDB -> query( 'SELECT categoryID, name, description, total, weight FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
 		list( $categoryID, $name, $description, $total, $weight ) = $xoopsDB -> fetchrow( $result );
 
 		if ( $xoopsDB -> getRowsNum( $result ) == 0 ) {
@@ -50,14 +50,14 @@ function categoryEdit( $categoryID = '' ) {
 		xoops_cp_header();
 		imglossary_adminMenu( 2, _AM_IMGLOSSARY_CATS );
 
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
-		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODCAT . ": $name" , "op", xoops_getenv( 'PHP_SELF' ) );
+		echo '<h3 style="color: #2F5376; margin-top: 6px; \">' . _AM_IMGLOSSARY_CATSHEADER . '</h3>';
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_MODCAT . ': $name' , 'op', xoops_getenv( 'PHP_SELF' ) );
 	} else {
 		xoops_cp_header();
 		imglossary_adminMenu( 2, _AM_IMGLOSSARY_CATS );
 
-		echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_CATSHEADER . "</h3>";
-		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWCAT, "op", xoops_getenv( 'PHP_SELF' ) );
+		echo '<h3 style="color: #2F5376; margin-top: 6px; \">' . _AM_IMGLOSSARY_CATSHEADER . '</h3>';
+		$sform = new XoopsThemeForm( _AM_IMGLOSSARY_NEWCAT, 'op', xoops_getenv( 'PHP_SELF' ) );
 	} 
 
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
@@ -107,24 +107,26 @@ function categoryDelete( $categoryID = '' ) {
 
 	// confirmed, so delete 
 	if ( $ok == 1 ) {
-			//get all entries in the category
-			$result3 = $xoopsDB -> query( "SELECT entryID FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
-			//now for each entry, delete the coments
-			while ( list($entryID) = $xoopsDB -> fetchRow($result3) ) {
-				xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
-			}		
-		$result = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " WHERE categoryID=$categoryID" );
-		$result2 = $xoopsDB -> query( "DELETE FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID" );
+		//get all entries in the category
+		$result3 = $xoopsDB -> query( 'SELECT entryID FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE categoryID=' . $categoryID );
+		//now for each entry, delete the coments
+		while ( list( $entryID ) = $xoopsDB -> fetchRow( $result3 ) ) {
+			xoops_comment_delete( $xoopsModule -> getVar('mid'), $entryID );
+			$xoopsDB -> query( "UPDATE " . $xoopsDB -> prefix( 'imglossary_entries' ) . " SET offline=1, block=0 WHERE categoryID='$categoryID'"); 
+		}		
+		$result = $xoopsDB -> query( 'DELETE FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
+		//$result2 = $xoopsDB -> query( 'DELETE FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE categoryID=' . $categoryID );
+		
 		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_CATISDELETED, $name ) );
 	} else {
 		xoops_cp_header();
-		xoops_confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_IMGLOSSARY_DELETETHISCAT . "<br /><br>" . $name, _AM_IMGLOSSARY_DELETE );
+		xoops_confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_IMGLOSSARY_DELETETHISCAT . '<br /><br>' . $name, _AM_IMGLOSSARY_DELETE );
 		xoops_cp_footer();
 	}
 } 
 
 function categorySave ( $categoryID = '' ) {
-	global $xoopsUser, $xoopsConfig, $xoopsDB, $modify, $myts, $categoryID;
+	global $xoopsDB, $modify, $myts, $categoryID;
 	$categoryID = isset( $_POST['categoryID'] ) ? intval( $_POST['categoryID'] ) : intval( $_GET['categoryID'] );
 	$weight = isset( $_POST['weight'] ) ? intval( $_POST['weight'] ) : intval( $_GET['weight'] );
 	$name = isset( $_POST['name'] ) ? htmlSpecialChars( $_POST['name'] ) : htmlSpecialChars( $_GET['name'] );
@@ -169,7 +171,7 @@ switch ( $op ) {
 
     case 'default':
     default:
-		global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig;
+		global $xoopsModuleConfig;
 		if ( $xoopsModuleConfig['multicats'] != 1 ) {
 			redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_SINGLECAT, '' ) );
 			exit();
@@ -179,5 +181,4 @@ switch ( $op ) {
 } 
 
 xoops_cp_footer();
-
 ?>
