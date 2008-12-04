@@ -54,7 +54,7 @@ define("_AM_IMGLOSSARY_DELETE", "Delete");
 define("_AM_IMGLOSSARY_DELETECAT", "Delete category");
 define("_AM_IMGLOSSARY_DELETEENTRY", "Delete entry");
 define("_AM_IMGLOSSARY_DELETESUBM", "Delete submission");
-define("_AM_IMGLOSSARY_DELETETHISCAT", "Are you sure you want to delete this category and all it's entries?");
+define("_AM_IMGLOSSARY_DELETETHISCAT", "Are you sure you want to delete this category?");
 define("_AM_IMGLOSSARY_DELETETHISENTRY", "Delete this entry?");
 define("_AM_IMGLOSSARY_DESCRIP", "Category description");
 define("_AM_IMGLOSSARY_DOHTML", " Enable HTML tags");
