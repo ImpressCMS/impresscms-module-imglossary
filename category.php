@@ -105,7 +105,7 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 		$catsarray['single'][] = $eachcat;
 	}
 	$pagenav = new XoopsPageNav( $totalcats, $xoopsModuleConfig['indexperpage'], $start, 'categoryID=' . $eachcat['id'] . '&start' );
-	$catsarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+	$catsarray['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign( 'catsarray', $catsarray );
 	$xoopsTpl -> assign( 'pagetype', '0' );
@@ -161,7 +161,7 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 	
 	$navstring = "categoryID=" . $singlecat['id'] . "&start";
 	$pagenav = new XoopsPageNav( $entriesincat, $xoopsModuleConfig['indexperpage'], $start, $navstring);
-	$entriesarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+	$entriesarray['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
 	
 	$xoopsTpl -> assign( 'entriesarray', $entriesarray );
 	$xoopsTpl -> assign( 'pagetype', '1' );

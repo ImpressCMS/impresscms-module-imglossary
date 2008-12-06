@@ -1,6 +1,9 @@
 ===================================
 imGlossary v1.0x xxx
 ===================================
+- Added: Persian translation [stranger]
+- Added: ImpressCMS global directions [stranger]
+
 - Fixed: html always set when linked terms selected [mcdonald]
 - Fixed: block settings were not saved [mcdonald]
 - Fixed: unable to delete category [mcdonald]

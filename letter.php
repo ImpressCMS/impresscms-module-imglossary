@@ -120,7 +120,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	}
 	
 	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'init=' . $eachentry['init'] . '&start' );
-	$entriesarray['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+	$entriesarray['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign ( 'entriesarray', $entriesarray );
 	$xoopsTpl -> assign ( 'pagetype', '0' );
@@ -192,7 +192,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	}
 	
 	$pagenav = new XoopsPageNav( $totalentries, $xoopsModuleConfig['indexperpage'], $start, 'init=' . $eachentry['init'] . '&start' );
-	$entriesarray2['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+	$entriesarray2['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
 
 	$xoopsTpl -> assign( 'entriesarray2', $entriesarray2 );
 	$xoopsTpl -> assign( 'pagetype', '1' );

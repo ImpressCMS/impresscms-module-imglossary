@@ -1,5 +1,5 @@
-<div class="leftheader"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | <{if $pagetype == '0'}><{$smarty.const._MD_IMGLOSSARY_ALLCATS}><{elseif $pagetype == '1'}><{$singlecat.name}><{/if}></div>
-<div class="rightheader"><{$lang_modulename}></div>
+<div class="<{$smarty.const._GLOBAL_LEFT}>header"><a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | <{if $pagetype == '0'}><{$smarty.const._MD_IMGLOSSARY_ALLCATS}><{elseif $pagetype == '1'}><{$singlecat.name}><{/if}></div>
+<div class="<{$smarty.const._GLOBAL_RIGHT}>header"><{$lang_modulename}></div>
 <hr>
 
 <div class="clearer">
@@ -45,28 +45,28 @@
 <!--	<h3 class="cat"><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></h3> -->
 	<fieldset>
 	<legend><a href="<{$xoops_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
-	<div style="text-align: left; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
+	<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
 	<div class="letters"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div></fieldset><br />
 	<{/foreach}>
 
-	<div align = 'left'><{$catsarray.navbar}></div>
+	<div align = '<{$smarty.const._GLOBAL_LEFT}>'><{$catsarray.navbar}></div>
 	<p><div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a> ] </div>
 
 <{elseif $pagetype == '1'}>
 <!--	<h2 class="cat"><{$singlecat.name}></h2> -->
 	<fieldset style="padding: 4px;">
 	<legend><{$singlecat.name}></legend>
-	<div style="text-align: left; padding: 8px; font-size: small;"><{$singlecat.description}></div>
+	<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$singlecat.description}></div>
 	<div class="letters"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div><br />
 
 	<{foreach item=eachentry from=$entriesarray.single}>
 	<h4 class="catback"><a href="<{$xoops_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
 	<div class="definition" style="clear: both;"><{$eachentry.definition}></div>
-	<div style="margin-left: 8px;padding: 5px;"><{$eachentry.microlinks}></div>
+	<div style="margin-<{$smarty.const._GLOBAL_LEFT}>: 8px;padding: 5px;"><{$eachentry.microlinks}></div>
 	<br />
 	<{/foreach}>
 </fieldset>
-	<div align = 'left'><{$entriesarray.navbar}></div>
+	<div align = '<{$smarty.const._GLOBAL_LEFT}>'><{$entriesarray.navbar}></div>
 	<p><div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a> ] </div>
 
 <{/if}>
