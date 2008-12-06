@@ -130,7 +130,7 @@ function FormImport() {
 		echo "<br /><br /><br />";
         echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
         echo "<tr>";
-        echo "<td colspan='2' class='bg3' align='left'><font size='2'><b>" . _AM_IMGLOSSARY_MODULEHEADIMPORTWW . "</b></font></td>";
+        echo "<td colspan='2' class='bg3' align='"._GLOBAL_LEFT."'><font size='2'><b>" . _AM_IMGLOSSARY_MODULEHEADIMPORTWW . "</b></font></td>";
         echo "</tr>";
 
         echo "<tr>";
@@ -139,7 +139,7 @@ function FormImport() {
         echo "</tr>";
 
         echo "<tr>";
-        echo "<td class='odd' width = '200' align='left'><font size=2>" . _AM_IMGLOSSARY_IMPORTDELWB . "</font></td>";
+        echo "<td class='odd' width = '200' align='"._GLOBAL_LEFT."'><font size=2>" . _AM_IMGLOSSARY_IMPORTDELWB . "</font></td>";
         echo "<td class='even' align='center'><form action='importwiwimod.php?op=import' method=post>
         <input type='radio' name='delete' value='1'>&nbsp;" . _YES . "&nbsp;&nbsp;
         <input type='radio' name='delete' value='0' checked='checked'>&nbsp;" . _NO . "<br />

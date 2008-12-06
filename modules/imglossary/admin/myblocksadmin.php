@@ -175,7 +175,7 @@ function list_blocks() {
 				</select>
 			</td>
 			<td class='$class' align='center'>
-				<input type='text' name='weight[$bid]' value='$weight' size='5' maxlength='5' style='text-align:right;' />
+				<input type='text' name='weight[$bid]' value='$weight' size='5' maxlength='5' style='text-align:"._GLOBAL_RIGHT.";' />
 			</td>
 			<td class='$class' align='center'>
 				<select name='bmodule[$bid][]' size='5' multiple='multiple'>
@@ -242,8 +242,8 @@ imglossary_adminMenu( 3, _AM_IMGLOSSARY_BLOCKS );
 
 if ( file_exists( './mymenu.php' ) ) include( './mymenu.php' ) ;
 
-echo "<h3 style='text-align:left;'>" . $xoopsModule -> name() . "</h3>\n";
-echo "<h4 style='text-align:left;'>" . _AM_BADMIN . "</h4>\n";
+echo "<h3 style='text-align:"._GLOBAL_LEFT.";'>" . $xoopsModule -> name() . "</h3>\n";
+echo "<h4 style='text-align:"._GLOBAL_LEFT.";'>" . _AM_BADMIN . "</h4>\n";
 list_blocks();
 list_groups();
 xoops_cp_footer();

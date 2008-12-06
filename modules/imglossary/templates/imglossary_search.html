@@ -1,7 +1,7 @@
-<div class="leftheader">
+<div class="<{$smarty.const._GLOBAL_LEFT}>header">
 	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | <{$smarty.const._MD_IMGLOSSARY_SEARCHHEAD}>
 </div>
-<div class="rightheader"><{$lang_modulename}></div>
+<div class="<{$smarty.const._GLOBAL_RIGHT}>header"><{$lang_modulename}></div>
 <hr>
 
 <h2 class="catsearch"><{$smarty.const._MD_IMGLOSSARY_SEARCHHEAD}></h2>
@@ -34,5 +34,5 @@
 <div class="small"><{$eachresult.definition}></div>
 <div class="small"><{$eachresult.microlinks}></div>
 <{/foreach}>
-<div align = 'left'><{$resultset.navbar}></div>
+<div align = '<{$smarty.const._GLOBAL_LEFT}>'><{$resultset.navbar}></div>
 </div>

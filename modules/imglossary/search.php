@@ -140,7 +140,7 @@ if ( !$query ) {
 		
 		$linkstring = "term=" . $query . "&start";
 		$pagenav = new XoopsPageNav( $results, $xoopsModuleConfig['indexperpage'], $start, $linkstring );
-		$resultset['navbar'] = '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+		$resultset['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
 
 		$xoopsTpl -> assign( 'resultset', $resultset );
 

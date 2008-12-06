@@ -72,7 +72,7 @@ switch ( $op ) {
 
 		/* -- Code to show existing terms -- */
 		echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWENTRIES . "</legend><br />";
-		echo "<a style='float: left; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_IMGLOSSARY_CREATEENTRY . "</a><br /><br />";
+		echo "<a style='float: "._GLOBAL_LEFT."; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='entry.php'>" . _AM_IMGLOSSARY_CREATEENTRY . "</a><br /><br />";
 		// To create existing terms table
 		$resultA1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
 		list( $numrows ) = $xoopsDB -> fetchRow( $resultA1 );
@@ -115,12 +115,12 @@ switch ( $op ) {
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
-				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
+				echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $term . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
 					if ( $catname == '' ) {
 						$catname = '&nbsp;';
 					}
-					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
+					echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $catname . "</td>";
 				}
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
@@ -136,14 +136,14 @@ switch ( $op ) {
 			} 
 		echo "</table>";
 		$pagenav = new XoopsPageNav( $numrows, $xoopsModuleConfig['perpage'], $startentry, 'startentry', 'entryID=' . $entryID );
-		echo "<div style='text-align: right;'>" . $pagenav -> renderNav() . "</div>";
+		echo "<div style='text-align: "._GLOBAL_RIGHT.";'>" . $pagenav -> renderNav() . "</div>";
 		echo "</fieldset>";
 		echo "<br />";
 
 		if ($xoopsModuleConfig['multicats'] == 1) {
 			/* -- Code to show existing categories -- */
 			echo "<fieldset style='border: #E8E8E8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWCATS . "</legend><br />";
-			echo "<a style='float: left; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_IMGLOSSARY_CREATECAT . "</a><br /><br />";
+			echo "<a style='float: "._GLOBAL_LEFT."; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;' href='category.php'>" . _AM_IMGLOSSARY_CREATECAT . "</a><br /><br />";
 			// To create existing columns table
 			$resultC1 = $xoopsDB -> query( "SELECT COUNT(*) FROM " . $xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 			list( $numrows ) = $xoopsDB -> fetchRow( $resultC1 );
@@ -170,8 +170,8 @@ switch ( $op ) {
 
 					echo "<tr>";
 					echo "<td class='odd' align='center'>" . $categoryID . "</td>";
-					echo "<td class='even' align='left'>&nbsp;" . $name . "</td>";
-					echo "<td class='even' align='left'>&nbsp;" . $description . "</td>";
+					echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $name . "</td>";
+					echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $description . "</td>";
 				//	echo "<td class='even' align='center'>" . $weight . "</td>";
 					echo "<td class='even' align='center'> $modify $delete </td>";
 					echo "</tr>";
@@ -185,7 +185,7 @@ switch ( $op ) {
 			} 
 			echo "</table>\n";
 			$pagenav = new XoopsPageNav( $numrows, $xoopsModuleConfig['perpage'], $startcat, 'startcat', 'categoryID=' . $categoryID );
-			echo '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+			echo '<div style="text-align:"._GLOBAL_RIGHT.";">' . $pagenav -> renderNav() . '</div>';
 			echo "</fieldset>";
 			echo "<br />\n";
 		}
@@ -226,12 +226,12 @@ switch ( $op ) {
 
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
-				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
+				echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $term . "</td>";
 				if ( $xoopsModuleConfig['multicats'] == 1 ) {
 					if ( $catname == '' ) {
 						$catname = '&nbsp;';
 					}
-					echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
+					echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $catname . "</td>";
 				}
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
@@ -246,7 +246,7 @@ switch ( $op ) {
 		} 
 		echo "</table>\n";
 		$pagenav = new XoopsPageNav( $numrows, $xoopsModuleConfig['perpage'], $startsub, 'startsub', 'entryID=' . $entryID );
-		echo '<div style="text-align:right;">' . $pagenav -> renderNav() . '</div>';
+		echo '<div style="text-align:"._GLOBAL_RIGHT.";">' . $pagenav -> renderNav() . '</div>';
 		echo "</fieldset>";
 		echo "<br />\n";
 
@@ -288,9 +288,9 @@ switch ( $op ) {
 				echo "<tr>";
 				echo "<td class='odd' align='center'>" . $entryID . "</td>";
 				// if ( $xoopsModuleConfig['multicats'] == 1 ) {
-				//	echo "<td class='even' align='left'>&nbsp;" . $catname . "</td>";
+				//	echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $catname . "</td>";
 				// }
-				echo "<td class='even' align='left'>&nbsp;" . $term . "</td>";
+				echo "<td class='even' align='"._GLOBAL_LEFT."'>&nbsp;" . $term . "</td>";
 				echo "<td class='even' align='center'>" . $sentby . "</td>";
 				echo "<td class='even' align='center'>" . $created . "</td>";
 				echo "<td class='even' align='center'> $modify $delete </td>";
@@ -304,7 +304,7 @@ switch ( $op ) {
 		} 
 		echo "</table>\n";
 		$pagenav = new XoopsPageNav( $numrows, $xoopsModuleConfig['perpage'], $startsub, 'startsub', 'entryID=' . $entryID );
-		echo "<div style='text-align:right;'>" . $pagenav -> renderNav() . "</div>";
+		echo "<div style='text-align:"._GLOBAL_RIGHT.";'>" . $pagenav -> renderNav() . "</div>";
 		echo "</fieldset>";
 		echo "<br />\n";
 		
@@ -313,7 +313,7 @@ switch ( $op ) {
      **/
     echo "<fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; color: #292D30;'>" . _AM_IMGLOSSARY_SHOWOFFLINE . "</legend>";
 	echo "<div>&nbsp;</div>";
-    echo "	<div style='float:left; width:100%;'><table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
+    echo "	<div style='float:"._GLOBAL_LEFT."; width:100%;'><table class='outer' cellspacing=1 cellpadding=3 width='100%' border='0'>";
 
     $resultS2 = $xoopsDB -> query( "SELECT COUNT(*)
                                    FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "
@@ -354,12 +354,12 @@ switch ( $op ) {
 
             echo "<tr>";
             echo "<td class='odd' align='center'>" . $entryID . "</td>";
-            echo "<td class='even' align='left'>" . $term . "</td>";
+            echo "<td class='even' align='"._GLOBAL_LEFT."'>" . $term . "</td>";
             if ( $xoopsModuleConfig['multicats'] == 1 ) {
 				if ( $catname == '' ) {
 					$catname = '&nbsp;';
 				}
-                echo "<td class='even' align='left'>" . $catname . "</td>";
+                echo "<td class='even' align='"._GLOBAL_LEFT."'>" . $catname . "</td>";
             }
             echo "<td class='even' align='center'>" . $sentby . "</td>";
             echo "<td class='even' align='center'>" . $created . "</td>";
@@ -375,7 +375,7 @@ switch ( $op ) {
     }
     echo "</table>\n";
     $pagenav = new XoopsPageNav( $numrowsX, $xoopsModuleConfig['perpage'], $startsub, 'startsub', 'entryID=' . $entryID );
-    echo '<div style="text-align:right;">' . $pagenav -> renderNav(8) . '</div>';
+    echo '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav(8) . '</div>';
     echo "</fieldset>\n";
     echo "</div>";
 		

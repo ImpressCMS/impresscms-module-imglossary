@@ -31,8 +31,8 @@ include ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 $mytree = new XoopsTree( $xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID', '0' );
 
 echo "<div>";
-echo "<div style='float: left; font-size: smaller;'><a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/index.php'>" . $xoopsModule -> name() . "</a> | " . _MD_IMGLOSSARY_SUBMITART . "</div>";
-echo "<div style='font-size: 18px; text-align: right; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;'>" . $xoopsModule -> name() . "</div>";
+echo "<div style='float: "._GLOBAL_LEFT."; font-size: smaller;'><a href='" . ICMS_URL . "/modules/" . $xoopsModule -> dirname() . "/index.php'>" . $xoopsModule -> name() . "</a> | " . _MD_IMGLOSSARY_SUBMITART . "</div>";
+echo "<div style='font-size: 18px; text-align: "._GLOBAL_RIGHT."; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;'>" . $xoopsModule -> name() . "</div>";
 echo "</div><hr>";
 
 echo "<br /><fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; font-size: 105%;'>" . sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( $xoopsModule -> name() ) ) . "</legend>";

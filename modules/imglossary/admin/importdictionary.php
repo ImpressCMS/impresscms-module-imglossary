@@ -180,7 +180,7 @@ function FormImport() {
 		echo "<br /><br /><br />";
         echo "<table width='100%' cellspacing='1' cellpadding='3' border='0' class='outer'>";
         echo "<tr>";
-        echo "<td colspan='2' class='bg3' align='left'><b>" . _AM_IMGLOSSARY_MODULEHEADIMPORT . "</b></td>";
+        echo "<td colspan='2' class='bg3' align='"._GLOBAL_LEFT."'><b>" . _AM_IMGLOSSARY_MODULEHEADIMPORT . "</b></td>";
         echo "</tr>";
 
         echo "<tr>";
