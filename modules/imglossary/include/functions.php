@@ -125,7 +125,7 @@ function imglossary_alphaArray() {
 		$letterlinks['total'] = $howmany;
 		$letterlinks['id'] = chr( $a );
 		$letterlinks['linktext'] = chr( $a );
-		$letterlinks['title'] = ' ' . strtolower( _MD_IMGLOSSARY_TERMS );
+		$letterlinks['title'] = ' ' . mb_strtolower( _MD_IMGLOSSARY_TERMS, _CHARSET );
 
 		$alpha['initial'][] = $letterlinks;
 	}
