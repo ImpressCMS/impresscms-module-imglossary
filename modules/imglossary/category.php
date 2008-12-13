@@ -171,7 +171,7 @@ $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
 // This will let us include the module's styles in the theme
-$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />');
+$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />');
 
 include ICMS_ROOT_PATH . '/footer.php';
 
