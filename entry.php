@@ -150,7 +150,7 @@ $xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counte
 $xoopsTpl -> assign( 'showsbookmarks', $xoopsModuleConfig['showsbookmarks'] );
 $xoopsTpl -> assign( 'sbookmarks', imglossary_sbmarks( $entryID, $thisterm['term'] ) );
 
-$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style.css" />' );
+$xoopsTpl -> assign( 'xoops_module_header', '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );
 
 //Comments
 include ICMS_ROOT_PATH . '/include/comment_view.php';

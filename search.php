@@ -154,7 +154,7 @@ if ( !$query ) {
 $xoopsTpl -> assign( 'lang_modulename', $xoopsModule -> name() );
 $xoopsTpl -> assign( 'lang_moduledirname', $glossdirname );
 
-$xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style.css" />' );
+$xoopsTpl -> assign( "xoops_module_header", '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
 
