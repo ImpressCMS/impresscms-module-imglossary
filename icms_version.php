@@ -6,76 +6,80 @@
 *
 * File: icms_version.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
  
 if ( !defined( 'ICMS_ROOT_PATH' ) ) die( 'ICMS root path not defined' );
- 
-$glossdirname = basename( dirname( __FILE__ ) );
 
-global $xoopsUser, $xoopsDB, $xoopsModule, $xoopsConfig;
+global $icmsConfig;
 
-if ( file_exists( ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php' ) ) {
-	include_once ICMS_ROOT_PATH . '/language/'. $xoopsConfig['language'] . '/moduleabout.php';
-} else { include_once ICMS_ROOT_PATH . '/language/english/moduleabout.php'; }
+if ( file_exists( ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) ) . '/language/'. $icmsConfig['language'] . '/moduleabout.php' ) ) {
+	include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) ) . '/language/'. $icmsConfig['language'] . '/moduleabout.php';
+} else { include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) ) . '/language/english/moduleabout.php'; }
 
 //	** General information
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
-	'version' 			=> '1.01',
-	'status' 			=> 'Final',
-	'status_version'	=> 'Final',
-	'date'				=> 'November 23, 2008',
+	'version' 			=> '1.03',
+	'status' 			=> 'RC',
+	'status_version'	=> 'RC',
+	'date'				=> 'unknown',
+
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> 'McDonald',
 	'credits' 			=> 'hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf',
-//	'support_site_url' 	=> 'http://community.impresscms.org/modules/newbb/',
-//	'support_site_name' => 'ImpressCMS Community - Modules Support Forum',
+//	'submit_bug' 		=> 'http://impresscms.trac.cvsdude.com/addons/newticket?type=defect',
 	'license' 			=> 'GNU General Public License (GPL)',
 	'official' 			=> 0,
 	'image' 			=> 'images/imglossary_logo.png',		// Module logo
 	'iconbig' 			=> 'images/imglossary_iconsbig.png',	// Control Panel icon
 	'iconsmall' 		=> 'images/imglossary_iconsmall.png',	// Module menu icon
-	'dirname' 			=> $glossdirname      					// Module DirName 
+	'dirname' 			=> basename( dirname( __FILE__ ) )		// Module DirName 
 	);
 
 // 	** Contributors **
 $modversion['people']['developers'] [] = '<a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a>&nbsp;&nbsp;<span style="font-size: smaller;">( pietjebell31 [at] hotmail [dot] com )</span>';
+
 $modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a>';
 $modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a>';
-$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=10" target="_blank">sato-san</a> (German)';
-$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
-$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a> (Portuguese-Brazil)';
-$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a> (Dutch)';
+
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a> (Russian)';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=97" target="_blank">debianus</a> (Spanish)';
-$modversion['people']['other']      [] = '&middot; <a href="http://xoops.peak.ne.jp/" target="_blank">GIJOE</a> (myblocksadmin hack)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a> (Portuguese-Brazil)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a> (Dutch)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=10" target="_blank">sato-san</a> (German)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=392" target="_blank">stranger</a> (Persian)';
+$modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
+
 $modversion['people']['other']      [] = '&middot; <a href="http://www.famfamfam.com" target="_blank">famfamfam</a> (icons)';
 $modversion['people']['other']      [] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
 //	** If Release Candidate **
-//$modversion['warning'] = _MODABOUT_WARNING_RC;
+ $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_RC;
 
 //	** If Final  **
-$modversion['warning'] = _MODABOUT_WARNING_FINAL;
+// $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_FINAL;
 
 // 	** Admin things **
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = 'admin/index.php';
 $modversion['adminmenu'] = 'admin/menu.php';
+
+$modversion['onInstall'] = '';
+$modversion['onUpdate']  = '';
 
 // Sql file (must contain sql generated by phpMyAdmin or phpPgAdmin)
 // All tables should not have any prefix!
@@ -92,11 +96,11 @@ $modversion['search']['func'] = 'imglossary_search';
 
 // Menu
 $modversion['hasMain'] = 1;
-$hModConfig =& xoops_gethandler( 'config' );
-$hModule =& xoops_gethandler( 'module' );
-if ( $imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
+$hModConfig = icms::$config;
+$hModule = icms::handler( 'icms_module' );
+if ( $imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) ) {
 	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
-	if ( ( $xoopsUser && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
+	if ( ( icms::$user && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
 		$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
 		$modversion['sub'][1]['url'] = 'submit.php';	
 	}
@@ -107,21 +111,21 @@ $modversion['sub'][2]['url'] = 'request.php';
 $modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
 $modversion['sub'][3]['url'] = 'search.php';
 
-if (!$imglossaryModule =& $hModule -> getByDirname( $glossdirname ) == false ) {
+if (!$imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) == false ) {
 	$MyModIsActive = $imglossaryModule -> getVar( 'isactive' ); //tested if installed and active
 } else {
 	$MyModIsActive = '0'; //not installed
 }
 
 if ($MyModIsActive == '1') {
-	$sql = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . '' );
+	$sql = icms::$xoopsDB -> query( 'SELECT categoryID, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . '' );
 	$i = 4;
-	$hModConfig =& xoops_gethandler( 'config' );
-	$hModule =& xoops_gethandler( 'module' );
-	if ($imglossaryModule =& $hModule -> getByDirname( $glossdirname ) ) {
+	$hModConfig = icms::$config;
+	$hModule = icms::handler( 'icms_module' );
+	if ($imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) ) {
 		$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
 		if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
-			while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $sql ) ) {
+			while ( list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $sql ) ) {
 				$modversion['sub'][$i]['name'] = $name;
 				$modversion['sub'][$i]['url'] = 'category.php?categoryID=' . $categoryID;
 				$i++;
@@ -166,6 +170,8 @@ $modversion['templates'][5]['file'] = 'imglossary_search.html';
 $modversion['templates'][5]['description'] = 'Search in glossary';
 $modversion['templates'][6]['file'] = 'imglossary_rss.html';
 $modversion['templates'][6]['description'] = 'RSS feed';
+$modversion['templates'][7]['file'] = 'imglossary_moduleabout.html';
+$modversion['templates'][7]['description'] = 'Module about';
 
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
@@ -213,8 +219,8 @@ $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'dhtml';
 $modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
                                                 _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
-												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
+												//_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
+												//_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
 												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce'	);
@@ -227,7 +233,7 @@ $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'dhtml';
 $modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
                                                 _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
+												//_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
 												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
@@ -359,11 +365,4 @@ $modversion['comments']['pageName'] = 'entry.php';
 $modversion['comments']['callbackFile'] = 'include/comment_functions.php';
 $modversion['comments']['callback']['approve'] = 'imglossary_com_approve';
 $modversion['comments']['callback']['update'] = 'imglossary_com_update';
-
-// On Update
-if ( ! empty( $_POST['fct'] ) && ! empty( $_POST['op'] ) && $_POST['fct'] == 'modulesadmin' && $_POST['op'] == 'update_ok' && $_POST['dirname'] == $modversion['dirname'] )
-{
-    include dirname( __FILE__ ) . '/include/onupdate.inc.php' ;
-}
-
 ?>

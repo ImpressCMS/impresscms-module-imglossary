@@ -17,41 +17,41 @@
 */
 
 include 'header.php';	
-include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/class/icmsfeed.php'; 
+include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/class/icmsfeed.php'; 
 
-global $xoopsConfig, $xoopsModule, $xoopsModuleConfig;
+global $icmsConfig;
 
-if ( $xoopsModuleConfig['rssfeed'] ) {
+if ( icms::$module -> config['rssfeed'] ) {
 
-$myFeed = new IcmsFeed();
+$myFeed = new icmsFeed();
 
-$myFeed -> webMaster = $xoopsConfig['adminmail'];  // Admin contact email as stated in general preferences.
-$myFeed -> editor = $xoopsConfig['adminmail'];
-$myFeed -> image = array( 'url' => ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/images/imglossary_iconsbig.png' );
+$myFeed -> webMaster = $icmsConfig['adminmail'];  // Admin contact email as stated in general preferences.
+$myFeed -> editor = $icmsConfig['adminmail'];
+$myFeed -> image = array( 'url' => ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/imglossary_iconsbig.png' );
 $myFeed -> width  = 32;  // max. width  = 144px
 $myFeed -> height = 32;  // max. height = 400px
-$myFeed -> title = $xoopsConfig['sitename'];
-$myFeed -> generator = XOOPS_VERSION . '(module: imGlossary ' . number_format( $xoopsModule -> getVar( 'version' ) / 100 , 2, '.', '' ) . ')';
-$myFeed -> category = $xoopsModule -> getVar( 'name' );
-$myFeed -> ttl = 120;
-$myFeed -> copyright = 'Copyright ' . formatTimestamp( time(), 'Y' ) . ' - ' . $xoopsConfig['sitename'];
+$myFeed -> title = $icmsConfig['sitename'];
+$myFeed -> generator = ICMS_VERSION_NAME . ' (module: imGlossary ' . number_format( icms::$module -> getVar( 'version' ) / 100 , 2, '.', '' ) . ')';
+$myFeed -> category = icms::$module -> getVar( 'name' );
+$myFeed -> ttl = 60;
+$myFeed -> copyright = 'Copyright ' . formatTimestamp( time(), 'Y' ) . ' - ' . $icmsConfig['sitename'];
 
-$sql = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC ', $xoopsModuleConfig['rssfeedtotal'], 0 );
-while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {	
+$sql = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC ', icms::$module -> config['rssfeedtotal'], 0 );
+while ( $myrow = icms::$xoopsDB -> fetchArray( $sql ) ) {	
 	
 	// First get the main category name of the term
-	$sql2 = $xoopsDB -> query( 'SELECT name FROM ' . $xoopsDB -> prefix('imglossary_cats') . ' WHERE categoryID=' . $myrow['categoryID'] );
-	$mycat = $xoopsDB -> fetchArray( $sql2 );
+	$sql2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix('imglossary_cats') . ' WHERE categoryID=' . $myrow['categoryID'] );
+	$mycat = icms::$xoopsDB -> fetchArray( $sql2 );
 	$category = htmlspecialchars( $mycat['name'] );
 		
 	$title = htmlspecialchars( $myrow['term'] );
-	$date  = formatTimestamp( $myrow['datesub'], 'D, d M Y H:i:s' );
-	$text  = icms_substr( $myrow['definition'], 0, $xoopsModuleConfig['rndlength']-1, '...' );
-	$text  = htmlspecialchars( $myts -> displayTarea( $text, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 1, $myrow['breaks'] ) );
-	$link  = ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . intval( $myrow['entryID'] );
+	$date  = formatTimestamp( $myrow['datesub'], 'r' );
+	$text  = icms_core_DataFilter::icms_substr( $myrow['definition'], 0, icms::$module -> config['rndlength'], '...' );
+	$text  = htmlspecialchars( $text );
+	$link  = ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/entry.php?entryID=' . $myrow['entryID'];
 	
 	// Get author of 
-	$member_handler =& xoops_gethandler( 'member' );
+	$member_handler = icms::handler( 'icms_member' );
 	$user =& $member_handler -> getUser( $myrow['uid'] );
 	if ( $myrow['uid'] == -1 ) {
 		$author = _MD_IMGLOSSARY_ANONYMOUS;
@@ -72,6 +72,5 @@ while ( $myrow = $xoopsDB -> fetchArray( $sql ) ) {
 
 $myFeed -> render();
 
-} else { echo 'RSS feed for ' . $xoopsModule -> getVar( 'name' ) . ' is turned off.'; }
-
+} else { echo 'RSS feed for ' . icms::$module -> getVar( 'name' ) . ' is turned off.'; }
 ?>

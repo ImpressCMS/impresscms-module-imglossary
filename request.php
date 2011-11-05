@@ -24,7 +24,7 @@
 
 include 'header.php';
 
-global $xoopsConfig, $xoopsDB, $xoopsUser, $xoopsModuleConfig;
+global $icmsConfig;
 
 if ( empty( $_POST['submit'] ) ) {
 	include ICMS_ROOT_PATH . '/header.php';
@@ -32,24 +32,13 @@ if ( empty( $_POST['submit'] ) ) {
 	include ICMS_ROOT_PATH . '/footer.php';
 } else {
 	
-	if ( $xoopsModuleConfig['captcha'] ) {
+	if ( icms::$module -> config['captcha'] ) {
 		// Captcha Hack
 		// Verify entered code 
-		if ( class_exists( 'XoopsFormCaptcha' ) ) { 
-			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
-				$xoopsCaptcha = XoopsCaptcha::instance(); 
-				if ( ! $xoopsCaptcha -> verify( true ) ) { 
-					redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
-				} 
-			} 
-		} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
-			if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
-				$icmsCaptcha = IcmsCaptcha::instance(); 
-				if ( ! $icmsCaptcha -> verify( true ) ) { 
-					redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
-				} 
-			} 
-		}
+		$icmsCaptcha = icms_form_elements_captcha_Object::instance(); 
+			if ( !$icmsCaptcha -> verify( true ) ) { 
+				redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+			}
 		// Captcha Hack
 	}
 		
@@ -63,8 +52,8 @@ if ( empty( $_POST['submit'] ) ) {
 	$html   = ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
 	$smiley = ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
 	$xcodes = ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
-	if ( $xoopsUser ) {
-		$user = $xoopsUser -> getVar( 'uid' );
+	if ( icms::$user ) {
+		$user = icms::$user -> getVar( 'uid' );
 	} else {
 		$user = _MD_IMGLOSSARY_ANONYMOUS;
 	}
@@ -76,24 +65,24 @@ if ( empty( $_POST['submit'] ) ) {
 	$url = '';
 	$init = substr( $reqterm, 0, 1 );
 
-	$xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, init, ref, url, uid, submit, datesub, html, smiley, xcodes, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$html', '$smiley', '$xcodes', '$offline', '$notifypub', '$request' )" );
+	icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, init, ref, url, uid, submit, datesub, html, smiley, xcodes, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$html', '$smiley', '$xcodes', '$offline', '$notifypub', '$request' )" );
 
-	$adminmail = $xoopsConfig['adminmail'];
+	$adminmail = $icmsConfig['adminmail'];
 
-	if ( $xoopsUser ) {
-		$logname = $xoopsUser -> getVar( 'uname', 'E');
+	if ( icms::$user ) {
+		$logname = icms::$user -> getVar( 'uname', 'E');
 	} else {
-		$logname = $xoopsConfig['anonymous'];
+		$logname = $icmsConfig['anonymous'];
 	}
 
-	if ( $xoopsUser ) {
-		$result = $xoopsDB -> query( 'SELECT email FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uname=' . $logname );
-		list($address) = $xoopsDB -> fetchRow( $result );
+	if ( icms::$user ) {
+		$result = icms::$xoopsDB -> query( 'SELECT email FROM ' . icms::$xoopsDB -> prefix( 'users' ) . ' WHERE uname=' . $logname );
+		list($address) = icms::$xoopsDB -> fetchRow( $result );
 	} else {
-		$address = $xoopsConfig['adminmail'];
+		$address = $icmsConfig['adminmail'];
 	}
 
-	if ( $xoopsModuleConfig['mailtoadmin'] == 1 )	{
+	if ( icms::$module -> config['mailtoadmin'] == 1 )	{
 		$adminMessage = sprintf( _MD_IMGLOSSARY_WHOASKED, $logname );
 		$adminMessage .= '<b>' . $reqterm . '</b>\n';
 		$adminMessage .= _MD_IMGLOSSARY_EMAILLEFT . ' $address\n';
@@ -102,38 +91,38 @@ if ( empty( $_POST['submit'] ) ) {
 			$adminMessage .= _MD_IMGLOSSARY_NOTIFYONPUB;
 		}
 		$adminMessage .= '\n' . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . '\n';
-		$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONREQ;
+		$subject = $icmsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONREQ;
 		$xoopsMailer =& getMailer();
 		$xoopsMailer -> useMail();
-		$xoopsMailer -> setToEmails( $xoopsConfig['adminmail'] );
+		$xoopsMailer -> setToEmails( $icmsConfig['adminmail'] );
 		$xoopsMailer -> setFromEmail( $address );
-		$xoopsMailer -> setFromName( $xoopsConfig['sitename'] );
+		$xoopsMailer -> setFromName( $icmsConfig['sitename'] );
 		$xoopsMailer -> setSubject( $subject );
 		$xoopsMailer -> setBody( $adminMessage );
 		$xoopsMailer -> send();
-		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
+		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $icmsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
 		}
 
 	$conf_subject = _MD_IMGLOSSARY_THANKS2;
 	$userMessage = sprintf( _MD_IMGLOSSARY_GOODDAY2, $logname );
 	$userMessage .= '\n\n';
-	$userMessage .= sprintf( _MD_IMGLOSSARY_THANKYOU, $xoopsConfig['sitename'] );
+	$userMessage .= sprintf( _MD_IMGLOSSARY_THANKYOU, $icmsConfig['sitename'] );
 	$userMessage .= '\n';
-	$userMessage .= sprintf( _MD_IMGLOSSARY_REQUESTSENT, $xoopsConfig['sitename'] );
+	$userMessage .= sprintf( _MD_IMGLOSSARY_REQUESTSENT, $icmsConfig['sitename'] );
 	$userMessage .= '\n';
 	$userMessage .= '--------------\n';
-	$userMessage .= $xoopsConfig['sitename'] . ' ' . _MD_IMGLOSSARY_WEBMASTER . '\n'; 
-	$userMessage .= $xoopsConfig['adminmail'];
+	$userMessage .= $icmsConfig['sitename'] . ' ' . _MD_IMGLOSSARY_WEBMASTER . '\n'; 
+	$userMessage .= $icmsConfig['adminmail'];
 	$xoopsMailer =& getMailer();
 	$xoopsMailer -> useMail();
 	$xoopsMailer -> setToEmails( $address );
-	$xoopsMailer -> setFromEmail( $xoopsConfig['adminmail'] );
-	$xoopsMailer -> setFromName( $xoopsConfig['sitename'] );
+	$xoopsMailer -> setFromEmail( $icmsConfig['adminmail'] );
+	$xoopsMailer -> setFromName( $icmsConfig['sitename'] );
 	$xoopsMailer -> setSubject( $conf_subject );
 	$xoopsMailer -> setBody( $userMessage );
 	$xoopsMailer -> send();
 	
-	if ( $xoopsModuleConfig['mailtoadmin'] == 1 ) {
+	if ( icms::$module -> config['mailtoadmin'] == 1 ) {
 		$messagesent .= sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );
 	} else {
 		$messagesent = sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );

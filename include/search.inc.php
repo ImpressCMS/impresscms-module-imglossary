@@ -23,10 +23,8 @@
 */
 
 function imglossary_search( $queryarray, $andor, $limit, $offset, $userid )	{
-
-	global $xoopsUser, $xoopsDB;
 	
-	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0";
+	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0";
 
 	if ( $userid != 0 ) {
         $sql .= " AND uid=" . $userid . " ";
@@ -47,11 +45,11 @@ function imglossary_search( $queryarray, $andor, $limit, $offset, $userid )	{
 		$sql .= ") ";
 	} 
 	$sql .= "ORDER BY entryID DESC";
-	$result = $xoopsDB -> query( $sql, $limit, $offset );
+	$result = icms::$xoopsDB -> query( $sql, $limit, $offset );
     $ret = array();
     $i = 0;
 
-	while ( $myrow = $xoopsDB -> fetchArray( $result ) ) {
+	while ( $myrow = icms::$xoopsDB -> fetchArray( $result ) ) {
 		$ret[$i]['image'] = "images/imglossary.png";
 		$ret[$i]['link'] = "entry.php?entryID=" . $myrow['entryID'];
 		$ret[$i]['title'] = $myrow['term'];

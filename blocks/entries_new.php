@@ -25,19 +25,18 @@
 function b_entries_new_show( $options )	{
 
 	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
-	
-	global $xoopsDB, $xoopsUser;
+
 	$myts = & MyTextSanitizer :: getInstance();
 
-	$words = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
-	$totalwords = $xoopsDB -> getRowsNum( $words );
+	$words = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
+	$totalwords = icms::$xoopsDB -> getRowsNum( $words );
 
 	$block = array();
-	$sql = "SELECT entryID, term, datesub FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
-	$result = $xoopsDB -> query( $sql, $options[1], 0 );
+	$sql = "SELECT entryID, term, datesub FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
+	$result = icms::$xoopsDB -> query( $sql, $options[1], 0 );
 
-	$hModule =& xoops_gethandler( 'module' );
-	$hModConfig =& xoops_gethandler( 'config' );
+	$hModule = icms::handler( 'icms_module' );
+	$hModConfig = icms::$config;
 	$wbModule =& $hModule -> getByDirname( $glossdirname );
 	$module_id = $wbModule -> getVar( 'mid' );
 	$module_name = $wbModule -> getVar( 'dirname' );
@@ -45,7 +44,7 @@ function b_entries_new_show( $options )	{
 
 	if ( $totalwords > 0 ) {
 		// If there are definitions
-		while ( list( $entryID, $term, $datesub ) = $xoopsDB -> fetchRow( $result ) ) {
+		while ( list( $entryID, $term, $datesub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
 			$newentries = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 			$linktext = $myts -> makeTboxData4Show( $term );

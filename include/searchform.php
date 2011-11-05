@@ -22,21 +22,18 @@
 */
  
  function imglossary_searchform() {
- 
-	global $xoopsDB, $xoopsModuleConfig;
- 
 	calculateTotals();
-		$xoopsTpl -> assign( 'multicats', intval( $xoopsModuleConfig['multicats'] ) );
+		$xoopsTpl -> assign( 'multicats', intval( icms::$module -> config['multicats'] ) );
 
 		// Counts
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		if ( icms::$module -> config['multicats'] == 1 ) {
 			$totalcats = imglossary_countCats();
 			$xoopsTpl -> assign( 'totalcats', $totalcats );
 		}
 		$publishedwords = imglossary_countWords();
 		$xoopsTpl -> assign( 'publishedwords', $publishedwords );
 
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		if ( icms::$module -> config['multicats'] == 1 ) {
 			$xoopsTpl -> assign( 'multicats', 1 );
 		} else {
 			$xoopsTpl -> assign( 'multicats', 0 );
@@ -54,13 +51,13 @@
 		$searchform .= _MD_IMGLOSSARY_LOOKON . '</td><td width="10">&nbsp;</td><td style="text-align: '._GLOBAL_LEFT.';">';
 		$searchform .= '<select name="type"><option value="1">' . _MD_IMGLOSSARY_TERMS . '</option><option value="2">' . _MD_IMGLOSSARY_DEFINS . '</option>';
 		$searchform .= '<option value="3">' . _MD_IMGLOSSARY_TERMSDEFS . '</option></select></td></tr>';
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		if ( icms::$module -> config['multicats'] == 1 ) {
 			$searchform .= '<tr><td style="text-align: '._GLOBAL_RIGHT.'; line-height: 200%">' . _MD_IMGLOSSARY_CATEGORY . '</td>';
 			$searchform .= '<td>&nbsp;</td><td style="text-align: '._GLOBAL_LEFT.';">';
-			$resultcat = $xoopsDB -> query( "SELECT categoryID, name FROM " . $xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
+			$resultcat = icms::$xoopsDB -> query( "SELECT categoryID, name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
 			$searchform .= '<select name="categoryID">';
 			$searchform .= '<option value="0">' . _MD_IMGLOSSARY_ALLOFTHEM . '</option>';
-			while ( list( $categoryID, $name ) = $xoopsDB -> fetchRow( $resultcat ) ) {
+			while ( list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 				$searchform .= '<option value="$categoryID">$categoryID : $name</option>';
 			}
 			$searchform .= '</select></td></tr>';
@@ -71,6 +68,5 @@
 		$searchform .= '<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="' . _MD_IMGLOSSARY_SEARCH . '" />';
 		$searchform .= '</td></tr></form></table>';
 		$xoopsTpl -> assign( 'searchform', $searchform );
- 
  }
  ?>

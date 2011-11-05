@@ -15,7 +15,7 @@ if (!defined('ICMS_ROOT_PATH')) { exit(); }
 
 include_once ICMS_ROOT_PATH . '/class/template.php';
 
-class IcmsFeed {
+class icmsFeed {
 
 		var $title;
 		var $url;
@@ -33,20 +33,21 @@ class IcmsFeed {
 		var $height;
 		var $ttl;
 		var $image = array ();
+		var $folder;
 
-	function IcmsFeed() {
-		global $xoopsConfig;
-		$this -> title = $xoopsConfig['sitename'];
+	function icmsFeed() {
+		global $icmsConfig;
+		$this -> title = $icmsConfig['sitename'];
 		$this -> url = ICMS_URL;
-		$this -> description = $xoopsConfig['slogan'];
+		$this -> description = $icmsConfig['slogan'];
 		$this -> language = _LANGCODE;
 		$this -> charset = _CHARSET;
 		$this -> pubDate = date( _DATESTRING, time() );
-		$this -> lastbuild = formatTimestamp( time(), 'D, d M Y H:i:s' );
-		$this -> webMaster = $xoopsConfig['adminmail'];
-		$this -> channelEditor = $xoopsConfig['adminmail'];
-		$this -> generator = XOOPS_VERSION;
-		$this -> copyright = 'Copyright ' . formatTimestamp( time(), 'Y' ) . ' ' . $xoopsConfig['sitename'];
+		$this -> lastbuild = formatTimestamp( time(), 'r' );
+		$this -> webMaster = $icmsConfig['adminmail'];
+		$this -> channelEditor = $icmsConfig['adminmail'];
+		$this -> generator = ICMS_VERSION_NAME;
+		$this -> copyright = 'Copyright ' . formatTimestamp( time(), 'Y' ) . ' ' . $icmsConfig['sitename'];
 		$this -> width  = 88;
 		$this -> height = 31;
 		$this -> ttl    = 60;
@@ -54,13 +55,16 @@ class IcmsFeed {
 			'title' => $this -> title,
 			'url' => ICMS_URL . '/images/logo.gif',
 		);
-		$this->feeds = array ();
+		$this -> folder = basename( dirname( dirname( __FILE__ ) ) );
+		$this -> feeds = array ();
 	}
 
 	function render() {
-		$xoopsOption['template_main'] = "db:imglossary_rss.html";
-		$tpl = new XoopsTpl();
+	
+		icms::$logger->disableLogger();
 		
+		$xoopsOption['template_main'] = "db:imglossary_rss.html";
+		$tpl = new icms_view_Tpl();
 		$tpl -> assign( 'channel_title', $this -> title );
 		$tpl -> assign( 'channel_link', $this -> url );
 		$tpl -> assign( 'channel_desc', $this -> description );
@@ -74,6 +78,7 @@ class IcmsFeed {
 		$tpl -> assign( 'channel_width', $this -> width ); 
         $tpl -> assign( 'channel_height', $this -> height );
 		$tpl -> assign( 'channel_ttl', $this -> ttl );
+		$tpl -> assign( 'channel_folder', $this -> folder );
 		$tpl -> assign( 'image_url', $this -> image['url'] );
 		foreach ( $this -> feeds as $feed ) {
 			$tpl -> append( 'items', $feed );
@@ -81,5 +86,4 @@ class IcmsFeed {
 		$tpl -> display( 'db:imglossary_rss.html' );
 	}
 }
-
 ?>

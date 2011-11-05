@@ -19,10 +19,7 @@
 */
 
 include_once 'admin_header.php';
-
-include_once ICMS_ROOT_PATH . '/kernel/icmsmoduleabout.php';
-
-$aboutObj = new IcmsModuleAbout();
+include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/imglossary_moduleabout.php';
+$aboutObj = new imGlossaryModuleAbout();
 $aboutObj -> render();
-
 ?>

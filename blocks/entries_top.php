@@ -26,19 +26,18 @@ function b_entries_top_show( $options )	{
 
 	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 
-	global $xoopsDB;
 	$myts = & MyTextSanitizer :: getInstance();
  
- 	$words = $xoopsDB -> query( "SELECT * FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
-	$totalwords = $xoopsDB -> getRowsNum( $words );
+ 	$words = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
+	$totalwords = icms::$xoopsDB -> getRowsNum( $words );
 
 	$block = array();
-	$sql = "SELECT entryID, term, counter FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
-	$result = $xoopsDB -> query( $sql, $options[1], 0 );
+	$sql = "SELECT entryID, term, counter FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE datesub<" . time() . " AND datesub>0 AND submit=0 AND offline=0 ORDER BY " . $options[0] . " DESC";
+	$result = icms::$xoopsDB -> query( $sql, $options[1], 0 );
 
 	if ( $totalwords > 0 ) {
 		// If there are definitions
-		while ( list( $entryID, $term, $counter ) = $xoopsDB -> fetchRow( $result ) )	{
+		while ( list( $entryID, $term, $counter ) = icms::$xoopsDB -> fetchRow( $result ) )	{
 			$popentries = array();
 			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
 			$linktext = $myts -> makeTboxData4Show( $term );

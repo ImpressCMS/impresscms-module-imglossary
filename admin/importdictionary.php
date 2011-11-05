@@ -35,8 +35,8 @@ if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 switch ( $op ) {
 case "default":
     default:
-    xoops_cp_header();
-    global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule;
+    icms_cp_header();
+    global $icmsConfig;
     $myts =& MyTextSanitizer::getInstance();
     imglossary_adminMenu( _AM_IMGLOSSARY_IMPORT );
 }
@@ -49,9 +49,9 @@ function import2db( $text ) {
 }
 
 function DefinitionImport( $delete ) {
-    global $xoopsConfig, $xoopsDB, $xoopsModule, $myts;
-    $sqlquery = $xoopsDB -> query( "SELECT COUNT(id) AS count FROM " . $xoopsDB -> prefix( 'dictionary' ) );
-    list( $count ) = $xoopsDB -> fetchRow( $sqlquery ) ;
+    global $icmsConfig, $myts;
+    $sqlquery = icms::$xoopsDB -> query( "SELECT COUNT(id) AS count FROM " . icms::$xoopsDB -> prefix( 'dictionary' ) );
+    list( $count ) = icms::$xoopsDB -> fetchRow( $sqlquery ) ;
     if ( $count < 1 ) {
         redirect_header( "index.php", 1, _AM_IMGLOSSARY_IMPDICT_01 );
         exit();
@@ -75,14 +75,14 @@ function DefinitionImport( $delete ) {
      ****/
     if ( $delete ) {
         //get all entries
-        $result3 = $xoopsDB -> query( "SELECT entryID FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
+        $result3 = icms::$xoopsDB -> query( "SELECT entryID FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
         //now for each entry, delete the coments
-        while ( list( $entryID ) = $xoopsDB -> fetchRow( $result3 ) ) {
-            xoops_comment_delete( $xoopsModule -> getVar( 'mid' ), $entryID );
+        while ( list( $entryID ) = icms::$xoopsDB -> fetchRow( $result3 ) ) {
+            xoops_comment_delete( icms::$module -> getVar( 'mid' ), $entryID );
         }
         // delete everything
-        $sqlquery1 = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'imglossary_entries' ) );
-        $sqlquery2 = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'imglossary_cats' ) );
+        $sqlquery1 = icms::$xoopsDB -> queryF( "TRUNCATE TABLE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) );
+        $sqlquery2 = icms::$xoopsDB -> queryF( "TRUNCATE TABLE " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
     }
 
 
@@ -90,12 +90,12 @@ function DefinitionImport( $delete ) {
      * Import ENTRIES
      ****/
 
-    $sql1 = $xoopsDB -> query( " SELECT * FROM " . $xoopsDB -> prefix( 'dictionary' ) . " " );
+    $sql1 = icms::$xoopsDB -> query( " SELECT * FROM " . icms::$xoopsDB -> prefix( 'dictionary' ) . " " );
 
-    $result1 = $xoopsDB -> getRowsNum( $sql1 );
+    $result1 = icms::$xoopsDB -> getRowsNum( $sql1 );
     if ( $result1 ) {
         $fecha = time()-1;
-        while ( $row2 = $xoopsDB -> fetchArray( $sql1 ) ) {
+        while ( $row2 = icms::$xoopsDB -> fetchArray( $sql1 ) ) {
             $entryID     = intval( $row2['id'] );
             $init        = $myts -> addSlashes( $row2['letter'] );
             $term        = $myts -> addSlashes( import2db( $row2['name'] ) );
@@ -119,19 +119,19 @@ function DefinitionImport( $delete ) {
 
             if ( $delete ) {
 
-                $ret1 = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url,  submit, datesub, offline, comments) VALUES ('$entryID', '$init', '$term', '$definition', '', '" . $row2['submit'] . "', '$datesub', '" . $row2['state'] . "', '$comments' )" );
+                $ret1 = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url,  submit, datesub, offline, comments) VALUES ('$entryID', '$init', '$term', '$definition', '', '" . $row2['submit'] . "', '$datesub', '" . $row2['state'] . "', '$comments' )" );
             } else {
-                $ret1 = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url, submit, datesub, offline, comments) VALUES ('', '$init', '$term', '$definition', '', '" . $row2['submit'] . "', '$datesub', '" . $row2['state'] . "',  '$comments' )" );
+                $ret1 = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, init, term, definition, url, submit, datesub, offline, comments) VALUES ('', '$init', '$term', '$definition', '', '" . $row2['submit'] . "', '$datesub', '" . $row2['state'] . "',  '$comments' )" );
             }
             if ( !$ret1 ) {
                 $errorcounter = $errorcounter + 1;
                 echo "<font color='red'>Error: entryID: " . $entryID . "</font><br />$term<br />";
-                echo "<font size='1'>" . xoops_substr( $definition, 0, 25 ) . "</font><br/><br />";
+                echo "<font size='1'>" . icms_substr( $definition, 0, 25 ) . "</font><br/><br />";
             }
             // update user posts count
             if ( $ret1 ) {
                 if ( $uid ) {
-                    $member_handler = &xoops_gethandler( 'member' );
+                    $member_handler = icms::handler( 'icms_member' );
                     $submitter =& $member_handler -> getUser( $uid );
                     if ( is_object( $submitter ) ) {
                         $submitter -> setVar( 'posts', $submitter -> getVar('posts') + 1 );
@@ -146,13 +146,13 @@ function DefinitionImport( $delete ) {
      * FINISH
      ****/
 
-    $sqlquery = $xoopsDB -> query( "SELECT mid FROM " . $xoopsDB -> prefix ( 'modules' ) . " WHERE dirname='dictionary'" );
-    list( $dicID ) = $xoopsDB -> fetchRow( $sqlquery ) ;
+    $sqlquery = icms::$xoopsDB -> query( "SELECT mid FROM " . icms::$xoopsDB -> prefix ( 'modules' ) . " WHERE dirname='dictionary'" );
+    list( $dicID ) = icms::$xoopsDB -> fetchRow( $sqlquery ) ;
     echo "<p>Dictionary Module ID: " . $dicID . "</p>";
-    echo "<p>Encyclopedia Module ID: " . $xoopsModule -> getVar( 'mid' ) . "</p>";
+    echo "<p>Encyclopedia Module ID: " . icms::$module -> getVar( 'mid' ) . "</p>";
     //echo "<p>delete is on/off: ".$delete."</p>";
 
-    $commentaire = $xoopsDB -> queryF( "UPDATE " . $xoopsDB -> prefix( 'xoopscomments' ) . " SET com_modid = '" . $xoopsModule -> getVar( 'mid' ) . "' WHERE com_modid='" . $dicID . "'" );
+    $commentaire = icms::$xoopsDB -> queryF( "UPDATE " . icms::$xoopsDB -> prefix( 'xoopscomments' ) . " SET com_modid = '" . icms::$module -> getVar( 'mid' ) . "' WHERE com_modid='" . $dicID . "'" );
     if ( !$commentaire ) {
         echo "<font color='red'>" . _AM_IMGLOSSARY_IMPDICT_07 . "<br /><br />";
     } else {
@@ -163,7 +163,7 @@ function DefinitionImport( $delete ) {
     echo "<p>" . _AM_IMGLOSSARY_IMPDICT_10 . $glocounter . "</p>";
     echo "<br /><b><a href='importwordbook.php'>" . _AM_IMGLOSSARY_IMPDICT_11 . "</a></b><p>";
     CloseTable();
-    xoops_cp_footer();
+    icms_cp_footer();
 }
 
 /****
@@ -171,9 +171,9 @@ function DefinitionImport( $delete ) {
  ****/
 
 function FormImport() {
-    global $xoopsConfig, $xoopsDB, $xoopsModule;
+    global $icmsConfig;
 
-    $module_handler = xoops_gethandler( 'module' );
+    $module_handler = icms::handler( 'icms_module' );
     $dictionaryModule = $module_handler -> getByDirname( 'dictionary' );
     $got_options = false;
     if ( is_object( $dictionaryModule ) ) {
@@ -185,7 +185,7 @@ function FormImport() {
 
         echo "<tr>";
 		echo "<td class='odd' align='center'><img src='" . ICMS_URL . "/modules/dictionary/images/dictionary_logo.png' alt='' title='' /></td>";
-        echo "<td class='even'  style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
+        echo "<td class='even'  style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . icms::$module -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
         echo "</tr>";
 
         echo "<tr>";
@@ -203,10 +203,10 @@ function FormImport() {
         echo "<br><b><font color='red'>" . _AM_IMGLOSSARY_IMPDICT_12 . "</font></b><br /><a href='index.php'>" . _AM_IMGLOSSARY_IMPDICT_11 . "</a>";
     }
     CloseTable();
-    xoops_cp_footer();
+    icms_cp_footer();
 }
 
-if ( !isset($_POST['op'] ) ) {
+if ( !isset( $_POST['op'] ) ) {
     $op = isset( $_GET['op'] ) ? $_GET['op'] : 'main';
 } else {
     $op = $_POST['op'];
@@ -220,8 +220,8 @@ if ( !isset( $_POST['delete'])) {
 
 switch ($op) {
 case "import":
-    $delete = ( isset( $_GET['delete'] ) ) ? intval($_GET['delete']) : intval($_POST['delete']);
-    DefinitionImport($delete);
+    $delete = ( isset( $_GET['delete'] ) ) ? intval( $_GET['delete'] ) : intval( $_POST['delete'] );
+    DefinitionImport( $delete );
     break;
 case 'main':
 default:

@@ -8,10 +8,10 @@ if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
  * Available operations
  ****/
 switch ( $op ) {
-case "default":
+case 'default':
     default:
-    xoops_cp_header();
-    global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule;
+    icms_cp_header();
+    global $icmsConfig;
     $myts =& MyTextSanitizer::getInstance();
     imglossary_adminMenu( _AM_IMGLOSSARY_IMPORT );
 }
@@ -25,11 +25,11 @@ function import2db( $text ) {
 }
 
 function DefinitionImport( $delete ) {
-    global $xoopsUser, $xoopsConfig, $xoopsDB, $xoopsModuleConfig, $xoopsModule, $myts;
+    global $icmsConfig, $myts;
     $myts =& MyTextSanitizer::getInstance();
 
-    $sqlquery = $xoopsDB -> query( "SELECT COUNT(id) AS count FROM " . $xoopsDB -> prefix( 'wiwimod' ) );
-    list( $count ) = $xoopsDB -> fetchRow( $sqlquery ) ;
+    $sqlquery = icms::$xoopsDB -> query( "SELECT COUNT(id) AS count FROM " . icms::$xoopsDB -> prefix( 'wiwimod' ) );
+    list( $count ) = icms::$xoopsDB -> fetchRow( $sqlquery ) ;
     if ( $count < 1 ) {
         redirect_header( "index.php", 1, _AM_IMGLOSSARY_MODULEIMPORTEMPTY10 );
         exit();
@@ -53,24 +53,24 @@ function DefinitionImport( $delete ) {
 
     if ( $delete )	{
         //get all entries
-        $result3 = $xoopsDB -> query( "SELECT entryID FROM " . $xoopsDB -> prefix( 'imglossary_entries' ) . "" );
+        $result3 = icms::$xoopsDB -> query( "SELECT entryID FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
         //delete comments for each entry
-        while ( list( $entryID ) = $xoopsDB -> fetchRow( $result3 ) ) {
-            xoops_comment_delete( $xoopsModule -> getVar( 'mid' ), $entryID );
+        while ( list( $entryID ) = icms::$xoopsDB -> fetchRow( $result3 ) ) {
+            xoops_comment_delete( icms::$module -> getVar( 'mid' ), $entryID );
         }
         // delete everything
-        $sqlquery1 = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'imglossary_entries' ));
-        $sqlquery2 = $xoopsDB -> queryF( "TRUNCATE TABLE " . $xoopsDB -> prefix( 'imglossary_cats' ) );
+        $sqlquery1 = icms::$xoopsDB -> queryF( "TRUNCATE TABLE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ));
+        $sqlquery2 = icms::$xoopsDB -> queryF( "TRUNCATE TABLE " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
     }
 
     /****
      * Import ENTRIES
      ****/
 
-    $sqlquery = $xoopsDB -> query( "SELECT id, title, body, u_id, lastmodified datetime, visible FROM " . $xoopsDB -> prefix( 'wiwimod' ) );
+    $sqlquery = icms::$xoopsDB -> query( "SELECT id, title, body, u_id, lastmodified datetime, visible FROM " . icms::$xoopsDB -> prefix( 'wiwimod' ) );
 
     $fecha = time()-1;
-    while ( $sqlfetch = $xoopsDB -> fetchArray( $sqlquery ) ) {
+    while ( $sqlfetch = icms::$xoopsDB -> fetchArray( $sqlquery ) ) {
         $glo = array();
         $glo['id'] = $sqlfetch["id"];
         $glo['title'] = $sqlfetch["title"];
@@ -83,9 +83,9 @@ function DefinitionImport( $delete ) {
         $glocounter = $glocounter + 1;
 
         if ( $delete ) {
-            $insert = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, definition, uid, datesub, offline, html) VALUES ('" . $glo['id'] . "','" . $glo['title'] . "','" . $glo['body'] . "','" . $glo['u_id'] . "','" . $glo['lastmodified'] . "','" . $glo['visible'] . "','1')" );
+            $insert = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, definition, uid, datesub, offline, html) VALUES ('" . $glo['id'] . "','" . $glo['title'] . "','" . $glo['body'] . "','" . $glo['u_id'] . "','" . $glo['lastmodified'] . "','" . $glo['visible'] . "','1')" );
         } else {
-            $insert = $xoopsDB -> queryF( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, definition, uid, datesub, offline, html) VALUES ('','" . $glo['title'] . "','" . $glo['body'] . "','" . $glo['u_id'] . "','" . $glo['lastmodified'] . "','" . $glo['visible'] . "','1')" );
+            $insert = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, definition, uid, datesub, offline, html) VALUES ('','" . $glo['title'] . "','" . $glo['body'] . "','" . $glo['u_id'] . "','" . $glo['lastmodified'] . "','" . $glo['visible'] . "','1')" );
         }
         if ( !$insert ) {
             $errorcounter = $errorcounter + 1;
@@ -95,7 +95,7 @@ function DefinitionImport( $delete ) {
         }
 		if ( $ret1 ) {
 			if ( $uid ) {
-				$member_handler = &xoops_gethandler( 'member' );
+				$member_handler = icms::handler( 'icms_member' );
 				$submitter =& $member_handler -> getUser( $uid );
 				if ( is_object( $submitter ) ) {
 					$submitter -> setVar( 'posts', $submitter -> getVar( 'posts' ) + 1 );
@@ -106,25 +106,25 @@ function DefinitionImport( $delete ) {
 		}
     }
 
-    $sqlquery = $xoopsDB -> query( "SELECT mid FROM " . $xoopsDB -> prefix( 'modules' ) . " WHERE dirname='wiwimod'" );
-    list( $wiwiID ) = $xoopsDB -> fetchRow( $sqlquery ) ;
+    $sqlquery = icms::$xoopsDB -> query( "SELECT mid FROM " . icms::$xoopsDB -> prefix( 'modules' ) . " WHERE dirname='wiwimod'" );
+    list( $wiwiID ) = icms::$xoopsDB -> fetchRow( $sqlquery ) ;
     echo "<p>Wiwi Module ID: " . $wiwiID . "</p>";
-    echo "<p>Encyclopedia Module ID: " . $xoopsModule -> getVar( 'mid' ) . "</p>";
+    echo "<p>Encyclopedia Module ID: " . icms::$module -> getVar( 'mid' ) . "</p>";
     //echo "<p>delete is on/off: ".$delete."</p>";
     echo "<p><font color='red'>Incorrectly: " . $errorcounter . "</font></p>";
     echo "<p>Processed: " . $glocounter . "</p>";
     echo "<br /><b><a href='index.php'>" . _AM_IMGLOSSARY_IMPDICT_11 . "</a></b>";
     CloseTable();
-    xoops_cp_footer();
+    icms_cp_footer();
 }
 /****
  * IMPORT FORM PLAIN HTML
  ****/
 
 function FormImport() {
-    global $xoopsConfig, $xoopsDB, $xoopsModule;
-    $module_handler = xoops_gethandler( 'module' );
-    $wiwimodModule = $module_handler -> getByDirname( "wiwimod" );
+    global $icmConfig;
+    $module_handler = icms::handler( 'icms_module' );
+    $wiwimodModule = $module_handler -> getByDirname( 'wiwimod' );
     $got_options = false;
     if ( is_object( $wiwimodModule ) ) {
 		echo "<br /><br /><br />";
@@ -135,7 +135,7 @@ function FormImport() {
 
         echo "<tr>";
 		echo "<td class='odd' align='center'><img src='" . ICMS_URL . "/modules/wiwimod/images/wiwilogo.gif' alt='' title='' /></td>";
-        echo "<td class='even' style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . $xoopsModule -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
+        echo "<td class='even' style='text-align: center; background-color: #FBE3E4; color: red; font-weight: bold;'><br /><img src='" . ICMS_URL . "/modules/" . icms::$module -> getVar( 'dirname' ) . "/images/icon/warning.png' alt='' title='' /><h3>" . _AM_IMGLOSSARY_IMPORTWARN . "</h3></td>";
         echo "</tr>";
 
         echo "<tr>";
@@ -152,8 +152,7 @@ function FormImport() {
     } else {
         echo "<br /><b><font color='red'>Module Wiwimod not found on this site.</font></b><br '><a href='index.php'>Back</a>";
     }
-    xoops_cp_footer();
-
+    icms_cp_footer();
 }
 
 if ( !isset( $_POST['op'] ) ) {
@@ -169,7 +168,7 @@ if ( !isset( $_POST['delete'] ) ) {
 }
 
 switch ( $op ) {
-case "import":
+case 'import':
     DefinitionImport( $delete );
     break;
 case 'main':

@@ -34,22 +34,22 @@ function strip_p_tag( $text ) {
     return $text;
 }
 
-global $xoopsDB, $xoopsConfig, $xoopsModuleConfig, $xoopsUser;
+global $icmsConfig;
 
 $entryID = isset( $_GET['entryID'] ) ? intval( $_GET['entryID'] ) : 0;
 $entryID = intval( $entryID );
 
-$result = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
-$myrow = $xoopsDB -> fetchArray( $result );
+$result = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
+$myrow = icms::$xoopsDB -> fetchArray( $result );
 
-$result2 = $xoopsDB -> query( 'SELECT name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $myrow['categoryID'] );
-$mycat = $xoopsDB -> fetchArray( $result2 );
+$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $myrow['categoryID'] );
+$mycat = icms::$xoopsDB -> fetchArray( $result2 );
 
-$date = formatTimestamp( $myrow['datesub'], $xoopsModuleConfig['dateformat'] );
+$date = formatTimestamp( $myrow['datesub'], icms::$module -> config['dateformat'] );
 
 $myts =& MyTextSanitizer::getInstance();
-$title = $myts -> makeTboxData4Show( $myrow['term'] );
-$submitter = strip_tags( icms_getLinkedUnameFromId( $myrow['uid'] ) );
+$title = $myts -> htmlSpecialChars( $myrow['term'] );
+$submitter = strip_tags( icms_member_user_Handler::getUserLink( $myrow['uid'] ) );
 $category = $mycat['name'];
 $whowhen = sprintf( '', $submitter, $date );
 if ( $myrow['breaks'] == 1 ) {
@@ -59,7 +59,7 @@ $definition = $myrow['definition'];
 }
 $content = '<h2>' . $title . '</h2><br /><br />' . $definition;
 
-$slogan = $xoopsConfig['sitename'] . ' - ' . $xoopsConfig['slogan'];
+$slogan = $icmsConfig['sitename'] . ' - ' . $icmsConfig['slogan'];
 $keywords = $title . ' ' . $category . ' ' . $submitter . ' ' . $slogan;
 $description = '';
 
@@ -67,11 +67,11 @@ $htmltitle = '<font color=#3399CC><h1>' . $title . '</h1><h4>' . $category . '</
 
 require_once ICMS_PDF_LIB_PATH . '/tcpdf.php';
 
-$filename = ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/' . $xoopsConfig['language'] . '/main.php';
+$filename = ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/' . $icmsConfig['language'] . '/main.php';
 if ( file_exists( $filename ) ) {
   include_once $filename;
 } else {
-  include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/language/english/main.php';
+  include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/language/english/main.php';
 }
 
 $filename = ICMS_PDF_LIB_PATH . '/config/lang/' . _LANGCODE . '.php';
@@ -110,12 +110,11 @@ $pdf -> setFooterFont( array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
 $pdf -> setLanguageArray( $l ); //set language items
 
 // set font
-$pdf -> SetFont( 'dejavusans', 'BI', 10 );
+$pdf -> SetFont( 'dejavusans', '', 10 );
 
 //initialize document
 $pdf -> AliasNbPages();
 $pdf -> AddPage();
 $pdf -> writeHTML( $content, true, 0, true, 0 );
 $pdf -> Output();
-
 ?>
