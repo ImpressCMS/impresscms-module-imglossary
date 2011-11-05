@@ -6,18 +6,18 @@
 *
 * File: admin/index.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -54,21 +54,27 @@ switch ( $op ) {
         $result04 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
 			list( $totalrequested ) = icms::$xoopsDB -> fetchRow( $result04 );
 		
-		echo '<div>&nbsp;</div>';
-		echo '<fieldset style="border: #E8E8E8 1px solid;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_INVENTORY . '</legend>';
-        echo '<div style="padding: 12px;">' . _AM_IMGLOSSARY_TOTALENTRIES . ' <b>' . $totalpublished . '</b> | ';
+		$style = 'border: #CCCCCC 1px solid; padding: 4px; background-color: #E8E8E8; margin: 1px; font-size: .9em; font-weight: bold;';
+		$style_fldst = 'border: #E8E8E8 1px solid;';
+		$style_lgnd = 'display: inline; font-weight: bold; padding-bottom: 8px;';
+		$style_bttn = 'float: ' . _GLOBAL_LEFT . '; font-size: 11px; border-radius: 4px; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 2px 4px; text-align:center;';
+		
+		echo '<fieldset style="' . $style_fldst . '">';
+		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_INVENTORY . '</legend>';
+        echo '<div style="padding: 10px;"><span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALENTRIES . ' ' . $totalpublished . '</span> ';
 		
 		if (icms::$module -> config['multicats'] == 1) {
-			echo _AM_IMGLOSSARY_TOTALCATS . ' <b>' . $totalcategories . '</b> | ';
+			echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALCATS . ' ' . $totalcategories . '</span> ';
 		}
 		
-        echo _AM_IMGLOSSARY_TOTALSUBM . ' <b>' . $totalsubmitted . '</b> | ';
-		echo _AM_IMGLOSSARY_TOTALREQ . ' <b>' . $totalrequested . '</b></div>';
+        echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALSUBM . ' ' . $totalsubmitted . '</span> ';
+		echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALREQ . ' ' . $totalrequested . '</span></div>';
 		echo '</fieldset>';
 
 		/* -- Code to show existing terms -- */
-		echo '<fieldset style="border: #E8E8E8 1px solid; padding: 16px;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_SHOWENTRIES . '</legend><br /><br />';
-		echo '<a style="float: ' . _GLOBAL_LEFT . '; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;" href="entry.php">' . _AM_IMGLOSSARY_CREATEENTRY . '</a><br /><br />';
+		echo '<fieldset style="' . $style_fldst . '">';
+		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_SHOWENTRIES . '</legend><br />';
+		echo '<a style="' . $style_bttn . '" href="entry.php">' . _AM_IMGLOSSARY_CREATEENTRY . '</a><br /><br />';
 		// To create existing terms table
 		$resultA1 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0' );
 		list( $numrows ) = icms::$xoopsDB -> fetchRow( $resultA1 );
@@ -138,8 +144,9 @@ switch ( $op ) {
 
 		if (icms::$module -> config['multicats'] == 1) {
 			/* -- Code to show existing categories -- */
-			echo '<fieldset style="border: #E8E8E8 1px solid; padding: 16px;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_SHOWCATS . '</legend><br /><br />';
-			echo '<a style="float: ' . _GLOBAL_LEFT . '; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 4px 8px; text-align:center;" href="category.php">' . _AM_IMGLOSSARY_CREATECAT . '</a><br /><br />';
+			echo '<fieldset style="' . $style_fldst . '">';
+			echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_SHOWCATS . '</legend><br />';
+			echo '<a style="' . $style_bttn . '" href="category.php">' . _AM_IMGLOSSARY_CREATECAT . '</a><br /><br />';
 			// To create existing columns table
 			$resultC1 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
 			list( $numrows ) = icms::$xoopsDB -> fetchRow( $resultC1 );
@@ -187,7 +194,8 @@ switch ( $op ) {
 		}
 
 		/* -- Code to show submitted entries -- */
-		echo '<fieldset style="border: #E8E8E8 1px solid;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_SHOWSUBMISSIONS . '</legend><br /><br />';
+		echo '<fieldset style="' . $style_fldst . '">';
+		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_SHOWSUBMISSIONS . '</legend>';
 		$resultS1 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=1 AND request=0' );
 		list( $numrows ) = icms::$xoopsDB -> fetchRow( $resultS1 );
 
@@ -246,7 +254,8 @@ switch ( $op ) {
 		echo '<br />';
 
 		/* -- Code to show requested entries -- */
-		echo '<fieldset style="border: #E8E8E8 1px solid;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_SHOWREQUESTS . '</legend><br /><br />';
+		echo '<fieldset style="' . $style_fldst . '">';
+		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_SHOWREQUESTS . '</legend><br />';
 		$resultS2 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=1 AND request=1' );
 		list( $numrowsX ) = icms::$xoopsDB -> fetchRow( $resultS2 );
 
@@ -304,8 +313,8 @@ switch ( $op ) {
 	/**
        * Code to show offline entries
      **/
-    echo '<fieldset style="border: #E8E8E8 1px solid;"><legend style="display: inline; font-weight: bold; color: #292D30;">' . _AM_IMGLOSSARY_SHOWOFFLINE . '</legend>';
-	echo "<div>&nbsp;</div>";
+    echo '<fieldset style="' . $style_fldst . '">';
+	echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_SHOWOFFLINE . '</legend>';
     echo '<div style="float: ' . _GLOBAL_LEFT . '; width: 100%;"><table class="outer" cellspacing=1 cellpadding=3 width="100%" border="0">';
 
     $resultS2 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE offline=1' );
