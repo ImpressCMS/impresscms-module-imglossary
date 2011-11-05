@@ -24,23 +24,22 @@
 
 include '../../mainfile.php';
 
-include_once ICMS_ROOT_PATH . '/class/xoopsformloader.php';
 include ICMS_ROOT_PATH . '/header.php';
 
-global $xoopsUser, $xoopsConfig, $xoopsModuleConfig, $xoopsModule, $xoopsCaptcha;
+global $icmsConfig;
 
-$result = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) );
-if ( $xoopsDB -> getRowsNum( $result ) == '0' && $xoopsModuleConfig['multicats'] == '1' ) {
+$result = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
+if ( icms::$xoopsDB -> getRowsNum( $result ) == '0' && icms::$module -> config['multicats'] == '1' ) {
 	redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NOCOLEXISTS );
 	exit();
 } 
 
-if ( !is_object( $xoopsUser ) && $xoopsModuleConfig['anonpost'] == 0 ) {
+if ( !is_object( icms::$user ) && icms::$module -> config['anonpost'] == 0 ) {
 	redirect_header( 'index.php', 1, _NOPERM );
 	exit();
 } 
 
-if ( is_object( $xoopsUser ) && $xoopsModuleConfig['allowsubmit'] == 0 ) {
+if ( is_object( icms::$user ) && icms::$module -> config['allowsubmit'] == 0 ) {
 	redirect_header( 'index.php', 1, _NOPERM );
 	exit();
 }
@@ -60,8 +59,8 @@ if( !isset( $_POST['suggest'] ) ) {
 }
 
 if ( $suggest > 0 ) {
-	$terminosql = $xoopsDB -> query( 'SELECT term FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 AND entryID=' . $suggest . '' );
-	list( $termino ) = $xoopsDB -> fetchRow( $terminosql );
+	$terminosql = icms::$xoopsDB -> query( 'SELECT term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 AND entryID=' . $suggest . '' );
+	list( $termino ) = icms::$xoopsDB -> fetchRow( $terminosql );
 } else {
 	$termino = '';
 }
@@ -69,40 +68,29 @@ if ( $suggest > 0 ) {
 switch ( $op ) {
 	case 'post':
 		
-		global $xoopsUser, $xoopsConfig, $xoopsModule, $xoopsModuleConfig, $myts, $xoopsDB;
+		global $icmsConfig, $myts;
 		
-		if ( $xoopsModuleConfig['captcha'] == 1 ) {
+		if ( icms::$module -> config['captcha'] == 1 ) {
 			// Captcha Hack
 			// Verify entered code 
-			if ( class_exists( 'XoopsFormCaptcha' ) ) { 
-				if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) {
-					$xoopsCaptcha = XoopsCaptcha::instance(); 
-					if ( ! $xoopsCaptcha -> verify( true ) ) { 
-						redirect_header( 'submit.php', 2, $xoopsCaptcha -> getMessage() ); 
-					} 
-				} 
-			} elseif ( class_exists( 'IcmsFormCaptcha' ) ) { 
-				if ( @include_once ICMS_ROOT_PATH . '/class/captcha/captcha.php' ) { 
-					$icmsCaptcha = IcmsCaptcha::instance(); 
-					if ( ! $icmsCaptcha -> verify( true ) ) { 
-						redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
-					} 
-				} 
+			$icmsCaptcha = icms_form_elements_captcha_Object::instance(); 
+			if ( !$icmsCaptcha -> verify( true ) ) { 
+				redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
 			}
 			// Captcha Hack
 		}
 		
-		include_once ICMS_ROOT_PATH . '/modules/' . $xoopsModule -> dirname() . '/include/functions.php';
+		include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';
 		$myts = & MyTextSanitizer :: getInstance();
 
 		$html = 1;
-		if ( $xoopsUser ) {
-			$uid = $xoopsUser -> getVar( 'uid' );
-			if ( $xoopsUser -> isAdmin( $xoopsModule -> mid() ) ) {
+		if ( icms::$user ) {
+			$uid = icms::$user -> getVar( 'uid' );
+			if ( icms::$user -> isAdmin( icms::$module -> getVar( 'mid' ) ) ) {
 				$html = empty( $html ) ? 0 : 1;
 			} 
 		} else {
-			if ( $xoopsModuleConfig['anonpost'] == 1 ) {
+			if ( icms::$module -> config['anonpost'] == 1 ) {
 				$uid = 0;
 			} else {
 				redirect_header( 'index.php', 3, _NOPERM );
@@ -116,7 +104,7 @@ switch ( $op ) {
 		$breaks = isset( $breaks ) ? intval( $breaks ) : 1;
 		$notifypub = isset( $notifypub ) ? intval( $notifypub ) : 1;
 
-		if ( $xoopsModuleConfig['multicats'] == 1 ) {
+		if ( icms::$module -> config['multicats'] == 1 ) {
 			$categoryID = intval( $_POST['categoryID'] );
 		} else {
 			$categoryID = 0;
@@ -138,25 +126,25 @@ switch ( $op ) {
 		$offline = 1;
 		$request = 0;
 
-		if ( $xoopsModuleConfig['autoapprove'] == 1 ) {
+		if ( icms::$module -> config['autoapprove'] == 1 ) {
 			$submit = 0;
 			$offline = 0;
 		} 
 
-		$result = $xoopsDB -> query( "INSERT INTO " . $xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$html', '$smiley', '$xcodes', '$breaks', '$offline', '$notifypub')" );
-		$entryID = $xoopsDB -> getInsertId();
+		$result = icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$html', '$smiley', '$xcodes', '$breaks', '$offline', '$notifypub')" );
+		$entryID = icms::$xoopsDB -> getInsertId();
 
 		if ( $result ) {
-			if ( !is_object( $xoopsUser ) ) {
+			if ( !is_object( icms::$user ) ) {
 				$username = _MD_IMGLOSSARY_GUEST;
 				$usermail = '';
 			} else {
-				$username = $xoopsUser -> getVar( 'uname', 'E' );
-				$result = $xoopsDB -> query( 'SELECT email FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uname=$username' );
-				list( $usermail ) = $xoopsDB -> fetchRow( $result );
+				$username = icms::$user -> getVar( 'uname', 'E' );
+				$result = icms::$xoopsDB -> query( 'SELECT email FROM ' . icms::$xoopsDB -> prefix( 'users' ) . ' WHERE uname=$username' );
+				list( $usermail ) = icms::$xoopsDB -> fetchRow( $result );
 			}
 
-			if ( $xoopsModuleConfig['mailtoadmin'] == 1 ) {
+			if ( icms::$module -> config['mailtoadmin'] == 1 ) {
 				$adminMessage = sprintf( _MD_IMGLOSSARY_WHOSUBMITTED, $username );
 				$adminMessage .= '<b>' . $term . '</b>\n';
 				$adminMessage .= _MD_IMGLOSSARY_EMAILLEFT . ' $usermail\n';
@@ -167,19 +155,19 @@ switch ( $op ) {
 				}
 				
 				$adminMessage .= '\n' . $_SERVER['HTTP_USER_AGENT'] . '\n';
-				$subject = $xoopsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONSUB;
-				$xoopsMailer =& getMailer();
+				$subject = $icmsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONSUB;
+				$xoopsMailer = new icms_messaging_Handler();
 				$xoopsMailer -> useMail();
-				$xoopsMailer -> setToEmails( $xoopsConfig['adminmail'] );
+				$xoopsMailer -> setToEmails( $icmsConfig['adminmail'] );
 				$xoopsMailer -> setFromEmail( $usermail );
-				$xoopsMailer -> setFromName( $xoopsConfig['sitename'] );
+				$xoopsMailer -> setFromName( $icmsConfig['sitename'] );
 				$xoopsMailer -> setSubject( $subject );
 				$xoopsMailer -> setBody( $adminMessage );
 				$xoopsMailer -> send();
-				$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $xoopsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
+				$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $icmsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
 			}
 
-			if ( $xoopsModuleConfig['autoapprove'] == 1 ) {
+			if ( icms::$module -> config['autoapprove'] == 1 ) {
 				redirect_header( 'index.php', 2, _MD_IMGLOSSARY_RECEIVEDANDAPPROVED );
 			} else {
 				redirect_header( 'index.php', 2, _MD_IMGLOSSARY_RECEIVED );
@@ -192,12 +180,12 @@ switch ( $op ) {
 
 	case 'form':
 	default:
-		global $xoopsUser, $_SERVER;
+		global $_SERVER;
 		
-        if ( !is_object( $xoopsUser ) ) {
+        if ( !is_object( icms::$user ) ) {
 			$name = _MD_IMGLOSSARY_GUEST;
         } else {
-			$name = ucfirst( $xoopsUser -> getVar( 'uname' ) );
+			$name = ucfirst( icms::$user -> getVar( 'uname' ) );
         }
 
 		$block = 1;
@@ -218,5 +206,4 @@ switch ( $op ) {
 		
 		break;
 } 
-
 ?>

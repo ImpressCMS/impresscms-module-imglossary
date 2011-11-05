@@ -29,10 +29,8 @@
 class imglossaryTextSanitizer extends MyTextSanitizer {
     function imglossaryTextSanitizer() {
     } 
-
 	function htmlSpecialCharsStrip( $text ) {
-		return $this -> htmlSpecialChars( $this -> stripSlashesGPC( $text) );
+		return icms_core_DataFilter::htmlSpecialChars( icms_core_DataFilter::stripSlashesGPC( $text) );
     } 
 } 
-
 ?>

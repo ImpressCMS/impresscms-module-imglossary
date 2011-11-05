@@ -22,13 +22,8 @@
 * @version		$Id$
 */
  
-global $xoopsModule;
-
 include '../../mainfile.php';
 
-$glossdirname = basename( dirname( __FILE__ ) );
-
-include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
+include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';
 $myts = &MyTextSanitizer::getInstance();
-
 ?>

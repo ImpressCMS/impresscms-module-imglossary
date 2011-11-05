@@ -40,50 +40,50 @@ function printPage( $entryID ) {
 
 	$glossdirname = basename( dirname( __FILE__ ) );
 	
-	global $xoopsConfig, $xoopsDB, $xoopsModule, $xoopsModuleConfig, $myts;
+	global $icmsConfig, $myts;
 	
-	$result1 = $xoopsDB -> query( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
-	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = $xoopsDB -> fetchrow( $result1 );
+	$result1 = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
+	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
 
-	$result2 = $xoopsDB -> query( 'SELECT name FROM ' . $xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
-	list ($name) = $xoopsDB -> fetchRow( $result2 );
+	$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
+	list ($name) = icms::$xoopsDB -> fetchRow( $result2 );
 
-	$result3 = $xoopsDB -> query( 'SELECT name, uname FROM ' . $xoopsDB -> prefix( 'users' ) . ' WHERE uid=' . $uid );
-	list( $authorname, $username ) = $xoopsDB -> fetchRow( $result3 );
+	$result3 = icms::$xoopsDB -> query( 'SELECT name, uname FROM ' . icms::$xoopsDB -> prefix( 'users' ) . ' WHERE uid=' . $uid );
+	list( $authorname, $username ) = icms::$xoopsDB -> fetchRow( $result3 );
 
-	$datetime = formatTimestamp( $datesub, $xoopsModuleConfig['dateformat'] );
-	$categoryname = $myts -> makeTboxData4Show( $name );
-	$term = $myts -> makeTboxData4Show( $term );
+	$datetime = formatTimestamp( $datesub, icms::$module -> config['dateformat'] );
+	$categoryname = $myts -> htmlSpecialChars( $name );
+	$term = $myts -> htmlSpecialChars( $term );
 	$definition = str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition );
 	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	if ( $authorname == '' ) {
-		$authorname = $myts -> makeTboxData4Show( $username );
+		$authorname = $myts -> htmlSpecialChars( $username );
 	} else {
-		$authorname = $myts -> makeTboxData4Show( $authorname );
+		$authorname = $myts -> htmlSpecialChars( $authorname );
 	}
 	
 	echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
 	echo '<html><head>';
-	echo '<title>' . $xoopsConfig['sitename'] . '</title>';
+	echo '<title>' . $icmsConfig['sitename'] . '</title>';
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=' . _CHARSET . '" />';
 	echo '<meta name="robots" content="noindex,nofollow" />';
-	echo '<meta name="author" content="' . $xoopsConfig['sitename'] . '" />';
-	echo '<meta name="copyright" content="Copyright (c) ' . formatTimestamp( time(), 'Y' ) . ' by ' . $xoopsConfig['sitename'] . '" />';
-	echo '<meta name="description" content="' . $xoopsConfig['slogan'] . '" />';
-	echo '<meta name="generator" content="' . XOOPS_VERSION . '" />';
+	echo '<meta name="author" content="' . $icmsConfig['sitename'] . '" />';
+	echo '<meta name="copyright" content="Copyright (c) ' . formatTimestamp( time(), 'Y' ) . ' by ' . $icmsConfig['sitename'] . '" />';
+	echo '<meta name="description" content="' . $icmsConfig['slogan'] . '" />';
+	echo '<meta name="generator" content="' . ICMS_VERSION . '" />';
 
 	echo '<body bgcolor="#ffffff" text="#000000">
 			<font face="Verdana, Arial, Helvetica, sans-serif">
 			<div style="width: 650px; border: 1px solid #000; padding: 20px;">
 			  <div style="text-align: center; display: block; padding-bottom: 12px; margin: 0 0 6px 0; border-bottom: 2px solid #ccc;">
-			    <img src="' . ICMS_URL . '/modules/' . $glossdirname . '/images/imglossary_logo.png" border="0" alt="" />
+			    <img src="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/imglossary_logo.png" border="0" alt="" />
 			    <h2 style="margin: 0;">' . $term . '</h2>
 			  </div>
 			  <div>
 			</div>';
 		
-	if ( $xoopsModuleConfig['multicats'] == 1 )	{
+	if ( icms::$module -> config['multicats'] == 1 )	{
 		echo '<div>' . _MD_IMGLOSSARY_ENTRYCATEGORY . '<b>' . $categoryname . '</b></div>';
 	}
 	echo '<div style="padding-bottom: 6px; border-bottom: 1px solid #ccc;">' . _MD_IMGLOSSARY_SUBMITTER . '<b>' . $authorname . '</b></div><br />

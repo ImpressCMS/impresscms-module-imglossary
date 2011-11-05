@@ -8,26 +8,26 @@
  * Licence: GNU
  */
 // Blocks
-define("_MB_IMGLOSSARY_DATE", "Fecha de publicación");
-define("_MB_IMGLOSSARY_DELTERM", "Borrar esta definición");
+define("_MB_IMGLOSSARY_DATE", "Fecha de publicaciÃ³n");
+define("_MB_IMGLOSSARY_DELTERM", "Borrar esta definiciÃ³n");
 define("_MB_IMGLOSSARY_DISP", "Mostrar");
-define("_MB_IMGLOSSARY_EDITTERM", "Modificar esta definición");
-define("_MB_IMGLOSSARY_HITS", "Número de clics");
-define("_MB_IMGLOSSARY_INTENTRY", "Lea esta definición en %s");
-define("_MB_IMGLOSSARY_INTENTRYFOUND", "He aquí una definición interesante que encontré en %s");
+define("_MB_IMGLOSSARY_EDITTERM", "Modificar esta definiciÃ³n");
+define("_MB_IMGLOSSARY_HITS", "NÃºmero de clics");
+define("_MB_IMGLOSSARY_INTENTRY", "Lea esta definiciÃ³n en %s");
+define("_MB_IMGLOSSARY_INTENTRYFOUND", "He aquÃ­ una definiciÃ³n interesante que encontrÃ© en %s");
 define("_MB_IMGLOSSARY_ORDER", "Orden de despliegue");
-define("_MB_IMGLOSSARY_PRINTTERM", "Formato de impresión");
-define("_MB_IMGLOSSARY_RANDOMTITLE", "Término al azar");
-define("_MB_IMGLOSSARY_SEEMORE", "Más definiciones...");
-define("_MB_IMGLOSSARY_SENDTOFRIEND", "Enviar definición a un amigo");
+define("_MB_IMGLOSSARY_PRINTTERM", "Formato de impresiÃ³n");
+define("_MB_IMGLOSSARY_RANDOMTITLE", "TÃ©rmino al azar");
+define("_MB_IMGLOSSARY_SEEMORE", "MÃ¡s definiciones...");
+define("_MB_IMGLOSSARY_SENDTOFRIEND", "Enviar definiciÃ³n a un amigo");
 define("_MB_IMGLOSSARY_TERMS", "definiciones");
-define("_MB_IMGLOSSARY_TITLE", "Título");
-define("_MB_IMGLOSSARY_WEIGHT", "Ordenar por posición");
+define("_MB_IMGLOSSARY_TITLE", "TÃ­tulo");
+define("_MB_IMGLOSSARY_WEIGHT", "Ordenar por posiciÃ³n");
 
 // imGlossary v1.00
 define( '_MB_IMGLOSSARY_DATEFORMAT', 'Formato de fecha: ' );
-define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'Lea <a href="http://jp.php.net/manual/en/function.date.php" target="_blank">PHP manual</a>' );
-define( '_MB_IMGLOSSARY_CATEGORY', 'Categoría: ' );
-define( '_MB_IMGLOSSARY_ADMININDEX', 'Administration' );
-define( '_MB_IMGLOSSARY_PDFTERM', 'Create PDF');
+define( '_MB_IMGLOSSARY_DATEFORMATMANUAL', 'Lea el manual de <a href="http://jp.php.net/manual/es/function.date.php" target="_blank">PHP</a>' );
+define( '_MB_IMGLOSSARY_CATEGORY', 'CategorÃ­a: ' );
+define( '_MB_IMGLOSSARY_ADMININDEX', 'AdministraciÃ³n' );
+define( '_MB_IMGLOSSARY_PDFTERM', 'Crear PDF');
 ?>

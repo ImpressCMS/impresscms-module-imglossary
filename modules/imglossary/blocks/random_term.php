@@ -26,7 +26,7 @@ function b_entries_random_show() {
 
 	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
 
-	global $xoopsDB, $xoopsConfig, $xoopsUser;
+	global $icmsConfig;
 	$myts =& MyTextSanitizer::getInstance();
 
 	include_once ICMS_ROOT_PATH . '/modules/' . $glossdirname . '/include/functions.php';
@@ -35,8 +35,8 @@ function b_entries_random_show() {
 	$block = array();
 //	$block['title'] = _MB_IMGLOSSARY_RANDOMTITLE;
 		
-	$sql = 'SELECT COUNT(*) FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0';
-	list ( $numrows ) = $xoopsDB -> fetchRow( $xoopsDB -> query( $sql ) );
+	$sql = 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0';
+	list ( $numrows ) = icms::$xoopsDB -> fetchRow( icms::$xoopsDB -> query( $sql ) );
 	if ( $numrows > 1 ) {
 		$numrows = $numrows - 1;
 		mt_srand( ( double )microtime() * 1000000 );
@@ -45,16 +45,16 @@ function b_entries_random_show() {
 		$entrynumber = 0;
 	}
 
-	$hModule =& xoops_gethandler( 'module' );
-	$hModConfig =& xoops_gethandler( 'config' );
+	$hModule = icms::handler( 'icms_module' );
+	$hModConfig = icms::$config;
 	$imgModule =& $hModule -> getByDirname( $glossdirname );
 	$module_id = $imgModule -> getVar( 'mid' );
 	$module_name = $imgModule -> getVar( 'dirname' );
 	$imgConfig =& $hModConfig -> getConfigsByCat( 0, $imgModule -> getVar( 'mid' ) );
 
-	$result = $xoopsDB -> query ( 'SELECT * FROM ' . $xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1');
+	$result = icms::$xoopsDB -> query ( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1');
 
-	while ( $myrow = $xoopsDB -> fetchArray( $result ) ) {
+	while ( $myrow = icms::$xoopsDB -> fetchArray( $result ) ) {
 		$entryID = $myrow['entryID'];
 		$term = '<a href="' . ICMS_URL . '/modules/' . $glossdirname . '/entry.php?entryID=' . $entryID . '">' . $myrow['term'] . '</a>';
 
@@ -64,8 +64,8 @@ function b_entries_random_show() {
 		$definition = $myts -> displayTarea( $definition, $myrow['html'], $myrow['smiley'], $myrow['xcodes'], 0, $myrow['breaks'] );
 		$categoryID = $myrow['categoryID'];
 		
-		$result_cat = $xoopsDB -> query( 'SELECT categoryID, name FROM ' . $xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
-		list( $categoryID, $name ) = $xoopsDB -> fetchRow( $result_cat );
+		$result_cat = icms::$xoopsDB -> query( 'SELECT categoryID, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
+		list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $result_cat );
 		$category = '<div style="font-size: x-small; font-weight: normal; padding: 4px; margin: 0;"><a href="' . ICMS_URL . '/modules/' . $glossdirname . '/category.php?categoryID=' . $categoryID . '">' . $name . '</a></div>';
 		
 		$userlinks = '
@@ -80,8 +80,8 @@ function b_entries_random_show() {
 		</a>';
 
 		// Functional links
-		if ( $xoopsUser ) {
-			if ( $xoopsUser -> isAdmin() ) {
+		if ( icms::$user ) {
+			if ( icms::$user -> isAdmin() ) {
 				$adminlinks = '<a href="' . ICMS_URL . '/modules/' . $glossdirname . '/admin/index.php">
 							   <img src="' . ICMS_URL . '/modules/' . $glossdirname . '/images/icon/computer.png" border="0" alt="' . _MB_IMGLOSSARY_ADMININDEX . '" />
 							   </a>';
