@@ -19,6 +19,8 @@ Files removed:
 - include/gtickets.php
 - include/updateblock.inc.php
 - include/onupdate.inc.php
+- sql/index.html
+- sql/imglossary.sql
 
 
 ===================================
