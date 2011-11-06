@@ -6,18 +6,18 @@
 *
 * File: category.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		1.00
 */
@@ -26,13 +26,9 @@
 include 'header.php';
 
 global $icmsConfig, $modify, $indexp; 
-$myts =& MyTextSanitizer::getInstance();
 
-$categoryID = isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0;
-$categoryID = intval( $categoryID );
-
-$start = isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0;
-$start = intval( $start );
+$categoryID = intval( isset($_GET['categoryID']) ? intval($_GET['categoryID']) : 0 );
+$start = intval( isset( $_GET['start'] ) ? intval( $_GET['start'] ) : 0 );
 
 $xoopsOption['template_main'] = 'imglossary_category.html';
 include_once ICMS_ROOT_PATH . '/header.php';
@@ -65,7 +61,7 @@ if ( icms::$module -> config['multicats'] == 1 ) {
 		// $imglossModule = icms::$module -> getVar( 'dirname' );
 		$catlinks['id'] = $catID;
 		$catlinks['total'] = intval( $total );
-		$catlinks['linktext'] = $name;  // $myts -> htmlSpecialChars( $name );
+		$catlinks['linktext'] = icms_core_DataFilter::htmlSpecialchars( $name );
 
 		$block0['categories'][] = $catlinks;
 	}
@@ -94,8 +90,8 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 	//	$imglossModule = icms::$module -> getVar( 'dirname' );
 		$eachcat['dir'] = icms::$module -> getVar( 'dirname' );
 		$eachcat['id'] = $categoryID;
-		$eachcat['name'] = $name;  //  $myts -> htmlSpecialChars( $name );
-		$eachcat['description'] = $description;  //  $myts -> htmlSpecialChars( $description );
+		$eachcat['name'] = icms_core_DataFilter::htmlSpecialchars( $name );
+		$eachcat['description'] = icms_core_DataFilter::htmlSpecialchars( $description );
 		// Total entries in this category
 		$entriesincat = imglossary_countByCategory( $categoryID );
 		$eachcat['total'] = intval( $entriesincat );
@@ -117,8 +113,8 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 		$singlecat = array();
 		$singlecat['dir'] = icms::$module -> getVar('dirname');
 		$singlecat['id'] = $categoryID;
-		$singlecat['name'] = $name;  //  $myts -> htmlSpecialChars( $name );
-		$singlecat['description'] = $description;  //  $myts -> htmlSpecialChars( $description );
+		$singlecat['name'] = icms_core_DataFilter::htmlSpecialchars( $name );
+		$singlecat['description'] = icms_core_DataFilter::htmlSpecialchars( $description );
 		// Total entries in this category
 		$entriesincat = imglossary_countByCategory( $categoryID );
 
@@ -137,14 +133,14 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 		//	$imglossModule = icms::$module -> getVar( 'dirname' );
 			$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
 			$eachentry['id'] = $entryID;
-			$eachentry['term'] = $term;  //  $myts -> htmlSpecialChars( $term );
+			$eachentry['term'] = icms_core_DataFilter::htmlSpecialchars( $term );
 			if ( !XOOPS_USE_MULTIBYTES ) {
 				if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 					$html = 1;
 				}	
 				$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength']-1, '...' );
-				$deftemp = $myts -> displayTarea( $deftemp, $html, $smiley, $xcodes, 1, $breaks );
+				$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'html', 'output' );
 				$eachentry['definition'] = $deftemp;
 			}
 

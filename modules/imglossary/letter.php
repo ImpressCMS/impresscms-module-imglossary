@@ -6,18 +6,18 @@
 *
 * File: letter.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -105,7 +105,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
 			$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength'], '...' );
-			$deftemp = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+			$deftemp = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 			$eachentry['definition'] = $deftemp;
 		}
 
@@ -181,7 +181,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
 			$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength'], '...' );
-			$deftemp = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+			$deftemp = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 			$eachentry['definition'] = $deftemp;
 		}
 

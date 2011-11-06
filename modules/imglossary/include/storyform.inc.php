@@ -33,7 +33,7 @@ echo "</div><hr>";
 echo "<br /><fieldset style='border: #e8e8e8 1px solid;'><legend style='display: inline; font-weight: bold; font-size: 105%;'>" . sprintf( _MD_IMGLOSSARY_SUB_SNEWNAME, ucfirst( icms::$module -> getVar( 'name' ) ) ) . "</legend>";
 echo "<div style='padding: 8px;'>". _MD_IMGLOSSARY_GOODDAY . " <b>" . $name . "</b>, " . _MD_IMGLOSSARY_SUB_SNEWNAMEDESC . "</div></fieldset><br />";
 
-$sform = new icms_form_Theme( _MD_IMGLOSSARY_SUB_SMNAME, 'storyform', xoops_getenv( 'PHP_SELF' ) );
+$sform = new icms_form_Theme( _MD_IMGLOSSARY_SUB_SMNAME, 'storyform', '' );
 $sform -> setExtra( 'enctype="multipart/form-data"' );
 
 if ( icms::$module -> config['multicats'] == '1' ) {

@@ -80,8 +80,7 @@ class imGlossaryModuleAbout {
 	 * @return string santizied value
 	 */
 	function sanitize( $value ) {
-		$myts = MyTextSanitizer::getInstance();
-		return $myts -> displayTarea( $value, 1 );
+		return icms_core_DataFilter::checkVar( $value, 'html' );
 	}
 
 	/**
@@ -92,8 +91,6 @@ class imGlossaryModuleAbout {
 		/**
 		 * @todo make the output XHTML compliant
 		 */
-
-		$myts = &MyTextSanitizer::getInstance();
 
 		global $icmsConfig;
 
@@ -161,7 +158,7 @@ class imGlossaryModuleAbout {
 		}
 
 		// Warning
-		$this -> _tpl -> assign( 'module_warning', $this -> sanitize( $versioninfo -> getInfo( 'warning' ) ) );
+		$this -> _tpl -> assign( 'module_warning', icms_core_DataFilter::checkVar( $versioninfo -> getInfo( 'warning' ), 'html', 'output' ) );
 
 		// Author's note
 		$this -> _tpl -> assign( 'module_author_word', $versioninfo -> getInfo( 'author_word' ) );
@@ -173,7 +170,7 @@ class imGlossaryModuleAbout {
 
 	        $filesize = filesize( $filename );
 	        $handle = fopen( $filename, 'r' );
-	        $this -> _tpl -> assign( 'module_version_history', $myts -> displayTarea( fread( $handle, $filesize ), true ) );
+	        $this -> _tpl -> assign( 'module_version_history', icms_core_DataFilter::checkVar( fread( $handle, $filesize ), 'text', 'output' ) );
 	        fclose( $handle );
 	    }
 		
@@ -186,7 +183,7 @@ class imGlossaryModuleAbout {
 	    if( is_file( $filename ) ) {
 	        $filesize = filesize( $filename );
 	        $handle = fopen( $filename, 'r' );
-	        $this -> _tpl -> assign( 'module_license_txt', $myts -> displayTarea( fread( $handle, $filesize ), 0, 0, 1, 1, 1, true ) );
+	        $this -> _tpl -> assign( 'module_license_txt', icms_core_DataFilter::checkVar( fread( $handle, $filesize ), 'text', 'output' ) );
 	        fclose($handle);
 	    }
 
