@@ -47,8 +47,7 @@ $mycat = icms::$xoopsDB -> fetchArray( $result2 );
 
 $date = formatTimestamp( $myrow['datesub'], icms::$module -> config['dateformat'] );
 
-$myts =& MyTextSanitizer::getInstance();
-$title = $myts -> htmlSpecialChars( $myrow['term'] );
+$title = icms_core_DataFilter::htmlSpecialchars( $myrow['term'] );
 $submitter = strip_tags( icms_member_user_Handler::getUserLink( $myrow['uid'] ) );
 $category = $mycat['name'];
 $whowhen = sprintf( '', $submitter, $date );

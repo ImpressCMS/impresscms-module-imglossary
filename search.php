@@ -30,7 +30,6 @@ $xoopsOption['template_main'] = 'imglossary_search.html';
 include ICMS_ROOT_PATH . '/header.php';
 
 global $searchtype, $xoopsTpl;
-$myts =& MyTextSanitizer::getInstance();
 
 // Check if search is enabled site-wide
 $config_handler = icms::$config;
@@ -123,9 +122,9 @@ if ( !$query ) {
 			$eachresult['dir'] = icms::$module -> getVar( 'dirname' );
 			$eachresult['entryID'] = $entryID;
 			$eachresult['categoryID'] = $categoryID;
-			$eachresult['term'] = $myts -> htmlSpecialChars( $term );
-			$eachresult['catname'] = $myts -> htmlSpecialChars( $catname );
-			$tempdef = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+			$eachresult['term'] = icms_core_DataFilter::htmlSpecialChars( $term );
+			$eachresult['catname'] = icms_core_DataFilter::htmlSpecialChars( $catname );
+			$tempdef = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: ' . icms::$module -> config['searchcolor'] . ';">', '</b>' );
 
 			// Functional links

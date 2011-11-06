@@ -68,7 +68,7 @@ if ( $suggest > 0 ) {
 switch ( $op ) {
 	case 'post':
 		
-		global $icmsConfig, $myts;
+		global $icmsConfig;
 		
 		if ( icms::$module -> config['captcha'] == 1 ) {
 			// Captcha Hack
@@ -81,7 +81,6 @@ switch ( $op ) {
 		}
 		
 		include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';
-		$myts = & MyTextSanitizer :: getInstance();
 
 		$html = 1;
 		if ( icms::$user ) {
@@ -110,11 +109,11 @@ switch ( $op ) {
 			$categoryID = 0;
 		}
 		
-		$term = $myts -> htmlSpecialChars( $_POST['term'] );
+		$term = icms_core_DataFilter::htmlSpecialChars( $_POST['term'] );
 		$init = substr( $term, 0, 1 );
-		$definition = $myts -> addSlashes( $_POST['definition'] );
-		$ref = $myts -> addSlashes( $_POST['ref'] );
-		$url = $myts -> addSlashes( $_POST['url'] );
+		$definition = icms_core_DataFilter::addSlashes( $_POST['definition'] );
+		$ref = icms_core_DataFilter::addSlashes( $_POST['ref'] );
+		$url = icms_core_DataFilter::addSlashes( $_POST['url'] );
 
 		if ( empty($url) ) {
 			$url = ''; 

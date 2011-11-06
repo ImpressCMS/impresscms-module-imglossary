@@ -40,7 +40,7 @@ function printPage( $entryID ) {
 
 	$glossdirname = basename( dirname( __FILE__ ) );
 	
-	global $icmsConfig, $myts;
+	global $icmsConfig;
 	
 	$result1 = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
 	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
@@ -52,15 +52,15 @@ function printPage( $entryID ) {
 	list( $authorname, $username ) = icms::$xoopsDB -> fetchRow( $result3 );
 
 	$datetime = formatTimestamp( $datesub, icms::$module -> config['dateformat'] );
-	$categoryname = $myts -> htmlSpecialChars( $name );
-	$term = $myts -> htmlSpecialChars( $term );
+	$categoryname = icms_core_DataFilter::htmlSpecialchars( $name );
+	$term = icms_core_DataFilter::htmlSpecialchars( $term );
 	$definition = str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition );
-	$definition = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+	$definition = icms_core_DataFilter::htmlSpecialchars( $definition, $html, $smiley, $xcodes, 1, $breaks );
 	
 	if ( $authorname == '' ) {
-		$authorname = $myts -> htmlSpecialChars( $username );
+		$authorname = icms_core_DataFilter::htmlSpecialchars( $username );
 	} else {
-		$authorname = $myts -> htmlSpecialChars( $authorname );
+		$authorname = icms_core_DataFilter::htmlSpecialchars( $authorname );
 	}
 	
 	echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';

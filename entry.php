@@ -28,7 +28,6 @@ include_once ICMS_ROOT_PATH . '/class/module.textsanitizer.php';
 include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/sbookmarks.php';
 
 global $xoTheme; 
-$myts =& MyTextSanitizer::getInstance();
 
 $entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
 $entryID = intval( $entryID );
@@ -110,10 +109,10 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 		$definition = imglossary_linkterms( $definition, $glossaryterm );
 		$html = 1;
 	}
-	$thisterm['definition'] = $myts -> displayTarea( $definition, $html, $smiley, $xcodes, 1, $breaks );
+	$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 	
 	$thisterm['ref'] = icms_core_DataFilter::htmlSpecialchars( $ref );
-	$thisterm['url'] = $myts -> makeClickable( $url, $allowimage = 0 );
+	$thisterm['url'] = icms_core_DataFilter::makeClickable( $url, $allowimage = 0 );
 	$thisterm['submitter'] = icms_member_user_Handler::getUserLink( $uid );
 	$thisterm['submit'] = intval( $submit );
 	$thisterm['datesub'] = formatTimestamp( $datesub, icms::$module -> config['dateformat'] );

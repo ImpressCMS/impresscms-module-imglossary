@@ -44,10 +44,9 @@ if ( empty( $_POST['submit'] ) ) {
 		
 	extract( $_POST );
 	$display = 'D';
-	$myts =& MyTextSanitizer::getInstance();
-	$usermail = ( isset( $_POST['usermail'] ) ) ? $myts -> stripSlashesGPC( $_POST['usermail'] ) : '';
-	$username = ( isset( $_POST['username'] ) ) ? $myts -> stripSlashesGPC( $_POST['username'] ) : '';
-	$reqterm  = ( isset( $_POST['reqterm'] ) ) ? $myts -> makeTboxData4Save( $_POST['reqterm'] ) : '';
+	$usermail = ( isset( $_POST['usermail'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['usermail'] ) : '';
+	$username = ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::( $_POST['username'] ) : '';
+	$reqterm  = ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::makeTboxData4Save( $_POST['reqterm'] ) : '';
 	$notifypub = (isset($_POST['notifypub'])) ? intval($_POST['notifypub']) : 1;
 	$html   = ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
 	$smiley = ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
@@ -92,7 +91,7 @@ if ( empty( $_POST['submit'] ) ) {
 		}
 		$adminMessage .= '\n' . $HTTP_SERVER_VARS['HTTP_USER_AGENT'] . '\n';
 		$subject = $icmsConfig['sitename'] . " - " . _MD_IMGLOSSARY_DEFINITIONREQ;
-		$xoopsMailer =& getMailer();
+		$xoopsMailer = new icms_messaging_Handler();
 		$xoopsMailer -> useMail();
 		$xoopsMailer -> setToEmails( $icmsConfig['adminmail'] );
 		$xoopsMailer -> setFromEmail( $address );
@@ -113,7 +112,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$userMessage .= '--------------\n';
 	$userMessage .= $icmsConfig['sitename'] . ' ' . _MD_IMGLOSSARY_WEBMASTER . '\n'; 
 	$userMessage .= $icmsConfig['adminmail'];
-	$xoopsMailer =& getMailer();
+	$xoopsMailer = new icms_messaging_Handler();
 	$xoopsMailer -> useMail();
 	$xoopsMailer -> setToEmails( $address );
 	$xoopsMailer -> setFromEmail( $icmsConfig['adminmail'] );
