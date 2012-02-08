@@ -6,18 +6,18 @@
 *
 * File: request.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -31,7 +31,7 @@ if ( empty( $_POST['submit'] ) ) {
 	include 'include/requestform.php';
 	include ICMS_ROOT_PATH . '/footer.php';
 } else {
-	
+
 	if ( icms::$module -> config['captcha'] ) {
 		// Captcha Hack
 		// Verify entered code 
@@ -41,13 +41,13 @@ if ( empty( $_POST['submit'] ) ) {
 			}
 		// Captcha Hack
 	}
-		
+
 	extract( $_POST );
 	$display = 'D';
 	$usermail = ( isset( $_POST['usermail'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['usermail'] ) : '';
-	$username = ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::( $_POST['username'] ) : '';
+	$username = ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['username'] ) : '';
 	$reqterm  = ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::makeTboxData4Save( $_POST['reqterm'] ) : '';
-	$notifypub = (isset($_POST['notifypub'])) ? intval($_POST['notifypub']) : 1;
+	$notifypub = ( isset($_POST['notifypub'] ) ) ? intval( $_POST['notifypub'] ) : 1;
 	$html   = ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
 	$smiley = ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
 	$xcodes = ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
@@ -100,7 +100,7 @@ if ( empty( $_POST['submit'] ) ) {
 		$xoopsMailer -> setBody( $adminMessage );
 		$xoopsMailer -> send();
 		$messagesent = sprintf( _MD_IMGLOSSARY_MESSAGESENT, $icmsConfig['sitename'] ) . '<br />' . _MD_IMGLOSSARY_THANKS1;
-		}
+	}
 
 	$conf_subject = _MD_IMGLOSSARY_THANKS2;
 	$userMessage = sprintf( _MD_IMGLOSSARY_GOODDAY2, $logname );
@@ -120,7 +120,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$xoopsMailer -> setSubject( $conf_subject );
 	$xoopsMailer -> setBody( $userMessage );
 	$xoopsMailer -> send();
-	
+
 	if ( icms::$module -> config['mailtoadmin'] == 1 ) {
 		$messagesent .= sprintf( _MD_IMGLOSSARY_SENTCONFIRMMAIL, $address );
 	} else {
