@@ -1,6 +1,7 @@
+<link rel="stylesheet" type="text/css" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/style.css" />
 <div class="<{$smarty.const._GLOBAL_LEFT}>header">
-	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | 
-	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$thisterm.init}>"><{$thisterm.init}></a> | <{$thisterm.term}>
+	<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/index.php"><{$lang_modulename}></a> | 
+	<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$thisterm.init}>"><{$thisterm.init}></a> | <{$thisterm.term}>
 </div>
 <div class="<{$smarty.const._GLOBAL_RIGHT}>header"><{$lang_modulename}></div>
 <hr>
@@ -11,17 +12,17 @@
 <div class="letters">
 	<{foreach item=letterlinks from=$alpha.initial}>
 	  <{if $letterlinks.total > 0}> 
-		<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
+		<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
 	  <{/if}>
 	  <{$letterlinks.linktext}>
 	  <{if $letterlinks.total > 0}></a><{/if}> |
 	<{/foreach}>
 	<{if $totalother > 0}>
-	  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
+	  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
 	<{/if}>
 	<{$smarty.const._MD_IMGLOSSARY_OTHER}> |
 	<{if $totalother > 0}></a><{/if}>
-	<a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
+	<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
 </div>
 </fieldset>
 </div>
@@ -31,10 +32,10 @@
 <fieldset>
 <legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
 <div class="letterssmall">
-<{foreach item=catlinks from=$block0.categories}> <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
+<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
 <{if $catlinks.total > 0}><{/if}>
 </a> [<{$catlinks.total}>] |
-<{/foreach}>  <a href="<{$xoops_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+<{/foreach}>  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 </div>
 </fieldset>
 </div>
@@ -42,7 +43,7 @@
 
 <{if $multicats == 1}>
 	<div class="catname"><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
-	<a href="<{$xoops_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
+	<a href="<{$icms_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
 	</div>
 <{/if}>
 

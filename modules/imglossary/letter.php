@@ -97,7 +97,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
 		$eachentry['id'] = intval( $entryID );
 		$eachentry['term'] = icms_core_DataFilter::htmlSpecialchars( $term );
-		$eachentry['init'] = _MD_IMGLOSSARY_ALL;		
+		$eachentry['init'] = _MD_IMGLOSSARY_ALL;
 		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
@@ -160,7 +160,6 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	
 	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
 		$eachentry = array();
-	//	icms::$module = XoopsModule::getByDirname( $glossdirname );
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
 			$eachentry['catid'] = intval( $categoryID );
@@ -180,9 +179,14 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
-			$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength'], '...' );
-			$deftemp = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
-			$eachentry['definition'] = $deftemp;
+			//$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength'], '...' );
+		//	$deftemp = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
+		//	$eachentry['definition'] = $deftemp;
+			if ( $breaks ) {
+						$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+					} else {
+						$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+					}
 		}
 
 		// Functional links
