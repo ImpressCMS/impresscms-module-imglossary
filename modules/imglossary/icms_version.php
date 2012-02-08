@@ -169,6 +169,8 @@ $modversion['templates'][6]['file'] = 'imglossary_rss.html';
 $modversion['templates'][6]['description'] = 'RSS feed';
 $modversion['templates'][7]['file'] = 'imglossary_moduleabout.html';
 $modversion['templates'][7]['description'] = 'Module about';
+$modversion['templates'][8]['file'] = 'imglossary_admin_index.html';
+$modversion['templates'][8]['description'] = 'Admin index';
 
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;

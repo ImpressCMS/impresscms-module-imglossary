@@ -112,7 +112,7 @@ function entryEdit( $entryID = 0 ) {
 	$sform -> addElement( $block_radio );
 
 	// VARIOUS OPTIONS
-	$options_tray = new icms_form_elements_Tray( _AM_IMGLOSSARY_OPTIONS, '<br />' );
+	$options_tray = new icms_form_elements_Tray( _AM_IMGLOSSARY_OPTIONS, '<br /><br />' );
 
 	$html_checkbox = new icms_form_elements_Checkbox( '', 'html', $html );
 	$html_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOHTML );

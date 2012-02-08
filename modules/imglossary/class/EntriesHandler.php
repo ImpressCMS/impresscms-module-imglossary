@@ -26,6 +26,6 @@ defined( 'ICMS_ROOT_PATH' ) or die ( 'ICMS root path not defined' );
 
 class mod_imglossary_EntriesHandler extends icms_ipf_Handler {
 	public function __construct( &$db ) {
-		parent::__construct( $db, 'entries', 'entryID', '', '', basename( dirname( dirname( __FILE__ ) ) ) );
+		parent::__construct( $db, 'entries', 'entryID', 'term', 'definition', basename( dirname( dirname( __FILE__ ) ) ) );
 	}
 }
