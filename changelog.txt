@@ -10,6 +10,8 @@ imGlossary v1.03 RC
 Files removed:
 - xoops_version.php
 - admin/admin.php
+- admin/category.php
+- admin/entry.php
 - admin/myblockform.php
 - admin/myblocksadmin.php
 - admin/myblocksadmin.txt
