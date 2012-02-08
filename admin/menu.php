@@ -37,7 +37,7 @@ $adminmenu[1]['small'] = 'images/icon/entry_small.png';
 // Display tab 'Add category' if set in Preferences
 //if ( icms::$module -> config['multicats'] ) {
 	$adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
-	$adminmenu[2]['link']  = "admin/category.php";
+	$adminmenu[2]['link']  = "admin/cats.php";
 	$adminmenu[2]['icon']  = 'images/icon/folder.png';
 	$adminmenu[2]['small'] = 'images/icon/folder_small.png';
 //}
