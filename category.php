@@ -38,7 +38,7 @@ $xoopsTpl -> assign( 'multicats', intval( icms::$module -> config['multicats'] )
 // If there's no entries yet in the system...
 $pubwords = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0" );
 $publishedwords = icms::$xoopsDB -> getRowsNum ( $pubwords );
-if ( $publishedwords == 0 )	{
+if ( $publishedwords == 0 ) {
 	redirect_header( ICMS_URL, 1, _MD_IMGLOSSARY_STILLNOTHINGHERE );
 	exit();
 }
@@ -62,21 +62,20 @@ if ( icms::$module -> config['multicats'] == 1 ) {
 		$catlinks['id'] = $catID;
 		$catlinks['total'] = intval( $total );
 		$catlinks['linktext'] = icms_core_DataFilter::htmlSpecialchars( $name );
-
 		$block0['categories'][] = $catlinks;
 	}
 	$xoopsTpl -> assign( 'block0', $block0 );
 }
 
 // No ID of category: we need to see all categories descriptions
-if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
+if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS ) {
 	// How many categories are there?
 	$resultcats = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . icms::$module -> config['sortcats'] . "" );
 	$totalcats = icms::$xoopsDB -> getRowsNum( $resultcats );
 	if ( $totalcats == 0 ) {
 		redirect_header( "javascript:history.go(-1)", 1, _MD_IMGLOSSARY_NOCATSINSYSTEM );
 		exit();
-	} 
+	}
 
 	// If there's no $categoryID, we want to show just the categories with their description
 	$catsarray = array();
@@ -84,10 +83,9 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 	// How many categories will we show in this page?
 	$queryA = "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " ORDER BY " . icms::$module -> config['sortcats'] . " ASC";
 	$resultA = icms::$xoopsDB -> query( $queryA, icms::$module -> config['indexperpage'], $start );
-	
+
 	while ( list( $categoryID, $name, $description, $total ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
 		$eachcat = array();
-	//	$imglossModule = icms::$module -> getVar( 'dirname' );
 		$eachcat['dir'] = icms::$module -> getVar( 'dirname' );
 		$eachcat['id'] = $categoryID;
 		$eachcat['name'] = icms_core_DataFilter::htmlSpecialchars( $name );
@@ -95,7 +93,6 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 		// Total entries in this category
 		$entriesincat = imglossary_countByCategory( $categoryID );
 		$eachcat['total'] = intval( $entriesincat );
-
 		$catsarray['single'][] = $eachcat;
 	}
 	$pagenav = new icms_view_PageNav( $totalcats, icms::$module -> config['indexperpage'], $start, 'categoryID=' . $eachcat['id'] . '&start' );
@@ -109,7 +106,7 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 	while ( list( $categoryID, $name, $description, $total ) = icms::$xoopsDB -> fetchRow( $catdata ) ) {
 		if ( $total == 0 ) {
 			$xoopsTpl -> assign( 'singlecat', _MD_IMGLOSSARY_NOENTRIESINCAT );
-		} 
+		}
 		$singlecat = array();
 		$singlecat['dir'] = icms::$module -> getVar('dirname');
 		$singlecat['id'] = $categoryID;
@@ -117,20 +114,18 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 		$singlecat['description'] = icms_core_DataFilter::htmlSpecialchars( $description );
 		// Total entries in this category
 		$entriesincat = imglossary_countByCategory( $categoryID );
-
 		$singlecat['total'] = intval( $entriesincat );
 		$xoopsTpl -> assign( 'singlecat', $singlecat );
 
 		// Entries to show in current page
 		$entriesarray = array();
-		
+
 		// Now we retrieve a specific number of entries according to start variable	
 		$queryB = "SELECT entryID, term, definition, html, smiley, xcodes, breaks, comments FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
 		$resultB = icms::$xoopsDB -> query( $queryB, icms::$module -> config['indexperpage'], $start );
 
 		while ( list( $entryID, $term, $definition, $html, $smiley, $xcodes, $breaks, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
 			$eachentry = array();
-		//	$imglossModule = icms::$module -> getVar( 'dirname' );
 			$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
 			$eachentry['id'] = $entryID;
 			$eachentry['term'] = icms_core_DataFilter::htmlSpecialchars( $term );
@@ -138,13 +133,17 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 				if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 					$html = 1;
-				}	
+				}
 				$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength']-1, '...' );
-				$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'html', 'output' );
+				if ( $breaks ) {
+					$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'text', 'output' );
+				} else {
+					$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'html', 'output' );
+				}
 				$eachentry['definition'] = $deftemp;
 			}
 
-		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';			
+		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
 
 			// Functional links
 			$microlinks = imglossary_serviceLinks( $eachentry ) . $eachentry['comments'];
@@ -152,11 +151,11 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS )	{
 			$entriesarray['single'][] = $eachentry;
 		}
 	}
-	
+
 	$navstring = "categoryID=" . $singlecat['id'] . "&start";
 	$pagenav = new icms_view_PageNav( $entriesincat, icms::$module -> config['indexperpage'], $start, $navstring);
 	$entriesarray['navbar'] = '<div style="text-align:'._GLOBAL_RIGHT.';">' . $pagenav -> renderNav() . '</div>';
-	
+
 	$xoopsTpl -> assign( 'entriesarray', $entriesarray );
 	$xoopsTpl -> assign( 'pagetype', '1' );
 	}

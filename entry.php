@@ -6,18 +6,18 @@
 *
 * File: entry.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -58,7 +58,7 @@ $sql = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'im
 $howmanyother = icms::$xoopsDB -> getRowsNum( $sql );
 $xoopsTpl -> assign( 'totalother', $howmanyother );
 
-if ( icms::$module -> config['multicats'] == 1 )	{
+if ( icms::$module -> config['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
 	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' ORDER BY name ASC' );
@@ -68,7 +68,6 @@ if ( icms::$module -> config['multicats'] == 1 )	{
 		$catlinks['id'] = $catID;
 		$catlinks['total'] = intval( $total );
 		$catlinks['linktext'] = icms_core_DataFilter::htmlSpecialchars( $name );
-
 		$block0['categories'][] = $catlinks;
 	}
 	$xoopsTpl -> assign( 'block0', $block0 );
@@ -79,7 +78,7 @@ if ( !$entryID ) {
 } else {
 	if ( !icms::$user || ( icms::$user -> isAdmin( icms::$module -> getVar('mid') ) && icms::$module -> config['adminhits'] == 1 ) || ( icms::$user && !icms::$user -> isAdmin( icms::$module -> getVar('mid') ) ) ) {
 		icms::$xoopsDB -> queryF( 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET counter=counter+1 WHERE entryID=' . $entryID );
-	}	
+	}
 
 	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
 	}
@@ -89,7 +88,7 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	// $imglossModule = icms::$module -> getVar( 'dirname' );
 	$thisterm['id'] = intval( $entryID );
 
-	if ( icms::$module -> config['multicats'] == 1 )	{
+	if ( icms::$module -> config['multicats'] == 1 ) {
 		$thisterm['categoryID'] = intval( $categoryID );
 		$catname = icms::$xoopsDB -> query ( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
 		while ( list( $name ) = icms::$xoopsDB -> fetchRow ( $catname ) ) {
@@ -109,8 +108,11 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 		$definition = imglossary_linkterms( $definition, $glossaryterm );
 		$html = 1;
 	}
-	$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
-	
+	if ( $breaks ) {
+		$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'text', 'output' );
+	} else {
+		$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
+	}
 	$thisterm['ref'] = icms_core_DataFilter::htmlSpecialchars( $ref );
 	$thisterm['url'] = icms_core_DataFilter::makeClickable( $url, $allowimage = 0 );
 	$thisterm['submitter'] = icms_member_user_Handler::getUserLink( $uid );
@@ -121,12 +123,11 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 	$thisterm['offline'] = intval( $offline );
 	$thisterm['notifypub'] = intval( $notifypub );
 	$thisterm['dir'] = icms::$module -> getVar( 'dirname' );
-	}
+}
 $xoopsTpl -> assign( 'thisterm', $thisterm );
 
-$microlinks = imglossary_serviceLinks( $thisterm );   // Get icons
+$microlinks = imglossary_serviceLinks( $thisterm ); // Get icons
 $xoopsTpl -> assign( 'microlinks', $microlinks );
-
 $xoopsTpl -> assign( 'lang_modulename', icms::$module -> getVar('name') );
 $xoopsTpl -> assign( 'lang_moduledirname', icms::$module -> getVar( 'dirname' ) );
 $xoopsTpl -> assign( 'entryID', $entryID );
@@ -137,7 +138,7 @@ if ( is_object( $xoTheme ) ) {
 } else {
 	$xoopsTpl -> assign( 'icms_meta_description', icms_core_DataFilter::icms_substr( strip_tags( $thisterm['definition'] ), 0, 250, '' ) );
 }
-	
+
 if ( icms::$module -> config['showsubmitter'] ) {
 	$xoopsTpl -> assign( 'submitter', sprintf( _MD_IMGLOSSARY_SUBMITTED, $thisterm['submitter'] ) );
 }

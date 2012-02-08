@@ -33,7 +33,7 @@ global $searchtype, $xoopsTpl;
 
 // Check if search is enabled site-wide
 $config_handler = icms::$config;
-$xoopsConfigSearch =& $config_handler -> getConfigsByCat( XOOPS_CONF_SEARCH );
+$xoopsConfigSearch =& $config_handler -> getConfigsByCat( ICMS_CONF_SEARCH );
 if ( $xoopsConfigSearch['enable_search'] != 1 ) {
 	header( 'Location: ' . ICMS_URL . '/index.php' );
 	exit();
@@ -148,7 +148,7 @@ if ( !$query ) {
 }
 
 // Assign variables and close
-$xoopsTpl -> assign( 'lang_modulename', icms::$module -> name() );
+$xoopsTpl -> assign( 'lang_modulename', icms::$module -> getVar( 'name' ) );
 $xoopsTpl -> assign( 'lang_moduledirname', icms::$module -> getVar( 'dirname' ) );
 
 $xoopsTpl -> assign( "icms_module_header", '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );

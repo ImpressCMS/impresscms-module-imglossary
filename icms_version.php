@@ -34,9 +34,9 @@ if ( file_exists( ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) )
 $modversion = array(
 	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
 	'version' 			=> 1.03,
-	'status' 			=> 'RC',
-	'status_version'	=> 'RC',
-	'date'				=> 'xx xxxxx 2011',
+	'status' 			=> 'Trunk',
+	'status_version'	=> 'Trunk',
+	'date'				=> 'xx xxxxx 2012',
 
 	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
 	'author' 			=> 'McDonald',

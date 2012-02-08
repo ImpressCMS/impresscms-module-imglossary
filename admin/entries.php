@@ -279,39 +279,38 @@ switch ( $op ) {
 		global $icmsConfig, $entryID;
 
 		imglossary_adminMenu( 0, _AM_IMGLOSSARY_INDEX );
-		
-		
-		$result01 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " " );
+
+
+		$result01 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
 			list( $totalcategories ) = icms::$xoopsDB -> fetchRow( $result01 );
-        $result02 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0" );
+		$result02 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0' );
 			list( $totalpublished ) = icms::$xoopsDB -> fetchRow( $result02 );
-        $result03 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=0" );
+		$result03 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=1 AND request=0' );
 			list( $totalsubmitted ) = icms::$xoopsDB -> fetchRow( $result03 );
-        $result04 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=1 AND request=1" );
+		$result04 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=1 AND request=1' );
 			list( $totalrequested ) = icms::$xoopsDB -> fetchRow( $result04 );
-		
-		$style = 'border: #CCCCCC 1px solid; padding: 4px; background-color: #E8E8E8; margin: 1px; font-size: .9em; font-weight: bold;';
-		$style_fldst = 'border: #E8E8E8 1px solid;';
+
+		$style = 'border: #CCCCCC 1px solid; padding: 4px; background-color: #E8E8E8; margin: 1px; font-size: .9em; border-radius: 4px;';
+		$style_fldst = 'border: #E8E8E8 1px solid; border-radius: 6px;';
 		$style_lgnd = 'display: inline; font-weight: bold; padding-bottom: 8px;';
-		$style_bttn = 'float: ' . _GLOBAL_LEFT . '; font-size: 11px; border-radius: 4px; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 2px 4px; text-align:center;';
-		
-		
+		$style_bttn = 'float: ' . _GLOBAL_LEFT . '; font-size: 11px; border-radius: 4px; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 2px 4px; text-align: center;';
+
+
 		echo '<fieldset style="' . $style_fldst . '">';
 		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_INVENTORY . '</legend>';
-        echo '<div style="padding: 10px;"><span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALENTRIES . ' ' . $totalpublished . '</span> ';
-		
+		echo '<div style="padding: 10px;"><span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALENTRIES . ' <b>' . $totalpublished . ' </b></span>&nbsp;&nbsp;';
+
 		if (icms::$module -> config['multicats'] == 1) {
-			echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALCATS . ' ' . $totalcategories . '</span> ';
+			echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALCATS . ' <b>' . $totalcategories . ' </b></span>&nbsp;&nbsp;';
 		}
-		
-        echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALSUBM . ' ' . $totalsubmitted . '</span> ';
-		echo '<span style="' . $style . '">' . _AM_IMGLOSSARY_TOTALREQ . ' ' . $totalrequested . '</span></div>';
+
+		echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALSUBM . ' <b>' . $totalsubmitted . ' </b></span>&nbsp;&nbsp;';
+		echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALREQ . ' <b>' . $totalrequested . ' </b></span></div>';
 		echo '</fieldset>';
-		
-		
+
+
 		$imglossary_entries_handler = icms_getModuleHandler( 'entries', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
 		$imglossary_cats_handler = icms_getModuleHandler( 'cats', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
-		
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
