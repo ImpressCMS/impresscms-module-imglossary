@@ -36,21 +36,21 @@ if ( empty( $_POST['submit'] ) ) {
 		// Captcha Hack
 		// Verify entered code 
 		$icmsCaptcha = icms_form_elements_captcha_Object::instance(); 
-			if ( !$icmsCaptcha -> verify( true ) ) { 
-				redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
-			}
+		if ( !$icmsCaptcha -> verify( true ) ) { 
+			redirect_header( 'submit.php', 2, $icmsCaptcha -> getMessage() ); 
+		}
 		// Captcha Hack
 	}
 
 	extract( $_POST );
-	$display = 'D';
-	$usermail = ( isset( $_POST['usermail'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['usermail'] ) : '';
-	$username = ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['username'] ) : '';
-	$reqterm  = ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::makeTboxData4Save( $_POST['reqterm'] ) : '';
-	$notifypub = ( isset($_POST['notifypub'] ) ) ? intval( $_POST['notifypub'] ) : 1;
-	$html   = ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
-	$smiley = ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
-	$xcodes = ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
+	$display	= 'D';
+	$usermail	= ( isset( $_POST['usermail'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['usermail'] ) : '';
+	$username	= ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['username'] ) : '';
+	$reqterm	= ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::makeTboxData4Save( $_POST['reqterm'] ) : '';
+	$notifypub	= ( isset($_POST['notifypub'] ) ) ? intval( $_POST['notifypub'] ) : 1;
+	$html		= ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
+	$smiley		= ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
+	$xcodes		= ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
 	if ( icms::$user ) {
 		$user = icms::$user -> getVar( 'uid' );
 	} else {

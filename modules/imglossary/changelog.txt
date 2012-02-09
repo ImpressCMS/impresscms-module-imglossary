@@ -1,11 +1,14 @@
 ===================================
-imGlossary v1.03 RC
+imGlossary v1.03
 ===================================
 - Upgraded for ImpressionCMS 1.3
 
-- Added: About page
+Added:
+- About page
+- IPF classes and tables to admin index page
 
-- Removed: support for Koivi editor
+Removed:
+- support for Koivi editor
 
 Files removed:
 - xoops_version.php
@@ -26,13 +29,7 @@ Files removed:
 
 
 ===================================
-imGlossary v1.02 Final
-===================================
- No changes
-
-
-===================================
-imGlossary v1.02 RC-1
+imGlossary v1.02
 ===================================
 - Added: Persian translation [stranger]
 - Added: ImpressCMS global directions [stranger]
@@ -48,15 +45,7 @@ imGlossary v1.02 RC-1
 
 
 ===================================
-imGlossary v1.01 Final
-===================================
-- Fixed: mysql error in modules admin when imglossary not installed [gibaphp]
-- Fixed: undefined variable random when no entries [mcdonald]
-- Fixed: RSS feed template array no. [mcdonald]
-
-
-===================================
-imGlossary v1.01 RC-1
+imGlossary v1.01
 ===================================
 - Added: RSS feed [mcdonald]
 - Added: button bar icons [mcdonald]
@@ -68,6 +57,9 @@ imGlossary v1.01 RC-1
 - Fixed: multilanguage issue menu content in block settings [mcdonald]
 - Fixed: category menu for modifying term [mcdonald]
 - Fixed: captcha compatibility between icms 1.1 and icms 1.1.1+ [mcdonald]
+- Fixed: mysql error in modules admin when imglossary not installed [gibaphp]
+- Fixed: undefined variable random when no entries [mcdonald]
+- Fixed: RSS feed template array no. [mcdonald]
 
 
 ===================================
@@ -78,19 +70,6 @@ imGlossary v1.00 Final
 - Added: options to select editor for admin and user side
 - Added: comment total in alt- and title tag of icon
 - Added: GPL2 license incl. translations
-
-- Replaced: some icons
-- Replaced: 'Xoops code' with 'BBCode'
-
-- Fixed: pagination for listing 'All' (again)
-- Fixed: pagination for listing 'All Categories'
-- Fixed: searching terms
-- Fixed: block settings [skenow]
-
-
-===================================
-imGlossary v1.00 RC-2
-===================================
 - Added: option to set background colour searched terms
 - Added: import script Wiwimod
 - Added: import script Wordbook
@@ -101,16 +80,22 @@ imGlossary v1.00 RC-2
 - Added: captcha to request form
 - Added: captcha can be turned on/off in Preferences
 
+- Fixed: pagination for listing 'All' (again)
+- Fixed: pagination for listing 'All Categories'
+- Fixed: searching terms
+- Fixed: block settings [skenow]
+- Fixed: problem search option, unknown function
+- Fixed: letter-bar, only those letters containing terms have url assigned
+- Fixed: pagination for listing 'All'
+- Fixed: url administration icon in random block
+
+- Replaced: some icons
+- Replaced: 'Xoops code' with 'BBCode'
 - Replaced: import script Dictionary
 - Replaced: admin menu (displayAdminMenu)
 
 - Removed: imglossary/templates/imglossary_request.html
 - Removed: imglossary/templates/imglossary_submit.html
-
-- Fixed: problem search option, unknown function
-- Fixed: letter-bar, only those letters containing terms have url assigned
-- Fixed: pagination for listing 'All'
-- Fixed: url administration icon in random block
 
 
 ===================================

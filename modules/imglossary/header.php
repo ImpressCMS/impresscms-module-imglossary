@@ -21,7 +21,7 @@
 * @author		modified by McDonald
 * @version		$Id$
 */
- 
+
 include '../../mainfile.php';
 
 include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';

@@ -119,9 +119,8 @@ switch ( $op ) {
 				$popentries['linktext'] = $linktext;
 				$popentries['id'] = $entryID;
 				$popentries['counter'] = intval( $counter );
-
 				$block2['popstuff'][] = $popentries;
-			} 
+			}
 			$xoopsTpl -> assign( 'block2', $block2);
 		}
 
@@ -139,7 +138,7 @@ switch ( $op ) {
 
 		$zerotest = icms::$xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
-			while( $myrow = icms::$xoopsDB -> fetchArray( $resultZ ) )	{
+			while( $myrow = icms::$xoopsDB -> fetchArray( $resultZ ) ) {
 				$random = array();
 				$random['entryID'] = $myrow['entryID'];
 				$random['id'] = $myrow['entryID'];
@@ -163,7 +162,7 @@ switch ( $op ) {
 				}
 			}
 			$xoopsTpl -> assign( 'random', $random );
-			$microlinks = imglossary_serviceLinks( $random );	
+			$microlinks = imglossary_serviceLinks( $random );
 		}
 		if ( icms::$user && icms::$user -> isAdmin() ) {
 
@@ -218,7 +217,6 @@ switch ( $op ) {
 				if ( $totalRwords > 0 ) {
 					while ( list( $entryID, $term ) = icms::$xoopsDB -> fetchRow( $resultR ) ) {
 						$reqentries = array();
-					//	$imglossModule = icms::$module -> getVar( 'dirname' );
 						$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 						$reqentries['linktext'] = $linktext;
 						$reqentries['id'] = $entryID;

@@ -1,17 +1,12 @@
 <script language="javascript" src="<{$xoops_url}>/include/linkexternal.js"></script>
-<br />
-<img src="<{$module_url}><{$module_image}>" alt="<{$module_name}>" style="float: <{$smarty.const._GLOBAL_LEFT}>; margin-right: 10px;"/></a>
 
-<div style="margin-top: 1px; color: #33538e; margin-bottom: 4px; font-size: 18px; line-height: 18px; font-weight: bold;">
-	<{$module_name}> version <{$module_version}><{if $module_status_version}> (<{$module_status_version}>)<{/if}>
-</div>
-
-<div style="line-height: 16px; font-weight: bold;">
-	&nbsp;<{$smarty.const._MODABOUT_IMGLOSSARY_BY}> <{$module_author_name}>
-</div>
-
-<div style="line-height: 16px;">
-	 <{$module_license}>
+<div style="margin-top: 10px; margin-bottom: 15px; border: #e8e8e8 1px solid; padding: 8px; border-radius: 6px;">
+	<img src="<{$module_url}><{$module_image}>" alt="<{$module_name}>" style="float: <{$smarty.const._GLOBAL_LEFT}>; margin-right: 10px;"/></a>
+	<div style="color: #33538e; margin-bottom: 4px; font-size: 18px; line-height: 18px; font-weight: bold; padding-<{$smarty.const._GLOBAL_LEFT}>: 50px;">
+		<{$module_name}> version <{$module_version}><{if $module_status_version}> (<{$module_status_version}>)<{/if}>
+	</div>
+	<div style="font-weight: bold; padding-<{$smarty.const._GLOBAL_LEFT}>: 50px;"><{$smarty.const._MODABOUT_IMGLOSSARY_BY}> <{$module_author_name}></div>
+	<div style="padding-<{$smarty.const._GLOBAL_LEFT}>: 50px;"><{$module_license}></div>
 </div>
 
 <{if $module_credits}>

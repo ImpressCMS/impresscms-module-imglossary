@@ -6,23 +6,23 @@
 *
 * File: search.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
- 
-$xoopsOption['pagetype'] = "search";
+
+$xoopsOption['pagetype'] = 'search';
 
 include 'header.php';
 
@@ -57,22 +57,22 @@ if ( icms::$module -> config['multicats'] == 1 ) {
 
 // Configure search parameters according to selector
 $query = stripslashes( $query );
-if ( $type == "1" ) { 
-	$searchtype = "term LIKE '%$query%' "; 
+if ( $type == "1" ) {
+	$searchtype = "term LIKE '%$query%' ";
 }
-if ( $type == "2" ) { 
-	$searchtype = "definition LIKE '%$query%' "; 
+if ( $type == "2" ) {
+	$searchtype = "definition LIKE '%$query%' ";
 }
-if ( $type == "3" ) { 
-	$searchtype = "term LIKE '%$query%' OR definition LIKE '%$query%' "; 
+if ( $type == "3" ) {
+	$searchtype = "term LIKE '%$query%' OR definition LIKE '%$query%' ";
 }
 
 if ( icms::$module -> config['multicats'] == 1 ) {
 	// If the look is in a particular category
-	if ( $categoryID > 0 ) { 
-		$andcatid = "AND categoryID='$categoryID'"; 
-	} else { 
-		$andcatid = ""; 
+	if ( $categoryID > 0 ) {
+		$andcatid = "AND categoryID='$categoryID'";
+	} else {
+		$andcatid = "";
 	}
 } else {
 	$andcatid = "";
@@ -105,7 +105,7 @@ if ( !$query ) {
 		// Display search form
 		$searchform = imglossary_showSearchForm();
 		$xoopsTpl -> assign( 'searchform', $searchform );
-	} else {	
+	} else {
 		// $results > 0 -> there were search results
 		// Show paginated list of results
 		// We'll put the results in an array
@@ -114,11 +114,9 @@ if ( !$query ) {
 		// How many results will we show in this page?
 		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = icms::$xoopsDB -> query( $queryA, icms::$module -> config['indexperpage'], $start );
-		
-		//while (list( $entryID, $categoryID, $term, $init, $definition ) = icms::$xoopsDB->fetchRow($resultA))
+
 		while ( list( $entryID, $categoryID, $term, $init, $definition, $html, $smiley, $xcodes, $breaks, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
 			$eachresult = array();
-		//	icms::$module = XoopsModule::getByDirname( $glossdirname );
 			$eachresult['dir'] = icms::$module -> getVar( 'dirname' );
 			$eachresult['entryID'] = $entryID;
 			$eachresult['categoryID'] = $categoryID;
@@ -151,7 +149,7 @@ if ( !$query ) {
 $xoopsTpl -> assign( 'lang_modulename', icms::$module -> getVar( 'name' ) );
 $xoopsTpl -> assign( 'lang_moduledirname', icms::$module -> getVar( 'dirname' ) );
 
-$xoopsTpl -> assign( "icms_module_header", '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );
+$xoopsTpl -> assign( 'icms_module_header', '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );
 
 include ICMS_ROOT_PATH . '/footer.php';
 ?>
