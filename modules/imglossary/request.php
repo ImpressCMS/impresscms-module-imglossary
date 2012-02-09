@@ -46,7 +46,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$display	= 'D';
 	$usermail	= ( isset( $_POST['usermail'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['usermail'] ) : '';
 	$username	= ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['username'] ) : '';
-	$reqterm	= ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::makeTboxData4Save( $_POST['reqterm'] ) : '';
+	$reqterm	= ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::addSlashes( $_POST['reqterm'] ) : '';
 	$notifypub	= ( isset($_POST['notifypub'] ) ) ? intval( $_POST['notifypub'] ) : 1;
 	$html		= ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
 	$smiley		= ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
