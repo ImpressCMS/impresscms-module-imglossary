@@ -25,19 +25,19 @@
 include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/include/functions.php';
 
 $adminmenu[0]['title'] = _MI_IMGLOSSARY_ADMENU1;
-$adminmenu[0]['link']  = "admin/index.php";
+$adminmenu[0]['link']  = 'admin/index.php';
 $adminmenu[0]['icon']  = 'images/icon/main.png'; // 32x32 px for options bar (tabs) 
 $adminmenu[0]['small'] = 'images/icon/main_small.png'; // 16x16 px for drop down
 
 $adminmenu[1]['title'] = _MI_IMGLOSSARY_ADMENU3;
-$adminmenu[1]['link']  = "admin/entry.php";
+$adminmenu[1]['link']  = 'admin/entries.php?op=newentry';
 $adminmenu[1]['icon']  = 'images/icon/entry.png';
 $adminmenu[1]['small'] = 'images/icon/entry_small.png';
 
 // Display tab 'Add category' if set in Preferences
 //if ( icms::$module -> config['multicats'] ) {
 	$adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
-	$adminmenu[2]['link']  = "admin/cats.php";
+	$adminmenu[2]['link']  = 'admin/cats.php';
 	$adminmenu[2]['icon']  = 'images/icon/folder.png';
 	$adminmenu[2]['small'] = 'images/icon/folder_small.png';
 //}
@@ -63,8 +63,8 @@ if ( imglossary_wiwimod_module_included() ) {
 if ( isset( icms::$module ) ) {
 
 	icms_loadLanguageFile( basename( dirname( dirname( __FILE__ ) ) ), 'admin' );
-	
-	$module = icms::handler( 'icms_module' ) -> getByDirname( basename( dirname( dirname( __FILE__ ) ) ), TRUE );
+
+	$module = icms::handler( 'icms_module' ) -> getByDirname( basename( dirname( dirname( __FILE__ ) ) ), true );
 	$i = -1;
 
 	$i++;

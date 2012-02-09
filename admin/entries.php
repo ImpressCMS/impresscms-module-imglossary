@@ -34,37 +34,37 @@ function entryEdit( $entryID = 0 ) {
 	global $icmsConfig, $imglmyts; 
 
 	$sql = 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID;
-    if ( !$result = icms::$xoopsDB -> query( $sql ) ) {
-        icms::$logger -> handleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
-        return false;
-    } 
-    $entry_array = icms::$xoopsDB -> fetchArray( icms::$xoopsDB -> query( $sql ) );
-	
+	if ( !$result = icms::$xoopsDB -> query( $sql ) ) {
+		icms::$logger -> handleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
+		return false;
+	}
+	$entry_array = icms::$xoopsDB -> fetchArray( icms::$xoopsDB -> query( $sql ) );
+
 	$categoryID = $entry_array['categoryID'] ? $entry_array['categoryID'] : 0;
 	$term = $entry_array['term'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['term'] ) : '';
 	$definition = $entry_array['definition'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['definition'] ) : '';
-    $ref = $entry_array['ref'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['ref'] ) : '';
-    $url = $entry_array['url'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['url'] ) : '';
+	$ref = $entry_array['ref'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['ref'] ) : '';
+	$url = $entry_array['url'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['url'] ) : '';
 	$uid = $entry_array['uid'] ? $entry_array['uid'] : 0;
 	$submit = $entry_array['submit'] ? $entry_array['submit'] : 0;
-    $datesub = $entry_array['datesub'] ? $entry_array['datesub'] : time();
+	$datesub = $entry_array['datesub'] ? $entry_array['datesub'] : time();
 	$html = $entry_array['html'];
 	$smiley = $entry_array['smiley'];
 	$xcodes = $entry_array['xcodes'];
 	$breaks = $entry_array['breaks'];
 	$block = $entry_array['block'];
 	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
-    $notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
-    $request = $entry_array['request'] ? $entry_array['request'] : 0;
+	$notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
+	$request = $entry_array['request'] ? $entry_array['request'] : 0;
 
 	$result01 = icms::$xoopsDB -> query( "SELECT COUNT(*) FROM " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " " );
 	list( $totalcats ) = icms::$xoopsDB -> fetchRow( $result01 );
-	
+
 	if ( $totalcats == 0 && icms::$module -> config['multicats'] == 1 ) {
 		redirect_header( 'index.php', 1, _AM_IMGLOSSARY_NEEDONECOLUMN );
 		exit();
 	}
-	
+
 	imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
 	$uid = icms::$user -> getVar('uid');
 	echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
@@ -139,7 +139,6 @@ function entryEdit( $entryID = 0 ) {
 
 	if ( !$entryID ) {
 		// there's no entryID? Then it's a new entry
-		
 		$butt_create = new icms_form_elements_Button( '', '', _AM_IMGLOSSARY_CREATE, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addentry\'"' );
 		$button_tray -> addElement( $butt_create );
@@ -161,7 +160,7 @@ function entryEdit( $entryID = 0 ) {
 		$butt_cancel = new icms_form_elements_Button( '', '', _AM_IMGLOSSARY_CANCEL, 'button' );
 		$butt_cancel -> setExtra( 'onclick="history.go(-1)"' );
 		$button_tray -> addElement( $butt_cancel );
-		
+
 	}
 
 	$sform -> addElement( $button_tray );
@@ -169,10 +168,15 @@ function entryEdit( $entryID = 0 ) {
 	unset( $hidden );
 }
 
-function entrySave( $entryID = '' )	{
-	
+function entryDefault() {
+	icms_cp_header();
+	entryEdit();
+}
+
+function entrySave( $entryID = '' ) {
+
 	global $icmsConfig, $imglmyts;
-	
+
 	$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
 	if ( icms::$module -> config['multicats'] == 1 ) {
 		$categoryID = isset( $_POST['categoryID'] ) ? intval( $_POST['categoryID'] ) : intval( $_GET['categoryID'] );
@@ -190,9 +194,9 @@ function entrySave( $entryID = '' )	{
 		$offline = ( $_POST['offline'] == 1 ) ? 1 : 0;
 	}
 	$html = isset( $_REQUEST['html'] ) ? 1 : 0;
-    $smiley = isset( $_REQUEST['smiley'] ) ? 1 : 0;
-    $xcodes = isset( $_REQUEST['xcodes'] ) ? 1 : 0;
-    $breaks = isset( $_REQUEST['breaks'] ) ? 1 : 0;
+	$smiley = isset( $_REQUEST['smiley'] ) ? 1 : 0;
+	$xcodes = isset( $_REQUEST['xcodes'] ) ? 1 : 0;
+	$breaks = isset( $_REQUEST['breaks'] ) ? 1 : 0;
 
 	$term = $imglmyts -> addSlashes( $_POST['term'] );
 	$init = substr( $term, 0, 1 );
@@ -255,16 +259,21 @@ switch ( $op ) {
 	case 'mod':
 		icms_cp_header();
 		$entryID = ( isset( $_GET['entryID'] ) ) ? intval( $_GET['entryID'] ) : intval( $_POST['entryID'] );
-		entryEdit($entryID);
+		entryEdit( $entryID );
 		break;
-		
+
+	case 'newentry':
+		entryDefault();
+		break;
+
 	case 'addentry':
 		entrySave();
 		exit();
 		break;
-		
+
 	case 'del':
 		entryDelete();
+		break;
 
 	case 'default':
 	default:
@@ -299,11 +308,9 @@ switch ( $op ) {
 		echo '<fieldset style="' . $style_fldst . '">';
 		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_INVENTORY . '</legend>';
 		echo '<div style="padding: 10px;"><span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALENTRIES . ' <b>' . $totalpublished . ' </b></span>&nbsp;&nbsp;';
-
 		if (icms::$module -> config['multicats'] == 1) {
 			echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALCATS . ' <b>' . $totalcategories . ' </b></span>&nbsp;&nbsp;';
 		}
-
 		echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALSUBM . ' <b>' . $totalsubmitted . ' </b></span>&nbsp;&nbsp;';
 		echo '<span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALREQ . ' <b>' . $totalrequested . ' </b></span></div>';
 		echo '</fieldset>';
