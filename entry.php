@@ -85,7 +85,6 @@ if ( !$entryID ) {
 
 while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
 	$thisterm = array();
-	// $imglossModule = icms::$module -> getVar( 'dirname' );
 	$thisterm['id'] = intval( $entryID );
 
 	if ( icms::$module -> config['multicats'] == 1 ) {

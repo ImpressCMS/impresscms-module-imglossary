@@ -11,17 +11,17 @@
 * @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
-* ----------------------------------------------------------------------------------------------------------
+* ---------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
 * @since		1.16
 * @author		hsalazar
-* ----------------------------------------------------------------------------------------------------------
+* ---------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
 * @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
- 
+
 if ( !defined( 'ICMS_ROOT_PATH' ) ) die( 'ICMS root path not defined' );
 
 global $icmsConfig;
@@ -30,30 +30,30 @@ if ( file_exists( ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) )
 	include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) ) . '/language/'. $icmsConfig['language'] . '/moduleabout.php';
 } else { include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) ) . '/language/english/moduleabout.php'; }
 
-//	** General information
+// ** General information
 $modversion = array(
-	'name' 				=> _MI_IMGLOSSARY_MD_NAME,
-	'version' 			=> 1.03,
-	'status' 			=> 'Trunk',
+	'name'				=> _MI_IMGLOSSARY_MD_NAME,
+	'version'			=> 1.03,
+	'status'			=> 'Trunk',
 	'status_version'	=> 'Trunk',
 	'date'				=> 'xx xxxxx 2012',
 
-	'description' 		=> _MI_IMGLOSSARY_MD_DESC,
-	'author' 			=> 'McDonald',
-	'credits' 			=> 'hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf',
-	'license' 			=> 'GNU General Public License (GPL)',
-	'image' 			=> 'images/imglossary_logo.png',
-	'iconbig' 			=> 'images/imglossary_iconsbig.png',
-	'iconsmall' 		=> 'images/imglossary_iconsmall.png',
-	'dirname' 			=> basename( dirname( __FILE__ ) ),
+	'description'		=> _MI_IMGLOSSARY_MD_DESC,
+	'author'			=> 'McDonald',
+	'credits'			=> 'hsalazar (author of Wordbook), Dario Garcia (additions to Wordbook), Catzwolf',
+	'license'			=> 'GNU General Public License (GPL)',
+	'image'				=> 'images/imglossary_logo.png',
+	'iconbig'			=> 'images/imglossary_iconsbig.png',
+	'iconsmall'			=> 'images/imglossary_iconsmall.png',
+	'dirname'			=> basename( dirname( __FILE__ ) ),
 	'modname'			=> 'imglossary'
-	);
+);
 
-// 	** Contributors **
+// ** Contributors **
 $modversion['people']['developers'] [] = '<a href="http://community.impresscms.org/userinfo.php?uid=179" target="_blank">McDonald</a>&nbsp;&nbsp;<span style="font-size: smaller;">( pietjebell31 [at] hotmail [dot] com )</span>';
 
-$modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a>';
-$modversion['people']['testers']    [] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a>';
+$modversion['people']['testers'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=14" target="_blank">GibaPhp</a>';
+$modversion['people']['testers'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a>';
 
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=480" target="_blank">algalochkin</a> (Russian)';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=97" target="_blank">debianus</a> (Spanish)';
@@ -63,16 +63,16 @@ $modversion['people']['translators'][] = '&middot; <a href="http://community.imp
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=392" target="_blank">stranger</a> (Persian)';
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
 
-$modversion['people']['other']      [] = '&middot; <a href="http://www.famfamfam.com" target="_blank">famfamfam</a> (icons)';
-$modversion['people']['other']      [] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
+$modversion['people']['other'][] = '&middot; <a href="http://www.famfamfam.com" target="_blank">famfamfam</a> (icons)';
+$modversion['people']['other'][] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
-//	** If Release Candidate **
+// ** If Release Candidate **
  $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_RC;
 
-//	** If Final  **
+// ** If Final  **
 // $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_FINAL;
 
-// 	** Admin things **
+// ** Admin things **
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = 'admin/index.php';
 $modversion['adminmenu'] = 'admin/menu.php';
@@ -98,15 +98,15 @@ $hModule = icms::handler( 'icms_module' );
 if ( $imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) ) {
 	$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
 	if ( ( icms::$user && ( $imglossaryConfig['allowsubmit'] == 1 ) ) || ( $imglossaryConfig['anonpost'] == 1 ) ) {
-		$modversion['sub'][1]['name'] = _MI_IMGLOSSARY_SUB_SMNAME1;
-		$modversion['sub'][1]['url'] = 'submit.php';	
+		$modversion['sub'][1]['name']	= _MI_IMGLOSSARY_SUB_SMNAME1;
+		$modversion['sub'][1]['url']	= 'submit.php';
 	}
 }
 
-$modversion['sub'][2]['name'] = _MI_IMGLOSSARY_SUB_SMNAME2;
-$modversion['sub'][2]['url'] = 'request.php';
-$modversion['sub'][3]['name'] = _MI_IMGLOSSARY_SUB_SMNAME3;
-$modversion['sub'][3]['url'] = 'search.php';
+$modversion['sub'][2]['name']	= _MI_IMGLOSSARY_SUB_SMNAME2;
+$modversion['sub'][2]['url']	= 'request.php';
+$modversion['sub'][3]['name']	= _MI_IMGLOSSARY_SUB_SMNAME3;
+$modversion['sub'][3]['url']	= 'search.php';
 
 if (!$imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) == false ) {
 	$MyModIsActive = $imglossaryModule -> getVar( 'isactive' ); //tested if installed and active
@@ -155,22 +155,29 @@ $modversion['blocks'][3]['show_func'] = 'b_entries_random_show';
 $modversion['blocks'][3]['template'] = 'imglossary_entries_random.html';
 
 // Templates
-$modversion['templates'][1]['file'] = 'imglossary_category.html';
-$modversion['templates'][1]['description'] = 'Display categories';
-$modversion['templates'][2]['file'] = 'imglossary_index.html';
-$modversion['templates'][2]['description'] = 'Display index';
-$modversion['templates'][3]['file'] = 'imglossary_entry.html';
-$modversion['templates'][3]['description'] = 'Display entry';
-$modversion['templates'][4]['file'] = 'imglossary_letter.html';
-$modversion['templates'][4]['description'] = 'Display letter';
-$modversion['templates'][5]['file'] = 'imglossary_search.html';
-$modversion['templates'][5]['description'] = 'Search in glossary';
-$modversion['templates'][6]['file'] = 'imglossary_rss.html';
-$modversion['templates'][6]['description'] = 'RSS feed';
-$modversion['templates'][7]['file'] = 'imglossary_moduleabout.html';
-$modversion['templates'][7]['description'] = 'Module about';
-$modversion['templates'][8]['file'] = 'imglossary_admin_index.html';
-$modversion['templates'][8]['description'] = 'Admin index';
+$modversion['templates'][1]['file']			= 'imglossary_category.html';
+$modversion['templates'][1]['description']	= 'Display categories';
+
+$modversion['templates'][2]['file']			= 'imglossary_index.html';
+$modversion['templates'][2]['description']	= 'Display index';
+
+$modversion['templates'][3]['file']			= 'imglossary_entry.html';
+$modversion['templates'][3]['description']	= 'Display entry';
+
+$modversion['templates'][4]['file']			= 'imglossary_letter.html';
+$modversion['templates'][4]['description']	= 'Display letter';
+
+$modversion['templates'][5]['file']			= 'imglossary_search.html';
+$modversion['templates'][5]['description']	= 'Search in glossary';
+
+$modversion['templates'][6]['file']			= 'imglossary_rss.html';
+$modversion['templates'][6]['description']	= 'RSS feed';
+
+$modversion['templates'][7]['file']			= 'imglossary_moduleabout.html';
+$modversion['templates'][7]['description']	= 'Module about';
+
+$modversion['templates'][8]['file']			= 'imglossary_admin_index.html';
+$modversion['templates'][8]['description']	= 'Admin index';
 
 // Config Settings (only for modules that need config settings generated automatically)
 $i = 0;
@@ -216,13 +223,11 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORADMINDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'dhtml';
-$modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
-                                                _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												//_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
-												//_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
+$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
+												_MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
-												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce'	);
+												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
 $i++;
 $modversion['config'][$i]['name'] = 'form_optionsuser';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORUSER';
@@ -230,10 +235,8 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORUSERDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'dhtml';
-$modversion['config'][$i]['options'] =  array(  _MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
-                                                _MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												//_MI_IMGLOSSARY_FORM_COMPACT => 'textarea',
-												_MI_IMGLOSSARY_FORM_KOIVI => 'koivi',
+$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
+												_MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
 												_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
 												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
@@ -288,9 +291,7 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SORTCATSDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'name';
-$modversion['config'][$i]['options'] = array( '_MI_IMGLOSSARY_TITLE' => 'name',
-                                              '_MI_IMGLOSSARY_WEIGHT' => 'weight'
-                                              );
+$modversion['config'][$i]['options'] = array(	'_MI_IMGLOSSARY_TITLE' => 'name', '_MI_IMGLOSSARY_WEIGHT' => 'weight' );
 $i++;
 $modversion['config'][$i]['name'] = 'adminhits';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_ALLOWADMINHITS';

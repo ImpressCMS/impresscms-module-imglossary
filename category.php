@@ -22,7 +22,6 @@
 * @version		1.00
 */
 
-
 include 'header.php';
 
 global $icmsConfig, $modify, $indexp; 
