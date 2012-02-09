@@ -61,24 +61,6 @@ function imglossary_getLinkedUnameFromId( $userid = 0, $name = 0 ) {
 		return $GLOBALS['icmsConfig']['anonymous'];
 }
 
-function imglossary_getuserForm( $user ) {
-	global $imcsConfig;
-
-	echo '<select name="author">';
-	echo '<option value="-1">------</option>';
-	$result = icms::$xoopsDB -> query( 'SELECT uid, uname FROM ' . icms::$xoopsDB -> prefix( 'users' ) . ' ORDER BY uname' );
-
-	while( list( $uid, $uname ) = icms::$xoopsDB -> fetchRow( $result ) ) {
-		if ( $uid == $user ) {
-			$opt_selected = 'selected="selected"';
-		} else {
-			$opt_selected = '';
-		}
-		echo '<option value="' . $uid . '" $opt_selected>' . $uname . '</option>';
-	}
-	echo '</select></div>';
-}
-
 function imglossary_calculateTotals() {
 	$result01 = icms::$xoopsDB -> query( 'SELECT categoryID, total FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
 	list( $totalcategories ) = icms::$xoopsDB -> getRowsNum( $result01 );

@@ -52,7 +52,7 @@ function entryEdit( $entryID = 0 ) {
 	$smiley = $entry_array['smiley'];
 	$xcodes = $entry_array['xcodes'];
 	$breaks = $entry_array['breaks'];
-	$block = $entry_array['block'];
+	$block = $entry_array['block'] ? $entry_array['block'] : 0;
 	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
 	$notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
 	$request = $entry_array['request'] ? $entry_array['request'] : 0;
@@ -71,6 +71,9 @@ function entryEdit( $entryID = 0 ) {
 	$sform = new icms_form_Theme( _AM_IMGLOSSARY_NEWENTRY, 'op', '' );
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
 
+	// Term, definition, reference and related URL
+	$sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_ENTRYTERM, 'term', 50, 100, $term ), true );
+
 	// Category selector
 	if ( icms::$module -> config['multicats'] == 1 ) {
 		$mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID' , '0' );
@@ -82,13 +85,7 @@ function entryEdit( $entryID = 0 ) {
 	}
 
 	// Author selector
-	ob_start();
-		imglossary_getuserForm( intval($uid) );
-		$sform -> addElement( new icms_form_elements_Label( _AM_IMGLOSSARY_AUTHOR, ob_get_contents() ) );
-	ob_end_clean();
-
-	// Term, definition, reference and related URL
-	$sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_ENTRYTERM, 'term', 80, 80, $term ), true );
+	$sform -> addElement( new icms_form_elements_select_User( _AM_IMGLOSSARY_AUTHOR, 'uid', $uid, 1, false ) );
 
 	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition );
 	$def_block -> setDescription( _AM_IMGLOSSARY_WRITEHERE );
