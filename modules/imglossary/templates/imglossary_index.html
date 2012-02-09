@@ -44,32 +44,28 @@
 
 <{if $showcenter}>
 
-	<div class="float30">
+	<div class="float28">
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_RECENTENT}></legend>
-			<ul>
 				<{foreach item=newentries from=$block.newstuff}>
-					<li><a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small;">(<{$newentries.date}>)</span></li>
+					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small;">(<{$newentries.date}>)</span><br />
 				<{/foreach}>
-			</ul>
 		</fieldset>
 	</div>
 
-	<div class="float30">
+	<div class="float28">
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_POPULARENT}></legend>
-			<ul>
 				<{foreach item=popentries from=$block2.popstuff}>
-					<li><a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small;">(<{$popentries.counter}>)</span></li>
+					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small;">(<{$popentries.counter}>)</span><br />
 				<{/foreach}>
-			</ul>
 		</fieldset>
 	</div>
 
 	<div class="search">
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_SEARCHENTRY}></legend>
-			<div style="padding: 5px;"><{$searchform}></div>
+			<{$searchform}>
 		</fieldset>
 	</div>
 
