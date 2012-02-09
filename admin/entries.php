@@ -66,7 +66,7 @@ function entryEdit( $entryID = 0 ) {
 	}
 
 	imglossary_adminMenu( 1, _AM_IMGLOSSARY_ENTRIES );
-	$uid = icms::$user -> getVar('uid');
+
 	echo "<h3 style=\"color: #2F5376; margin-top: 6px; \">" . _AM_IMGLOSSARY_ADMINENTRYMNGMT . "</h3>";
 	$sform = new icms_form_Theme( _AM_IMGLOSSARY_NEWENTRY, 'op', '' );
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
@@ -85,16 +85,19 @@ function entryEdit( $entryID = 0 ) {
 	}
 
 	// Author selector
-	$sform -> addElement( new icms_form_elements_select_User( _AM_IMGLOSSARY_AUTHOR, 'uid', $uid, 1, false ) );
+	$sform -> addElement( new icms_form_elements_select_User( _AM_IMGLOSSARY_AUTHOR, 'uid', true, $uid ) );
 
+	// Definition
 	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition );
 	$def_block -> setDescription( _AM_IMGLOSSARY_WRITEHERE );
 	$sform -> addElement( $def_block, false );
-	
+
+	// Reference
 	$reference = new icms_form_elements_Textarea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 );
 	$reference -> setDescription( _AM_IMGLOSSARY_ENTRYREFERENCEDSC );
 	$sform -> addElement( $reference, false );
-	
+
+	// Related site (url)
 	$ent_url = new icms_form_elements_Text( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url );
 	$ent_url -> setDescription( _AM_IMGLOSSARY_ENTRYURLDSC );
 	$sform -> addElement( $ent_url, false );
@@ -180,10 +183,10 @@ function entrySave( $entryID = '' ) {
 	} else { 
 		$categoryID = '';
 	}
-	$definition = $imglmyts -> addslashes( trim( $_POST['definition'] ) );
-	$ref = isset( $_POST['ref'] ) ? $imglmyts -> addslashes( $_POST['ref'] ) : '';
-	$url = isset( $_POST['url'] ) ? $imglmyts -> addslashes( $_POST['url'] ) : '';
-	$uid = isset( $_POST['author'] ) ? intval( $_POST['author'] ) : icms::$user -> uid();
+	$definition = icms_core_DataFilter::addSlashes( trim( $_POST['definition'] ) );
+	$ref = isset( $_POST['ref'] ) ? icms_core_DataFilter::addSlashes( $_POST['ref'] ) : '';
+	$url = isset( $_POST['url'] ) ? icms_core_DataFilter::addSlashes( $_POST['url'] ) : '';
+	$uid = $_POST['uid'];
 	$block = ( $_POST['block'] == 1 ) ? 1 : 0;
 	if ( $block == 0 ) {
 		$offline = 1;
@@ -195,10 +198,10 @@ function entrySave( $entryID = '' ) {
 	$xcodes = isset( $_REQUEST['xcodes'] ) ? 1 : 0;
 	$breaks = isset( $_REQUEST['breaks'] ) ? 1 : 0;
 
-	$term = $imglmyts -> addSlashes( $_POST['term'] );
+	$term = icms_core_DataFilter::addSlashes( $_POST['term'] );
 	$init = substr( $term, 0, 1 );
 
-	if ( ereg( "[a-zA-Z]", $init ) ) {
+	if ( preg_match( "[a-zA-Z]", $init ) ) {
 		$init = strtoupper( $init );
 	} else {
 		$init = '1';
