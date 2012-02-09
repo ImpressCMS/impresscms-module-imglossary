@@ -55,7 +55,7 @@ if ( icms::$module -> config['rssfeed'] ) {
 		if ( $myrow['uid'] == -1 ) {
 			$author = _MD_IMGLOSSARY_ANONYMOUS;
 		} else {
-			$author = $user -> getVar( 'uname' );
+			$author = icms::$user -> getVar( 'uname' );
 		}
 
 		$myFeed -> feeds[] = array (
