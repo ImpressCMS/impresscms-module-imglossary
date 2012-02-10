@@ -28,7 +28,7 @@ echo '<div style="font-size: 18px; text-align: '._GLOBAL_RIGHT.'; font-weight: b
 echo '</div><hr>';
 
 echo '<br /><fieldset style="border: #e8e8e8 1px solid;"><legend style="display: inline; font-weight: bold; font-size: 105%;">' . sprintf( _MD_IMGLOSSARY_ASKFORDEF, icms::$module -> getVar( 'name' ) ) . '</legend>';
-echo '<div style="padding: 8px;">' . _MD_IMGLOSSARY_INTROREQUEST . '</div></fieldset>';
+echo '<div style="padding: 8px;">' . _MD_IMGLOSSARY_INTROREQUEST . '</div></fieldset><br />';
 
 $username_v = !empty( icms::$user ) ? icms::$user -> getVar( 'uname', 'E' ) : '';
 $usermail_v = !empty( icms::$user ) ? icms::$user -> getVar( 'email', 'E' ) : '';
