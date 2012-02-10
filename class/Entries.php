@@ -45,12 +45,14 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'xcodes', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'breaks', XOBJ_DTYPE_INT, false, '', '', 1 );
 		$this -> quickInitVar( 'block', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'offline', XOBJ_DTYPE_INT, false, '', '', 0 );
+		$this -> quickInitVar( 'offline', XOBJ_DTYPE_INT, true, false, false, true );
 		$this -> quickInitVar( 'notifypub', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'request', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'comments', XOBJ_DTYPE_INT, false, '', '', 0 );
 		
 		$this -> initCommonVar( 'entryID' );
+		
+		$this -> setControl( 'offline', 'yesno' );
 
 	}
 
@@ -66,12 +68,15 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 	}
 
 	function offline() {
-		$value = $this -> getVar( 'offline', 'e' );
-		if ( $value ) {
-			$status = '<img src="' . ICMS_URL . '/images/crystal/actions/0.png" alt="' . _AM_IMGLOSSARY_ENTRYISOFF . '" title="' . _AM_IMGLOSSARY_ENTRYISOFF . '" />';
+		$status = $button = '';
+		$status = $this -> getVar( 'offline', 'e' );
+		$button = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?entryID=' . $this -> getVar( 'entryID' ) . '&amp;op=changeStatus">';
+		if ( $status == false ) {
+			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/1.png" alt="' . _AM_IMGLOSSARY_TERM_ISON  . '" title="' . _AM_IMGLOSSARY_TERM_ISON . '" /></a>';
 		} else {
-			$status = '<img src="' . ICMS_URL . '/images/crystal/actions/1.png" alt="' . _AM_IMGLOSSARY_ENTRYISON . '" title="' . _AM_IMGLOSSARY_ENTRYISON . '" />';
+			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/0.png" alt="' . _AM_IMGLOSSARY_TERM_ISOFF . '" title="' . _AM_IMGLOSSARY_TERM_ISOFF . '" /></a>';
 		}
-		return $status;
+		return $button;
 	}
+
 }

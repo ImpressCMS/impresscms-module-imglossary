@@ -29,6 +29,9 @@ $op = '';
 if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
 if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
 
+$imglossary_entries_handler = icms_getModuleHandler( 'entries', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
+$imglossary_cats_handler = icms_getModuleHandler( 'cats', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
+
 // -- Edit function -- //
 function entryEdit( $entryID = 0 ) {
 	global $icmsConfig, $imglmyts; 
@@ -274,6 +277,35 @@ switch ( $op ) {
 	case 'del':
 		entryDelete();
 		break;
+		
+	case 'changeStatus':
+		$status = $ret = '';
+		$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
+		$status = $imglossary_entries_handler -> changeOnlineStatus( $entryID, 'offline' );
+		$ret = '/modules/' . basename( dirname( dirname( __FILE__) ) ) . '/admin/entries.php';
+		if ( $status == 0 ) {
+			redirect_header( ICMS_URL . $ret, 2, _AM_IMGLOSSARY_TERM_ONLINE );
+		} else {
+			redirect_header( ICMS_URL . $ret, 2, _AM_IMGLOSSARY_TERM_OFFLINE );
+		}
+		break;
+
+	case 'changeWeight':
+		foreach ( $_POST['mod_imglossary_Cats_objects'] as $key => $value ) {
+			$changed = false;
+			$catsObj = $imglossary_cats_handler -> get( $value );
+
+			if ( $catsObj -> getVar( 'weight', 'e' ) != $_POST['weight'][$key] ) {
+				$catsObj -> setVar( 'weight', intval( $_POST['weight'][$key] ) );
+				$changed = true;
+			}
+			if ( $changed ) {
+				$imglossary_cats_handler -> insert( $catsObj );
+			}
+		}
+		$ret = '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php';
+		redirect_header( ICMS_URL . $ret, 2, _AM_IMGLOSSARY_WEIGHT_UPDATED );
+		break;
 
 	case 'default':
 	default:
@@ -288,7 +320,6 @@ switch ( $op ) {
 		global $icmsConfig, $entryID;
 
 		imglossary_adminMenu( 0, _AM_IMGLOSSARY_INDEX );
-
 
 		$result01 = icms::$xoopsDB -> query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
 			list( $totalcategories ) = icms::$xoopsDB -> fetchRow( $result01 );
@@ -316,9 +347,6 @@ switch ( $op ) {
 		echo '</fieldset>';
 
 
-		$imglossary_entries_handler = icms_getModuleHandler( 'entries', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
-		$imglossary_cats_handler = icms_getModuleHandler( 'cats', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
-
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
@@ -332,7 +360,8 @@ switch ( $op ) {
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name' ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'description', 'center' ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100 ) );
+		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
+		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );
 		$icmsAdminTpl -> assign( 'imglossary_cats_table', $objectTable -> fetch() );
 		
 		
