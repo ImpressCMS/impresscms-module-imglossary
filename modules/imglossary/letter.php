@@ -98,9 +98,11 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
-			$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength'], '...' );
-			$deftemp = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
-			$eachentry['definition'] = $deftemp;
+			if ( $breaks ) {
+				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+			} else {
+				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+			}
 		}
 
 		// Functional links
@@ -174,10 +176,10 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
 			if ( $breaks ) {
-						$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-					} else {
-						$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-					}
+				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+			} else {
+				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
+			}
 		}
 
 		// Functional links
