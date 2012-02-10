@@ -1,37 +1,37 @@
 <?php
-define('_MODABOUT_IMGLOSSARY_DEVELOPER_CONTRIBUTOR', 'Contributor(s)');
+define('_MODABOUT_IMGLOSSARY_DEVELOPER_CONTRIBUTOR', 'Bijdrager(s)');
 define('_MODABOUT_IMGLOSSARY_DEVELOPER_CREDITS', 'Credits');
 define('_MODABOUT_IMGLOSSARY_DEVELOPER_EMAIL', 'Email');
 define('_MODABOUT_IMGLOSSARY_DEVELOPER_WEBSITE', 'Website');
 define('_MODABOUT_IMGLOSSARY_GOTOMODULE', 'Go to module');
-define('_MODABOUT_IMGLOSSARY_MODULE_BUG', 'Report a bug for this module');
-define('_MODABOUT_IMGLOSSARY_MODULE_DEMO', 'Demo Site');
+define('_MODABOUT_IMGLOSSARY_MODULE_BUG', 'Rapporteer een bug in deze module');
+define('_MODABOUT_IMGLOSSARY_MODULE_DEMO', 'Demo webite');
 define('_MODABOUT_IMGLOSSARY_MODULE_DISCLAIMER', 'Disclaimer');
-define('_MODABOUT_IMGLOSSARY_MODULE_FEATURE', 'Suggest a new feature for this module');
-define('_MODABOUT_IMGLOSSARY_MODULE_INFO', 'Module Development Information');
-define('_MODABOUT_IMGLOSSARY_MODULE_RELEASE_DATE', 'Release date');
+define('_MODABOUT_IMGLOSSARY_MODULE_FEATURE', 'Stel een nieuwe mogelijkheid voor deze module voor');
+define('_MODABOUT_IMGLOSSARY_MODULE_INFO', 'Module ontwikkelingsinformatie');
+define('_MODABOUT_IMGLOSSARY_MODULE_RELEASE_DATE', 'Uitgave datum');
 define('_MODABOUT_IMGLOSSARY_MODULE_STATUS', 'Status');
-define('_MODABOUT_IMGLOSSARY_MODULE_SUBMIT_BUG', 'Submit a bug');
-define('_MODABOUT_IMGLOSSARY_MODULE_SUBMIT_FEATURE', 'Request a feature');
-define('_MODABOUT_IMGLOSSARY_MODULE_SUPPORT', 'Official support site');
-define('_MODABOUT_IMGLOSSARY_UPDATE_MODULE', 'Update module');
-define('_MODABOUT_IMGLOSSARY_VERSION_HISTORY', 'Version History');
-define('_MODABOUT_IMGLOSSARY_WARNING_ALPHA', "This module comes as is, without any guarantees whatsoever. This module is ALPHA, meaning it is still under active development. This release is meant for <b>development and testing purposes only</b>, and we <b>strongly</b> recommend that you do not use it on a live website or in a production environment.");
-define('_MODABOUT_IMGLOSSARY_WARNING_BETA', "This module comes as is, without any guarantees whatsoever. This module is BETA, meaning it is still under active development. This release is meant for <b>testing purposes only</b> and we <b>strongly</b> recommend that you do not use it on a live website or in a production environment.");
-define('_MODABOUT_IMGLOSSARY_WARNING_FINAL', "This module comes as is, without any guarantees whatsoever. Although this module is not beta, it is still under active development. This release can be used in a live website or a production environment, but its use is under your own responsibility, which means the author is not responsible.");
-define('_MODABOUT_IMGLOSSARY_WARNING_RC', "This module comes as is, without any guarantees whatsoever. This module is a <em>Release Candidate</em> and should <u>NOT</u> be used on a production web site. The module is still under active development and its use is under your own responsibility, which means the author is not responsible.");
-define('_MODABOUT_IMGLOSSARY_BY', 'By');
-define('_MODABOUT_IMGLOSSARY_PEOPLE_DEVELOPERS', 'Developers');
+define('_MODABOUT_IMGLOSSARY_MODULE_SUBMIT_BUG', 'Bug inzenden');
+define('_MODABOUT_IMGLOSSARY_MODULE_SUBMIT_FEATURE', 'Mogelijkheid voorstellen');
+define('_MODABOUT_IMGLOSSARY_MODULE_SUPPORT', 'Officiële support website');
+define('_MODABOUT_IMGLOSSARY_UPDATE_MODULE', 'Bijwerken module');
+define('_MODABOUT_IMGLOSSARY_VERSION_HISTORY', 'Versie Geschiedenis');
+define('_MODABOUT_IMGLOSSARY_WARNING_ALPHA', 'Deze module komt zoals hij is, zonder welke garantie dan ook. De status van deze module is ALPHA, wat betekent dat hij nog steeds in actieve ontwikkeling is. Deze uitgave is alleen bedoelt voor <b>ontwikkeling en test doeleinden</b> en wij raden u <b>ten zeerste</b> aan dat deze module niet wordt gebruikt binnen een actieve/online website of in een productieve omgeving.');
+define('_MODABOUT_IMGLOSSARY_WARNING_BETA', 'Deze module komt zoals hij is, zonder welke garantie dan ook. De status van deze module is BETA, wat betekent dat hij nog steeds in actieve ontwikkeling is. Deze uitgave is alleen bedoelt voor <b>test doeleinden</b> en wij raden u <b>ten zeerste</b> aan dat deze module niet wordt gebruikt binnen een actieve/online website of in een productieve omgeving.');
+define('_MODABOUT_IMGLOSSARY_WARNING_FINAL', 'Deze module komt zoals hij is, zonder welke garantie dan ook. Ondanks dat de status van deze module geen beta is, is de module nog steeds in actieve ontwikkeling. Deze uitgave kan worden gebruikt in een actieve/online website of in een productieve omgeving, maar het gebruik valt volledig onder uw eigen verantwoordelijkheid, dit betekent dat de auteur niet verantwoordelijk is.');
+define('_MODABOUT_IMGLOSSARY_WARNING_RC', 'Deze module komt zoals hij is, zonder welke garantie dan ook. Deze module is een uitgave kandidaat en dient niet te worden gebruikt in een actieve/online website of in een productieve omgeving. De module is nog steeds in actieve ontwikkeling en het gebruik ervan valt onder uw eigen verantwoordelijkheid, dit betekent dat de auteur niet verantwoordelijk is.');
+define('_MODABOUT_IMGLOSSARY_BY', 'Door');
+define('_MODABOUT_IMGLOSSARY_PEOPLE_DEVELOPERS', 'Ontwikkelaars');
 define('_MODABOUT_IMGLOSSARY_PEOPLE_TESTERS', 'Testers');
-define('_MODABOUT_IMGLOSSARY_PEOPLE_DOCUMENTERS', 'Documenters');
-define('_MODABOUT_IMGLOSSARY_PEOPLE_TRANSLATERS', 'Translators');
-define('_MODABOUT_IMGLOSSARY_PEOPLE_OTHER', 'Other contributors');
-define('_MODABOUT_IMGLOSSARY_AUTHOR_INFO', 'Contributors Information');
-define('_MODABOUT_IMGLOSSARY_AUTHOR_WORD', 'Author\'s words');
-define('_MODABOUT_IMGLOSSARY_MODULE_LICENSE', 'License');
-define('_MODABOUT_IMGLOSSARY_MANUAL', 'Manual');
+define('_MODABOUT_IMGLOSSARY_PEOPLE_DOCUMENTERS', 'Documentatie makers');
+define('_MODABOUT_IMGLOSSARY_PEOPLE_TRANSLATERS', 'Vertalers');
+define('_MODABOUT_IMGLOSSARY_PEOPLE_OTHER', 'Overige bijdragers');
+define('_MODABOUT_IMGLOSSARY_AUTHOR_INFO', 'Informatie over de bijdragers');
+define('_MODABOUT_IMGLOSSARY_AUTHOR_WORD', 'Woord van de auteur');
+define('_MODABOUT_IMGLOSSARY_MODULE_LICENSE', 'Licentie');
+define('_MODABOUT_IMGLOSSARY_MANUAL', 'Handleiding');
 define('_MODABOUT_IMGLOSSARY_MANUAL_WIKI', 'ImpressCMS Wiki');
-define('_MODABOUT_IMGLOSSARY_WARNINGTEXT', "THE SOFTWARE IS PROVIDED \"AS IS\" AND \"WITH ALL FAULTS.\"
+define('_MODABOUT_IMGLOSSARY_WARNINGTEXT', 'THE SOFTWARE IS PROVIDED \"AS IS\" AND \"WITH ALL FAULTS.\"
 WE MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND CONCERNING
 THE QUALITY, SAFETY OR SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR
 IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF
@@ -41,5 +41,6 @@ ACCURACY OR COMPLETENESS OF ANY STATEMENTS, INFORMATION OR MATERIALS
 CONCERNING THE SOFTWARE THAT IS CONTAINED WEBSITES. IN NO
 EVENT WILL WE BE LIABLE FOR ANY INDIRECT, PUNITIVE, SPECIAL,
 INCIDENTAL OR CONSEQUENTIAL DAMAGES HOWEVER THEY MAY ARISE AND EVEN IF
-WE HAVE BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.");
+WE HAVE BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.');
+define('_MODABOUT_IMGLOSSARY_VERSION', 'Versie');
 ?>
