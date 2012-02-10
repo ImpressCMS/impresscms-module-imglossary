@@ -6,18 +6,18 @@
 *
 * File: include/storyform.inc.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -36,6 +36,9 @@ echo "<div style='padding: 8px;'>". _MD_IMGLOSSARY_GOODDAY . " <b>" . $name . "<
 $sform = new icms_form_Theme( _MD_IMGLOSSARY_SUB_SMNAME, 'storyform', '' );
 $sform -> setExtra( 'enctype="multipart/form-data"' );
 
+// This part is common to edit/add
+$sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_ENTRY, 'term', 50, 80, $term ), true );
+
 if ( icms::$module -> config['multicats'] == '1' ) {
 	ob_start();
 		$mytree -> makeMySelBox( 'name', 'name', $categoryID );
@@ -43,24 +46,12 @@ if ( icms::$module -> config['multicats'] == '1' ) {
 	ob_end_clean();
 }
 
-// This part is common to edit/add
-$sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_ENTRY, 'term', 50, 80, $term ), true );
-
 $def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', '' );
 $def_block -> SetDescription( '<small>' . _MD_IMGLOSSARY_WRITEHERE . '</small>' );
 $sform -> addElement( $def_block, false );
 
 $sform -> addElement( new icms_form_elements_TextArea( _MD_IMGLOSSARY_REFERENCE, 'ref', $ref, 5, 50 ), false );
 $sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_URL, 'url', 50, 80, $url ), false );
-
-if ( is_object( icms::$user ) ) {
-	$uid = icms::$user -> getVar( 'uid' );
-	$sform -> addElement( new icms_form_elements_Hidden( 'uid', $uid ) );
-
-	$notify_checkbox = new icms_form_elements_Checkbox( '', 'notifypub', $notifypub );
-	$notify_checkbox -> addOption( 1, _MD_IMGLOSSARY_NOTIFY );
-	$sform -> addElement( $notify_checkbox );
-}
 
 // VARIOUS OPTIONS
 	$options_tray = new icms_form_elements_Tray( _MD_IMGLOSSARY_OPTIONS, '<br />' );
@@ -82,6 +73,15 @@ if ( is_object( icms::$user ) ) {
 	$options_tray -> addElement( $breaks_checkbox );
 
 	$sform -> addElement( $options_tray );
+
+if ( is_object( icms::$user ) ) {
+	$uid = icms::$user -> getVar( 'uid' );
+	$sform -> addElement( new icms_form_elements_Hidden( 'uid', $uid ) );
+	$notifypub = 1;
+	$notify_checkbox = new icms_form_elements_Checkbox( _MD_IMGLOSSARY_NOTIFY, 'notifypub', $notifypub );
+	$notify_checkbox -> addOption( '','' );
+	$sform -> addElement( $notify_checkbox );
+}
 
 if ( icms::$module -> config['captcha'] ) {
 	// Captcha Hack
