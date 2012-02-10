@@ -33,8 +33,15 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'name', XOBJ_DTYPE_TXTBOX, false );
 		$this -> quickInitVar( 'description', XOBJ_DTYPE_TXTAREA, false );
 		$this -> quickInitVar( 'total', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'weight', XOBJ_DTYPE_INT, false, '', '', 0 );
+		$this -> quickInitVar( 'weight', XOBJ_DTYPE_INT, true, false, false, 0 );
 		
 		$this -> initCommonVar( 'categoryID' );
+	}
+
+	public function getWeightControl() {
+		$control = new icms_form_elements_Text( '','weight[]', 5, 7, $this -> getVar( 'weight', 'e' ) );
+		$control -> setExtra( 'style="text-align:center;"' );
+		
+		return $control -> render();
 	}
 }
