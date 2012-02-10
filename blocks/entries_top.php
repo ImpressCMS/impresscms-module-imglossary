@@ -6,29 +6,25 @@
 *
 * File: blocks/entries_top.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
 
 function b_entries_top_show( $options )	{
 
-	$glossdirname = basename( dirname( dirname( __FILE__ ) ) );
-
-	$myts = & MyTextSanitizer :: getInstance();
- 
- 	$words = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
+	$words = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . "" );
 	$totalwords = icms::$xoopsDB -> getRowsNum( $words );
 
 	$block = array();
@@ -39,45 +35,44 @@ function b_entries_top_show( $options )	{
 		// If there are definitions
 		while ( list( $entryID, $term, $counter ) = icms::$xoopsDB -> fetchRow( $result ) )	{
 			$popentries = array();
-			$xoopsModule = XoopsModule::getByDirname( $glossdirname );
-			$linktext = $myts -> makeTboxData4Show( $term );
-			$popentries['dir'] = $xoopsModule -> dirname();
+			$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
+			$popentries['dir'] = basename( dirname( dirname( __FILE__ ) ) );
 			$popentries['linktext'] = $linktext;
 			$popentries['id'] = $entryID;
 			$popentries['counter'] = "<span style='font-size: x-small;'>" . intval( $counter ) . "</span>";
 
 			$block['popstuff'][] = $popentries;
-		} 
+		}
 	}
 	return $block;
-} 
+}
 
-function b_entries_top_edit( $options )	{
+function b_entries_top_edit( $options ) {
 
 	$form = "" . _MB_IMGLOSSARY_ORDER . "&nbsp;<select name='options[]'>";
 	$form .= "<option value='datesub'";
-	
-	if ( $options[0] == "datesub" )	{
+
+	if ( $options[0] == "datesub" ) {
 		$form .= " selected='selected'";
-	} 
+	}
 	$form .= ">" . _MB_IMGLOSSARY_DATE . "</option>\n";
 	$form .= "<option value='counter'";
-	
-	if ( $options[0] == "counter" )	{
+
+	if ( $options[0] == "counter" ) {
 		$form .= " selected='selected'";
-	} 
-	
+	}
+
 	$form .= ">" . _MB_IMGLOSSARY_HITS . "</option>\n";
 	$form .= "<option value='weight'";
-	
+
 	if ( $options[0] == "weight" ) {
 		$form .= " selected='selected'";
-	} 
-	
+	}
+
 	$form .= ">" . _MB_IMGLOSSARY_WEIGHT . "</option>\n";
 	$form .= "</select>\n";
 	$form .= "&nbsp;" . _MB_IMGLOSSARY_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_IMGLOSSARY_TERMS . "";
-	
+
 	return $form;
-} 
+}
 ?>
