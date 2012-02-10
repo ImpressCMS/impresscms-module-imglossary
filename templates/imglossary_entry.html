@@ -7,24 +7,28 @@
 <hr>
 
 <div class="clearer">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
-<div class="letters">
-	<{foreach item=letterlinks from=$alpha.initial}>
-	  <{if $letterlinks.total > 0}> 
-		<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
-	  <{/if}>
-	  <{$letterlinks.linktext}>
-	  <{if $letterlinks.total > 0}></a><{/if}> |
-	<{/foreach}>
-	<{if $totalother > 0}>
-	  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
-	<{/if}>
-	<{$smarty.const._MD_IMGLOSSARY_OTHER}> |
-	<{if $totalother > 0}></a><{/if}>
-	<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
-</div>
-</fieldset>
+	<fieldset>
+		<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
+		<div style="text-align: center;">
+			<{foreach item=letterlinks from=$alpha.initial}>
+				<{if $letterlinks.total > 0}> 
+					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>"><{$letterlinks.linktext}></a>
+				<{else}>
+					<span class="letters" style="opacity: 0.4; filter: alpha(opacity=40);"><{$letterlinks.linktext}></span>
+				<{/if}>
+			<{/foreach}>
+			<div>
+				<{if $totalother > 0}>
+					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
+				<{/if}>
+				<{$smarty.const._MD_IMGLOSSARY_OTHER}>
+				<{if $totalother > 0}>
+					</a>&nbsp;
+				<{/if}>
+				<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
+			</div>
+		</div>
+	</fieldset>
 </div>
 
 <{if $multicats == 1}>
