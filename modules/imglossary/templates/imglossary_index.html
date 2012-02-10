@@ -19,10 +19,10 @@
 			<{/foreach}>
 			<div>
 				<{if $totalother > 0}>
-					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
+					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_OTHER}></a>
+				<{else}>
+					<span class="letters" style="opacity: 0.4; filter: alpha(opacity=40);"><{$smarty.const._MD_IMGLOSSARY_OTHER}></span>
 				<{/if}>
-				<{$smarty.const._MD_IMGLOSSARY_OTHER}>
-				<{if $totalother > 0}></a>&nbsp;<{/if}>
 				<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
 			</div>
 		</div>
