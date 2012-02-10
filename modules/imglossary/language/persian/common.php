@@ -25,7 +25,6 @@
 defined( 'ICMS_ROOT_PATH' ) or die( 'ICMS root path not defined' );
 
 define( '_CO_IMGLOSSARY_ENTRIES_TERM', 'Term' );
-define( '_CO_IMGLOSSARY_ENTRIES_DESCRIPTION_DSC', 'Summary description of this feed.' );
 define( '_CO_IMGLOSSARY_ENTRIES_TITLE', 'Title' );
 define( '_CO_IMGLOSSARY_ENTRIES_ENTRYID', 'ID' );
 define( '_CO_IMGLOSSARY_ENTRIES_DATESUB', 'Created' );
