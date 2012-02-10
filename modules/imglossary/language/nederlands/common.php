@@ -27,7 +27,7 @@ defined( 'ICMS_ROOT_PATH' ) or die( 'ICMS root path not defined' );
 define( '_CO_IMGLOSSARY_ENTRIES_TERM', 'Term' );
 define( '_CO_IMGLOSSARY_ENTRIES_TITLE', 'Titel' );
 define( '_CO_IMGLOSSARY_ENTRIES_ENTRYID', 'ID' );
-define( '_CO_IMGLOSSARY_ENTRIES_DATESUB', 'Aangemaakt' );
+define( '_CO_IMGLOSSARY_ENTRIES_DATESUB', 'Datum' );
 define( '_CO_IMGLOSSARY_ENTRIES_OFFLINE', 'Status' );
 define( '_CO_IMGLOSSARY_ENTRIES_UID', 'Inzender' );
 define( '_CO_IMGLOSSARY_CATS_CATEGORYID', 'ID' );

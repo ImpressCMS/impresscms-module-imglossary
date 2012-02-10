@@ -36,7 +36,7 @@ $modversion = array(
 	'version'			=> 1.03,
 	'status'			=> 'Trunk',
 	'status_version'	=> 'Trunk',
-	'date'				=> 'xx xxxxx 2012',
+	'date'				=> 'xx February 2012',
 
 	'description'		=> _MI_IMGLOSSARY_MD_DESC,
 	'author'			=> 'McDonald',
