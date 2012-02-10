@@ -5,24 +5,28 @@
 <hr>
 
 <div class="clearer">
-<fieldset>
-<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
-<div class="letters">
-	<{foreach item=letterlinks from=$alpha.initial}>
-	  <{if $letterlinks.total > 0}> 
-		<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>" >	
-	  <{/if}>
-	  <{$letterlinks.linktext}>
-	  <{if $letterlinks.total > 0}></a><{/if}> |
-	<{/foreach}>
-	<{if $totalother > 0}>
-	  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
-	<{/if}>
-	<{$smarty.const._MD_IMGLOSSARY_OTHER}> |
-	<{if $totalother > 0}></a><{/if}>
-	<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
-</div>
-</fieldset>
+	<fieldset>
+		<legend><{$smarty.const._MD_IMGLOSSARY_BROWSELETTER}></legend>
+		<div style="text-align: center;">
+			<{foreach item=letterlinks from=$alpha.initial}>
+				<{if $letterlinks.total > 0}> 
+					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$letterlinks.id}>" title="<{$letterlinks.total}><{$letterlinks.title}>"><{$letterlinks.linktext}></a>
+				<{else}>
+					<span class="letters" style="opacity: 0.4; filter: alpha(opacity=40);"><{$letterlinks.linktext}></span>
+				<{/if}>
+			<{/foreach}>
+			<div>
+				<{if $totalother > 0}>
+					<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_OTHER}>" title="<{$totalother}><{$letterlinks.title}>">
+				<{/if}>
+				<{$smarty.const._MD_IMGLOSSARY_OTHER}>
+				<{if $totalother > 0}>
+					</a>&nbsp;
+				<{/if}>
+				<a class="letters" style="cursor: pointer;" href="<{$icms_url}>/modules/<{$lang_moduledirname}>/letter.php?init=<{$smarty.const._MD_IMGLOSSARY_ALL}>" title="<{$publishedwords}><{$letterlinks.title}>"><{$smarty.const._MD_IMGLOSSARY_ALL}></a>
+			</div>
+		</div>
+	</fieldset>
 </div>
 
 <{if $multicats == 1}>
@@ -44,22 +48,29 @@
 	<h2 class="cat"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></h2>
 
 	<{foreach item=eachcat from=$catsarray.single}>
-<!--	<h3 class="cat"><a href="<{$icms_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></h3> -->
 	<fieldset>
-	<legend><a href="<{$icms_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
-	<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
-	<div class="letters"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div></fieldset><br />
+		<legend><a href="<{$icms_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
+		<{if $eachcat.description}>
+			<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
+		<{/if}>
+		<div style="text-align: center; padding: 5px;"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$eachcat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div>
+	</fieldset>
 	<{/foreach}>
 
 	<div align = '<{$smarty.const._GLOBAL_LEFT}>'><{$catsarray.navbar}></div>
-	<p><div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a> ] </div>
+	<div style="text-align: center;">
+		<a class="letters" href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a>
+		<a class="letters" href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a>
+	</div>
 
 <{elseif $pagetype == '1'}>
-<!--	<h2 class="cat"><{$singlecat.name}></h2> -->
+
 	<fieldset style="padding: 4px;">
 		<legend><{$singlecat.name}></legend>
-		<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$singlecat.description}></div>
-		<div class="letters"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div>
+		<{if $singlecat.description}>
+			<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$singlecat.description}></div>
+		<{/if}>
+		<div style="text-align: center; padding: 5px;"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div>
 
 		<{foreach item=eachentry from=$entriesarray.single}>
 			<h4 class="term"><a href="<{$icms_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
@@ -68,6 +79,9 @@
 		<{/foreach}>
 	</fieldset>
 	<div align = '<{$smarty.const._GLOBAL_LEFT}>'><{$entriesarray.navbar}></div>
-	<div align = 'center'> [ <a href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a><b> | </b><a href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a> ] </div>
+	<div style="text-align: center;">
+		<a class="letters" href='javascript:history.go(-1)'><{$smarty.const._MD_IMGLOSSARY_RETURN}></a>
+		<a class="letters" href='./index.php'><{$smarty.const._MD_IMGLOSSARY_RETURN2INDEX}></a>
+	</div>
 
 <{/if}>

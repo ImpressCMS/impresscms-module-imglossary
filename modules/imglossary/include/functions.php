@@ -102,7 +102,6 @@ function imglossary_alphaArray() {
 		$letterlinks['id'] = chr( $a );
 		$letterlinks['linktext'] = chr( $a );
 		$letterlinks['title'] = ' ' . mb_strtolower( _MD_IMGLOSSARY_TERMS, _CHARSET );
-
 		$alpha['initial'][] = $letterlinks;
 	}
 	return $alpha;
@@ -142,7 +141,6 @@ function imglossary_showSearchForm() {
 		$resultcat = icms::$xoopsDB -> query( "SELECT categoryID, name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
 		$searchform .= '<select name="categoryID">';
 		$searchform .= '<option value="0">' . _MD_IMGLOSSARY_ALLOFTHEM . '</option>';
-
 		while ( list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 			$searchform .= '<option value="' . $categoryID . '">' . $categoryID . ' : ' . $name . '</option>';
 		}
@@ -162,7 +160,6 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 	foreach ( $parts as $key => $part ) {
 		$pL = '';
 		$pR = '';
-
 		if( ( $pos = strpos( $part, '<' ) ) === false )
 			$pL = $part;
 		elseif ( $pos > 0 ) {
@@ -178,7 +175,7 @@ function imglossary_getHTMLHighlight( $needle, $haystack, $hlS, $hlE ) {
 function imglossary_adminMenu( $currentoption = 0, $breadcrumb = '' ) {
 	icms::$module -> displayAdminMenu( $currentoption, icms::$module -> getVar( 'name' ) . ' | ' . $breadcrumb );
 }
-	
+
 function imglossary_linkterms( $definition, $glossaryterm ) {
 	// Code to make links out of glossary terms
 	$parts = explode( '¤', $definition );
@@ -277,17 +274,9 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 		$editor = imglossary_dhtmlexteditor( $caption, $name, $value );
 		break;
 
-//		case 'textarea':
-//		$editor = new XoopsFormTextArea( $caption, $name, $value );
-//		break;
-
 	case 'fck':
 		$editor = imglossary_fckeditor( $caption, $name, $value );
 		break;
-
-//		case 'koivi':
-//		$editor = imglossary_koivieditor( $caption, $name, $value );
-//		break;
 
 	case 'tinyeditor':
 		$editor = imglossary_tinyeditor( $caption, $name, $value );
