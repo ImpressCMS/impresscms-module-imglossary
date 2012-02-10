@@ -6,18 +6,18 @@
 *
 * File: language/russian/admin.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$ Russian translation. Charset: utf-8 (without BOM)
 */
@@ -149,7 +149,7 @@ define("_AM_IMGLOSSARY_COMMENTS", "Комментарии");
 define("_AM_IMGLOSSARY_ABOUT", "О модуле");
 define("_AM_IMGLOSSARY_UPDATEMOD", "Обновление");
 
-// Import 
+// Import
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Скрипт импорта Wordbook &mdash;&gt; imGlossary");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Скрипт импорта Dictionary 0.91 &mdash;&gt; imGlossary");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Скрипт импорта Glossaire &mdash;&gt; imGlossary");
@@ -161,7 +161,14 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Ошибка во время пе�
 define("_AM_IMGLOSSARY_IMPORTDELWB","Удалить записи перед импортом? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "Нет соответствующих модулей!");
 
-// imGlossary v1.01 RC-1
+// imGlossary v1.01
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Пожалуйста, введите корректный URL с указанием или без указания HTTP префикса.");
 define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Пожалуйста, опишите здесь первоисточник Вашего определения, например книга, статья или персона.");
+
+// imGlossary v1.03
+define("_AM_IMGLOSSARY_WEIGHT_UPDATED", "Category weight has been updated.");
+define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
+define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
+define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
+define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
 ?>

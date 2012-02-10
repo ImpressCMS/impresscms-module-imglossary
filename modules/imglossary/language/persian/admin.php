@@ -6,18 +6,18 @@
 *
 * File: language/persian/admin.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
 * @version		$Id$
 */
@@ -149,7 +149,7 @@ define("_AM_IMGLOSSARY_COMMENTS", "دیدگاه‌ها");
 define("_AM_IMGLOSSARY_ABOUT", "درباره‌ی ماژول");
 define("_AM_IMGLOSSARY_UPDATEMOD", "به‌روز رسانی ماژول");
 
-// Import 
+// Import
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
@@ -161,7 +161,14 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error while moving Comments to imG
 define("_AM_IMGLOSSARY_IMPORTDELWB","Delete entries before import? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "No corresponding modules could be located!");
 
-// imGlossary v1.01 RC-1
+// imGlossary v1.01
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Please enter a valid URL with or without the HTTP prefix.");
 define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Write here the source of your definition, such as a book, article, or person.");
+
+// imGlossary v1.03
+define("_AM_IMGLOSSARY_WEIGHT_UPDATED", "Category weight has been updated.");
+define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
+define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
+define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
+define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
 ?>

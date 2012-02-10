@@ -6,17 +6,17 @@
 *
 * File: language/english/admin.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * @package		imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -148,7 +148,7 @@ define("_AM_IMGLOSSARY_COMMENTS", "Kommentare");
 define("_AM_IMGLOSSARY_ABOUT", "Über");
 define("_AM_IMGLOSSARY_UPDATEMOD", "Modul aktualisieren");
 
-// Import 
+// Import
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; Glossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; Glossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; Glossary import script");
@@ -160,7 +160,14 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Fehler beim verschieben der Kommen
 define("_AM_IMGLOSSARY_IMPORTDELWB","Vor dem Importieren die Einträge löschen? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "Kein entsprechendes Modul gefunden!");
 
-// imGlossary v1.01 RC-1
+// imGlossary v1.01
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Bitte geben sie eine gültige URL mit oder ohne HTTP-Präfix an.");
 define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Schreiben Sie die Quelle Ihrer Definition, wie Buch, Artikel oder Person.");
+
+// imGlossary v1.03
+define("_AM_IMGLOSSARY_WEIGHT_UPDATED", "Category weight has been updated.");
+define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
+define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
+define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
+define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
 ?>
