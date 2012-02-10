@@ -49,9 +49,9 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'notifypub', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'request', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'comments', XOBJ_DTYPE_INT, false, '', '', 0 );
-		
+
 		$this -> initCommonVar( 'entryID' );
-		
+
 		$this -> setControl( 'offline', 'yesno' );
 
 	}

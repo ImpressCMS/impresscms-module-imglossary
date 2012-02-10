@@ -277,7 +277,7 @@ switch ( $op ) {
 	case 'del':
 		entryDelete();
 		break;
-		
+
 	case 'changeStatus':
 		$status = $ret = '';
 		$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
@@ -294,7 +294,6 @@ switch ( $op ) {
 		foreach ( $_POST['mod_imglossary_Cats_objects'] as $key => $value ) {
 			$changed = false;
 			$catsObj = $imglossary_cats_handler -> get( $value );
-
 			if ( $catsObj -> getVar( 'weight', 'e' ) != $_POST['weight'][$key] ) {
 				$catsObj -> setVar( 'weight', intval( $_POST['weight'][$key] ) );
 				$changed = true;
@@ -335,7 +334,6 @@ switch ( $op ) {
 		$style_lgnd = 'display: inline; font-weight: bold; padding-bottom: 8px;';
 		$style_bttn = 'float: ' . _GLOBAL_LEFT . '; font-size: 11px; border-radius: 4px; border: 1px solid #5E5D63; color: #000000; background-color: #EFEFEF; padding: 2px 4px; text-align: center;';
 
-
 		echo '<fieldset style="' . $style_fldst . '">';
 		echo '<legend style="' . $style_lgnd . '">' . _AM_IMGLOSSARY_INVENTORY . '</legend>';
 		echo '<div style="padding: 10px;"><span style="' . $style . '"> ' . _AM_IMGLOSSARY_TOTALENTRIES . ' <b>' . $totalpublished . ' </b></span>&nbsp;&nbsp;';
@@ -354,8 +352,8 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
 		$icmsAdminTpl -> assign( 'imglossary_entries_table', $objectTable -> fetch() );
-		
-		
+
+
 		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name' ) );
@@ -363,8 +361,8 @@ switch ( $op ) {
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
 		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );
 		$icmsAdminTpl -> assign( 'imglossary_cats_table', $objectTable -> fetch() );
-		
-		
+
+
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'submit', 1 ) );
 		$criteria -> add( new icms_db_criteria_Item( 'request', 0 ) );
@@ -375,8 +373,8 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$icmsAdminTpl -> assign( 'imglossary_submissions_table', $objectTable -> fetch() );
-		
-		
+
+
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'submit', 1 ) );
 		$criteria -> add( new icms_db_criteria_Item( 'request', 1 ) );
@@ -387,8 +385,8 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$icmsAdminTpl -> assign( 'imglossary_request_table', $objectTable -> fetch() );
-		
-		
+
+
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'offline', 1 ) );
 
@@ -398,10 +396,10 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$icmsAdminTpl -> assign( 'imglossary_offline_table', $objectTable -> fetch() );
-		
-		
+
+
 		$icmsAdminTpl -> display( 'db:imglossary_admin_index.html' );
-		
+
 		break;
 	} 
 icms_cp_footer();

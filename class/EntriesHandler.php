@@ -28,11 +28,9 @@ class mod_imglossary_EntriesHandler extends icms_ipf_Handler {
 	public function __construct( &$db ) {
 		parent::__construct( $db, 'entries', 'entryID', 'term', 'definition', basename( dirname( dirname( __FILE__ ) ) ) );
 	}
-	
+
 	public function changeOnlineStatus($entryID, $field) {
-		
 		$visibility = $entryObj = '';
-		
 		$entryObj = $this->get($entryID);
 		if ($entryObj->getVar($field, 'e') == true) {
 			$entryObj->setVar($field, 0);
@@ -42,7 +40,6 @@ class mod_imglossary_EntriesHandler extends icms_ipf_Handler {
 			$visibility = 1;
 		}
 		$this->insert($entryObj, true);
-		
 		return $visibility;
 	}
 }
