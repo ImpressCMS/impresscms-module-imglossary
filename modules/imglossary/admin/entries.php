@@ -201,7 +201,7 @@ function entrySave( $entryID = '' ) {
 	$term = icms_core_DataFilter::addSlashes( $_POST['term'] );
 	$init = substr( $term, 0, 1 );
 
-	if ( preg_match( "[a-zA-Z]", $init ) ) {
+	if ( preg_match( "/[a-zA-Z]/", $init ) ) {
 		$init = strtoupper( $init );
 	} else {
 		$init = '1';
