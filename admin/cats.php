@@ -55,12 +55,12 @@ function categoryEdit( $categoryID = '' ) {
 
 		echo '<h3 style="color: #2F5376; margin-top: 6px; \">' . _AM_IMGLOSSARY_CATSHEADER . '</h3>';
 		$sform = new icms_form_Theme( _AM_IMGLOSSARY_NEWCAT, 'op', '' );
-	} 
+	}
 
 	$sform -> setExtra( 'enctype="multipart/form-data"' );
-    $sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_CATNAME, 'name', 80, 80, $name ), true );
+	$sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_CATNAME, 'name', 80, 80, $name ), true );
 	$sform -> addElement( new icms_form_elements_TextArea( _AM_IMGLOSSARY_CATDESCRIPT, 'description', $description, 7, 60 ) );
-    $sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_CATPOSIT, 'weight', 4, 4, $weight ), false );
+	$sform -> addElement( new icms_form_elements_Text( _AM_IMGLOSSARY_CATPOSIT, 'weight', 4, 4, $weight ), false );
 	$sform -> addElement( new icms_form_elements_Hidden( 'categoryID', $categoryID ) );
 
 	$button_tray = new icms_form_elements_Tray( '', '' );
@@ -68,7 +68,7 @@ function categoryEdit( $categoryID = '' ) {
 	$button_tray -> addElement( $hidden );
 
 	// No ID for column -- then it's new column, button says 'Create'
-    if ( !$categoryID ) {
+	if ( !$categoryID ) {
 		$butt_create = new icms_form_elements_Button( '', '', _AM_IMGLOSSARY_CREATE, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addcat\'"' );
 		$button_tray -> addElement( $butt_create );
@@ -109,14 +109,12 @@ function categoryDelete( $categoryID = '' ) {
 		while ( list( $entryID ) = icms::$xoopsDB -> fetchRow( $result3 ) ) {
 			xoops_comment_delete( icms::$module -> getVar('mid'), $entryID );
 			icms::$xoopsDB -> query( 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET offline=1, block=0 WHERE categoryID=' . $categoryID ); 
-		}		
+		}
 		$result = icms::$xoopsDB -> query( 'DELETE FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
-		//$result2 = icms::$xoopsDB -> query( 'DELETE FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE categoryID=' . $categoryID );
-		
 		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_CATISDELETED, $name ) );
 	} else {
 		icms_cp_header();
-		icms_core_Message::confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'category.php', _AM_IMGLOSSARY_DELETETHISCAT . '<br /><br>' . $name, _AM_IMGLOSSARY_DELETE );
+		icms_core_Message::confirm( array( 'op' => 'del', 'categoryID' => $categoryID, 'ok' => 1, 'name' => $name ), 'cats.php', _AM_IMGLOSSARY_DELETETHISCAT . '<br /><br>' . $name, _AM_IMGLOSSARY_DELETE );
 		icms_cp_footer();
 	}
 } 
@@ -164,14 +162,14 @@ switch ( $op ) {
 		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_BACK2IDX, '' ) );
 		exit();
 
-    case 'default':
-    default:
+	case 'default':
+	default:
 		if ( icms::$module -> config['multicats'] != 1 ) {
 			redirect_header( 'index.php', 3, sprintf( _AM_IMGLOSSARY_SINGLECAT, '' ) );
 			exit();
-		}		
-        categoryEdit();
-        break;
-} 
+		}
+		categoryEdit();
+		break;
+}
 icms_cp_footer();
 ?>
