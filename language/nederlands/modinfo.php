@@ -114,14 +114,12 @@ define("_MI_IMGLOSSARY_FORM_DHTML", "DHTML");
 define("_MI_IMGLOSSARY_FORM_COMPACT", "Compact");
 define("_MI_IMGLOSSARY_FORM_HTMLAREA", "HtmlArea Editor");
 define("_MI_IMGLOSSARY_FORM_FCK", "FCK Editor");
-define("_MI_IMGLOSSARY_FORM_KOIVI", "Koivi Editor");
-define("_MI_IMGLOSSARY_FORM_INBETWEEN", "Inbetween");
 define("_MI_IMGLOSSARY_FORM_TINYEDITOR", "TinyEditor");
 define("_MI_IMGLOSSARY_FORM_TINYMCE", "TinyMCE");
 define("_MI_IMGLOSSARY_FORM_DHTMLEXT", "DHTML Extended");
 
 // version 1.01
-define( '_MI_IMGLOSSARY_SELECTFEED', 'Gebbruik RSS feed?' );
+define( '_MI_IMGLOSSARY_SELECTFEED', 'Gebruik RSS feed?' );
 define( '_MI_IMGLOSSARY_SELECTFEED_DSC', 'Standaard: <em>Yes</em>'  );
 define( '_MI_IMGLOSSARY_FEEDSTOTAL', 'Hoeveel termen weergeven in RSS feed?' );
 define( '_MI_IMGLOSSARY_FEEDSTOTALDSC', 'Standaard: <em>15</em>' );

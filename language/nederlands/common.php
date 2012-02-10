@@ -4,7 +4,7 @@
 *
 * Based upon Wordbook 1.16
 *
-* File: languages/english/common.php
+* File: languages/nederlands/common.php
 *
 * @copyright	http://www.xoops.org/ The XOOPS Project
 * @copyright	XOOPS_copyrights.txt
@@ -25,12 +25,12 @@
 defined( 'ICMS_ROOT_PATH' ) or die( 'ICMS root path not defined' );
 
 define( '_CO_IMGLOSSARY_ENTRIES_TERM', 'Term' );
-define( '_CO_IMGLOSSARY_ENTRIES_TITLE', 'Title' );
+define( '_CO_IMGLOSSARY_ENTRIES_TITLE', 'Titel' );
 define( '_CO_IMGLOSSARY_ENTRIES_ENTRYID', 'ID' );
-define( '_CO_IMGLOSSARY_ENTRIES_DATESUB', 'Created' );
+define( '_CO_IMGLOSSARY_ENTRIES_DATESUB', 'Aangemaakt' );
 define( '_CO_IMGLOSSARY_ENTRIES_OFFLINE', 'Status' );
-define( '_CO_IMGLOSSARY_ENTRIES_UID', 'Submitter' );
+define( '_CO_IMGLOSSARY_ENTRIES_UID', 'Inzender' );
 define( '_CO_IMGLOSSARY_CATS_CATEGORYID', 'ID' );
-define( '_CO_IMGLOSSARY_CATS_NAME', 'Category name' );
-define( '_CO_IMGLOSSARY_CATS_DESCRIPTION', 'Category description' );
-define( '_CO_IMGLOSSARY_CATS_WEIGHT', 'Weight' );
+define( '_CO_IMGLOSSARY_CATS_NAME', 'Categorie naam' );
+define( '_CO_IMGLOSSARY_CATS_DESCRIPTION', 'Categorie omschrijving' );
+define( '_CO_IMGLOSSARY_CATS_WEIGHT', 'Gewicht' );
