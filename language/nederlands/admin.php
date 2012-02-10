@@ -159,4 +159,11 @@ define("_AM_IMGLOSSARY_NOOTHERMODS", "Geen korresponderende modules aangetroffen
 // imGlossary v1.01 RC-1
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Geef een geldige URL met of zonder het HTTP voorvoegsel.");
 define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Noteer hier de bron van de definitie, zoals boek, artikel of persoon.");
+
+// imGlossary v1.03
+define("_AM_IMGLOSSARY_WEIGHT_UPDATED", "Categorie gewicht is bijgewerkt.");
+define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is nu offline.");
+define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is nu online.");
+define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
+define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
 ?>

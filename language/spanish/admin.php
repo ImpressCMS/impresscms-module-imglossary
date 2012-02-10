@@ -134,7 +134,7 @@ define("_AM_IMGLOSSARY_COMMENTS", "Comentarios");
 define("_AM_IMGLOSSARY_ABOUT", "Acerca");
 define("_AM_IMGLOSSARY_UPDATEMOD", "Actualizar el módulo");
 
-// Import 
+// Import
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTWB", "Wordbook &mdash;&gt; imGlossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORT", "Dictionary 0.91 &mdash;&gt; imGlossary import script");
 define("_AM_IMGLOSSARY_MODULEHEADIMPORTGLO", "Glossaire &mdash;&gt; imGlossary import script");
@@ -146,7 +146,14 @@ define("_AM_IMGLOSSARY_MODULEIMPORTERNOCOM", "Error al importar los comentarios"
 define("_AM_IMGLOSSARY_IMPORTDELWB","¿Eliminar la información antes de importar? ");
 define("_AM_IMGLOSSARY_NOOTHERMODS", "Los módulos correspondientes no pudueron ser encontrados");
 
-// imGlossary v1.01 RC-1
+// imGlossary v1.01
 define("_AM_IMGLOSSARY_ENTRYURLDSC", "Por favor anota un URL válido con o sin el prefijo HTTP.");
 define("_AM_IMGLOSSARY_ENTRYREFERENCEDSC", "Anote aquí la fuente de su término, como un libro, artículo o persona.");
+
+// imGlossary v1.03
+define("_AM_IMGLOSSARY_WEIGHT_UPDATED", "Category weight has been updated.");
+define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
+define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
+define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
+define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
 ?>
