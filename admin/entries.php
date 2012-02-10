@@ -247,7 +247,7 @@ function entryDelete( $entryID = '' ) {
 		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_ENTRYISDELETED, $term ) );
 	} else {
 		icms_cp_header();
-		icms_core_Message::confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entry.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );
+		icms_core_Message::confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entries.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );
 		icms_cp_footer();
 	}
 	exit();
