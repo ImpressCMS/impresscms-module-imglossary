@@ -57,7 +57,7 @@ $xoopsTpl -> assign( 'totalother', $howmanyother );
 if ( icms::$module -> config['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats') . ' ORDER BY name ASC' );
+	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats') . ' ORDER BY ' . icms::$module -> config['sortcats'] . ' ASC' );
 	while ( list( $catID, $name, $total ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$catlinks['id'] = $catID;
