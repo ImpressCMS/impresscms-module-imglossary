@@ -6,18 +6,18 @@
 *
 * File: language/russian/main.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$ Russian translation. Charset: utf-8 (without BOM)
 */
@@ -86,7 +86,7 @@ define("_MD_IMGLOSSARY_RANDOMTERM", "Случайный термин");
 define("_MD_IMGLOSSARY_RECEIVED", "Запись, коотрую Вы передали, получена. Мы промотрим ее в ближайшее время.");
 define("_MD_IMGLOSSARY_RECEIVEDANDAPPROVED", "Запись, коотрую Вы передали, получена. Согласно включенной опции автооповещения, мы опубликуем ее один раз.");
 define("_MD_IMGLOSSARY_RECENTENT", "Новейшие");
-define("_MD_IMGLOSSARY_REFERENCE", "Ссылка <span style='font-size: xx-small; font-weight: normal; display: block;'>(Опционально, Вы можете передать Ваше определение здесь.)</span>");
+define("_MD_IMGLOSSARY_REFERENCE", "Ссылка");
 define("_MD_IMGLOSSARY_REQRCVD", "Ваш запрос получен. Мы промотрим его в ближайшее время.");
 define("_MD_IMGLOSSARY_REQSEND", "Запрос отправлен");
 define("_MD_IMGLOSSARY_REQTERM", "Термин для определения");
@@ -122,7 +122,7 @@ define("_MD_IMGLOSSARY_THANKYOU", "Спасибо за то, что Вы пот�
 define("_MD_IMGLOSSARY_THEREWERE", "Найдено %s записей для искомого термина: <b>%s</b>.");
 define("_MD_IMGLOSSARY_TIMESREAD", "Прочтено");
 define("_MD_IMGLOSSARY_UNKNOWNERROR", "ОШИБКА.  Вернитесь туда, где Вы были!");
-define("_MD_IMGLOSSARY_URL", "URL<span style='font-size: xx-small; font-weight: normal; display: block;'>(Пожалуйста, введите правильный URL с или без использования HTTP префикса.)</span>");
+define("_MD_IMGLOSSARY_URL", "URL");
 define("_MD_IMGLOSSARY_USERMAIL", "E-mail");
 define("_MD_IMGLOSSARY_USERNAME", "Имя");
 define("_MD_IMGLOSSARY_WEBMASTER", "Вэбмастер");
@@ -154,4 +154,8 @@ define("_MD_IMGLOSSARY_PDFTERM", "Создать PDF");
 
 // imGlossary v1.01
 define("_MD_IMGLOSSARY_FEED", "RSS канал");
+
+// imGlossary v1.03
+define("_MD_IMGLOSSARY_REFERENCEDSC", "Опционально, Вы можете передать Ваше определение здесь.");
+define("_MD_IMGLOSSARY_URLDSC", "Пожалуйста, введите правильный URL с или без использования HTTP префикса.");
 ?>

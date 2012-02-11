@@ -81,7 +81,7 @@ define("_MD_IMGLOSSARY_RANDOMTERM", "Willekeurige term");
 define("_MD_IMGLOSSARY_RECEIVED", "De door u ingezonden term is ontvangen. We zullen het zo snel mogelijk in behandeling nemen.");
 define("_MD_IMGLOSSARY_RECEIVEDANDAPPROVED", "De door u ingezonden term is ontvangen. Indien de instelling <em>automatische goedkeuring</em> aanstaat, wordt de term meteen gepubliceerd.");
 define("_MD_IMGLOSSARY_RECENTENT", "Recente termen");
-define("_MD_IMGLOSSARY_REFERENCE", "Referentie<span style='font-size: xx-small; font-weight: normal; display: block;'>(Optioneel, u kunt hier de bron van uw definitie opgeven.)</span>");
+define("_MD_IMGLOSSARY_REFERENCE", "Referentie");
 define("_MD_IMGLOSSARY_REQRCVD", "Uw aanvraag is ontvangen. We zullen het zo snel mogelijk in behandeling nemen.");
 define("_MD_IMGLOSSARY_REQSEND", "Aanvraag verzonden");
 define("_MD_IMGLOSSARY_REQTERM", "Te definieëren term");
@@ -117,7 +117,7 @@ define("_MD_IMGLOSSARY_THANKYOU", "Bedankt voor het nemen van de moeite om een d
 define("_MD_IMGLOSSARY_THEREWERE", "Er waren %s termen die overeenkwamen met de zoekterm: <b>%s</b>.");
 define("_MD_IMGLOSSARY_TIMESREAD", "Aantal keer gelezen");
 define("_MD_IMGLOSSARY_UNKNOWNERROR", "FOUT.  U wordt teruggebracht naar waar u vandaan kwam!");
-define("_MD_IMGLOSSARY_URL", "URL<span style='font-size: xx-small; font-weight: normal; display: block;'>(Vul een geldige URL in met of zonder het HTTP voorvoegsel.)</span>");
+define("_MD_IMGLOSSARY_URL", "URL");
 define("_MD_IMGLOSSARY_USERMAIL", "E-mail");
 define("_MD_IMGLOSSARY_USERNAME", "Naam");
 define("_MD_IMGLOSSARY_WEBMASTER", "Webmaster");
@@ -149,4 +149,8 @@ define("_MD_IMGLOSSARY_PDFTERM", "Maak PDF");
 
 // imGlossary v1.01
 define("_MD_IMGLOSSARY_FEED", "RSS feed");
+
+// imGlossary v1.03
+define("_MD_IMGLOSSARY_REFERENCEDSC", "Optioneel, u kunt hier de bron van uw definitie opgeven.");
+define("_MD_IMGLOSSARY_URLDSC", "Vul een geldige URL in met of zonder het HTTP voorvoegsel.");
 ?>

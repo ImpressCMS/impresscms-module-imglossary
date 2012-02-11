@@ -71,7 +71,7 @@ define("_MD_IMGLOSSARY_RANDOMTERM", "Término al azar");
 define("_MD_IMGLOSSARY_RECEIVED", "La definición que envió ha sido recibida. La examinaremos lo antes posible.");
 define("_MD_IMGLOSSARY_RECEIVEDANDAPPROVED", "La definición que envió ha sido recibida. Como la opción de autoaprobación está activada, la publicaremos de inmediato.");
 define("_MD_IMGLOSSARY_RECENTENT", "Definiciones recientes");
-define("_MD_IMGLOSSARY_REFERENCE", "Referencia<span style='font-size: xx-small; font-weight: normal; display: block;'>(Opcionalmente, puede incluir aquí la fuente de su definición.)</span>");
+define("_MD_IMGLOSSARY_REFERENCE", "Referencia");
 define("_MD_IMGLOSSARY_REQRCVD", "Su petición ha sido recibida. La examinaremos lo antes posible.");
 define("_MD_IMGLOSSARY_REQSEND", "Petición enviada");
 define("_MD_IMGLOSSARY_REQTERM", "Término a definir");
@@ -107,7 +107,7 @@ define("_MD_IMGLOSSARY_THANKYOU", "Gracias por pedirnos una definición que enri
 define("_MD_IMGLOSSARY_THEREWERE", "Hay %s definiciones que corresponden con el término buscado: <b>%s</b>.");
 define("_MD_IMGLOSSARY_TIMESREAD", "Lecturas");
 define("_MD_IMGLOSSARY_UNKNOWNERROR", "ERROR. Volviendo atrás");
-define("_MD_IMGLOSSARY_URL", "URL<span style='font-size: xx-small; font-weight: normal; display: block;'>(Por favor anote un URL válido con o sin el prefijo HTTP.)</span>");
+define("_MD_IMGLOSSARY_URL", "URL");
 define("_MD_IMGLOSSARY_USERMAIL", "Correo electrónico");
 define("_MD_IMGLOSSARY_USERNAME", "Nombre");
 define("_MD_IMGLOSSARY_WEBMASTER", "Administrador");
@@ -140,4 +140,7 @@ define("_MD_IMGLOSSARY_PDFTERM", "Crear PDF");
 // imGlossary v1.01
 define("_MD_IMGLOSSARY_FEED", "Origen de RSS");
 
+// imGlossary v1.03
+define("_MD_IMGLOSSARY_REFERENCEDSC", "Opcionalmente, puede incluir aquí la fuente de su definición.");
+define("_MD_IMGLOSSARY_URLDSC", "Por favor anote un URL válido con o sin el prefijo HTTP.");
 ?>
