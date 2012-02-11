@@ -20,8 +20,8 @@
 
 function imglossary_sbmarks( $entryID, $term ) { 
 	$sbmark_arr = array();
-    $sbmark_arr['term'] = $term;
-    $sbmark_arr['link'] = ICMS_URL . '/modules/' . icms::$module -> getvar( 'dirname' ) . '/entry.php?entryID=' . intval( $entryID );
+	$sbmark_arr['term'] = $term;
+	$sbmark_arr['link'] = ICMS_URL . '/modules/' . icms::$module -> getvar( 'dirname' ) . '/entry.php?entryID=' . intval( $entryID );
 
 //Definitions for social bookmarks
 
@@ -151,12 +151,6 @@ $sbmarks['rojo'] = '<a href="http://www.rojo.com/submit/?title=' . $sbmark_arr['
 //Shadows
 $sbmarks['shadow'] = '<a href="http://www.shadows.com/features/tcr.htm?title=' . $sbmark_arr['term'] . '&url=' . $sbmark_arr['link'] . '"' . ' target="_blank"><img border="0" src="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/sbookmarks/shadows.png" align="middle" title="'._MD_IMGLOSSARY_ADDTO.'Shadows" alt="'._MD_IMGLOSSARY_ADDTO.'Shadows"></a>';
 
-//Simpy
-$sbmarks['simpy'] = '<a href="http://simpy.com/simpy/LinkAdd.do?title=' . $sbmark_arr['term'] . '&href=' . $sbmark_arr['link'] . '"' . ' target="_blank"><img border="0" src="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/sbookmarks/simpy.png" align="middle" title="'._MD_IMGLOSSARY_ADDTO.'Simpy" alt="'._MD_IMGLOSSARY_ADDTO.'Simpy"></a>';
-
-//Spurl
-$sbmarks['spurl'] = '<a href="http://www.spurl.net/spurl.php?url=' . $sbmark_arr['link'] . '&title=' . $sbmark_arr['term'] . '"' . ' target="_blank"><img border="0" src="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/sbookmarks/spurl.png" align="middle" title="'._MD_IMGLOSSARY_ADDTO.'Spurl" alt="'._MD_IMGLOSSARY_ADDTO.'Spurl"></a>';
-
 //Squidoo
 $sbmarks['squidoo'] = '<a href="http://www.squidoo.com/lensmaster/bookmark?' . $sbmark_arr['link'] . '"' . ' target="_blank"><img border="0" src="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/images/sbookmarks/squidoo.png" align="middle" title="'._MD_IMGLOSSARY_ADDTO.'Squidoo" alt="'._MD_IMGLOSSARY_ADDTO.'Squidoo"></a>';
 
@@ -223,8 +217,6 @@ $sbmarks['sbmarks'] = //$sbmarks['blackflip'] . " " .
                       //$sbmarks['riffs'] . " " .
                       //$sbmarks['rojo'] . " " .
                       //$sbmarks['shadow'] . " " .
-                        $sbmarks['simpy'] . " " .
-                        $sbmarks['spurl'] . " " .
                       //$sbmarks['squidoo'] . " " .
                         $sbmarks['stumble'] . " " .
                       //$sbmarks['tagtooga'] . " " .
