@@ -25,6 +25,8 @@
 include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';
 $mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID', '0' );
 
+echo '<link rel="stylesheet" type="text/css" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/style.css" />';
+
 echo "<div>";
 echo "<div style='float: "._GLOBAL_LEFT."; font-size: smaller;'><a href='" . ICMS_URL . "/modules/" . icms::$module -> getVar( 'dirname' ) . "/index.php'>" . icms::$module -> getVar( 'name' ) . "</a> | " . _MD_IMGLOSSARY_SUBMITART . "</div>";
 echo "<div style='font-size: 18px; text-align: "._GLOBAL_RIGHT."; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;'>" . icms::$module -> getVar( 'name' ) . "&nbsp;</div>";
@@ -46,12 +48,11 @@ if ( icms::$module -> config['multicats'] == '1' ) {
 	ob_end_clean();
 }
 
-$def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION, 'definition', '' );
-$def_block -> SetDescription( '<small>' . _MD_IMGLOSSARY_WRITEHERE . '</small>' );
+$def_block = imglossary_getWysiwygForm( _MD_IMGLOSSARY_DEFINITION . imglossary_helptip( _MD_IMGLOSSARY_WRITEHERE ), 'definition', '' );
 $sform -> addElement( $def_block, false );
 
-$sform -> addElement( new icms_form_elements_TextArea( _MD_IMGLOSSARY_REFERENCE, 'ref', $ref, 5, 50 ), false );
-$sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_URL, 'url', 50, 80, $url ), false );
+$sform -> addElement( new icms_form_elements_TextArea( _MD_IMGLOSSARY_REFERENCE . imglossary_helptip( _MD_IMGLOSSARY_REFERENCEDSC ), 'ref', $ref, 5, 50 ), false );
+$sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_URL . imglossary_helptip( _MD_IMGLOSSARY_URLDSC ), 'url', 50, 80, $url ), false );
 
 // VARIOUS OPTIONS
 	$options_tray = new icms_form_elements_Tray( _MD_IMGLOSSARY_OPTIONS, '<br />' );

@@ -91,18 +91,15 @@ function entryEdit( $entryID = 0 ) {
 	$sform -> addElement( new icms_form_elements_select_User( _AM_IMGLOSSARY_AUTHOR, 'uid', true, $uid ) );
 
 	// Definition
-	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF, 'definition', $definition );
-	$def_block -> setDescription( _AM_IMGLOSSARY_WRITEHERE );
+	$def_block = imglossary_getWysiwygForm( _AM_IMGLOSSARY_ENTRYDEF . imglossary_helptip( _AM_IMGLOSSARY_WRITEHERE ), 'definition', $definition );
 	$sform -> addElement( $def_block, false );
 
 	// Reference
-	$reference = new icms_form_elements_Textarea( _AM_IMGLOSSARY_ENTRYREFERENCE, 'ref', $ref, 5, 60 );
-	$reference -> setDescription( _AM_IMGLOSSARY_ENTRYREFERENCEDSC );
+	$reference = new icms_form_elements_Textarea( _AM_IMGLOSSARY_ENTRYREFERENCE . imglossary_helptip( _AM_IMGLOSSARY_ENTRYREFERENCEDSC ), 'ref', $ref, 5, 60 );
 	$sform -> addElement( $reference, false );
 
 	// Related site (url)
-	$ent_url = new icms_form_elements_Text( _AM_IMGLOSSARY_ENTRYURL, 'url', 80, 80, $url );
-	$ent_url -> setDescription( _AM_IMGLOSSARY_ENTRYURLDSC );
+	$ent_url = new icms_form_elements_Text( _AM_IMGLOSSARY_ENTRYURL . imglossary_helptip( _AM_IMGLOSSARY_ENTRYURLDSC ), 'url', 80, 80, $url );
 	$sform -> addElement( $ent_url, false );
 
 	// Code to take entry offline, for maintenance purposes
