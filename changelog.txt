@@ -10,6 +10,8 @@ Added:
 
 Removed:
 - support for Koivi editor
+- block settings hack
+- Simpy and Spurl from social bookmarks
 
 Files removed:
 - xoops_version.php
@@ -21,6 +23,8 @@ Files removed:
 - admin/myblocksadmin.txt
 - admin/mygroupperm.php
 - admin/mygrouppermform.php
+- images/sbookmarks/simpy.png
+- images/sbookmarks/spurl.png
 - include/blocksadmin.inc.php
 - include/gtickets.php
 - include/updateblock.inc.php
