@@ -1,7 +1,7 @@
 <?php
 
 function b_waiting_imglossary() {
-//	$xoopsDB =& Database::getInstance();
+
 	$ret = array();
 
 	// Waiting
@@ -12,7 +12,7 @@ function b_waiting_imglossary() {
 		list( $block['pendingnum'] ) = icms::$xoopsDB -> fetchRow( $result );
 		$block['lang_linkname'] = _PI_WAITING_WAITINGS;
 	}
-	$ret[] = $block ;
+	$ret[] = $block;
 
 	// Request
 	$result = icms::$xoopsDB->query( 'SELECT COUNT(*) FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=1 AND categoryID=0' );
@@ -21,8 +21,8 @@ function b_waiting_imglossary() {
 		list($block['pendingnum']) = icms::$xoopsDB -> fetchRow( $result );
 		$block['lang_linkname'] = _PI_WAITING_REQUESTS;
 	}
-	$ret[] = $block ;
+	$ret[] = $block;
 
-	return $ret ;
+	return $ret;
 }
 ?>
