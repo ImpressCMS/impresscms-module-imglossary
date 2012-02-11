@@ -34,9 +34,9 @@ if ( file_exists( ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) )
 $modversion = array(
 	'name'				=> _MI_IMGLOSSARY_MD_NAME,
 	'version'			=> 1.03,
-	'status'			=> 'Trunk',
-	'status_version'	=> 'Trunk',
-	'date'				=> 'xx February 2012',
+	'status'			=> 'RC-1',
+	'status_version'	=> 'RC-1',
+	'date'				=> '11 February 2012',
 
 	'description'		=> _MI_IMGLOSSARY_MD_DESC,
 	'author'			=> 'McDonald',
@@ -73,12 +73,12 @@ $modversion['people']['other'][] = '&middot; <a href="http://materia.infinitiv.i
 // $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_FINAL;
 
 // ** Admin things **
-$modversion['hasAdmin'] = 1;
-$modversion['adminindex'] = 'admin/index.php';
-$modversion['adminmenu'] = 'admin/menu.php';
+$modversion['hasAdmin']		= 1;
+$modversion['adminindex']	= 'admin/index.php';
+$modversion['adminmenu']	= 'admin/menu.php';
 
-$modversion['onInstall'] = 'include/onupdate.inc.php';
-$modversion['onUpdate']  = 'include/onupdate.inc.php';
+$modversion['onInstall']	= 'include/onupdate.inc.php';
+$modversion['onUpdate']		= 'include/onupdate.inc.php';
 
 // Tables created by sql file (without prefix!)
 $modversion['object_items'][1] = 'cats';
