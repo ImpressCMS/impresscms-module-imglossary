@@ -7,10 +7,11 @@ Added:
 - About page
 - IPF classes and tables to admin index page
 - CSS styling to the letters (top)
+- Tooltips to forms
 
 Removed:
-- support for Koivi editor
-- block settings hack
+- Support for Koivi editor
+- Block settings hack
 - Simpy and Spurl from social bookmarks
 
 Files removed:

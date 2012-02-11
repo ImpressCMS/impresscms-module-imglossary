@@ -336,4 +336,9 @@ function imglossary_tinymce( $caption, $name, $value ) {
 	}
 	return $editor;
 }
+
+function imglossary_helptip( $description ) {
+	$helptip = '<img class="helptip" src="'. ICMS_IMAGES_SET_URL . '/actions/acp_help.png" alt="View help text" title="View help text" /><span class="helptext">' . $description . '</span>';
+	return $helptip;
+}
 ?>
