@@ -6,18 +6,18 @@
 *
 * File: language/portuguesebr/main.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -86,7 +86,7 @@ define("_MD_IMGLOSSARY_RANDOMTERM", "Termo Aleatório");
 define("_MD_IMGLOSSARY_RECEIVED", "A definição que você enviou foi recebida. Iremos analisá-la o mais rapido possível.");
 define("_MD_IMGLOSSARY_RECEIVEDANDAPPROVED", "A definição que você enviou foi recebida. Se a auto-aprovação estiver habilitada, vamos publicá-la de imdediato.");
 define("_MD_IMGLOSSARY_RECENTENT", "Termos recentes");
-define("_MD_IMGLOSSARY_REFERENCE", "Referência<span style='font-size: xx-small; font-weight: normal; display: block;'>(Opcionalmente, você pode conferir a origem de sua definição aqui.)</span>");
+define("_MD_IMGLOSSARY_REFERENCE", "Referência");
 define("_MD_IMGLOSSARY_REQRCVD", "Sua solicitação foi recebida. Iremos analisá-la o mais rápido possível.");
 define("_MD_IMGLOSSARY_REQSEND", "Solicitações enviadas");
 define("_MD_IMGLOSSARY_REQTERM", "Termo para definir");
@@ -122,7 +122,7 @@ define("_MD_IMGLOSSARY_THANKYOU", "Agradecemos pelo seu tempo para informar nova
 define("_MD_IMGLOSSARY_THEREWERE", "Houve %s entradas correspondentes ao termo de pesquisa: <b>%s</b>.");
 define("_MD_IMGLOSSARY_TIMESREAD", "Leituras");
 define("_MD_IMGLOSSARY_UNKNOWNERROR", "ERRO.  Devolvendo-lhe onde estava!");
-define("_MD_IMGLOSSARY_URL", "URL<span style='font-size: xx-small; font-weight: normal; display: block;'>(Digite uma URL válida, com ou sem o prefixo HTTP.)</span>");
+define("_MD_IMGLOSSARY_URL", "URL");
 define("_MD_IMGLOSSARY_USERMAIL", "E-mail");
 define("_MD_IMGLOSSARY_USERNAME", "Nome");
 define("_MD_IMGLOSSARY_WEBMASTER", "Webmaster");
@@ -154,4 +154,8 @@ define("_MD_IMGLOSSARY_PDFTERM", "Criar PDF");
 
 // imGlossary v1.01
 define("_MD_IMGLOSSARY_FEED", "RSS feed");
+
+// imGlossary v1.03
+define("_MD_IMGLOSSARY_REFERENCEDSC", "Opcionalmente, você pode conferir a origem de sua definição aqui.");
+define("_MD_IMGLOSSARY_URLDSC", "Digite uma URL válida, com ou sem o prefixo HTTP.");
 ?>
