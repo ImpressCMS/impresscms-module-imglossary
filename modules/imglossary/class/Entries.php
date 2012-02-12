@@ -31,7 +31,7 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 
 		$this -> quickInitVar( 'entryID', XOBJ_DTYPE_INT, true );
 		$this -> quickInitVar( 'categoryID', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'term', XOBJ_DTYPE_TXTBOX, false );
+		$this -> quickInitVar( 'term', XOBJ_DTYPE_TXTBOX, true );
 		$this -> quickInitVar( 'init', XOBJ_DTYPE_TXTBOX, false );
 		$this -> quickInitVar( 'definition', XOBJ_DTYPE_TXTAREA, false );
 		$this -> quickInitVar( 'ref', XOBJ_DTYPE_TXTBOX, false );
@@ -77,6 +77,11 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/0.png" alt="' . _AM_IMGLOSSARY_TERM_ISOFF . '" title="' . _AM_IMGLOSSARY_TERM_ISOFF . '" /></a>';
 		}
 		return $button;
+	}
+
+	function ViewEntryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/entry.php?entryID=' . $this -> getVar( 'entryID', 'e' ) . '">' . $this -> getVar( 'term' ) . '</a>';
+		return $ret;
 	}
 
 }
