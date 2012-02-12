@@ -344,7 +344,7 @@ switch ( $op ) {
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
@@ -353,7 +353,7 @@ switch ( $op ) {
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'name' ) );
+		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', false, false, 'ViewCategoryLink' ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'description', 'center' ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
 		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );

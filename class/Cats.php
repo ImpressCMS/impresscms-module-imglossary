@@ -44,4 +44,9 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 		return $control -> render();
 	}
 
+	function ViewCategoryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/category.php?categoryID=' . $this -> getVar( 'categoryID', 'e' ) . '">' . $this -> getVar( 'name' ) . '</a>';
+		return $ret;
+	}
+
 }
