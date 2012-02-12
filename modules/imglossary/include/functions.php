@@ -310,7 +310,7 @@ function imglossary_dhtmlexteditor( $caption, $name, $value ) {
 function imglossary_fckeditor( $caption, $name, $value ) {
 	if ( file_exists( ICMS_ROOT_PATH . '/editors/FCKeditor/formfckeditor.php' ) ) {
 		include_once( ICMS_ROOT_PATH . '/editors/FCKeditor/formfckeditor.php' );
-		$editor = new XoopsFormFckeditor( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ), true );
+		$editor = new XoopsFormFckeditor( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '300px' ), true );
 	} else {
 		$editor = new icms_form_elements_Dhtmltextarea( $caption, $name, $value, 35, 60 );
 	}
@@ -320,7 +320,7 @@ function imglossary_fckeditor( $caption, $name, $value ) {
 function imglossary_tinyeditor( $caption, $name, $value ) {
 	if ( file_exists( ICMS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php' ) ) {
 		include_once( ICMS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php' );
-		$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px' ) );
+		$editor = new XoopsFormTinyeditorTextArea( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '300px' ) );
 	} else {
 		$editor = new icms_form_elements_Dhtmltextarea( $caption, $name, $value, 35, 60 );
 	}
@@ -330,7 +330,7 @@ function imglossary_tinyeditor( $caption, $name, $value ) {
 function imglossary_tinymce( $caption, $name, $value ) {
 	if ( file_exists( ICMS_ROOT_PATH . '/editors/tinymce/formtinymce.php' ) ) {
 		include_once( ICMS_ROOT_PATH . '/editors/tinymce/formtinymce.php' );
-		$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '500px', 0 ) );
+		$editor = new XoopsFormTinymce( array( 'caption' => $caption, 'name' => $name, 'value' => $value, 'width' => '100%', 'height' => '300px', 0 ) );
 	} else {
 		$editor = new icms_form_elements_Dhtmltextarea( $caption, $name, $value, $editor_configs['rows'], $editor_configs['cols'] );
 	}
