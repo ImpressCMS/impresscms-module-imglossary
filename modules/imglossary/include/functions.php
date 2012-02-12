@@ -266,44 +266,21 @@ function imglossary_getWysiwygForm( $caption, $name, $value ) {
 	}
 
 	switch( $formuser ) {
-	case 'dhtml':
-		$editor = imglossary_dhtmleditor( $caption, $name, $value );
-		break;
 
-	case 'dhtmlext':
-		$editor = imglossary_dhtmlexteditor( $caption, $name, $value );
-		break;
+		case 'fck':
+			$editor = imglossary_fckeditor( $caption, $name, $value );
+			break;
 
-	case 'fck':
-		$editor = imglossary_fckeditor( $caption, $name, $value );
-		break;
+		case 'tinyeditor':
+			$editor = imglossary_tinyeditor( $caption, $name, $value );
+			break;
 
-	case 'tinyeditor':
-		$editor = imglossary_tinyeditor( $caption, $name, $value );
-		break;
+		case 'tinymce' :
+			$editor = imglossary_tinymce( $caption, $name, $value );    
+			break;
 
-	case 'tinymce' :
-		$editor = imglossary_tinymce( $caption, $name, $value );    
-		break;
 	}
-	return $editor;
-}
 
-function imglossary_dhtmleditor( $caption, $name, $value ) {
-	if ( file_exists( ICMS_ROOT_PATH . '/editors/dhtmltextarea/dhtmltextarea.php' ) ) {
-		include_once ICMS_ROOT_PATH . '/editors/dhtmltextarea/dhtmltextarea.php';
-		$editor = new icms_form_elements_Dhtmltextarea( $caption, $name, $value, 35, 60 );
-	}
-	return $editor;
-}
-
-function imglossary_dhtmlexteditor( $caption, $name, $value ) {
-	if ( file_exists( ICMS_ROOT_PATH . '/class/xoopseditor/dhtmlext/dhtmlext.php' ) ) {
-		include_once( ICMS_ROOT_PATH . '/class/xoopseditor/dhtmlext/dhtmlext.php' );
-		$editor = new XoopsFormDhtmlTextAreaExtended( $caption, $name, $value, 10, 50 );
-	} else {
-		$editor = new icms_form_elements_Dhtmltextarea( $caption, $name, $value, 35, 60 );
-	}
 	return $editor;
 }
 

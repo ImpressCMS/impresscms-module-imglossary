@@ -222,10 +222,8 @@ $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORADMIN';
 $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORADMINDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = 'dhtml';
-$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
-												_MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												_MI_IMGLOSSARY_FORM_FCK => 'fck',
+$modversion['config'][$i]['default'] = 'tinymce';
+$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
 												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
 $i++;
@@ -234,10 +232,8 @@ $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_EDITORUSER';
 $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_EDITORUSERDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = 'dhtml';
-$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_DHTML => 'dhtml',
-												_MI_IMGLOSSARY_FORM_DHTMLEXT => 'dhtmlext',
-												_MI_IMGLOSSARY_FORM_FCK => 'fck',
+$modversion['config'][$i]['default'] = 'tinymce';
+$modversion['config'][$i]['options'] =  array(	_MI_IMGLOSSARY_FORM_FCK => 'fck',
 												_MI_IMGLOSSARY_FORM_TINYEDITOR => 'tinyeditor',
 												_MI_IMGLOSSARY_FORM_TINYMCE => 'tinymce' );
 $i++;

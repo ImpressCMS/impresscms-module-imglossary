@@ -51,10 +51,6 @@ function entryEdit( $entryID = 0 ) {
 	$uid = $entry_array['uid'] ? $entry_array['uid'] : 0;
 	$submit = $entry_array['submit'] ? $entry_array['submit'] : 0;
 	$datesub = $entry_array['datesub'] ? $entry_array['datesub'] : time();
-	$html = $entry_array['html'];
-	$smiley = $entry_array['smiley'];
-	$xcodes = $entry_array['xcodes'];
-	$breaks = $entry_array['breaks'];
 	$block = $entry_array['block'] ? $entry_array['block'] : 0;
 	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
 	$notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
@@ -109,27 +105,6 @@ function entryEdit( $entryID = 0 ) {
 	// Code to put entry in block
 	$block_radio = new icms_form_elements_Radioyn( _AM_IMGLOSSARY_BLOCK, 'block', $block, ' ' . _YES . '', ' ' . _NO . '' );
 	$sform -> addElement( $block_radio );
-
-	// VARIOUS OPTIONS
-	$options_tray = new icms_form_elements_Tray( _AM_IMGLOSSARY_OPTIONS, '<br /><br />' );
-
-	$html_checkbox = new icms_form_elements_Checkbox( '', 'html', $html );
-	$html_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOHTML );
-	$options_tray -> addElement( $html_checkbox );
-
-	$smiley_checkbox = new icms_form_elements_Checkbox( '', 'smiley', $smiley );
-	$smiley_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOSMILEY );
-	$options_tray -> addElement( $smiley_checkbox );
-
-	$xcodes_checkbox = new icms_form_elements_Checkbox( '', 'xcodes', $xcodes );
-	$xcodes_checkbox -> addOption( 1, _AM_IMGLOSSARY_DOXCODE );
-	$options_tray -> addElement( $xcodes_checkbox );
-
-	$breaks_checkbox = new icms_form_elements_Checkbox( '', 'breaks', $breaks );
-	$breaks_checkbox -> addOption( 1, _AM_IMGLOSSARY_BREAKS );
-	$options_tray -> addElement( $breaks_checkbox );
-
-	$sform -> addElement( $options_tray );
 
 	$sform -> addElement( new icms_form_elements_Hidden( 'entryID', $entryID ) );
 
@@ -193,10 +168,6 @@ function entrySave( $entryID = '' ) {
 	} else {
 		$offline = ( $_POST['offline'] == 1 ) ? 1 : 0;
 	}
-	$html = isset( $_REQUEST['html'] ) ? 1 : 0;
-	$smiley = isset( $_REQUEST['smiley'] ) ? 1 : 0;
-	$xcodes = isset( $_REQUEST['xcodes'] ) ? 1 : 0;
-	$breaks = isset( $_REQUEST['breaks'] ) ? 1 : 0;
 
 	$term = icms_core_DataFilter::addSlashes( $_POST['term'] );
 	$init = substr( $term, 0, 1 );
@@ -214,7 +185,7 @@ function entrySave( $entryID = '' ) {
 
 // Save to database
 	if ( !$entryID ) {
-		if ( icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request' )" ) ) {
+		if ( icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$block', '$offline', '$notifypub', '$request' )" ) ) {
 			imglossary_calculateTotals();
 			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYCREATEDOK );
 		} else {
@@ -223,11 +194,11 @@ function entrySave( $entryID = '' ) {
 	} else { 
 		// That is, $entryID exists, thus we're editing an entry
 		
-		if ( icms::$xoopsDB -> query( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', html='$html', smiley='$smiley', xcodes='$xcodes', breaks='$breaks', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
+		if ( icms::$xoopsDB -> query( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
 			imglossary_calculateTotals();
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 		} else {
-			redirect_header( "index.php", 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
+			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYNOTUPDATED );
 		}
 	}
 }

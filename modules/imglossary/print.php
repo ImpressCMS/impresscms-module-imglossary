@@ -43,7 +43,7 @@ function printPage( $entryID ) {
 	global $icmsConfig;
 
 	$result1 = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
-	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
+	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
 
 	$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
 	list ($name) = icms::$xoopsDB -> fetchRow( $result2 );
@@ -54,15 +54,9 @@ function printPage( $entryID ) {
 	$datetime = formatTimestamp( $datesub, icms::$module -> config['dateformat'] );
 	$categoryname = icms_core_DataFilter::htmlSpecialchars( $name );
 	$term = icms_core_DataFilter::htmlSpecialchars( $term );
-//	$definition = str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition );
-//	$definition = icms_core_DataFilter::htmlSpecialchars( $definition, $html, $smiley, $xcodes, 1, $breaks );
-	
-	if ( $breaks ) {
-		$definition = icms_core_DataFilter::checkVar( str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition ), 'text', 'output' );
-	} else {
-		$definition = icms_core_DataFilter::checkVar( str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition ), 'html', 'output' );
-	}
-	
+
+	$definition = icms_core_DataFilter::checkVar( str_replace( '[pagebreak]', '<br style="page-break-after:always;">', $definition ), 'html', 'output' );
+
 	if ( $authorname == '' ) {
 		$authorname = icms_core_DataFilter::htmlSpecialchars( $username );
 	} else {

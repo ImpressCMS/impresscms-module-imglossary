@@ -40,10 +40,6 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'submit', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'datesub', XOBJ_DTYPE_LTIME, false, '', '', 1033141070 );
 		$this -> quickInitVar( 'counter', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'html', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'smiley', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'xcodes', XOBJ_DTYPE_INT, false, '', '', 0 );
-		$this -> quickInitVar( 'breaks', XOBJ_DTYPE_INT, false, '', '', 1 );
 		$this -> quickInitVar( 'block', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'offline', XOBJ_DTYPE_INT, true, false, false, true );
 		$this -> quickInitVar( 'notifypub', XOBJ_DTYPE_INT, false, '', '', 0 );

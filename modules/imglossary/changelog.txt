@@ -13,6 +13,7 @@ Removed:
 - Support for Koivi editor
 - Block settings hack
 - Simpy and Spurl from social bookmarks
+- Support for DHTML editor(s)
 
 Files removed:
 - xoops_version.php

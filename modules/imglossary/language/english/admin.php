@@ -6,18 +6,18 @@
 *
 * File: language/english/admin.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
@@ -171,4 +171,6 @@ define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
 define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
 define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
 define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
+define("_AM_IMGLOSSARY_TEXTOUTPUT", "Output as TEXT?");
+define("_AM_IMGLOSSARY_TEXTOUTPUTDSC","Select this option to output the definition as TEXT. This will add linebreaks. Do not select this option if you wish to output as HTML.");
 ?>
