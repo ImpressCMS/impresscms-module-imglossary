@@ -342,6 +342,7 @@ switch ( $op ) {
 		echo '</fieldset>';
 
 
+		// Entries table
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
@@ -351,6 +352,7 @@ switch ( $op ) {
 		$icmsAdminTpl -> assign( 'imglossary_entries_table', $objectTable -> fetch() );
 
 
+		// Categories table
 		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', false, false, 'ViewCategoryLink' ) );
@@ -360,18 +362,20 @@ switch ( $op ) {
 		$icmsAdminTpl -> assign( 'imglossary_cats_table', $objectTable -> fetch() );
 
 
+		// Submissions table
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'submit', 1 ) );
 		$criteria -> add( new icms_db_criteria_Item( 'request', 0 ) );
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler, $criteria );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$icmsAdminTpl -> assign( 'imglossary_submissions_table', $objectTable -> fetch() );
 
 
+		// Requests table
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'submit', 1 ) );
 		$criteria -> add( new icms_db_criteria_Item( 'request', 1 ) );
@@ -384,6 +388,7 @@ switch ( $op ) {
 		$icmsAdminTpl -> assign( 'imglossary_request_table', $objectTable -> fetch() );
 
 
+		// Offline table
 		$criteria = new icms_db_criteria_Compo();
 		$criteria -> add( new icms_db_criteria_Item( 'offline', 1 ) );
 
@@ -392,6 +397,7 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
 		$icmsAdminTpl -> assign( 'imglossary_offline_table', $objectTable -> fetch() );
 
 
