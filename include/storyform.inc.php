@@ -54,27 +54,6 @@ $sform -> addElement( $def_block, false );
 $sform -> addElement( new icms_form_elements_TextArea( _MD_IMGLOSSARY_REFERENCE . imglossary_helptip( _MD_IMGLOSSARY_REFERENCEDSC ), 'ref', $ref, 5, 50 ), false );
 $sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_URL . imglossary_helptip( _MD_IMGLOSSARY_URLDSC ), 'url', 50, 80, $url ), false );
 
-// VARIOUS OPTIONS
-	$options_tray = new icms_form_elements_Tray( _MD_IMGLOSSARY_OPTIONS, '<br />' );
-
-	$html_checkbox = new icms_form_elements_Checkbox( '', 'html', $html );
-	$html_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOHTML );
-	$options_tray -> addElement( $html_checkbox );
-
-	$smiley_checkbox = new icms_form_elements_Checkbox( '', 'smiley', $smiley );
-	$smiley_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOSMILEY );
-	$options_tray -> addElement( $smiley_checkbox );
-
-	$xcodes_checkbox = new icms_form_elements_Checkbox( '', 'xcodes', $xcodes );
-	$xcodes_checkbox -> addOption( 1, _MD_IMGLOSSARY_DOXCODE );
-	$options_tray -> addElement( $xcodes_checkbox );
-
-	$breaks_checkbox = new icms_form_elements_Checkbox( '', 'breaks', $breaks );
-	$breaks_checkbox -> addOption( 1, _MD_IMGLOSSARY_BREAKS );
-	$options_tray -> addElement( $breaks_checkbox );
-
-	$sform -> addElement( $options_tray );
-
 if ( is_object( icms::$user ) ) {
 	$uid = icms::$user -> getVar( 'uid' );
 	$sform -> addElement( new icms_form_elements_Hidden( 'uid', $uid ) );

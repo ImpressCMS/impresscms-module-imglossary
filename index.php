@@ -134,7 +134,7 @@ switch ( $op ) {
 			$entrynumber = 0;
 		}
 
-		$resultZ = icms::$xoopsDB -> query( 'SELECT categoryID, entryID, term, definition, html, smiley, xcodes, breaks, comments FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1' );
+		$resultZ = icms::$xoopsDB -> query( 'SELECT categoryID, entryID, term, definition, comments FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1' );
 
 		$zerotest = icms::$xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
@@ -146,11 +146,8 @@ switch ( $op ) {
 				$random['comments'] = '<a href="entry.php?entryID=' . $myrow['entryID'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $myrow['comments'] . ')" title="' . _COMMENTS .' (' . $myrow['comments'] . ')" /></a>';
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
-					if ( $myrow['breaks'] ) {
-						$random['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $myrow['definition'], 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-					} else {
-						$random['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $myrow['definition'], 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-					}
+					$definition = icms_core_DataFilter::icms_substr( $myrow['definition'], 0, icms::$module -> config['rndlength']-1, '...' );
+					$random['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 				}
 
 				if ( icms::$module -> config['multicats'] == 1 ) {

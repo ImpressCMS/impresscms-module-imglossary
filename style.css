@@ -175,7 +175,7 @@ h4.term, h5.term {
 }
 
 p {
-	padding: 0;
+	padding-bottom: 0;
 	line-height: 130%;
 	margin: 0;
 }

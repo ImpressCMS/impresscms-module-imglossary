@@ -80,7 +80,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	$totalentries = icms::$xoopsDB -> getRowsNum( $allentries );
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 
-	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request, $comments, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
+	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
 		$eachentry = array();
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
@@ -98,11 +98,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
-			if ( $breaks ) {
-				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-			} else {
-				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-			}
+			$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
 		}
 
 		// Functional links
@@ -154,7 +150,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 
-	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub, $request, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
+	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
 		$eachentry = array();
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
@@ -175,11 +171,7 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {
 					$definition = imglossary_linkterms( $definition, $term, $eachentry['term'] );
 			}
-			if ( $breaks ) {
-				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'text', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-			} else {
-				$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
-			}
+			$eachentry['definition'] = icms_core_DataFilter::icms_substr( icms_core_DataFilter::checkVar( $definition, 'html', 'output' ), 0, icms::$module -> config['rndlength']-1, '...' );
 		}
 
 		// Functional links

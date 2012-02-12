@@ -120,10 +120,10 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS ) {
 		$entriesarray = array();
 
 		// Now we retrieve a specific number of entries according to start variable	
-		$queryB = "SELECT entryID, term, definition, html, smiley, xcodes, breaks, comments FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
+		$queryB = "SELECT entryID, term, definition, comments FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE categoryID=$categoryID AND submit=0 AND offline=0 ORDER BY term ASC";
 		$resultB = icms::$xoopsDB -> query( $queryB, icms::$module -> config['indexperpage'], $start );
 
-		while ( list( $entryID, $term, $definition, $html, $smiley, $xcodes, $breaks, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
+		while ( list( $entryID, $term, $definition, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
 			$eachentry = array();
 			$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
 			$eachentry['id'] = $entryID;
@@ -134,11 +134,7 @@ if ( !$categoryID == _MD_IMGLOSSARY_ALLCATS ) {
 					$html = 1;
 				}
 				$deftemp = icms_core_DataFilter::icms_substr( $definition, 0, icms::$module -> config['rndlength']-1, '...' );
-				if ( $breaks ) {
-					$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'text', 'output' );
-				} else {
-					$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'html', 'output' );
-				}
+				$deftemp = icms_core_DataFilter::checkVar( $deftemp, 'html', 'output' );
 				$eachentry['definition'] = $deftemp;
 			}
 

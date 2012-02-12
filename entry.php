@@ -74,16 +74,16 @@ if ( icms::$module -> config['multicats'] == 1 ) {
 }
 
 if ( !$entryID ) {
-	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC', 1, 0 );
+	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC', 1, 0 );
 } else {
 	if ( !icms::$user || ( icms::$user -> isAdmin( icms::$module -> getVar('mid') ) && icms::$module -> config['adminhits'] == 1 ) || ( icms::$user && !icms::$user -> isAdmin( icms::$module -> getVar('mid') ) ) ) {
 		icms::$xoopsDB -> queryF( 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET counter=counter+1 WHERE entryID=' . $entryID );
 	}
 
-	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
+	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
 	}
 
-while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $html, $smiley, $xcodes, $breaks, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
+while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
 	$thisterm = array();
 	$thisterm['id'] = intval( $entryID );
 
@@ -105,13 +105,10 @@ while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid
 
 	if ( icms::$module -> config['linkterms'] == 1 ) {
 		$definition = imglossary_linkterms( $definition, $glossaryterm );
-		$html = 1;
 	}
-	if ( $breaks ) {
-		$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'text', 'output' );
-	} else {
-		$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
-	}
+
+	$thisterm['definition'] = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
+
 	$thisterm['ref'] = icms_core_DataFilter::htmlSpecialchars( $ref );
 	$thisterm['url'] = icms_core_DataFilter::makeClickable( $url, $allowimage = 0 );
 	$thisterm['submitter'] = icms_member_user_Handler::getUserLink( $uid );

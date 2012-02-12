@@ -43,11 +43,9 @@ $title = icms_core_DataFilter::htmlSpecialchars( $myrow['term'] );
 $submitter = strip_tags( icms_member_user_Handler::getUserLink( $myrow['uid'] ) );
 $category = $mycat['name'];
 $whowhen = sprintf( '', $submitter, $date );
-if ( $myrow['breaks'] == 1 ) {
-	$definition = strip_p_tag( icms_core_DataFilter::checkVar( $myrow['definition'], 'text', 'output' ) );
-} else {
-	$definition = icms_core_DataFilter::checkVar( $myrow['definition'], 'html', 'output' );	
-}
+
+$definition = icms_core_DataFilter::checkVar( $myrow['definition'], 'html', 'output' );
+
 $content = '<h2>' . $title . '</h2><br /><br />' . $definition;
 
 $slogan = $icmsConfig['sitename'] . ' - ' . $icmsConfig['slogan'];
@@ -98,7 +96,7 @@ $pdf -> setImageScale( PDF_IMAGE_SCALE_RATIO ); //set image scale factor
 $pdf -> setHeaderFont( array( PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN ) );
 $pdf -> setFooterFont( array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
 
-$pdf -> setLanguageArray( $l ); //set language items
+//$pdf -> setLanguageArray( $l ); //set language items
 
 // set font
 $pdf -> SetFont( 'helvetica', '', 10 );

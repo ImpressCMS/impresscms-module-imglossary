@@ -97,10 +97,6 @@ switch ( $op ) {
 			}
 		}
 
-		$block = isset( $block ) ? intval( $block ) : 1;
-		$smiley = isset( $smiley ) ? intval( $smiley ) : 1;
-		$xcodes = isset( $xcodes ) ? intval( $xcodes ) : 1;
-		$breaks = isset( $breaks ) ? intval( $breaks ) : 1;
 		$notifypub = isset( $notifypub ) ? intval( $notifypub ) : 1;
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
@@ -129,7 +125,7 @@ switch ( $op ) {
 			$offline = 0;
 		} 
 
-		$result = icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, html, smiley, xcodes, breaks, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$html', '$smiley', '$xcodes', '$breaks', '$offline', '$notifypub')" );
+		$result = icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$offline', '$notifypub')" );
 		$entryID = icms::$xoopsDB -> getInsertId();
 
 		if ( $result ) {
@@ -187,10 +183,6 @@ switch ( $op ) {
 		}
 
 		$block = 1;
-		$html = 1;
-		$smiley = 1;
-		$xcodes = 1;
-		$breaks = 1;
 		$categoryID = 0;
 		$notifypub = 0;
 		$term = $termino;
