@@ -8,6 +8,8 @@ Added:
 - IPF classes and tables to admin index page
 - CSS styling to the letters (top)
 - Tooltips to forms
+- Multilanguage support TCPDF
+- Improved print output layout
 
 Removed:
 - Support for Koivi editor
