@@ -54,7 +54,7 @@ if ( file_exists( $filename ) ) {
 	include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/language/english/main.php';
 }
 
-$filename = ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/language/' . $icmsConfig['language'] . '/tcpdf.php';
+$filename = ICMS_ROOT_PATH . '/language/' . $icmsConfig['language'] . '/pdf.php';
 if ( file_exists( $filename ) ) {
 	include_once $filename;
 } else {
