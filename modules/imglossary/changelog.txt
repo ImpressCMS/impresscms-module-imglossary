@@ -8,7 +8,7 @@ Added:
 - IPF classes and tables to admin index page
 - CSS styling to the letters (top)
 - Tooltips to forms
-- Multilanguage support TCPDF
+- Fixed PDF output
 - Improved print output layout
 
 Removed:
