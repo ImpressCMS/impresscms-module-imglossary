@@ -320,6 +320,9 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
+
+		$objectTable -> addQuickSearch( array( 'term' ), _AM_IMGLOSSARY_TERM_SEARCH ); // Search term
+
 		$icmsAdminTpl -> assign( 'imglossary_entries_table', $objectTable -> fetch() );
 
 

@@ -156,4 +156,5 @@ define("_AM_IMGLOSSARY_TERM_OFFLINE", "Term is now offline.");
 define("_AM_IMGLOSSARY_TERM_ONLINE", "Term is now online.");
 define("_AM_IMGLOSSARY_TERM_ISOFF", "Term is offline");
 define("_AM_IMGLOSSARY_TERM_ISON", "Term is online");
+define("_AM_IMGLOSSARY_TERM_SEARCH", "Search term");
 ?>
