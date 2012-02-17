@@ -101,7 +101,11 @@ function imglossary_alphaArray() {
 		$letterlinks['total'] = $howmany;
 		$letterlinks['id'] = chr( $a );
 		$letterlinks['linktext'] = chr( $a );
-		$letterlinks['title'] = ' ' . mb_strtolower( _MD_IMGLOSSARY_TERMS, _CHARSET );
+		if ( !XOOPS_USE_MULTIBYTES ) {
+			$letterlinks['title'] = ' ' . strtolower( _MD_IMGLOSSARY_TERMS );
+		} else {
+			$letterlinks['title'] = ' ' . mb_strtolower( _MD_IMGLOSSARY_TERMS, _CHARSET );
+		}
 		$alpha['initial'][] = $letterlinks;
 	}
 	return $alpha;
