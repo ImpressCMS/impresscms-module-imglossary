@@ -101,7 +101,7 @@ function imglossary_alphaArray() {
 		$letterlinks['total'] = $howmany;
 		$letterlinks['id'] = chr( $a );
 		$letterlinks['linktext'] = chr( $a );
-		if ( !XOOPS_USE_MULTIBYTES ) {
+		if ( !function_exists( 'mb_strtolower' ) ) {
 			$letterlinks['title'] = ' ' . strtolower( _MD_IMGLOSSARY_TERMS );
 		} else {
 			$letterlinks['title'] = ' ' . mb_strtolower( _MD_IMGLOSSARY_TERMS, _CHARSET );
@@ -113,19 +113,17 @@ function imglossary_alphaArray() {
 
 function imglossary_serviceLinks( $variable ) {
 	global $icmsConfig;
-	// Functional links
 	$srvlinks = '';
 	if ( icms::$user ) {
 		if ( icms::$user -> isAdmin() ) {
-			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
-			$srvlinks .= '<a href="admin/entries.php?op=mod&entryID=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
-			$srvlinks .= '<a href="admin/entries.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="" title="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entries.php?op=mod&entryID=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="" title="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entries.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="" title="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
 		}
 	}
-	$srvlinks .= '<a href="makepdf.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/pdf.png" border="0" alt="' . _MD_IMGLOSSARY_PDFTERM . '" /></a>&nbsp;';
-	$srvlinks .= '<a href="print.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/print.png" border="0" alt="' . _MD_IMGLOSSARY_PRINTTERM . '" /></a>&nbsp;';
-	$srvlinks .= '<a href="mailto:?subject=' . sprintf(_MD_IMGLOSSARY_INTENTRY, $icmsConfig["sitename"]) . '&amp;body=' . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $icmsConfig['sitename']) . ':  ' . ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/email.png" border="0" alt="' . _MD_IMGLOSSARY_SENDTOFRIEND . '" ></a>&nbsp;';
-//	$srvlinks .= "<a href='entry.php?entryID=" . $variable['id'] . "'><img src=\"images/icon/comments.png\" border=\"0\" alt=\"" . _COMMENTS . "\" ></a>&nbsp;";
+	$srvlinks .= '<a href="makepdf.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/pdf.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PDFTERM . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="print.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/print.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PRINTTERM . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="mailto:?subject=' . sprintf(_MD_IMGLOSSARY_INTENTRY, $icmsConfig["sitename"]) . '&amp;body=' . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $icmsConfig['sitename']) . ':  ' . ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/email.png" border="0" alt="" title="' . _MD_IMGLOSSARY_SENDTOFRIEND . '" /></a>&nbsp;';
 	return $srvlinks;
 }
 
