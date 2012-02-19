@@ -6,6 +6,7 @@ imGlossary v1.03
 Added:
 - About page
 - IPF classes and tables to admin index page
+- Quick search option to administration
 - CSS styling to the letters (top)
 - Tooltips to forms
 - Fixed PDF output
@@ -13,9 +14,9 @@ Added:
 
 Removed:
 - Support for Koivi editor
+- Support for DHTML editor(s)
 - Block settings hack
 - Simpy and Spurl from social bookmarks
-- Support for DHTML editor(s)
 
 Files removed:
 - xoops_version.php
@@ -33,8 +34,9 @@ Files removed:
 - include/gtickets.php
 - include/updateblock.inc.php
 - include/onupdate.inc.php
-- sql/index.html
-- sql/imglossary.sql
+- sql folder and content:
+-- sql/index.html
+-- sql/imglossary.sql
 
 
 ===================================
