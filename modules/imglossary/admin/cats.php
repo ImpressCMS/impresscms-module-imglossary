@@ -26,8 +26,11 @@ include 'admin_header.php';
 
 $op = '';
 
-if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
-if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
+if ( !isset( $_POST['op'] ) ) {
+	if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
+} else {
+	if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
+}
 
 function categoryEdit( $categoryID = '' ) {
 	$weight = 0;
