@@ -34,3 +34,4 @@ define( '_CO_IMGLOSSARY_CATS_CATEGORYID', 'ID' );
 define( '_CO_IMGLOSSARY_CATS_NAME', 'Category name' );
 define( '_CO_IMGLOSSARY_CATS_DESCRIPTION', 'Category description' );
 define( '_CO_IMGLOSSARY_CATS_WEIGHT', 'Weight' );
+define( '_CO_IMGLOSSARY_CATS_TOTAL', 'Total entries' );
