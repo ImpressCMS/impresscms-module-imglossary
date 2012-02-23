@@ -48,9 +48,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$username	= ( isset( $_POST['username'] ) ) ? icms_core_DataFilter::stripSlashesGPC( $_POST['username'] ) : '';
 	$reqterm	= ( isset( $_POST['reqterm'] ) ) ? icms_core_DataFilter::addSlashes( $_POST['reqterm'] ) : '';
 	$notifypub	= ( isset($_POST['notifypub'] ) ) ? intval( $_POST['notifypub'] ) : 1;
-	$html		= ( isset( $_POST['html'] ) ) ? intval( $_POST['html'] ) : 1;
-	$smiley		= ( isset( $_POST['smiley'] ) ) ? intval( $_POST['smiley'] ) : 1;
-	$xcodes		= ( isset( $_POST['xcodes'] ) ) ? intval( $_POST['xcodes'] ) : 1;
+
 	if ( icms::$user ) {
 		$user = icms::$user -> getVar( 'uid' );
 	} else {
@@ -64,7 +62,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$url = '';
 	$init = substr( $reqterm, 0, 1 );
 
-	icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, init, ref, url, uid, submit, datesub, html, smiley, xcodes, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$html', '$smiley', '$xcodes', '$offline', '$notifypub', '$request' )" );
+	icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, init, ref, url, uid, submit, datesub, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$offline', '$notifypub', '$request' )" );
 
 	$adminmail = $icmsConfig['adminmail'];
 
