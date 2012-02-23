@@ -51,7 +51,7 @@ function entryEdit( $entryID = 0 ) {
 	$uid = $entry_array['uid'] ? $entry_array['uid'] : icms::$user -> getVar( 'uid' );
 	$submit = $entry_array['submit'] ? $entry_array['submit'] : 0;
 	$datesub = $entry_array['datesub'] ? $entry_array['datesub'] : time();
-	$block = $entry_array['block'] ? $entry_array['block'] : 0;
+	$block = $entry_array['block'] ? $entry_array['block'] : 1;
 	$offline = $entry_array['offline'] ? $entry_array['offline'] : 0;
 	$notifypub = $entry_array['notifypub'] ? $entry_array['notifypub'] : 1;
 	$request = $entry_array['request'] ? $entry_array['request'] : 0;
@@ -316,7 +316,7 @@ switch ( $op ) {
 		// Entries table
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', _GLOBAL_LEFT, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
@@ -329,8 +329,9 @@ switch ( $op ) {
 		// Categories table
 		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', false, false, 'ViewCategoryLink' ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'description', 'center' ) );
+		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'total', 'center' ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
 		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );
 		$icmsAdminTpl -> assign( 'imglossary_cats_table', $objectTable -> fetch() );
