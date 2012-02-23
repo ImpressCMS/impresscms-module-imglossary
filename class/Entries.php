@@ -68,9 +68,9 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		$status = $this -> getVar( 'offline', 'e' );
 		$button = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?entryID=' . $this -> getVar( 'entryID' ) . '&amp;op=changeStatus">';
 		if ( $status == false ) {
-			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/1.png" alt="' . _AM_IMGLOSSARY_TERM_ISON  . '" title="' . _AM_IMGLOSSARY_TERM_ISON . '" /></a>';
+			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/1.png" alt="" title="' . _AM_IMGLOSSARY_TERM_ISON . '" /></a>';
 		} else {
-			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/0.png" alt="' . _AM_IMGLOSSARY_TERM_ISOFF . '" title="' . _AM_IMGLOSSARY_TERM_ISOFF . '" /></a>';
+			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/0.png" alt="" title="' . _AM_IMGLOSSARY_TERM_ISOFF . '" /></a>';
 		}
 		return $button;
 	}
