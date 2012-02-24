@@ -107,11 +107,6 @@ function DefinitionImport( $delete ) {
             $uid         = intval( $row2['uid'] );
             $submit      = intval( $row2['submit'] );
             $datesub     = intval( $row2['datesub'] );
-            $counter     = intval( $row2['counter'] );
-            $html        = intval( $row2['html'] );
-            $smiley      = intval( $row2['smiley'] );
-            $xcodes      = intval( $row2['xcodes'] );
-            $breaks      = intval( $row2['breaks'] );
             $block       = intval( $row2['block'] );
             $offline     = intval( $row2['offline'] );
             $notifypub   = intval( $row2['notifypub'] );
@@ -121,9 +116,9 @@ function DefinitionImport( $delete ) {
 
             // just adding the entries to existing database or setting it up anew ?
             if ( $delete ) {
-                $ret1 = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub, request, comments) VALUES ('$entryID', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$counter', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request', '$comments' )" );
+                $ret1 = icms::$xoopsDB -> queryF( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub, request, comments) VALUES ('$entryID', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$counter', '$block', '$offline', '$notifypub', '$request', '$comments' )" );
             } else {
-                $ret1 = icms::$xoopsDB -> queryF("INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, html, smiley, xcodes, breaks, block, offline, notifypub, request, comments) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$counter', '$html', '$smiley', '$xcodes', '$breaks', '$block', '$offline', '$notifypub', '$request', '$comments')" );
+                $ret1 = icms::$xoopsDB -> queryF("INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub, request, comments) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$counter', '$block', '$offline', '$notifypub', '$request', '$comments')" );
             }
             if ( !$ret1 ) {
                 $errorcounter = $errorcounter + 1;
