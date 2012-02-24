@@ -336,7 +336,7 @@ switch ( $op ) {
 
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT, false, 'getDescriptionTeaser' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'total', 'center' ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
 		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );
