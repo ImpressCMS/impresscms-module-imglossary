@@ -89,7 +89,7 @@ $pdf -> setFooterFont( array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
 
 $pdf -> setLanguageArray( $l ); //set language items
 
-// set font
+// Set font
 $pdf -> SetFont( 'helvetica', '', 10 );
 
 //initialize document
