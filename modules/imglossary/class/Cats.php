@@ -44,6 +44,12 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 		return $control -> render();
 	}
 
+	public function getDescriptionTeaser() {
+		$ret = $this -> getVar( 'description', 's' );
+		$ret = icms_core_DataFilter::icms_substr( icms_cleanTags( $ret, array() ), 0, 128 );
+		return $ret;
+	}
+
 	function ViewCategoryLink() {
 		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/category.php?categoryID=' . $this -> getVar( 'categoryID', 'e' ) . '">' . $this -> getVar( 'name' ) . '</a>';
 		return $ret;
