@@ -315,6 +315,9 @@ switch ( $op ) {
 
 		// Entries table
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
+
+		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 20px;">' . _AM_IMGLOSSARY_SHOWENTRIES . '</p>');
+
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', _GLOBAL_LEFT, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
@@ -328,6 +331,9 @@ switch ( $op ) {
 
 		// Categories table
 		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
+
+		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWCATS . '</p>');
+
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT ) );
@@ -343,6 +349,9 @@ switch ( $op ) {
 		$criteria -> add( new icms_db_criteria_Item( 'request', 0 ) );
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler, $criteria );
+
+		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWSUBMISSIONS . '</p>');
+
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
@@ -356,6 +365,9 @@ switch ( $op ) {
 		$criteria -> add( new icms_db_criteria_Item( 'request', 1 ) );
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler, $criteria );
+
+		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWREQUESTS . '</p>');
+
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
@@ -368,6 +380,9 @@ switch ( $op ) {
 		$criteria -> add( new icms_db_criteria_Item( 'offline', 1 ) );
 
 		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler, $criteria );
+
+		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWOFFLINE . '</p>');
+
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
