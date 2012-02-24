@@ -6,24 +6,24 @@
 *
 * File: include/requestform.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
 
 echo '<div>';
-echo '<div style="float: '._GLOBAL_LEFT.'; font-size: smaller;"><a href="' . ICMS_URL . '">' . _MD_IMGLOSSARY_HOME . '</a> >	<a href="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/index.php">' . icms::$module -> getVar( 'name' ) . '</a> > ' . _MD_IMGLOSSARY_SUBMITART . '</div>';
+echo '<div style="float: '._GLOBAL_LEFT.'; font-size: smaller;"><a href="' . ICMS_URL . '">' . _MD_IMGLOSSARY_HOME . '</a> ><a href="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/index.php">' . icms::$module -> getVar( 'name' ) . '</a> > ' . _MD_IMGLOSSARY_SUBMITART . '</div>';
 echo '<div style="font-size: 18px; text-align: '._GLOBAL_RIGHT.'; font-weight: bold; color: #F3AC03; letter-spacing: -1.5px; margin: 0; line-height: 18px;">' . icms::$module -> getVar( 'name' ) . '</div>';
 echo '</div><hr>';
 
@@ -54,12 +54,12 @@ $rform -> addElement( $reqterm_text, true );
 //	$notify_checkbox = new XoopsFormCheckBox( '', 'notifypub', $notifypub );
 //	$notify_checkbox -> addOption( 0, _MD_IMGLOSSARY_NOTIFY );
 //	$rform -> addElement( $notify_checkbox );
-//} 
+//}
 
 if ( icms::$module -> config['captcha'] ) {
 	// Captcha Hack
 	$rform -> addElement( new icms_form_elements_captcha( _SECURITYIMAGE_GETCODE, 'scode' ), true );
-	// Captcha Hack 
+	// Captcha Hack
 }
 
 $submit_button = new icms_form_elements_Button( '', 'submit', _MD_IMGLOSSARY_SUBMIT, 'submit' );
