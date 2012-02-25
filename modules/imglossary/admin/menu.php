@@ -22,8 +22,6 @@
 * @version		$Id$
 */
 
-include_once ICMS_ROOT_PATH . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/include/functions.php';
-
 $adminmenu[0]['title'] = _MI_IMGLOSSARY_ADMENU1;
 $adminmenu[0]['link']  = 'admin/index.php';
 $adminmenu[0]['icon']  = 'images/icon/main.png'; // 32x32 px for options bar (tabs) 
@@ -35,30 +33,10 @@ $adminmenu[1]['icon']  = 'images/icon/entry.png';
 $adminmenu[1]['small'] = 'images/icon/entry_small.png';
 
 // Display tab 'Add category' if set in Preferences
-//if ( icms::$module -> config['multicats'] ) {
-	$adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
-	$adminmenu[2]['link']  = 'admin/cats.php';
-	$adminmenu[2]['icon']  = 'images/icon/folder.png';
-	$adminmenu[2]['small'] = 'images/icon/folder_small.png';
-//}
-
-if ( imglossary_dictionary_module_included() ) {
-	$adminmenu[3]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Dictionary';
-	$adminmenu[3]['link']  = 'admin/importdictionary.php';
-	$adminmenu[3]['icon']  = 'images/icon/dictionary.png';
-}
-
-if ( imglossary_wordbook_module_included() ) {
-	$adminmenu[4]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wordbook';
-	$adminmenu[4]['link']  = 'admin/importwordbook.php';
-	$adminmenu[4]['icon']  = 'images/icon/wordbook.png';
-}
-
-if ( imglossary_wiwimod_module_included() ) {
-	$adminmenu[5]['title'] = _MI_IMGLOSSARY_ADMENU6 . ' Wiwimod';
-	$adminmenu[5]['link']  = 'admin/importwiwimod.php';
-	$adminmenu[5]['icon']  = 'images/icon/wiwimod.png';
-}
+$adminmenu[2]['title'] = _MI_IMGLOSSARY_ADMENU2;
+$adminmenu[2]['link']  = 'admin/cats.php';
+$adminmenu[2]['icon']  = 'images/icon/folder.png';
+$adminmenu[2]['small'] = 'images/icon/folder_small.png';
 
 if ( isset( icms::$module ) ) {
 
