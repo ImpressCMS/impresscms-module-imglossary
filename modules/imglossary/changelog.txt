@@ -9,8 +9,10 @@ Added:
 - Quick search option to administration
 - CSS styling to the letters (top)
 - Tooltips to forms
-- Fixed PDF output
-- Improved print output layout
+
+Fixed:
+- PDF output
+- Print output layout
 
 Removed:
 - Support for Koivi editor
