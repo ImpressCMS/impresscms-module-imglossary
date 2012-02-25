@@ -29,8 +29,8 @@ include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' )
 
 global $xoTheme; 
 
-$entryID = isset($_GET['entryID']) ? intval($_GET['entryID']) : 0;
-$entryID = intval( $entryID );
+$entryid = isset($_GET['entryid']) ? intval($_GET['entryid']) : 0;
+$entryid = intval( $entryid );
 
 $xoopsOption['template_main'] = 'imglossary_entry.html';
 include ICMS_ROOT_PATH . '/header.php';
@@ -61,7 +61,7 @@ $xoopsTpl -> assign( 'totalother', $howmanyother );
 if ( icms::$module -> config['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' ORDER BY name ASC' );
+	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryid, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' ORDER BY name ASC' );
 	while ( list( $catID, $name, $total ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$imglossModule = icms::$module -> getVar( 'dirname' );
@@ -73,23 +73,23 @@ if ( icms::$module -> config['multicats'] == 1 ) {
 	$xoopsTpl -> assign( 'block0', $block0 );
 }
 
-if ( !$entryID ) {
-	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC', 1, 0 );
+if ( !$entryid ) {
+	$result = icms::$xoopsDB -> query( 'SELECT entryid, categoryid, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND (submit=0) ORDER BY datesub DESC', 1, 0 );
 } else {
 	if ( !icms::$user || ( icms::$user -> isAdmin( icms::$module -> getVar('mid') ) && icms::$module -> config['adminhits'] == 1 ) || ( icms::$user && !icms::$user -> isAdmin( icms::$module -> getVar('mid') ) ) ) {
-		icms::$xoopsDB -> queryF( 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET counter=counter+1 WHERE entryID=' . $entryID );
+		icms::$xoopsDB -> queryF( 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET counter=counter+1 WHERE entryid=' . $entryid );
 	}
 
-	$result = icms::$xoopsDB -> query( 'SELECT entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
+	$result = icms::$xoopsDB -> query( 'SELECT entryid, categoryid, term, init, definition, ref, url, uid, submit, datesub, counter, block, offline, notifypub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryid=' . $entryid );
 	}
 
-while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
+while ( list( $entryid, $categoryid, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchRow( $result ) ) {
 	$thisterm = array();
-	$thisterm['id'] = intval( $entryID );
+	$thisterm['id'] = intval( $entryid );
 
 	if ( icms::$module -> config['multicats'] == 1 ) {
-		$thisterm['categoryID'] = intval( $categoryID );
-		$catname = icms::$xoopsDB -> query ( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
+		$thisterm['categoryid'] = intval( $categoryid );
+		$catname = icms::$xoopsDB -> query ( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryid=' . $categoryid );
 		while ( list( $name ) = icms::$xoopsDB -> fetchRow ( $catname ) ) {
 			$thisterm['catname'] = icms_core_DataFilter::htmlSpecialchars( $name );
 		}
@@ -126,7 +126,7 @@ $microlinks = imglossary_serviceLinks( $thisterm ); // Get icons
 $xoopsTpl -> assign( 'microlinks', $microlinks );
 $xoopsTpl -> assign( 'lang_modulename', icms::$module -> getVar('name') );
 $xoopsTpl -> assign( 'lang_moduledirname', icms::$module -> getVar( 'dirname' ) );
-$xoopsTpl -> assign( 'entryID', $entryID );
+$xoopsTpl -> assign( 'entryid', $entryid );
 $xoopsTpl -> assign( 'icms_pagetitle', $thisterm['term'] );
 
 if ( is_object( $xoTheme ) ) {
@@ -141,7 +141,7 @@ if ( icms::$module -> config['showsubmitter'] ) {
 $xoopsTpl -> assign( 'submitdate', sprintf( _MD_IMGLOSSARY_SUBMITDATE, $thisterm['datesub'] ) );
 $xoopsTpl -> assign( 'counter', sprintf( _MD_IMGLOSSARY_COUNT, $thisterm['counter'] ) );
 $xoopsTpl -> assign( 'showsbookmarks', icms::$module -> config['showsbookmarks'] );
-$xoopsTpl -> assign( 'sbookmarks', imglossary_sbmarks( $entryID, $thisterm['term'] ) );
+$xoopsTpl -> assign( 'sbookmarks', imglossary_sbmarks( $entryid, $thisterm['term'] ) );
 $xoopsTpl -> assign( 'icms_module_header', '<link rel="stylesheet" type="text/css" href="style'.(( defined('_ADM_USE_RTL') && _ADM_USE_RTL )?'_rtl':'').'.css" />' );
 
 //Comments

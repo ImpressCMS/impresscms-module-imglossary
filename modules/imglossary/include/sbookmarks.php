@@ -18,10 +18,10 @@
 * @version		$Id$
 */
 
-function imglossary_sbmarks( $entryID, $term ) { 
+function imglossary_sbmarks( $entryid, $term ) { 
 	$sbmark_arr = array();
 	$sbmark_arr['term'] = $term;
-	$sbmark_arr['link'] = ICMS_URL . '/modules/' . icms::$module -> getvar( 'dirname' ) . '/entry.php?entryID=' . intval( $entryID );
+	$sbmark_arr['link'] = ICMS_URL . '/modules/' . icms::$module -> getvar( 'dirname' ) . '/entry.php?entryid=' . intval( $entryid );
 
 //Definitions for social bookmarks
 

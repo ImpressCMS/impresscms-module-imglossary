@@ -39,7 +39,7 @@ if ( icms::$module -> config['rssfeed'] ) {
 	while ( $myrow = icms::$xoopsDB -> fetchArray( $sql ) ) {
 
 		// First get the main category name of the term
-		$sql2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix('imglossary_cats') . ' WHERE categoryID=' . $myrow['categoryID'] );
+		$sql2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix('imglossary_cats') . ' WHERE categoryid=' . $myrow['categoryid'] );
 		$mycat = icms::$xoopsDB -> fetchArray( $sql2 );
 		$category = htmlspecialchars( $mycat['name'] );
 
@@ -47,7 +47,7 @@ if ( icms::$module -> config['rssfeed'] ) {
 		$date  = formatTimestamp( $myrow['datesub'], 'r' );
 		$text  = icms_core_DataFilter::icms_substr( $myrow['definition'], 0, icms::$module -> config['rndlength'], '...' );
 		$text  = htmlspecialchars( $text );
-		$link  = ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/entry.php?entryID=' . $myrow['entryID'];
+		$link  = ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/entry.php?entryid=' . $myrow['entryid'];
 
 		// Get author of 
 		$member_handler = icms::handler( 'icms_member' );

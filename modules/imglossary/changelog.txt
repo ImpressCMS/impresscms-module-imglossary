@@ -1,4 +1,16 @@
 ===================================
+imGlossary v1.04
+===================================
+Files removed:
+- admin/importdictionary.php
+- admin/importwiwimod.php
+- admin/importwordbook.php
+- images/dictionary.png
+- images/wiwimod.png
+- images/wordbook.png
+
+
+===================================
 imGlossary v1.03
 ===================================
 - Upgraded for ImpressionCMS 1.3

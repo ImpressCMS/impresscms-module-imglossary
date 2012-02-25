@@ -33,17 +33,17 @@ $imglossary_entries_handler = icms_getModuleHandler( 'entries', basename( dirnam
 $imglossary_cats_handler = icms_getModuleHandler( 'cats', basename( dirname( dirname( __FILE__ ) ) ), 'imglossary' );
 
 // -- Edit function -- //
-function entryEdit( $entryID = 0 ) {
+function entryEdit( $entryid = 0 ) {
 	global $icmsConfig, $imglmyts; 
 
-	$sql = 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID;
+	$sql = 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryid=' . $entryid;
 	if ( !$result = icms::$xoopsDB -> query( $sql ) ) {
 		icms::$logger -> handleError( E_USER_WARNING, $sql, __FILE__, __LINE__ );
 		return false;
 	}
 	$entry_array = icms::$xoopsDB -> fetchArray( icms::$xoopsDB -> query( $sql ) );
 
-	$categoryID = $entry_array['categoryID'] ? $entry_array['categoryID'] : 0;
+	$categoryid = $entry_array['categoryid'] ? $entry_array['categoryid'] : 0;
 	$term = $entry_array['term'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['term'] ) : '';
 	$definition = $entry_array['definition'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['definition'] ) : '';
 	$ref = $entry_array['ref'] ? $imglmyts -> htmlSpecialCharsStrip( $entry_array['ref'] ) : '';
@@ -75,10 +75,10 @@ function entryEdit( $entryID = 0 ) {
 
 	// Category selector
 	if ( icms::$module -> config['multicats'] == 1 ) {
-		$mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID' , '0' );
+		$mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryid' , '0' );
 		ob_start();
-			//$sform -> addElement( new icms_form_elements_Hidden( 'categoryID', $categoryID ) );
-			$mytree -> makeMySelBox( 'name', 'name', $categoryID, 0 );
+			//$sform -> addElement( new icms_form_elements_Hidden( 'categoryid', $categoryid ) );
+			$mytree -> makeMySelBox( 'name', 'name', $categoryid, 0 );
 			$sform -> addElement( new icms_form_elements_Label( _AM_IMGLOSSARY_CATNAME, ob_get_contents() ) );
 		ob_end_clean();
 	}
@@ -106,14 +106,14 @@ function entryEdit( $entryID = 0 ) {
 	$block_radio = new icms_form_elements_Radioyn( _AM_IMGLOSSARY_BLOCK, 'block', $block, ' ' . _YES . '', ' ' . _NO . '' );
 	$sform -> addElement( $block_radio );
 
-	$sform -> addElement( new icms_form_elements_Hidden( 'entryID', $entryID ) );
+	$sform -> addElement( new icms_form_elements_Hidden( 'entryid', $entryid ) );
 
 	$button_tray = new icms_form_elements_Tray( '', '' );
 	$hidden = new icms_form_elements_Hidden( 'op', 'addentry' );
 	$button_tray -> addElement( $hidden );
 
-	if ( !$entryID ) {
-		// there's no entryID? Then it's a new entry
+	if ( !$entryid ) {
+		// there's no entryid? Then it's a new entry
 		$butt_create = new icms_form_elements_Button( '', '', _AM_IMGLOSSARY_CREATE, 'submit' );
 		$butt_create -> setExtra( 'onclick="this.form.elements.op.value=\'addentry\'"' );
 		$button_tray -> addElement( $butt_create );
@@ -148,15 +148,15 @@ function entryDefault() {
 	entryEdit();
 }
 
-function entrySave( $entryID = '' ) {
+function entrySave( $entryid = '' ) {
 
 	global $icmsConfig, $imglmyts;
 
-	$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
+	$entryid = isset( $_POST['entryid'] ) ? intval( $_POST['entryid'] ) : intval( $_GET['entryid'] );
 	if ( icms::$module -> config['multicats'] == 1 ) {
-		$categoryID = isset( $_POST['categoryID'] ) ? intval( $_POST['categoryID'] ) : intval( $_GET['categoryID'] );
+		$categoryid = isset( $_POST['categoryid'] ) ? intval( $_POST['categoryid'] ) : intval( $_GET['categoryid'] );
 	} else { 
-		$categoryID = '';
+		$categoryid = '';
 	}
 	$definition = icms_core_DataFilter::addSlashes( trim( $_POST['definition'] ) );
 	$ref = isset( $_POST['ref'] ) ? icms_core_DataFilter::addSlashes( $_POST['ref'] ) : '';
@@ -184,17 +184,17 @@ function entrySave( $entryID = '' ) {
 	$request = 0;
 
 // Save to database
-	if ( !$entryID ) {
-		if ( icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, block, offline, notifypub, request ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$block', '$offline', '$notifypub', '$request' )" ) ) {
+	if ( !$entryid ) {
+		if ( icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryid, categoryid, term, init, definition, ref, url, uid, submit, datesub, block, offline, notifypub, request ) VALUES ('', '$categoryid', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$date', '$block', '$offline', '$notifypub', '$request' )" ) ) {
 			imglossary_calculateTotals();
 			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYCREATEDOK );
 		} else {
 			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYNOTCREATED );
 		}
 	} else { 
-		// That is, $entryID exists, thus we're editing an entry
+		// That is, $entryid exists, thus we're editing an entry
 		
-		if ( icms::$xoopsDB -> query( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryID='$categoryID', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryID='$entryID'" ) ) {
+		if ( icms::$xoopsDB -> query( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " SET term='$term', categoryid='$categoryid', init='$init', definition='$definition', ref='$ref', url='$url', uid='$uid', submit='$submit', block='$block', offline='$offline', notifypub='$notifypub', request='$request' WHERE entryid='$entryid'" ) ) {
 			imglossary_calculateTotals();
 			redirect_header( 'index.php', 1, _AM_IMGLOSSARY_ENTRYMODIFIED );
 		} else {
@@ -203,22 +203,22 @@ function entrySave( $entryID = '' ) {
 	}
 }
 
-function entryDelete( $entryID = '' ) {
-	$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
+function entryDelete( $entryid = '' ) {
+	$entryid = isset( $_POST['entryid'] ) ? intval( $_POST['entryid'] ) : intval( $_GET['entryid'] );
 	$ok = isset( $_POST['ok'] ) ? intval( $_POST['ok'] ) : 0;
-	$result = icms::$xoopsDB -> query( "SELECT entryID, term FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
-	list( $entryID, $term ) = icms::$xoopsDB -> fetchrow( $result );
+	$result = icms::$xoopsDB -> query( "SELECT entryid, term FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryid=$entryid" );
+	list( $entryid, $term ) = icms::$xoopsDB -> fetchrow( $result );
 
 	// confirmed, so delete 
 	if ( $ok == 1 ) {
-		$result = icms::$xoopsDB -> query( "DELETE FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=$entryID" );
+		$result = icms::$xoopsDB -> query( "DELETE FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryid=$entryid" );
 		// delete comments (mondarse)
-		xoops_comment_delete( icms::$module -> getVar('mid'), $entryID );
+		xoops_comment_delete( icms::$module -> getVar('mid'), $entryid );
 		// delete comments (mondarse)
 		redirect_header( 'index.php', 1, sprintf( _AM_IMGLOSSARY_ENTRYISDELETED, $term ) );
 	} else {
 		icms_cp_header();
-		icms_core_Message::confirm( array( 'op' => 'del', 'entryID' => $entryID, 'ok' => 1, 'term' => $term ), 'entries.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );
+		icms_core_Message::confirm( array( 'op' => 'del', 'entryid' => $entryid, 'ok' => 1, 'term' => $term ), 'entries.php', _AM_IMGLOSSARY_DELETETHISENTRY . "<br /><br />" . $term, _AM_IMGLOSSARY_DELETE );
 		icms_cp_footer();
 	}
 	exit();
@@ -229,8 +229,8 @@ function entryDelete( $entryID = '' ) {
 switch ( $op ) {
 	case 'mod':
 		icms_cp_header();
-		$entryID = ( isset( $_GET['entryID'] ) ) ? intval( $_GET['entryID'] ) : intval( $_POST['entryID'] );
-		entryEdit( $entryID );
+		$entryid = ( isset( $_GET['entryid'] ) ) ? intval( $_GET['entryid'] ) : intval( $_POST['entryid'] );
+		entryEdit( $entryid );
 		break;
 
 	case 'newentry':
@@ -248,8 +248,8 @@ switch ( $op ) {
 
 	case 'changeStatus':
 		$status = $ret = '';
-		$entryID = isset( $_POST['entryID'] ) ? intval( $_POST['entryID'] ) : intval( $_GET['entryID'] );
-		$status = $imglossary_entries_handler -> changeOnlineStatus( $entryID, 'offline' );
+		$entryid = isset( $_POST['entryid'] ) ? intval( $_POST['entryid'] ) : intval( $_GET['entryid'] );
+		$status = $imglossary_entries_handler -> changeOnlineStatus( $entryid, 'offline' );
 		$ret = '/modules/' . basename( dirname( dirname( __FILE__) ) ) . '/admin/entries.php';
 		if ( $status == 0 ) {
 			redirect_header( ICMS_URL . $ret, 2, _AM_IMGLOSSARY_TERM_ONLINE );
@@ -281,10 +281,10 @@ switch ( $op ) {
 		$startcat = isset( $_GET['startcat'] ) ? intval( $_GET['startcat'] ) : 0;
 		$startsub = isset( $_GET['startsub'] ) ? intval( $_GET['startsub'] ) : 0;
 		$datesub = isset( $_GET['datesub'] ) ? intval( $_GET['datesub'] ) : 0;
-		$entryID = '';
+		$entryid = '';
 
 		icms_cp_header();
-		global $icmsConfig, $entryID;
+		global $icmsConfig, $entryid;
 
 		imglossary_adminMenu( 0, _AM_IMGLOSSARY_INDEX );
 
@@ -318,7 +318,7 @@ switch ( $op ) {
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 20px;">' . _AM_IMGLOSSARY_SHOWENTRIES . '</p>');
 
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryid', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', _GLOBAL_LEFT, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
@@ -334,7 +334,7 @@ switch ( $op ) {
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWCATS . '</p>');
 
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryID', 'center', 50 ) );
+		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryid', 'center', 50 ) );
 		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT, false, 'getDescriptionTeaser' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'total', 'center' ) );
@@ -352,7 +352,7 @@ switch ( $op ) {
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWSUBMISSIONS . '</p>');
 
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryid', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term', false, false, 'ViewEntryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
@@ -368,7 +368,7 @@ switch ( $op ) {
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWREQUESTS . '</p>');
 
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryid', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
@@ -383,7 +383,7 @@ switch ( $op ) {
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWOFFLINE . '</p>');
 
-		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryID', 'center', 50 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'entryid', 'center', 50 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'term' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'uid', 'center' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );

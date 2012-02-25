@@ -79,7 +79,7 @@ switch ( $op ) {
 		if ( icms::$module -> config['multicats'] == 1 ) {
 			// To display the list of categories
 			$block0 = array();
-			$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' ORDER BY ' . icms::$module -> config['sortcats'] . ' ASC' );
+			$resultcat = icms::$xoopsDB -> query( 'SELECT categoryid, name, total FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' ORDER BY ' . icms::$module -> config['sortcats'] . ' ASC' );
 			while ( list( $catID, $name, $total ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 				$catlinks = array();
 				$catlinks['id'] = $catID;
@@ -92,15 +92,15 @@ switch ( $op ) {
 
 		// To display the recent entries block
 		$block1 = array();
-		$result05 = icms::$xoopsDB -> query( 'SELECT entryID, term, datesub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC', icms::$module -> config['indexperpage'], 0 );
+		$result05 = icms::$xoopsDB -> query( 'SELECT entryid, term, datesub FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY datesub DESC', icms::$module -> config['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
-			while ( list( $entryID, $term, $datesub ) = icms::$xoopsDB -> fetchRow( $result05 ) ) {
+			while ( list( $entryid, $term, $datesub ) = icms::$xoopsDB -> fetchRow( $result05 ) ) {
 				$newentries = array();
 				$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 				$newentries['linktext'] = $linktext;
-				$newentries['id'] = $entryID;
+				$newentries['id'] = $entryid;
 				$newentries['date'] = formatTimestamp( $datesub, 's' );
 				$block1['newstuff'][] = $newentries;
 			} 
@@ -109,15 +109,15 @@ switch ( $op ) {
 
 		// To display the most read entries block
 		$block2 = array();
-		$result06 = icms::$xoopsDB -> query( 'SELECT entryID, term, counter FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC', icms::$module -> config['indexperpage'], 0 );
+		$result06 = icms::$xoopsDB -> query( 'SELECT entryid, term, counter FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=0 AND offline=0 AND request=0 ORDER BY counter DESC', icms::$module -> config['indexperpage'], 0 );
 
 		// If there are definitions
 		if ( $publishedwords > 0 ) {
-			while ( list( $entryID, $term, $counter ) = icms::$xoopsDB -> fetchRow($result06)) {
+			while ( list( $entryid, $term, $counter ) = icms::$xoopsDB -> fetchRow($result06)) {
 				$popentries = array();
 				$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 				$popentries['linktext'] = $linktext;
-				$popentries['id'] = $entryID;
+				$popentries['id'] = $entryid;
 				$popentries['counter'] = intval( $counter );
 				$block2['popstuff'][] = $popentries;
 			}
@@ -134,16 +134,16 @@ switch ( $op ) {
 			$entrynumber = 0;
 		}
 
-		$resultZ = icms::$xoopsDB -> query( 'SELECT categoryID, entryID, term, definition, comments FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1' );
+		$resultZ = icms::$xoopsDB -> query( 'SELECT categoryid, entryid, term, definition, comments FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 LIMIT ' . $entrynumber . ', 1' );
 
 		$zerotest = icms::$xoopsDB -> getRowsNum( $resultZ );
 		if ( $zerotest != 0 ) {
 			while( $myrow = icms::$xoopsDB -> fetchArray( $resultZ ) ) {
 				$random = array();
-				$random['entryID'] = $myrow['entryID'];
-				$random['id'] = $myrow['entryID'];
+				$random['entryid'] = $myrow['entryid'];
+				$random['id'] = $myrow['entryid'];
 				$random['term'] = $myrow['term'];
-				$random['comments'] = '<a href="entry.php?entryID=' . $myrow['entryID'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $myrow['comments'] . ')" title="' . _COMMENTS .' (' . $myrow['comments'] . ')" /></a>';
+				$random['comments'] = '<a href="entry.php?entryid=' . $myrow['entryid'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $myrow['comments'] . ')" title="' . _COMMENTS .' (' . $myrow['comments'] . ')" /></a>';
 
 				if ( !XOOPS_USE_MULTIBYTES ) {
 					$definition = icms_core_DataFilter::icms_substr( $myrow['definition'], 0, icms::$module -> config['rndlength']-1, '...' );
@@ -151,10 +151,10 @@ switch ( $op ) {
 				}
 
 				if ( icms::$module -> config['multicats'] == 1 ) {
-					$random['categoryID'] = $myrow['categoryID'];
+					$random['categoryid'] = $myrow['categoryid'];
 		
-					$resultY = icms::$xoopsDB -> query( 'SELECT categoryID, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $myrow['categoryID'] );
-					list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $resultY );
+					$resultY = icms::$xoopsDB -> query( 'SELECT categoryid, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryid=' . $myrow['categoryid'] );
+					list( $categoryid, $name ) = icms::$xoopsDB -> fetchRow( $resultY );
 					$random['categoryname'] = $myts -> displayTarea( $name );
 				}
 			}
@@ -167,16 +167,16 @@ switch ( $op ) {
 			$xoopsTpl -> assign( 'userisadmin', 1 );
 
 			$blockS = array();
-			$resultS = icms::$xoopsDB -> query( 'SELECT entryID, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term' );
+			$resultS = icms::$xoopsDB -> query( 'SELECT entryid, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND submit=1 AND offline=1 AND request=0 ORDER BY term' );
 			$totalSwords = icms::$xoopsDB -> getRowsNum( $resultS );
 
 			// If there are definitions
 			if ( $totalSwords > 0 ) {
-				while ( list( $entryID, $term ) = icms::$xoopsDB -> fetchRow( $resultS ) ) {
+				while ( list( $entryid, $term ) = icms::$xoopsDB -> fetchRow( $resultS ) ) {
 					$subentries = array();
 					$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 					$subentries['linktext'] = $linktext;
-					$subentries['id'] = $entryID;
+					$subentries['id'] = $entryid;
 					$blockS['substuff'][] = $subentries;
 				}
 					$xoopsTpl -> assign( 'blockS', $blockS );
@@ -186,16 +186,16 @@ switch ( $op ) {
 				}
 
 				$blockR = array();
-				$resultR = icms::$xoopsDB -> query( 'SELECT entryID, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
+				$resultR = icms::$xoopsDB -> query( 'SELECT entryid, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
 				$totalRwords = icms::$xoopsDB -> getRowsNum( $resultR );
 
 				// If there are definitions
 				if ( $totalRwords > 0 ) {
-					while ( list( $entryID, $term ) = icms::$xoopsDB -> fetchRow( $resultR ) ) {
+					while ( list( $entryid, $term ) = icms::$xoopsDB -> fetchRow( $resultR ) ) {
 						$reqentries = array();
 						$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 						$reqentries['linktext'] = $linktext;
-						$reqentries['id'] = $entryID;
+						$reqentries['id'] = $entryid;
 						$blockR['reqstuff'][] = $reqentries;
 					}
 					$xoopsTpl -> assign( 'blockR', $blockR );
@@ -207,16 +207,16 @@ switch ( $op ) {
 			} else {
 				$xoopsTpl -> assign( 'userisadmin', 0 );
 				$blockR = array();
-				$resultR = icms::$xoopsDB -> query( 'SELECT entryID, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
+				$resultR = icms::$xoopsDB -> query( 'SELECT entryid, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 ORDER BY term' );
 				$totalRwords = icms::$xoopsDB -> getRowsNum ( $resultR );
 
 				// If there are definitions
 				if ( $totalRwords > 0 ) {
-					while ( list( $entryID, $term ) = icms::$xoopsDB -> fetchRow( $resultR ) ) {
+					while ( list( $entryid, $term ) = icms::$xoopsDB -> fetchRow( $resultR ) ) {
 						$reqentries = array();
 						$linktext = icms_core_DataFilter::htmlSpecialchars( $term );
 						$reqentries['linktext'] = $linktext;
-						$reqentries['id'] = $entryID;
+						$reqentries['id'] = $entryid;
 						$blockR['reqstuff'][] = $reqentries;
 					}
 				$xoopsTpl -> assign( 'blockR', $blockR );

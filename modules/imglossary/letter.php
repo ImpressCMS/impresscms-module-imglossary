@@ -57,7 +57,7 @@ $xoopsTpl -> assign( 'totalother', $howmanyother );
 if ( icms::$module -> config['multicats'] == 1 ) {
 	// To display the list of categories
 	$block0 = array();
-	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryID, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats') . ' ORDER BY ' . icms::$module -> config['sortcats'] . ' ASC' );
+	$resultcat = icms::$xoopsDB -> query( 'SELECT categoryid, name, total FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats') . ' ORDER BY ' . icms::$module -> config['sortcats'] . ' ASC' );
 	while ( list( $catID, $name, $total ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
 		$catlinks = array();
 		$catlinks['id'] = $catID;
@@ -73,14 +73,14 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 	$entriesarray = array();
 
 	// How many entries will we show in this page?
-	$queryA = 'SELECT w.*, c.name AS catname FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' w LEFT JOIN ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' c ON w.categoryID=c.categoryID WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC';
+	$queryA = 'SELECT w.*, c.name AS catname FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' w LEFT JOIN ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' c ON w.categoryid=c.categoryid WHERE w.submit=0 AND w.offline=0 ORDER BY w.term ASC';
 	$resultA = icms::$xoopsDB -> query( $queryA, icms::$module -> config['indexperpage'], $start );
 
 	$allentries = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0 ORDER BY term ASC' );
 	$totalentries = icms::$xoopsDB -> getRowsNum( $allentries );
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 
-	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
+	while ( list( $entryid, $categoryid, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
 		$eachentry = array();
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
@@ -89,10 +89,10 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 		}
 
 		$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
-		$eachentry['id'] = intval( $entryID );
+		$eachentry['id'] = intval( $entryid );
 		$eachentry['term'] = icms_core_DataFilter::htmlSpecialchars( $term );
 		$eachentry['init'] = _MD_IMGLOSSARY_ALL;
-		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
+		$eachentry['comments'] = '<a href="entry.php?entryid=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS .' (' . $comments.')" title="' . _COMMENTS .' (' . $comments.')" /></a>';
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {
@@ -150,22 +150,22 @@ if ( $init == _MD_IMGLOSSARY_ALL ) {
 
 	$xoopsTpl -> assign( 'totalentries', $totalentries );
 
-	while ( list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
+	while ( list( $entryid, $categoryid, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub, $request, $comments ) = icms::$xoopsDB -> fetchRow( $resultB ) ) {
 		$eachentry = array();
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
-			$eachentry['catid'] = intval( $categoryID );
-			$resultF = icms::$xoopsDB -> query ( "SELECT name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryID='$categoryID' ORDER BY name ASC" );
+			$eachentry['catid'] = intval( $categoryid );
+			$resultF = icms::$xoopsDB -> query ( "SELECT name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " WHERE categoryid='$categoryid' ORDER BY name ASC" );
 			while ( list( $name) = icms::$xoopsDB -> fetchRow( $resultF ) ) {
 				$eachentry['catname'] = icms_core_DataFilter::htmlSpecialchars( $name );
 			}
 		}
 
 		$eachentry['dir'] = icms::$module -> getVar( 'dirname' );
-		$eachentry['id'] = intval( $entryID );
+		$eachentry['id'] = intval( $entryid );
 		$eachentry['term'] = icms_core_DataFilter::htmlSpecialchars( $term );
 		$eachentry['init'] = $init;
-		$eachentry['comments'] = '<a href="entry.php?entryID=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $comments.')" title="' . _COMMENTS . ' (' . $comments . ')" /></a>';
+		$eachentry['comments'] = '<a href="entry.php?entryid=' . $eachentry['id'] . '"><img src="images/icon/comments.png" border="0" alt="' . _COMMENTS . ' (' . $comments.')" title="' . _COMMENTS . ' (' . $comments . ')" /></a>';
 
 		if ( !XOOPS_USE_MULTIBYTES ) {
 			if ( icms::$module -> config['linkterms'] == 1 ) {

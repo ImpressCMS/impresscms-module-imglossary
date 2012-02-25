@@ -21,13 +21,13 @@ $glossdirname = basename( dirname( __FILE__ ) );
 
 global $icmsConfig;
 
-$entryID = isset( $_GET['entryID'] ) ? intval( $_GET['entryID'] ) : 0;
-$entryID = intval( $entryID );
+$entryid = isset( $_GET['entryid'] ) ? intval( $_GET['entryid'] ) : 0;
+$entryid = intval( $entryid );
 
-$result = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID );
+$result = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryid=' . $entryid );
 $myrow = icms::$xoopsDB -> fetchArray( $result );
 
-$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryID=' . $myrow['categoryID'] );
+$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . ' WHERE categoryid=' . $myrow['categoryid'] );
 $mycat = icms::$xoopsDB -> fetchArray( $result2 );
 
 $date = formatTimestamp( $myrow['datesub'], icms::$module -> config['dateformat'] );

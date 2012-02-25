@@ -32,18 +32,18 @@ foreach ( $_GET as $k => $v ) {
 	${$k} = $v;
 }
 
-if ( empty( $entryID ) ) {
+if ( empty( $entryid ) ) {
 	redirect_header( 'index.php' );
 }
 
-function printPage( $entryID ) {
+function printPage( $entryid ) {
 
 	global $icmsConfig;
 
-	$result1 = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryID=' . $entryID . ' AND submit=0 ORDER BY datesub' );
-	list( $entryID, $categoryID, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
+	$result1 = icms::$xoopsDB -> query( 'SELECT * FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE entryid=' . $entryid . ' AND submit=0 ORDER BY datesub' );
+	list( $entryid, $categoryid, $term, $init, $definition, $ref, $url, $uid, $submit, $datesub, $counter, $block, $offline, $notifypub ) = icms::$xoopsDB -> fetchrow( $result1 );
 
-	$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryID=' . $categoryID );
+	$result2 = icms::$xoopsDB -> query( 'SELECT name FROM ' . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . ' WHERE categoryid=' . $categoryid );
 	list ($name) = icms::$xoopsDB -> fetchRow( $result2 );
 
 	$result3 = icms::$xoopsDB -> query( 'SELECT name, uname FROM ' . icms::$xoopsDB -> prefix( 'users' ) . ' WHERE uid=' . $uid );
@@ -95,5 +95,5 @@ function printPage( $entryID ) {
 		</html>';
 }
 
-printPage( intval( $entryID ) );
+printPage( intval( $entryid ) );
 ?>

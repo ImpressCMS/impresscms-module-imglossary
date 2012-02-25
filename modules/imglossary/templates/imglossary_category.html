@@ -32,10 +32,10 @@
 <fieldset>
 <legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
 <div class="letterssmall">
-<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
+<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$catlinks.id}>"><{$catlinks.linktext}>
 <{if $catlinks.total > 0}> <{/if}>
 </a>[<{$catlinks.total}>] |
-<{/foreach}>  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+<{/foreach}>  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 </div>
 </fieldset>
 </div>
@@ -47,7 +47,7 @@
 
 	<{foreach item=eachcat from=$catsarray.single}>
 	<fieldset>
-		<legend><a href="<{$icms_url}>/modules/<{$eachcat.dir}>/category.php?categoryID=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
+		<legend><a href="<{$icms_url}>/modules/<{$eachcat.dir}>/category.php?categoryid=<{$eachcat.id}>"><{$eachcat.name}></a></legend>
 		<{if $eachcat.description}>
 			<div style="text-align: <{$smarty.const._GLOBAL_LEFT}>; padding: 8px; font-size: small;"><{$eachcat.description}><br /></div>
 		<{/if}>
@@ -71,7 +71,7 @@
 		<div style="text-align: center; padding: 5px;"><{$smarty.const._MD_IMGLOSSARY_WEHAVE}> <{$singlecat.total}> <{$smarty.const._MD_IMGLOSSARY_ENTRIESINCAT}></div>
 
 		<{foreach item=eachentry from=$entriesarray.single}>
-			<h4 class="term"><a href="<{$icms_url}>/modules/<{$eachentry.dir}>/entry.php?entryID=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
+			<h4 class="term"><a href="<{$icms_url}>/modules/<{$eachentry.dir}>/entry.php?entryid=<{$eachentry.id}>"><{$eachentry.term}></a></h4>
 			<div class="definition" style="clear: both;"><{$eachentry.definition}></div>
 			<div style="margin-<{$smarty.const._GLOBAL_LEFT}>: 8px;padding: 5px;"><{$eachentry.microlinks}></div>
 		<{/foreach}>

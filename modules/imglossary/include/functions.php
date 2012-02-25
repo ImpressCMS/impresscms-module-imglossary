@@ -37,13 +37,13 @@ if( !defined( '_GLOBAL_RIGHT') ) {
 // @return
 function imglossary_getLinkedUnameFromId( $userid = 0, $name = 0 ) {
 		if ( !is_numeric( $userid ) ) {
-		 	return $userid;
+			return $userid;
 		}
 		$userid = intval( $userid );
 		if ( $userid > 0 ) {
 			$member_handler = icms::handler( 'icms_member' );
 			$user =& $member_handler -> getUser( $userid );
-			if ( is_object($user) ) {
+			if ( is_object( $user ) ) {
 				$ts =& MyTextSanitizer::getInstance();
 				$username = $user -> getVar( 'uname' );
 				$usernameu = $user -> getVar( 'name' ); 
@@ -62,17 +62,17 @@ function imglossary_getLinkedUnameFromId( $userid = 0, $name = 0 ) {
 }
 
 function imglossary_calculateTotals() {
-	$result01 = icms::$xoopsDB -> query( 'SELECT categoryID, total FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
+	$result01 = icms::$xoopsDB -> query( 'SELECT categoryid, total FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) );
 	list( $totalcategories ) = icms::$xoopsDB -> getRowsNum( $result01 );
-	while ( list ( $categoryID, $total ) = icms::$xoopsDB -> fetchRow( $result01 ) ) {
-		$newcount = imglossary_countByCategory ( $categoryID );
-		icms::$xoopsDB -> queryF( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " SET total='$newcount' WHERE categoryID='$categoryID'" );
+	while ( list ( $categoryid, $total ) = icms::$xoopsDB -> fetchRow( $result01 ) ) {
+		$newcount = imglossary_countByCategory ( $categoryid );
+		icms::$xoopsDB -> queryF( "UPDATE " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " SET total='$newcount' WHERE categoryid='$categoryid'" );
 	}
 }
 
 function imglossary_countByCategory( $c ) {
 	$count = 0;
-	$sql = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 and offline=0 AND categoryID='$c'" );
+	$sql = icms::$xoopsDB -> query( "SELECT * FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 and offline=0 AND categoryid='$c'" );
 	while ( $myrow = icms::$xoopsDB -> fetchArray( $sql ) ) {
 		$count++;
 	}
@@ -117,13 +117,13 @@ function imglossary_serviceLinks( $variable ) {
 	if ( icms::$user ) {
 		if ( icms::$user -> isAdmin() ) {
 			$srvlinks .= '<a href="admin/index.php" ><img src="images/icon/computer.png" border="0" alt="" title="' . _MD_IMGLOSSARY_ADMININDEX . '" /></a>&nbsp;';
-			$srvlinks .= '<a href="admin/entries.php?op=mod&entryID=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="" title="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
-			$srvlinks .= '<a href="admin/entries.php?op=del&entryID=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="" title="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entries.php?op=mod&entryid=' . $variable['id'] . '" ><img src="images/icon/edit.png" border="0" alt="" title="' . _MD_IMGLOSSARY_EDITTERM . '" /></a>&nbsp;';
+			$srvlinks .= '<a href="admin/entries.php?op=del&entryid=' . $variable['id'] . '" target="_self"><img src="images/icon/delete.png" border="0" alt="" title="' . _MD_IMGLOSSARY_DELTERM . '" /></a>&nbsp;';
 		}
 	}
-	$srvlinks .= '<a href="makepdf.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/pdf.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PDFTERM . '" /></a>&nbsp;';
-	$srvlinks .= '<a href="print.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/print.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PRINTTERM . '" /></a>&nbsp;';
-	$srvlinks .= '<a href="mailto:?subject=' . sprintf(_MD_IMGLOSSARY_INTENTRY, $icmsConfig["sitename"]) . '&amp;body=' . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $icmsConfig['sitename']) . ':  ' . ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . $variable['id'] . '" target="_blank"><img src="images/icon/email.png" border="0" alt="" title="' . _MD_IMGLOSSARY_SENDTOFRIEND . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="makepdf.php?entryid=' . $variable['id'] . '" target="_blank"><img src="images/icon/pdf.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PDFTERM . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="print.php?entryid=' . $variable['id'] . '" target="_blank"><img src="images/icon/print.png" border="0" alt="" title="' . _MD_IMGLOSSARY_PRINTTERM . '" /></a>&nbsp;';
+	$srvlinks .= '<a href="mailto:?subject=' . sprintf(_MD_IMGLOSSARY_INTENTRY, $icmsConfig["sitename"]) . '&amp;body=' . sprintf(_MD_IMGLOSSARY_INTENTRYFOUND, $icmsConfig['sitename']) . ':  ' . ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryid=' . $variable['id'] . '" target="_blank"><img src="images/icon/email.png" border="0" alt="" title="' . _MD_IMGLOSSARY_SENDTOFRIEND . '" /></a>&nbsp;';
 	return $srvlinks;
 }
 
@@ -140,11 +140,11 @@ function imglossary_showSearchForm() {
 	if ( icms::$module -> config['multicats'] == 1 ) {
 		$searchform .= '<tr><td style="text-align: ' . _GLOBAL_RIGHT . '; line-height: 200%">' . _MD_IMGLOSSARY_CATEGORY . '</td>';
 		$searchform .= '<td>&nbsp;</td><td style="text-align: ' . _GLOBAL_LEFT . ';">';
-		$resultcat = icms::$xoopsDB -> query( "SELECT categoryID, name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryID" );
-		$searchform .= '<select name="categoryID">';
+		$resultcat = icms::$xoopsDB -> query( "SELECT categoryid, name FROM " . icms::$xoopsDB -> prefix ( 'imglossary_cats' ) . " ORDER BY categoryid" );
+		$searchform .= '<select name="categoryid">';
 		$searchform .= '<option value="0">' . _MD_IMGLOSSARY_ALLOFTHEM . '</option>';
-		while ( list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
-			$searchform .= '<option value="' . $categoryID . '">' . $categoryID . ' : ' . $name . '</option>';
+		while ( list( $categoryid, $name ) = icms::$xoopsDB -> fetchRow( $resultcat ) ) {
+			$searchform .= '<option value="' . $categoryid . '">' . $categoryid . ' : ' . $name . '</option>';
 		}
 		$searchform .= '</select></td></tr>';
 	}
@@ -183,28 +183,28 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 	$parts = explode( '¤', $definition );
 
 	// First, retrieve all terms from the glossary...
-	$allterms = icms::$xoopsDB -> query( 'SELECT entryID, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0' );
-	while ( list( $entryID, $term ) = icms::$xoopsDB -> fetchrow( $allterms ) ) {
+	$allterms = icms::$xoopsDB -> query( 'SELECT entryid, term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE submit=0 AND offline=0' );
+	while ( list( $entryid, $term ) = icms::$xoopsDB -> fetchrow( $allterms ) ) {
 		foreach( $parts as $key => $part ) {
 			if ( $term != $glossaryterm ) {
 				// singular
 				$term_q = preg_quote( $term, '/' );
 				$search_term = "/\b$term_q\b/i";
-				$replace_term = '<span><b><a href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
+				$replace_term = '<span><b><a href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryid=' . intval( $entryid ) . '">' . $term . '</a></b></span>';
 				$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				// plural
 				$term = $term . 's';
 				$term_q = preg_quote( $term, '/' );
 				$search_term = "/\b$term_q\b/i";
-				$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
+				$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryid=' . intval( $entryid ) . '">' . $term . '</a></b></span>';
 				$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 				// plural with e
 				$term = $term . 'es';
 				$term_q = preg_quote( $term, '/' );
 				$search_term = "/\b$term_q\b/i";
-				$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryID=' . intval( $entryID ) . '">' . $term . '</a></b></span>';
+				$replace_term = '<span><b><a style="color: #2F5376;" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar('dirname') . '/entry.php?entryid=' . intval( $entryid ) . '">' . $term . '</a></b></span>';
 				$parts[$key] = preg_replace( $search_term, $replace_term, $parts[$key] );
 
 			}
@@ -212,51 +212,6 @@ function imglossary_linkterms( $definition, $glossaryterm ) {
 	}
 	$definition = implode( '¤', $parts );
 	return $definition;
-}
-
-// Check if Dictionary module is installed
-function imglossary_dictionary_module_included() {
-	static $imglossary_dictionary_module_included;
-	if ( !isset( $imglossary_dictionary_module_included ) ) {
-		$modules_handler = icms::handler( 'icms_module' );
-		$dict_mod = $modules_handler -> getByDirName( 'dictionary' );
-		if ( !$dict_mod ) {
-			$dict_mod = false;
-		} else {
-			$imglossary_dictionary_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
-		}
-	}
-	return $imglossary_dictionary_module_included;
-}
-
-// Check if Wordbook module is installed
-function imglossary_wordbook_module_included() {
-	static $imglossary_wordbook_module_included;
-	if ( !isset( $imglossary_wordbook_module_included ) ) {
-		$modules_handler = icms::handler( 'icms_module' );
-		$dict_mod = $modules_handler -> getByDirName( 'wordbook' );
-		if ( !$dict_mod ) {
-			$dict_mod = false;
-		} else {
-			$imglossary_wordbook_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
-		}
-	}
-	return $imglossary_wordbook_module_included;
-}
-
-// Check if Wiwimod module is installed
-function imglossary_wiwimod_module_included() {
-	static $imglossary_wiwimod_module_included;
-	if ( !isset( $imglossary_wiwimod_module_included ) ) {
-		$modules_handler = icms::handler( 'icms_module' );
-		$dict_mod = $modules_handler -> getByDirName( 'wiwimod' );
-		if ( !$dict_mod ) {
-			$dict_mod = false;
-		} else {
-			$imglossary_wiwimod_module_included = $dict_mod -> getVar( 'isactive' ) == 1;
-		}
-	}
-	return $imglossary_wiwimod_module_included;
 }
 
 function imglossary_getWysiwygForm( $caption, $name, $value ) {

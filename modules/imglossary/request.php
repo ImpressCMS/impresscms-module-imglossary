@@ -62,7 +62,7 @@ if ( empty( $_POST['submit'] ) ) {
 	$url = '';
 	$init = substr( $reqterm, 0, 1 );
 
-	icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, term, init, ref, url, uid, submit, datesub, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$offline', '$notifypub', '$request' )" );
+	icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryid, term, init, ref, url, uid, submit, datesub, offline, notifypub, request ) VALUES ('', '$reqterm', '$init', '$ref', '$url', '$user', '$submit', '$date', '$offline', '$notifypub', '$request' )" );
 
 	$adminmail = $icmsConfig['adminmail'];
 

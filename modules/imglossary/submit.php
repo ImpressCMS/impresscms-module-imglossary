@@ -59,7 +59,7 @@ if( !isset( $_POST['suggest'] ) ) {
 }
 
 if ( $suggest > 0 ) {
-	$terminosql = icms::$xoopsDB -> query( 'SELECT term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 AND entryID=' . $suggest . '' );
+	$terminosql = icms::$xoopsDB -> query( 'SELECT term FROM ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' WHERE datesub<' . time() . ' AND datesub>0 AND request=1 AND entryid=' . $suggest . '' );
 	list( $termino ) = icms::$xoopsDB -> fetchRow( $terminosql );
 } else {
 	$termino = '';
@@ -100,9 +100,9 @@ switch ( $op ) {
 		$notifypub = isset( $notifypub ) ? intval( $notifypub ) : 1;
 
 		if ( icms::$module -> config['multicats'] == 1 ) {
-			$categoryID = intval( $_POST['categoryID'] );
+			$categoryid = intval( $_POST['categoryid'] );
 		} else {
-			$categoryID = 0;
+			$categoryid = 0;
 		}
 
 		$term = icms_core_DataFilter::htmlSpecialChars( $_POST['term'] );
@@ -125,8 +125,8 @@ switch ( $op ) {
 			$offline = 0;
 		} 
 
-		$result = icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryID, categoryID, term, init, definition, ref, url, uid, submit, datesub, offline, notifypub ) VALUES ('', '$categoryID', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$offline', '$notifypub')" );
-		$entryID = icms::$xoopsDB -> getInsertId();
+		$result = icms::$xoopsDB -> query( "INSERT INTO " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " (entryid, categoryid, term, init, definition, ref, url, uid, submit, datesub, offline, notifypub ) VALUES ('', '$categoryid', '$term', '$init', '$definition', '$ref', '$url', '$uid', '$submit', '$datesub', '$offline', '$notifypub')" );
+		$entryid = icms::$xoopsDB -> getInsertId();
 
 		if ( $result ) {
 			if ( !is_object( icms::$user ) ) {
@@ -183,7 +183,7 @@ switch ( $op ) {
 		}
 
 		$block = 1;
-		$categoryID = 0;
+		$categoryid = 0;
 		$notifypub = 0;
 		$term = $termino;
 		$definition = '';

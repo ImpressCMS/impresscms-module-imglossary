@@ -29,13 +29,13 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 	public function __construct( &$handler ) {
 		icms_ipf_object::__construct( $handler );
 
-		$this -> quickInitVar( 'categoryID', XOBJ_DTYPE_INT, true );
+		$this -> quickInitVar( 'categoryid', XOBJ_DTYPE_INT, true );
 		$this -> quickInitVar( 'name', XOBJ_DTYPE_TXTBOX, false );
 		$this -> quickInitVar( 'description', XOBJ_DTYPE_TXTAREA, false );
 		$this -> quickInitVar( 'total', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'weight', XOBJ_DTYPE_INT, true, false, false, 0 );
 
-		$this -> initCommonVar( 'categoryID' );
+		$this -> initCommonVar( 'categoryid' );
 	}
 
 	public function getWeightControl() {
@@ -51,7 +51,7 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 	}
 
 	function ViewCategoryLink() {
-		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/category.php?categoryID=' . $this -> getVar( 'categoryID', 'e' ) . '">' . $this -> getVar( 'name' ) . '</a>';
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/category.php?categoryid=' . $this -> getVar( 'categoryid', 'e' ) . '">' . $this -> getVar( 'name' ) . '</a>';
 		return $ret;
 	}
 

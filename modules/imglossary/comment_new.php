@@ -30,7 +30,7 @@ include '../../mainfile.php';
 $com_itemid = isset( $_GET['com_itemid'] ) ? intval( $_GET['com_itemid'] ) : 0;
 if ( $com_itemid > 0 ) {
 	// Get link title
-	$sql = "SELECT term FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryID=" . $com_itemid . "";
+	$sql = "SELECT term FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE entryid=" . $com_itemid . "";
 	$result = icms::$xoopsDB -> query( $sql );
 	$row = icms::$xoopsDB -> fetchArray( $result );
 	$com_replytitle = $row['term'];

@@ -30,8 +30,8 @@
 
 <div class="clearer2">
 <{foreach item=eachresult from=$resultset.match}>
-<h4 class="term"><a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/entry.php?entryID=<{$eachresult.entryID}>"><{$eachresult.term}></a>
-<{if $multicats == 1}> <a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/category.php?categoryID=<{$eachresult.categoryID}>">[<{$eachresult.catname}>]</a><{/if}></h4>
+<h4 class="term"><a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/entry.php?entryid=<{$eachresult.entryid}>"><{$eachresult.term}></a>
+<{if $multicats == 1}> <a href="<{$xoops_url}>/modules/<{$eachresult.dir}>/category.php?categoryid=<{$eachresult.categoryid}>">[<{$eachresult.catname}>]</a><{/if}></h4>
 <div class="small"><{$eachresult.definition}></div>
 <div class="small"><{$eachresult.microlinks}></div>
 <{/foreach}>

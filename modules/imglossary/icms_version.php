@@ -33,10 +33,10 @@ if ( file_exists( ICMS_ROOT_PATH . '/modules/' . basename( dirname( __FILE__ ) )
 // ** General information
 $modversion = array(
 	'name'				=> _MI_IMGLOSSARY_MD_NAME,
-	'version'			=> 1.03,
-	'status'			=> 'Final',
-	'status_version'	=> 'Final',
-	'date'				=> '23 February 2012',
+	'version'			=> 1.04,
+	'status'			=> 'Trunk',
+	'status_version'	=> 'Trunk',
+	'date'				=> 'xx xxxxxx 201x',
 
 	'description'		=> _MI_IMGLOSSARY_MD_DESC,
 	'author'			=> 'McDonald',
@@ -115,16 +115,16 @@ if (!$imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ 
 }
 
 if ($MyModIsActive == '1') {
-	$sql = icms::$xoopsDB -> query( 'SELECT categoryID, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . '' );
+	$sql = icms::$xoopsDB -> query( 'SELECT categoryid, name FROM ' . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . '' );
 	$i = 4;
 	$hModConfig = icms::$config;
 	$hModule = icms::handler( 'icms_module' );
 	if ($imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) ) {
 		$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
 		if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
-			while ( list( $categoryID, $name ) = icms::$xoopsDB -> fetchRow( $sql ) ) {
+			while ( list( $categoryid, $name ) = icms::$xoopsDB -> fetchRow( $sql ) ) {
 				$modversion['sub'][$i]['name'] = $name;
-				$modversion['sub'][$i]['url'] = 'category.php?categoryID=' . $categoryID;
+				$modversion['sub'][$i]['url'] = 'category.php?categoryid=' . $categoryID;
 				$i++;
 			} 
 		}

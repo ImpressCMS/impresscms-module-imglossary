@@ -29,8 +29,8 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 	public function __construct( &$handler ) {
 		icms_ipf_object::__construct( $handler );
 
-		$this -> quickInitVar( 'entryID', XOBJ_DTYPE_INT, true );
-		$this -> quickInitVar( 'categoryID', XOBJ_DTYPE_INT, false, '', '', 0 );
+		$this -> quickInitVar( 'entryid', XOBJ_DTYPE_INT, true );
+		$this -> quickInitVar( 'categoryid', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'term', XOBJ_DTYPE_TXTBOX, true );
 		$this -> quickInitVar( 'init', XOBJ_DTYPE_TXTBOX, false );
 		$this -> quickInitVar( 'definition', XOBJ_DTYPE_TXTAREA, false );
@@ -46,7 +46,7 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'request', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'comments', XOBJ_DTYPE_INT, false, '', '', 0 );
 
-		$this -> initCommonVar( 'entryID' );
+		$this -> initCommonVar( 'entryid' );
 
 		$this -> setControl( 'offline', 'yesno' );
 
@@ -66,7 +66,7 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 	function offline() {
 		$status = $button = '';
 		$status = $this -> getVar( 'offline', 'e' );
-		$button = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?entryID=' . $this -> getVar( 'entryID' ) . '&amp;op=changeStatus">';
+		$button = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?entryid=' . $this -> getVar( 'entryid' ) . '&amp;op=changeStatus">';
 		if ( $status == false ) {
 			$button .= '<img src="' . ICMS_URL . '/images/crystal/actions/1.png" alt="" title="' . _AM_IMGLOSSARY_TERM_ISON . '" /></a>';
 		} else {
@@ -76,7 +76,7 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 	}
 
 	function ViewEntryLink() {
-		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/entry.php?entryID=' . $this -> getVar( 'entryID', 'e' ) . '">' . $this -> getVar( 'term' ) . '</a>';
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/entry.php?entryid=' . $this -> getVar( 'entryid', 'e' ) . '">' . $this -> getVar( 'term' ) . '</a>';
 		return $ret;
 	}
 

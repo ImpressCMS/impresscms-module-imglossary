@@ -27,8 +27,8 @@
 
 // comment callback functions
 
-function imglossary_com_update( $entry_ID, $total_num ) {
-	$sql = 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET comments=' . $total_num . '	WHERE entryID=' . $entry_ID;
+function imglossary_com_update( $entry_id, $total_num ) {
+	$sql = 'UPDATE ' . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . ' SET comments=' . $total_num . '	WHERE entryid=' . $entry_id;
 	icms::$xoopsDB -> query( $sql );
 }
 

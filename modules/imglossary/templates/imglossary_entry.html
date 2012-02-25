@@ -34,10 +34,10 @@
 <fieldset>
 <legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
 <div class="letterssmall">
-<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
+<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$catlinks.id}>"><{$catlinks.linktext}>
 <{if $catlinks.total > 0}><{/if}>
 </a> [<{$catlinks.total}>] |
-<{/foreach}>  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+<{/foreach}>  <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 </div>
 </fieldset>
 </div>
@@ -45,7 +45,7 @@
 
 <{if $multicats == 1}>
 	<div class="catname"><{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
-	<a href="<{$icms_url}>/modules/<{$thisterm.dir}>/category.php?categoryID=<{$thisterm.categoryID}>"><{$thisterm.catname}></a>
+	<a href="<{$icms_url}>/modules/<{$thisterm.dir}>/category.php?categoryid=<{$thisterm.categoryid}>"><{$thisterm.catname}></a>
 	</div>
 <{/if}>
 

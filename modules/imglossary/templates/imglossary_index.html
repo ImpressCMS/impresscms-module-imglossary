@@ -34,11 +34,11 @@
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_BROWSECAT}></legend>
 			<div class="letterssmall">
-				<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$catlinks.id}>"><{$catlinks.linktext}>
+				<{foreach item=catlinks from=$block0.categories}> <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$catlinks.id}>"><{$catlinks.linktext}>
 					<{if $catlinks.total > 0}><{/if}>
 					</a> [<{$catlinks.total}>] |
 				<{/foreach}>
-				<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
+				<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$smarty.const._MD_IMGLOSSARY_ALLCATS}>"><{$smarty.const._MD_IMGLOSSARY_ALLCATS}></a> [<{$publishedwords}>]
 			</div>
 		</fieldset>
 	</div>
@@ -50,7 +50,7 @@
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_RECENTENT}></legend>
 				<{foreach item=newentries from=$block.newstuff}>
-					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small;">(<{$newentries.date}>)</span><br />
+					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryid=<{$newentries.id}>"><{$newentries.linktext}></a> <span style="font-size: xx-small;">(<{$newentries.date}>)</span><br />
 				<{/foreach}>
 		</fieldset>
 	</div>
@@ -59,7 +59,7 @@
 		<fieldset>
 			<legend><{$smarty.const._MD_IMGLOSSARY_POPULARENT}></legend>
 				<{foreach item=popentries from=$block2.popstuff}>
-					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small;">(<{$popentries.counter}>)</span><br />
+					- <a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryid=<{$popentries.id}>"><{$popentries.linktext}></a> <span style="font-size: xx-small;">(<{$popentries.counter}>)</span><br />
 				<{/foreach}>
 		</fieldset>
 	</div>
@@ -89,12 +89,12 @@
 				<{if $multicats == 1}>
 					<{if $empty != 1}>
 						<div class="catname">&nbsp;<{$smarty.const._MD_IMGLOSSARY_ENTRYCATEGORY}>
-							<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryID=<{$random.categoryID}>"><{$random.categoryname}></a>
+							<a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/category.php?categoryid=<{$random.categoryid}>"><{$random.categoryname}></a>
 						</div>
 					<{/if}>
 				<{/if}>
 				<div class="pad4">
-					<h4 class="term"><a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryID=<{$random.entryID}>"><{$random.term}></a></h4>
+					<h4 class="term"><a href="<{$icms_url}>/modules/<{$lang_moduledirname}>/entry.php?entryid=<{$random.entryid}>"><{$random.term}></a></h4>
 					<div style="padding: 0 4px;"><{$random.definition}></div>
 					<div style="padding-top: 5px; margin-<{$smarty.const._GLOBAL_LEFT}>: 8px;"><{$microlinks}></div>
 				</div>

@@ -45,7 +45,7 @@ extract( $_POST, EXTR_OVERWRITE );
 $action = isset( $action ) ? trim( $action ) : "search";
 $query = isset( $term ) ? trim( $term ) : "";
 $start = isset( $start ) ? intval( $start ) : 0;
-$categoryID = isset( $categoryID ) ? intval( $categoryID ) : 0;
+$categoryid = isset( $categoryid ) ? intval( $categoryid ) : 0;
 $type = isset( $type ) ? intval( $type ) : 3;
 $queries = array();
 
@@ -69,8 +69,8 @@ if ( $type == "3" ) {
 
 if ( icms::$module -> config['multicats'] == 1 ) {
 	// If the look is in a particular category
-	if ( $categoryID > 0 ) {
-		$andcatid = "AND categoryID='$categoryID'";
+	if ( $categoryid > 0 ) {
+		$andcatid = "AND categoryid='$categoryid'";
 	} else {
 		$andcatid = "";
 	}
@@ -112,21 +112,21 @@ if ( !$query ) {
 		$resultset = array();
 
 		// How many results will we show in this page?
-		$queryA = "SELECT w.entryID, w.categoryID, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryID=c.categoryID WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
+		$queryA = "SELECT w.entryid, w.categoryid, w.term, w.init, w.definition, w.html, w.smiley, w.xcodes, w.breaks, c.name AS catname FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " w LEFT JOIN " . icms::$xoopsDB -> prefix( 'imglossary_cats' ) . " c ON w.categoryid=c.categoryid WHERE " . $searchtype . " AND w.submit=0 AND w.offline=0 ORDER BY w.term ASC";
 		$resultA = icms::$xoopsDB -> query( $queryA, icms::$module -> config['indexperpage'], $start );
 
-		while ( list( $entryID, $categoryID, $term, $init, $definition, $html, $smiley, $xcodes, $breaks, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
+		while ( list( $entryid, $categoryid, $term, $init, $definition, $html, $smiley, $xcodes, $breaks, $catname ) = icms::$xoopsDB -> fetchRow( $resultA ) ) {
 			$eachresult = array();
 			$eachresult['dir'] = icms::$module -> getVar( 'dirname' );
-			$eachresult['entryID'] = $entryID;
-			$eachresult['categoryID'] = $categoryID;
+			$eachresult['entryid'] = $entryid;
+			$eachresult['categoryid'] = $categoryid;
 			$eachresult['term'] = icms_core_DataFilter::htmlSpecialChars( $term );
 			$eachresult['catname'] = icms_core_DataFilter::htmlSpecialChars( $catname );
 			$tempdef = icms_core_DataFilter::checkVar( $definition, 'html', 'output' );
 			$eachresult['definition'] = imglossary_getHTMLHighlight( $query, $tempdef, '<b style="background-color: ' . icms::$module -> config['searchcolor'] . ';">', '</b>' );
 
 			// Functional links
-			$microlinks = imglossary_serviceLinks( $eachresult['entryID'] );
+			$microlinks = imglossary_serviceLinks( $eachresult['entryid'] );
 			$eachresult['microlinks'] = $microlinks;
 			$resultset['match'][] = $eachresult;
 			}

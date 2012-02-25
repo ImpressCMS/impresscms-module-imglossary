@@ -23,7 +23,7 @@
 */
 
 include_once ICMS_ROOT_PATH . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/include/functions.php';
-$mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryID', '0' );
+$mytree = new icms_view_Tree( icms::$xoopsDB -> prefix( 'imglossary_cats' ), 'categoryid', '0' );
 
 echo '<link rel="stylesheet" type="text/css" href="' . ICMS_URL . '/modules/' . icms::$module -> getVar( 'dirname' ) . '/style.css" />';
 
@@ -43,7 +43,7 @@ $sform -> addElement( new icms_form_elements_Text( _MD_IMGLOSSARY_ENTRY, 'term',
 
 if ( icms::$module -> config['multicats'] == '1' ) {
 	ob_start();
-		$mytree -> makeMySelBox( 'name', 'name', $categoryID );
+		$mytree -> makeMySelBox( 'name', 'name', $categoryid );
 		$sform -> addElement( new icms_form_elements_Label( _MD_IMGLOSSARY_CATEGORY, ob_get_contents() ) );
 	ob_end_clean();
 }

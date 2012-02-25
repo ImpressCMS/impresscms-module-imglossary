@@ -6,29 +6,29 @@
 *
 * File: include/search.inc.php
 *
-* @copyright		http://www.xoops.org/ The XOOPS Project
-* @copyright		XOOPS_copyrights.txt
-* @copyright		http://www.impresscms.org/ The ImpressCMS Project
+* @copyright	http://www.xoops.org/ The XOOPS Project
+* @copyright	XOOPS_copyrights.txt
+* @copyright	http://www.impresscms.org/ The ImpressCMS Project
 * @license		GNU General Public License (GPL)
 *				a copy of the GNU license is enclosed.
 * ----------------------------------------------------------------------------------------------------------
 * @package		Wordbook - a multicategory glossary
-* @since			1.16
+* @since		1.16
 * @author		hsalazar
 * ----------------------------------------------------------------------------------------------------------
 * 				imGlossary - a multicategory glossary
-* @since			1.00
+* @since		1.00
 * @author		modified by McDonald
 * @version		$Id$
 */
 
-function imglossary_search( $queryarray, $andor, $limit, $offset, $userid )	{
-	
-	$sql = "SELECT entryID, term, definition, ref, uid, datesub FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0";
+function imglossary_search( $queryarray, $andor, $limit, $offset, $userid ) {
+
+	$sql = "SELECT entryid, term, definition, ref, uid, datesub FROM " . icms::$xoopsDB -> prefix( 'imglossary_entries' ) . " WHERE submit=0 AND offline=0";
 
 	if ( $userid != 0 ) {
-        $sql .= " AND uid=" . $userid . " ";
-    }
+		$sql .= " AND uid=" . $userid . " ";
+	}
 
 	// because count() returns 1 even if a supplied variable
 	// is not an array, we must check if $querryarray is really an array
@@ -44,19 +44,19 @@ function imglossary_search( $queryarray, $andor, $limit, $offset, $userid )	{
 		} 
 		$sql .= ") ";
 	} 
-	$sql .= "ORDER BY entryID DESC";
+	$sql .= "ORDER BY entryid DESC";
 	$result = icms::$xoopsDB -> query( $sql, $limit, $offset );
-    $ret = array();
-    $i = 0;
+	$ret = array();
+	$i = 0;
 
 	while ( $myrow = icms::$xoopsDB -> fetchArray( $result ) ) {
 		$ret[$i]['image'] = "images/imglossary.png";
-		$ret[$i]['link'] = "entry.php?entryID=" . $myrow['entryID'];
+		$ret[$i]['link'] = "entry.php?entryid=" . $myrow['entryid'];
 		$ret[$i]['title'] = $myrow['term'];
 		$ret[$i]['time'] = $myrow['datesub'];
 		$ret[$i]['uid'] = $myrow['uid'];
 		$i++;
-	} 
+	}
 	return $ret;
-} 
+}
 ?>
