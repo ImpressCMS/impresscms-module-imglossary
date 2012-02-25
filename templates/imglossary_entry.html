@@ -65,23 +65,23 @@
 	<div class="imglsocbookmark"><{$sbookmarks}></div>
 <{/if}>
 
-<div style="text-align: center; font-size: xx-small; border-top: #e8e8e8 1px solid;"><{$submitter}><{$submitdate}><{$counter}></div>
+<div style="text-align: center; font-size: smaller; border-top: #E8E8E8 1px solid;"><{$submitter}><{$submitdate}><{$counter}></div>
 
 <!-- start comments -->
 <div style="text-align: center; padding: 3px; margin: 3px;">
-  <{$commentsnav}>
-  <{$lang_notice}>
+	<{$commentsnav}>
+	<{$lang_notice}>
 </div>
 
 <div style="margin: 3px; padding: 3px;">
 <!-- start comments loop -->
-<{if $comment_mode == "flat"}>
-  <{include file="db:system_comments_flat.html"}>
-<{elseif $comment_mode == "thread"}>
-  <{include file="db:system_comments_thread.html"}>
-<{elseif $comment_mode == "nest"}>
-  <{include file="db:system_comments_nest.html"}>
-<{/if}>
-<!-- end comments loop -->
+	<{if $comment_mode == "flat"}>
+		<{include file="db:system_comments_flat.html"}>
+	<{elseif $comment_mode == "thread"}>
+		<{include file="db:system_comments_thread.html"}>
+	<{elseif $comment_mode == "nest"}>
+		<{include file="db:system_comments_nest.html"}>
+	<{/if}>
+	<!-- end comments loop -->
 <!-- end comments -->
 </div>
