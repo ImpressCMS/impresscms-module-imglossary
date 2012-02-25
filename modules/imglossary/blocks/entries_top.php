@@ -71,7 +71,7 @@ function b_entries_top_edit( $options ) {
 
 	$form .= ">" . _MB_IMGLOSSARY_WEIGHT . "</option>\n";
 	$form .= "</select>\n";
-	$form .= "&nbsp;" . _MB_IMGLOSSARY_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_IMGLOSSARY_TERMS . "";
+	$form .= "<br />" . _MB_IMGLOSSARY_DISP . "&nbsp;<input type='text' name='options[]' value='" . $options[1] . "' />&nbsp;" . _MB_IMGLOSSARY_TERMS . "";
 
 	return $form;
 }
