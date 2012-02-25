@@ -63,7 +63,7 @@ if ( file_exists( $filename ) ) {
 
 $pdf = new TCPDF( PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true );
 
-// set document information
+// SET DOCUMENT INFORMATION
 $pdf -> SetCreator( PDF_CREATOR );
 $pdf -> SetAuthor( $submitter );
 $pdf -> SetTitle( $title );
@@ -75,24 +75,26 @@ $secondLine = $whowhen;
 
 $pdf -> SetHeaderData( PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, $firstLine, $secondLine );
 
-//set margins
+// SET MARGINS
 $pdf -> SetMargins( PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT );
 
-//set auto page breaks
+// SET AUTO PAGE BREAKS
 $pdf -> SetAutoPageBreak( true, PDF_MARGIN_BOTTOM );
 $pdf -> SetHeaderMargin( PDF_MARGIN_HEADER );
 $pdf -> SetFooterMargin( PDF_MARGIN_FOOTER );
-$pdf -> setImageScale( PDF_IMAGE_SCALE_RATIO ); //set image scale factor
+$pdf -> setImageScale( PDF_IMAGE_SCALE_RATIO ); // SET IMAGE SCALE FACTOR
 
 $pdf -> setHeaderFont( array( PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN ) );
 $pdf -> setFooterFont( array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
 
 $pdf -> setLanguageArray( $l ); //set language items
 
-// Set font
-$pdf -> SetFont( 'helvetica', '', 10 );
+// SET FONT
+// SetFont ($family, $style='', $size=0, $fontfile='', $subset='default', $out=true)
+// See for information: http://www.tcpdf.org/doc/classTCPDF.html#a5b5d57a2e74820e41c69737b2d4b6c9e
+$pdf -> SetFont( '', '', 10 );
 
-//initialize document
+// INITIALIZE DOCUMENT
 $pdf -> AddPage();
 $pdf -> writeHTML( $content, true, false, false, 0 );
 $pdf -> Output();
