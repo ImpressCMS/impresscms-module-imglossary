@@ -34,8 +34,6 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 		$this -> quickInitVar( 'description', XOBJ_DTYPE_TXTAREA, false );
 		$this -> quickInitVar( 'total', XOBJ_DTYPE_INT, false, '', '', 0 );
 		$this -> quickInitVar( 'weight', XOBJ_DTYPE_INT, true, false, false, 0 );
-
-		$this -> initCommonVar( 'categoryid' );
 	}
 
 	public function getWeightControl() {

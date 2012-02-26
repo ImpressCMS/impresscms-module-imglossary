@@ -26,21 +26,10 @@ if ( !defined( 'ICMS_ROOT_PATH' ) ) { die( 'ICMS root path not defined' ); }
 
 define( 'IMGLOSSARY_DB_VERSION', 2 );
 
-function icms_module_update_imglossary( $module ) {
-//	$imglossary_modversion	= $module -> getVar('version'); 
-//	$imglossary_dbversion	= $module -> getVar('dbversion'); 
-//	if ( $imglossary_dbversion < 2 ) { 
-//		$db =& Database::getInstance(); 
-//		$sql = "ALTER TABLE " . $db -> prefix( 'imglossary_entries' ) . " CHANGE `entryID` `entryid` INT( 11) NOT NULL AUTO_INCREMENT";
-//		$db->query($sql); 
-//		$sql = "ALTER TABLE " . $db -> prefix( 'imglossary_entries' ) . " CHANGE `categoryID` `categoryid` INT( 11) NOT NULL DEFAULT 0";
-//		$db->query($sql); 
-//		$sql = "ALTER TABLE " . $db -> prefix( 'imglossary_cats' ) . " CHANGE `categoryID` `categoryid` INT( 11) NOT NULL AUTO_INCREMENT";
-//		$db->query($sql);
-//	}
-	return true;
+function icms_module_update_imglossary( &$module, $oldversion = null, $dbversion = null ) {
+	return TRUE;
 }
 
 function icms_module_install_imglossary( $module ) {
-	return true;
+	return TRUE;
 }

@@ -78,7 +78,7 @@ $modversion['adminindex']	= 'admin/index.php';
 $modversion['adminmenu']	= 'admin/menu.php';
 
 $modversion['onInstall']	= 'include/onupdate.inc.php';
-$modversion['onUpdate']		= 'include/onupdate.inc.php';
+$modversion['onUpdate']		= 'include/updatedb.php';
 
 // Tables created by sql file (without prefix!)
 $modversion['object_items'][1] = 'cats';
