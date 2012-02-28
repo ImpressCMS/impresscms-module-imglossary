@@ -58,7 +58,7 @@ $rform -> addElement( $reqterm_text, true );
 
 if ( icms::$module -> config['captcha'] ) {
 	// Captcha Hack
-	$rform -> addElement( new icms_form_elements_captcha( _SECURITYIMAGE_GETCODE, 'scode' ), true );
+	$rform -> addElement( new icms_form_elements_Captcha( _SECURITYIMAGE_GETCODE, 'scode' ), true );
 	// Captcha Hack
 }
 
