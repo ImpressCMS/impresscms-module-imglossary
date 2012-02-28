@@ -27,12 +27,12 @@ include 'admin_header.php';
 $op = '';
 
 if ( !isset( $_POST['op'] ) ) {
-	if ( isset( $_GET['op'] ) ) $op = $_GET['op'];
+	$op = isset( $_GET['op'] ) ? $_GET['op'] : 'default';
 } else {
-	if ( isset( $_POST['op'] ) ) $op = $_POST['op'];
+	$op = isset( $_POST['op'] ) ? $_POST['op'] : 'default';
 }
 
-function categoryEdit( $categoryid = '' ) {
+function categoryEdit( $categoryid = 0 ) {
 	$weight = 0;
 	$name = '';
 	$description = '';
