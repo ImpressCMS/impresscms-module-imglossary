@@ -64,7 +64,7 @@ $modversion['people']['translators'][] = '&middot; <a href="http://community.imp
 $modversion['people']['translators'][] = '&middot; <a href="http://community.impresscms.org/userinfo.php?uid=371" target="_blank">wuddel</a> (German)';
 
 $modversion['people']['other'][] = '&middot; <a href="http://www.famfamfam.com" target="_blank">famfamfam</a> (icons)';
-$modversion['people']['other'][] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
+//$modversion['people']['other'][] = '&middot; <a href="http://materia.infinitiv.it" target="_blank">Materia</a> (icons)';
 
 // ** If Release Candidate **
  $modversion['warning'] = _MODABOUT_IMGLOSSARY_WARNING_RC;
@@ -121,7 +121,7 @@ if ($MyModIsActive == '1') {
 	$hModule = icms::handler( 'icms_module' );
 	if ($imglossaryModule =& $hModule -> getByDirname( basename( dirname( __FILE__ ) ) ) ) {
 		$imglossaryConfig =& $hModConfig -> getConfigsByCat( 0, $imglossaryModule -> getVar( 'mid' ) );
-		if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 )	{
+		if ( isset( $imglossaryConfig['catsinmenu'] ) && $imglossaryConfig['catsinmenu'] == 1 ) {
 			while ( list( $categoryid, $name ) = icms::$xoopsDB -> fetchRow( $sql ) ) {
 				$modversion['sub'][$i]['name'] = $name;
 				$modversion['sub'][$i]['url'] = 'category.php?categoryid=' . $categoryID;
@@ -287,7 +287,7 @@ $modversion['config'][$i]['description'] = '_MI_IMGLOSSARY_SORTCATSDSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'text';
 $modversion['config'][$i]['default'] = 'name';
-$modversion['config'][$i]['options'] = array(	'_MI_IMGLOSSARY_TITLE' => 'name', '_MI_IMGLOSSARY_WEIGHT' => 'weight' );
+$modversion['config'][$i]['options'] = array( '_MI_IMGLOSSARY_TITLE' => 'name', '_MI_IMGLOSSARY_WEIGHT' => 'weight' );
 $i++;
 $modversion['config'][$i]['name'] = 'adminhits';
 $modversion['config'][$i]['title'] = '_MI_IMGLOSSARY_ALLOWADMINHITS';
