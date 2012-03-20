@@ -314,7 +314,7 @@ switch ( $op ) {
 
 
 		// Entries table
-		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler );
+		$objectTable = new icms_ipf_view_Table( $imglossary_entries_handler, false, array() );
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 20px;">' . _AM_IMGLOSSARY_SHOWENTRIES . '</p>');
 
@@ -324,22 +324,30 @@ switch ( $op ) {
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'datesub', 'center', 150 ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'offline', 'center', 50 ) );
 
+		$objectTable->addCustomAction('getEditEntryLink');
+		$objectTable->addCustomAction('getDeleteEntryLink');
+
 		$objectTable -> addQuickSearch( array( 'term' ), _AM_IMGLOSSARY_TERM_SEARCH ); // Search term
 
 		$icmsAdminTpl -> assign( 'imglossary_entries_table', $objectTable -> fetch() );
 
 
 		// Categories table
-		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler );
+		$objectTable = new icms_ipf_view_Table( $imglossary_cats_handler, false, array() );
 
 		$objectTable -> addHeader('<p style="font-size: 1.1em; font-weight: bold; margin-top: 10px;">' . _AM_IMGLOSSARY_SHOWCATS . '</p>');
 
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'categoryid', 'center', 50 ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'categoryid', 'center', 50 ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'name', _GLOBAL_LEFT, 200, 'ViewCategoryLink' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'description', _GLOBAL_LEFT, false, 'getDescriptionTeaser' ) );
 		$objectTable -> addColumn( new icms_ipf_view_Column( 'total', 'center' ) );
-		$objectTable -> addColumn(new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
+		$objectTable -> addColumn( new icms_ipf_view_Column( 'weight', 'center', 100, 'getWeightControl' ) );
+
 		$objectTable -> addActionButton( 'changeWeight', false, _SUBMIT );
+
+		$objectTable->addCustomAction('getEditCategoryLink');
+		$objectTable->addCustomAction('getDeleteCategoryLink');
+
 		$icmsAdminTpl -> assign( 'imglossary_cats_table', $objectTable -> fetch() );
 
 

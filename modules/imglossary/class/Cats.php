@@ -53,4 +53,14 @@ class mod_imglossary_Cats extends icms_ipf_seo_Object {
 		return $ret;
 	}
 
+		function getEditCategoryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/cats.php?op=mod&amp;categoryid=' . $this -> getVar( 'categoryid' ) . '"><img src="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/images/icon/folder_edit.png" alt="" title="' . _AM_IMGLOSSARY_EDITCAT . '" /></a>';
+		return $ret;
+	}
+
+		function getDeleteCategoryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/cats.php?op=del&amp;categoryid=' . $this -> getVar( 'categoryid' ) . '"><img src="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/images/icon/folder_delete.png" alt="" title="' . _AM_IMGLOSSARY_DELETECAT . '" /></a>';
+		return $ret;
+	}
+
 }

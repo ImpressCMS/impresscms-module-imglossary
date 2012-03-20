@@ -78,4 +78,13 @@ class mod_imglossary_Entries extends icms_ipf_seo_Object {
 		return $ret;
 	}
 
+	function getEditEntryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?op=mod&amp;entryid=' . $this -> getVar( 'entryid' ) . '"><img src="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/images/icon/edit.png" alt="" title="' . _AM_IMGLOSSARY_EDITENTRY . '" /></a>';
+		return $ret;
+	}
+
+		function getDeleteEntryLink() {
+		$ret = '<a href="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/admin/entries.php?op=del&amp;entryid=' . $this -> getVar( 'entryid' ) . '"><img src="' . ICMS_URL . '/modules/' . basename( dirname( dirname( __FILE__ ) ) ) . '/images/icon/delete.png" alt="" title="' . _AM_IMGLOSSARY_DELETEENTRY . '" /></a>';
+		return $ret;
+	}
 }
