@@ -8,6 +8,8 @@ Files removed:
 - images/dictionary.png
 - images/wiwimod.png
 - images/wordbook.png
+- images/icon/blocks.png
+- images/icon/blocks_small.png
 
 
 ===================================
